@@ -1,0 +1,91 @@
+
+
+import { h, getElementStyle } from './../utils';
+import NavBar from './../navbar';
+import NavBarTwo from './../navbar/notesIndex';
+import NavBarThree from './../navbar/notesRed';
+import Note from '../partials/note';
+import NoteBubble from '../partials/note-bubble';
+// import NoteLine from '../partials/note-line';
+import Line from 'react-lineto';
+import LineTo from 'react-lineto';
+export function NormalView(props){
+    const {useState} = React;
+
+    const FaqApp = () => {
+        const [ selectedQuestion, toggleQuestion ] = useState(-1);
+        
+        function openQuestion(index) {
+            toggleQuestion(selectedQuestion === index ? -1 : index);
+        }
+    const faqs = getFaqs();
+    return [
+        h(NavBar, { ...props, key: 'navbar' }),
+        h(NavBarTwo, { ...props, key: 'green' }),
+        h(NavBarThree, { ...props, key: 'red' }),
+        h('div', {
+            key: props.prefix, 
+            className: props.prefix,
+            style: getElementStyle('container', props)
+        }, 
+            props.items.map( data => !data.hidden?h( Note, {className: 'full-notey', key: `note-${data.id}`,...props, data } ):h( NoteBubble, { key: `note-${data.id}`,...props, data } ) )
+        ),
+        h('div', {
+            key: `${props.prefix}-bubble`, 
+            className: `${props.prefix}-bubble`,
+            style: getElementStyle('container', props)
+        }, 
+            props.items.map( data => h( NoteBubble, {key: `note-${data.id}`,...props, data } ) )
+        ),
+        h('div', {
+            key: `${props.prefix}-line`, 
+            className: `${props.prefix}-line`,
+            style: getElementStyle('container', props)
+        }, 
+        h("h1", {
+            className: "title",
+            onClick: () => setState({
+              visible: !state.visible,
+            })
+          }, "click to toggle"),
+            props.items.map( data => h( LineTo, {borderColor:'wheat',borderStyle: 'dashed', borderWidth: 1, from:`rs-notes--note-${data.id}`, to:`rs-notes--full-note-${data.id}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } ) )
+        ),
+        
+
+
+
+        React.createElement("div", null, React.createElement("h2", null, "FAQs:"), faqs.map(({
+            question,
+            answer
+          }, index) => React.createElement("div", {
+            key: `item-${index}`,
+            className: `item ${selectedQuestion === index ? 'open' : ''}`
+          }, React.createElement("p", {
+            className: "question",
+            onClick: () => openQuestion(index)
+          }, question), React.createElement("p", {
+            className: "answer"
+          }, answer))));
+
+        // h("div", {
+        //     className: this.props.shouldHide ? 'hidden' : ''
+        //   }, "This will be hidden if you set ", h("tt", null, "props.shouldHide"), "to something truthy.")
+
+
+        // h("div", {
+        //     className: "right"
+        //   }, h("h1", {
+        //     className: "title",
+        //     onClick: () => this.setState({
+        //       visible: !this.state.visible,
+        //     })
+        //   }, "click to toggle"), h("div", {
+        //     className: classesNames.join(' ')
+        //   }, h("svg", {
+        //     width: `${this.state.width}`,
+        //     height: "2300"
+        //   }, h(Map, null))))
+        // h(LineTo, {className: 'harry', from:`rs-notes--note`, to:'full-note' }),
+        // h(LineTo, {className: 'harryTwo', from:'rs-notes--note', to:'full-note' }),
+    ]
+}

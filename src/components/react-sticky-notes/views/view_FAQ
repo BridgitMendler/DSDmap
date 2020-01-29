@@ -1,0 +1,67 @@
+
+
+import { h, getElementStyle } from './../utils';
+import NavBar from './../navbar';
+import NavBarTwo from './../navbar/notesIndex';
+import NavBarThree from './../navbar/notesRed';
+import Note from '../partials/note';
+import NoteBubble from '../partials/note-bubble';
+// import NoteLine from '../partials/note-line';
+import Line from 'react-lineto';
+import LineTo from 'react-lineto';
+export function NormalView(props){
+
+const {useState} = React;
+    const [ selectedQuestion, toggleQuestion ] = useState(-1);
+    
+    function openQuestion(index) {
+        toggleQuestion(selectedQuestion === index ? -1 : index);
+    }
+const faqs = getFaqs();
+    return [
+        h(NavBar, { ...props, key: 'navbar' }),
+        h(NavBarTwo, { ...props, key: 'green' }),
+        h(NavBarThree, { ...props, key: 'red' }),
+        h('div', {
+            key: props.prefix, 
+            className: props.prefix,
+            style: getElementStyle('container', props)
+        }, 
+            props.items.map( data => !data.hidden?h( Note, {className: 'full-notey', key: `note-${data.id}`,...props, data } ):h( NoteBubble, { key: `note-${data.id}`,...props, data } ) )
+        ),
+        h('div', {
+            key: `${props.prefix}-bubble`, 
+            className: `${props.prefix}-bubble`,
+            style: getElementStyle('container', props)
+        }, 
+            props.items.map( data => h( NoteBubble, {key: `note-${data.id}`,...props, data } ) )
+        ),
+        h('div', {
+            key: `${props.prefix}-line`, 
+            className: `${props.prefix}-line`,
+            onClick: () => openQuestion(index),
+            style: getElementStyle('container', props)
+        }, 
+            props.items.map( data => h( LineTo, { key: `line-${data.id}}`, className: `line ${selectedQuestion === data.id ? 'open' : ''}`, borderColor:'wheat',borderStyle: 'dashed', borderWidth: 1, from:`rs-notes--note-${data.id}`, to:`rs-notes--full-note-${data.id}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } ) )
+        ),
+        // h(LineTo, {className: 'harry', from:`rs-notes--note`, to:'full-note' }),
+        // h(LineTo, {className: 'harryTwo', from:'rs-notes--note', to:'full-note' }),
+    ]
+}
+
+
+
+h("div", null, h("h2", null, "FAQs:"), faqs.map(({
+    question,
+    answer
+  }, index) => h("div", {
+    key: `item-${index}`,
+    className: `item ${selectedQuestion === index ? 'open' : ''}`
+  }, h("p", {
+    className: "question",
+    onClick: () => openQuestion(index)
+  }, question), h("p", {
+    className: "answer"
+  }, answer))));
+
+
