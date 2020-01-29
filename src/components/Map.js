@@ -82,7 +82,7 @@ export const Map = (props) => {
         }
         // console.log('i am drag start')
 
-        
+
         // console.log(dragState)
       }
 return
@@ -102,7 +102,7 @@ return
         // moveKnight(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
 
         const diamonds = [
-          { id: "2lender mail a copy of order to docket", icon: RectGreen,reflexive: false, x: 250, y: 200 },
+          { id: "2", icon: RectGreen,reflexive: false, x: 250, y: 200 },
           { id: "3lender file sworn statement of debt including costs associated with foreclosure process on the homeowner's tab", icon: RectRed,reflexive: false, x: 150, y: 200},
           { id: "4loss mitigation affadavit to homeowner with form allowing homeowner to request mediation", icon: RectGreen,reflexive: true, x: 200, y: 200},
           { id: "7Can file a motion asking the court to waive the fee", icon: RectGreen,reflexive: true, x: 300, y: 425},
@@ -173,7 +173,7 @@ return
               d.y = d3.event.y;
               draw();
             })
-        
+
           // define arrow markers for graph links
           svg.append('defs').append('marker')
               .attr('id', 'end-arrow')
@@ -186,11 +186,11 @@ return
               // .attr('d', 'M0,-5L10,0L0,5')
               .attr('fill', '#61776E');
 
-        
+
           // line displayed when dragging new nodes
           const dragLine = svg.append('path')
             .attr('class', 'link dragline hidden')
-            
+
             // .attr('d', 'M0,0C0,0');
         // console.log(dragLine)
           // // handles to link and node element groups
@@ -198,8 +198,8 @@ return
           let circle = svg.append('svg:g').selectAll('g');
           let diamond = svg.append('svg:g').selectAll('image')
 
-  
-        
+
+
           // mouse event vars
           let selectedNode = null;
           let selectedLink = null;
@@ -217,7 +217,7 @@ return
 
             var pathOne = document.querySelectorAll(".link")
 
-            
+
                 path.attr("d", function (d) {
                     var dx = d.target.x - d.source.x,
                         dy = d.target.y - d.source.y,
@@ -228,14 +228,14 @@ return
                          + " " + d.target.x + "," + d.target.y;
                 });
 
-            
+
                 circle.attr('transform', (d) => `translate(${d.x},${d.y})`);
                 diamond.attr('transform', (d) => `translate(${d.x},${d.y})`);
               }
-            
-            
+
+
               draw();
-            
+
               // update graph (called when needed)
               function restart() {
                 // path (link) group
@@ -249,30 +249,30 @@ return
 
                 // remove old links
                 path.exit().remove();
-            
+
             pathTwo = document.querySelectorAll("*[style|='marker']");
             // pathTwo.forEach(function)
-            
+
             for (var i = 0; i < pathTwo.length; i++) {
               // pathTwo[i].attr('class', 'yoyo');
               (pathTwo[i].setAttribute("id", "red"));
             }
-            
+
             // for (const l of toSplice) {
             //       links.splice(links.indexOf(l), 1);
             //     }
-            
+
             // console.log(pathTwo)
                 // add new links
-                
+
                 path = path.enter().append('svg:path')
-                  .attr('class', 'link')                  
+                  .attr('class', 'link')
                   .style("stroke-width", 5)
                   .classed('selected', (d) => d === selectedLink)
                   .style('marker-start', (d) => d.left ? 'url(#start-arrow)' : '')
                   .style('marker-end', (d) => d.right ? 'url(#end-arrow)' : '')
                   .on('mousedown', (d) => {
-    
+
                     // select link
                     mousedownLink = d;
                     selectedLink = (mousedownLink === selectedLink) ? null : mousedownLink;
@@ -304,11 +304,11 @@ return
                   // }
                   })
                   .merge(path);
-            
+
                 // circle (node) group
                 // NB: the function arg is crucial here! nodes are known by id, not by index!
                 circle = circle.data(nodes, (d) => d.id);
-            
+
                 diamond = diamond.data(diamonds, (d) => d.id)
                 // update existing nodes (reflexive & selected visual states)
                 circle.selectAll('circle')
@@ -320,22 +320,22 @@ return
                   .attr("width", "24px")
                   .attr("height", "24px")
                   .classed('reflexive', (d) => d.reflexive);
-            
+
                 // remove old nodes
                 circle.exit().remove();
 
                 diamond.exit().remove();
-            
+
                 // add new nodes
                 const g = circle.enter().append('svg:g');
 
                 var diamEnter = diamond.enter().append("svg:g")
                 .attr("class", "diamond")
-                .attr("transform", function(d) { 
+                .attr("transform", function(d) {
                   return "translate(" + d.x + "," + d.y + ")"; });
-            
+
               diamEnter.append("image")
-                  .attr("xlink:href", function(d) { return d.icon; })                  
+                  .attr("xlink:href", function(d) { return d.icon; })
                   .attr('data-name', (d) => d.id)
                   .attr("x", "-12px")
                   .attr("y", "-12px")
@@ -363,17 +363,17 @@ return
                   })
 
 
-              
 
 
-   
+
+
 
             var tooltipElement = document.querySelector("#tooltip")
-            
+
             document.addEventListener("mousemove", function(e){
               var x=e.clientX
                var y=e.clientY
-            
+
               tooltipElement.setAttribute("style", `top:${y+30}px;left:${x}px`)
             })
             // .call(function(){draglistener(d3.select(this)),dragState})
@@ -406,7 +406,7 @@ return
                       d3.select(this)
                       .transition()
                       .duration(750)
-                      
+
                       .attr('data-name', (d) => d.id)
                       .attr("r", 7);
                     })
@@ -417,7 +417,7 @@ return
                     document.addEventListener("mousemove", function(e){
                       var x=e.clientX
                        var y=e.clientY
-                    
+
                        if (isOver === true) {
                         // console.log(d3.event.type)
                       }
@@ -426,7 +426,7 @@ return
                     mousedownNode = d;
                     selectedNode = (mousedownNode === selectedNode) ? null : mousedownNode;
                     selectedLink = null;
-            
+
                     // reposition drag line
                     dragLine
                       .style('marker-end', 'url(#end-arrow)')
@@ -434,55 +434,55 @@ return
                       .attr('d', function (d) {
                         return `M${mousedownNode.x},${mousedownNode.y}A${mousedownNode.x},${mousedownNode.y}`;
                       });
-            
+
 
                   })
                   .on('mouseup', function (d) {
                     if (!mousedownNode) return;
-            
+
                     // needed by FF
                     dragLine
                       .classed('hidden', true)
                       .style('marker-end', '');
-            
+
                     // check for drag-to-self
                     mouseupNode = d;
                     if (mouseupNode === mousedownNode) {
                       resetMouseVars();
                       return;
                     }
-            
+
                     // unenlarge target node
                     d3.select(this).attr('transform', '');
-            
+
                     // add link to graph (update if exists)
                     // NB: links are strictly source < target; arrows separately specified by booleans
                     const isRight = mousedownNode.id < mouseupNode.id;
                     const source = isRight ? mousedownNode : mouseupNode;
                     const target = isRight ? mouseupNode : mousedownNode;
-            
+
                     const link = links2.filter((l) => l.source === source && l.target === target)[0];
                     if (link) {
                       link[isRight ? 'right' : 'left'] = true;
                     } else {
                       links2.push({ source, target});
                     }
-            
+
                     // select new link
                     selectedLink = link;
                     selectedNode = null;
-            
-            
+
+
                     restart();
                   });
-            
-            
-            
+
+
+
                 circle = g.merge(circle);
                 diamond = g.merge(diamond)
                 draw();
               }
-            
+
               function mouseover(d,i) {
                 moveKnight(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
                 // console.log(window.event.target.attributes)
@@ -490,36 +490,36 @@ return
                   .duration(750)
                   .attr("r", 20);
                       }
-            
+
                       function mouseenter(d,i) {
                         // moveKnight(bubblePos.x,bubblePos.y, window.event.target)
                         // console.log(window.event)
                       }
-            
+
             function mouseout(d,i) {
               d3.select(this).transition()
                   .duration(750)
                   .attr("r", 8);
             }
-            
-            
-            
+
+
+
               function mousedown() {
                 // because :active only works in WebKit?
                 svg.classed('active', true);
-            
+
                 if (d3.event.ctrlKey || mousedownNode || mousedownLink) return;
-            
+
                 // insert new node at point
                 const point = d3.mouse(this);
                 const node = { class: 'tan', reflexive: false, x: point[0], y: point[1] };
                 nodes2.push(node);
                 restart();
               }
-            
+
               function mousemove() {
                 if (!mousedownNode) return;
-            
+
                 // update drag line
                 dragLine.attr('d', `M${mousedownNode.x},${mousedownNode.y}L${d3.mouse(this)[0]},${d3.mouse(this)[1]}`);
               }
@@ -534,21 +534,21 @@ return
                     .classed('hidden', true)
                     .style('marker-end', '')
                 }
-            
+
                 // because :active only works in WebKit?
                 svg.classed('active', false);
-            
+
                 // clear mouse event vars
                 resetMouseVars();
               }
-            
+
               function spliceLinksForNode(node) {
                 const toSplice = links2.filter((l) => l.source === node || l.target === node);
                 for (const l of toSplice) {
                   links2.splice(links2.indexOf(l), 1);
                 }
               }
-            
+
               svg.on('mousedown', mousedown)
                 .on('mousemove', mousemove)
                 .on('mouseup', mouseup)
@@ -558,16 +558,16 @@ return
               // .on('keydown', keydown)
               // .on('keyup', keyup);
               restart();
-            
-            
-            
+
+
+
 
           }, []);
 
           // var xVal = document.getElementsByTagName("g");
           // console.log(xVal)
         //  document.addEventListener("click", )
-return (  <g ref= {drop}> 
+return (  <g ref= {drop}>
       <g  id="myanchor" x={x} y={y} />
       {isOver && over()}
       {hasDropped && moveDropped(hasDropped) && moveKnight(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value) && newIDLog(eveID)
@@ -580,6 +580,3 @@ return (  <g ref= {drop}>
 }
 
 export default Map
-
-
-
