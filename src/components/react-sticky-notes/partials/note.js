@@ -133,7 +133,7 @@ thisty()
                             if (vals[i][0][0]=== myValue){
                                 var classID = (Object.keys(props.myHashtags)[i])
                                 // console.log(parseFloat(document.getElementsByClassName(`${props.prefix}--full-note-${classID}`[0].style.left) !== 'undefined'))
-                                console.log((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0]))
+                                // console.log((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0]))
                                 if ((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0] !== 'undefined')) {
 
                                 var styleLeft = parseFloat(document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0].style.left)
@@ -202,7 +202,7 @@ thisty()
                         else {
                             if ((this.state.positionX *.75) > 400) {
                                 if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
-                                    console.log('it is true')
+                                    // console.log('it is true')
                                     return `${(this.state.positionX)}px`
                                 }
                                 else {
@@ -221,7 +221,7 @@ thisty()
                     else {
                         if ((this.state.positionX *.75) > 400) {
                             if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
-                                console.log('it is true')
+                                // console.log('it is true')
                                 return (this.state.positionX)
                             }
                             else {
@@ -254,7 +254,7 @@ thisty()
                         for (i=0; i < vals.length; i++){
                             if (vals[i][0][0]=== myValue){
                                 var classID = (Object.keys(props.myHashtags)[i])
-                                console.log((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0]))
+                                // console.log((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0]))
                                 if ((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0] !== 'undefined')) {
                                 var styleTop = parseFloat(document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0].style.top)
                                 topPos.push(styleTop)
@@ -277,7 +277,7 @@ thisty()
                                     // console.log('this is numbs ' +numbs)
                                     if (this.state.listyPos !== 0) {
         
-                                        console.log(this.state.listyPos)
+                                        // console.log(this.state.listyPos)
                                         return (numbs+(this.state.genericLoc+100)) - props.scrollScreen}
                                 
                                 else {
@@ -353,7 +353,7 @@ thisty()
 // }
 // // }
 // conditions()
-
+// console.log(props.onChange)
 // console.log(this.state.visibleList)
 // console.log(this.state.scrollVal)
         return h(NoteDraggable, {
@@ -394,6 +394,12 @@ thisty()
                 }),
                 h(NoteBody,{
                     key:'note-body',
+                    left: hashtagMoveX(),
+                    top: hashtagMoveY(),
+                    items: props.items,
+                    onSubmit: props.onSubmit,
+                    onChange: props.onChange,
+                    notesy: props.notesy,
                     // onMouseDownMove:(pos) => (console.log(pos)),
                     // onFocus:(e)=>(console.log('focused')),
                     ...props

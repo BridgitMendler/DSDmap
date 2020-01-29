@@ -39,6 +39,10 @@ export default function NoteBody(props) {
                 ...props
             }):
             h(NoteText, { 
+                onChange: props.onChange,
+                onSubmit: props.onSubmit,
+                notesy: props.notesy,
+                items: props.items,
                 key: 'note-text',
                 onFocus:props.onFocus,
                 ...props

@@ -14,7 +14,7 @@ class MessageTwo extends Component {
 
   onSubmit(e) {
     e.preventDefault()
-    this.props.onSubmit(('hi' + this.state.text))
+    this.props.onSubmit(('fffff' + this.state.text))
     this.setState({ text: '' })
     
   }

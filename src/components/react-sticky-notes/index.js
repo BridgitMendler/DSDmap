@@ -6,6 +6,7 @@ import { h, getNotes, getUUID } from './utils';
 import { NormalView } from './views' ;
 import Line from 'react-lineto';
 import './index.scss';
+import { observeFive} from "../Game";
 class ReactStickyNotes extends Component {
 	static defaultProps = {
 		useCSS: true,
@@ -34,6 +35,7 @@ class ReactStickyNotes extends Component {
 			allHashtags: [],
 			hashtagDups: [],
 			newUnsortedHash: [],
+			dontAdd: []
 		};
 	}
 	componentDidMount(){
@@ -299,12 +301,193 @@ findDuplicatesTwo(this.state.allHashtags)
 	}
 
 	render() {
+var newNotesy 
+var resultTwo= []
+var result
+var toRemove = []
+var array2 = []
+console.log(this.props.notesy)
+console.log(this.state.items)
+		const findDupsArr = () => {
+			var newArray = this.props.notesy
+			var newArray2 = []
+			var i
+			for (i = 0; i< this.props.notesy.length; i++) {
+				var newText = newArray[i].text.split(/[_,]+/);
+				newArray[i]['id'] = newText[3]
+				newArray[i]['x'] = newText[1]
+				newArray[i]['y']= newText[2]
+				newArray[i]['selected'] = newText[5]
+				newArray[i]['color']= newText[4]
+				newArray[i]['position']={'x':newText[6],'y':newText[7]}
+				newArray[i]['time']= ((new Date(newArray[i]['createdAt'])).getTime()) /1000
+				// newArray[i]['deleted']= (isDeleted())
+				// console.log(newText)
+			}
+			// const isDeleted = () => {
+
+			// }
+			result = Object.values(newArray.reduce((c, v) => {
+			  let k = v.id;
+			  c[k] = c[k] || [];
+			  c[k].push(v);
+			  return c;
+			}, {}))
+			var j
+		  for (j = 0; j< result.length; j++) {
+			  var h
+			  for (h = 0; h< result[j].length; h++)
+				// var times = (result[j][h]['time'])
+				var soloTime = result
+				soloTime[j].splice((0),(soloTime[j].length-1))
+				// var bigTime = Math.max(times)
+				resultTwo.push(soloTime[j][0])
+			}
+			var k
+			for (k = 0; k < newArray.length; k++) {
+				var l
+				for (l = 0; l < result.length; l++) {
+			if (newArray[k].id === undefined || newArray[k].id === result[l][0].id && newArray[k].time !== result[l][0].time)  
+			{
+				toRemove.push(k)
+			}
+		}
+			// console.log(newArray2)
+			}
+		var i = toRemove.length;
+		while (i--) {
+        newArray.splice(toRemove[i], 1);
+		}
+		var m
+		var n
+		var newThangs = this.state.items
+		var newList = []
+		var arrayIds = []
+		var unusedIds = []
+		if (newArray[0] !== undefined&& newThangs[0] !== undefined) {
+			for (n = 0; n < newArray.length; n++) {
+				arrayIds.push(newArray[n]['id'])
+			}
+		for (m = 0; m < newThangs.length; m++) {
+			if (arrayIds.indexOf(newThangs[m].id) === -1) {
+				unusedIds.push(newThangs[m])
+			}
+		}
+	}
+	var fresh =newArray.concat(unusedIds)
+		newNotesy = fresh
+	}
+
+
+
+const setDelLog = (val) => {
+	if (typeof val !== 'undefined') {
+	if (val.length > 2){
+		// console.log('hi')
+		if (this.state.dontAdd.indexOf(val) < -1){
+	var joined = this.state.dontAdd.concat(val);
+this.setState({ dontAdd: joined })
+}
+else {
+	var i
+	for (i = 0; i< newNotesy.length; i++) {
+            if (typeof newNotesy[i] !== 'undefined') {
+                if (newNotesy[i]['id'] === val){
+					newNotesy[i]['deleted'] = 'yes'
+                    // console.log(newNotesy)
+                    // newNotesy.splice(i,1)
+				}
+		}
+}
+for (i = 0; i< this.state.items.length; i++) {
+	if (typeof this.state.items[i] !== 'undefined') {
+		if (this.state.items[i]['id'] === val){
+			console.log('it matches items')
+			this.state.items.splice(i,1)
+		}
+}
+}
+// for (i = 0; i< this.props.notesy.length; i++) {
+// 	if (typeof this.props.notesy[i] !== 'undefined') {
+// 		if (this.props.notesy[i]['id'] === val){
+// 			console.log('it matches items')
+// 			this.props.notesy.splice(i,1)
+// 		}
+// }
+// }
+}
+
+
+}
+}}
+// var newNot
+// const define = () => {
+// 	newNot = newNotesy.filter(obj => {
+// 		return obj.deleted !== 'yes'
+// 	  })
+// }
+findDupsArr()
+observeFive(newPos => {setDelLog(newPos)})
+
+// define()
+//   console.log(newNot)
+
+
+// console.log(this.state.dontAdd)
+console.log(newNotesy)
+
+
+// const filtering = () => {
+
+//     var i
+//     for (i = 0; i< newMap.length; i++) {
+// 		// console.log(Object.values(newMap[i])[0])
+// 		// console.log('hi')
+//         // for (j = 0; j< props.items.length+1; j++)
+// 		var j = this.state.dontAdd.length
+//         while (j--) {
+// 			// console.log('hi')
+//             if (typeof newMap[i] !== 'undefined') {
+// 				// console.log(Object.values(newMap[i])[0], this.state.dontAdd[j])
+//                 if (newMap[i]['id'] === this.state.dontAdd[j]){
+//                     console.log('it matches')
+//                     newMap.splice(i,1)
+// 				}
+// 				else if (Object.values(newMap[i])[0] === this.state.dontAdd[j]){
+// 					console.log('it matches')
+//                     // newMap.splice(i,1)
+// 				}
+// 		}
+// 		else {console.log('not defined')}
+
+//         // console.log(props.newNotesy[i]['id'])
+//         // else if (props.newNotesy[i]['id'] === dontAdd[j]){
+//         //     console.log('it matches')
+//         //     // newMap.splice(i,1)
+//         // }s
+//         // else {
+//             // console.log(props.newNotesy[i]['id'], dontAdd[j])
+//             // console.log (props.newNotesy[i]['id'] === dontAdd[j])
+//         }
+//     // }
+// }}
+// 	filtering()
+	// if (newMap.length > 0) {
+	// 		console.log(typeof newMap[0]['id'])}
+	// console.log(newNotesy)
 
 		const { items, viewSize } = this.state;
-		// console.log(this.props)
+		// if (newNotesy.length > 2){
+		// console.log(typeof this.state.items[0].id, typeof newNotesy[2]['id'])}
+		// console.log(this.state.items[0].id)
+		// console.log(this.state.items)
         let View = NormalView
 		return h( View, {
 			...this.props,
+			onChange: this.props.onChange,
+			notesy: this.props.notesy,
+			newNotesy: newNotesy,
+			onSubmit: this.props.onSubmit,
 			myArrayPos:this.state.myArrayPos,
 			myArrayID: this.state.myArrayID,
 			myHashtags: this.state.myHashtags,

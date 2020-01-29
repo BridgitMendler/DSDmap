@@ -11,7 +11,7 @@ import LineTo from 'react-lineto';
 import Switch from "react-switch";
 import { DragPreviewImage, useDrag, useDrop } from "react-dnd";
 import ItemTypes from "./../../../ItemTypes";
-import { observe, moveKnight, observeTwo, newDropped } from "../../Game";
+import { observe, moveKnight, observeTwo, newDelLog } from "../../Game";
 
 
 export function NormalView(props){
@@ -21,7 +21,8 @@ export function NormalView(props){
     const [myArray] = useState(props.myArraypos);
     const [myArrayId] = useState(props.myArrayID);
     const [selectedLine, setSelectedLine] = useState();
-    const [myItems, setMyItems] = useState(myItemsTwo)
+    const [dontAdd, setDontAdd] = useState([])
+    // const [myItems, setMyItems] = useState(myItemsTwo)
     const [iclicked, setIclicked] = useState(0)
     var e = window.event;
     var w = window;
@@ -35,7 +36,7 @@ export function NormalView(props){
             if (isDragging) {
               return
             }
-            console.log(itemInfo.id.srcElement.offsetParent.classList[0])
+            // console.log(itemInfo.id.srcElement.offsetParent.classList[0])
         },
         collect: monitor => ({
         //   item: monitor.getItem(),
@@ -61,7 +62,7 @@ export function NormalView(props){
         const newValue = value.replace('rs-notes--note-', '')
         // console.log(newValue)
         setSelectedLine(newValue)
-        console.log(selectedLine)
+        // console.log(selectedLine)
 
     }
 }
@@ -70,33 +71,95 @@ const settingLineOut = (value) => {
     setSelectedLine(value)
 }
 
-// console.log(window.event)
-const myItemsTwo = props.items
-
+const myItemsTwo = props.newNotesy
+var newNot = props.newNotesy.filter(obj => {
+    return obj.deleted !== 'yes'
+  })
+// console.log(myItemsTwo.length)
+// setTheArray(oldArray => [...oldArray, newElement]);
 const removeTodo = () => {
     if (typeof window.event !== 'undefined'){
+
     if (window.event.type === 'click') {
+        // const dontAdd = []
+        // console.log('is click')
         if (window.event.target.innerText=== 'delete_outlined') {
+
             var myVariable = window.event.path[1].parentNode.parentNode.classList[2]
+            // console.log(myVariable)
+// console.log(Object.values(myItemsTwo)[1]).indexOf(myVariable)
             for (var i = 0; i<myItemsTwo.length; i++){
+                // if (typeof myVariable !== 'undefined' && typeof myItemsTwo !== 'undefined') {
                 if (Object.values(myItemsTwo[i]).indexOf(myVariable) > -1) {
-                    const removeNote= (name)=>{
-                        return myItemsTwo.splice(name, 1)
-                    }
-                    removeNote(i);
-                 }
-            }
-console.log(myItemsTwo)
+                    if (myItemsTwo[i]['id'] !== 'undefined') {
+                    newDelLog(myVariable)
+                //     const removeNote= (name)=>{
+
+                //         // return myItemsTwo.splice(name, 1)
+                //     // }
+                //     // removeNote(i);
+
+
+                //  }
+                }
+            }}
+// console.log(myItemsTwo)
+
         }
-        else {return myItemsTwo}
+        // else {return myItemsTwo}
     }
-    else {return myItemsTwo}
+    // else {return myItemsTwo}
 }
-else {return myItemsTwo}
+// else {return myItemsTwo}
 }
 
-const myNew = removeTodo()
-// console.log(props.visible)
+// var i = toRemove.length;
+// while (i--) {
+// newArray.splice(toRemove[i], 1);
+// }
+// console.log(dontAdd)
+// var newMap = props.newNotesy
+// const filtering = () => {
+
+//     var i
+//     // var j
+//     for (i = 0; i< newMap.length; i++) {
+//         // for (j = 0; j< props.items.length+1; j++)
+//         var j = dontAdd.length
+//         while (j--) {
+//             if (typeof newMap[i] !== 'undefined') {
+//                 if (newMap[i]['id'] === dontAdd[j]){
+//                     // console.log('it matches')
+//                     // newMap.splice(i,1)
+//                 }
+//         }
+        
+//         // console.log(props.newNotesy[i]['id'])
+//         // else if (props.newNotesy[i]['id'] === dontAdd[j]){
+//         //     console.log('it matches')
+//         //     // newMap.splice(i,1)
+//         // }s
+//         // else {
+//             // console.log(props.newNotesy[i]['id'], dontAdd[j])
+//             // console.log (props.newNotesy[i]['id'] === dontAdd[j])
+//         }
+//     // }
+// }}
+//     filtering()
+// console.log(props.items)
+// console.log()
+// console.log(newMap)
+// console.log(props.newNotesy)
+        // console.log
+        
+//         var newText = newArray[i].text.split(/[_,]+/);
+//         newArray[i]['id'] = newText[3]
+//         newArray[i]['x'] = newText[1]
+//         newArray[i]['y']= newText[2]
+//         console.log(newText)
+//      console.log(newArray)
+
+//     }
 
     const [hasDropped, setHasDropped] = useState(false)
 
@@ -105,10 +168,9 @@ const myNew = removeTodo()
             key: props.prefix, 
             className: props.prefix,
             style: getElementStyle('container', props),
-            // removeTodo:removeTodo(),
             onClick: () => (removeTodo(), setIclicked(iclicked+1))
         }, 
-            props.items.map( data => !data.hidden ? (h( Note, {removeTodo: removeTodo, convoBoxSize: props.convoBoxSize, hashtagDups: props.hashtagDups,allHashtags: props.allHashtags, myHashtags: props.myHashtags, handleScroll: props.onScroll, scrollVals: props.scrollVals, scrollScreen: props.scrollScreen, className: 'full-notey', key: `note-${data.id}`,...props, data } )):h( NoteBubble, { key: `note-${data.id}`,...props, data } ) )
+            newNot.map( data => !data.hidden ? (h( Note, {items: props.items, notesy: props.notesy, onSubmit: props.onSubmit, onChange: props.onChange, removeTodo: props.removeTodo, convoBoxSize: props.convoBoxSize, hashtagDups: props.hashtagDups,allHashtags: props.allHashtags, myHashtags: props.myHashtags, handleScroll: props.onScroll, scrollVals: props.scrollVals, scrollScreen: props.scrollScreen, className: 'full-notey', key: `note-${data.id}`,...props, data } )):h( NoteBubble, { key: `note-${data.id}`,...props, data } ) )
         ),
         h('div', {
             key: `${props.prefix}-bubble`, 

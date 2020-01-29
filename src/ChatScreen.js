@@ -31,6 +31,7 @@ class ChatScreen extends Component {
       currentRoom: {},
       messages: [],
       postings: [],
+      notesy: [],
       usersWhoAreTyping: [],
       scrollScreen: 0,
       scrollVals: [],
@@ -179,14 +180,19 @@ this.setState({ scrollVals: joined })
             onMessage: message => {
               String.prototype.removeCharAt = function (i) {
                 var tmp = this.split(''); // convert to an array
-                tmp.splice(i, 2); // remove 1 element from the array (adjusting for non-zero-indexed counts)
+                tmp.splice(i, 5); // remove 1 element from the array (adjusting for non-zero-indexed counts)
                 return tmp.join('');
               }
-              if (/^hi/.test(message.text)) {
+              if (/^fffff/.test(message.text)) {
                 message.text=(message.text.removeCharAt(0))
                 this.setState({
                   postings: [...this.state.postings, message]})
                 }
+              else if (/^ggggg/.test(message.text)){
+                message.text=(message.text.removeCharAt(0))
+                this.setState({
+                  notesy: [...this.state.notesy, message]})
+              }
               else {this.setState({
                 messages: [...this.state.messages, message],
               })
@@ -215,7 +221,9 @@ this.setState({ scrollVals: joined })
   }
 
   render() {
-    
+    // console.log(this.state.messages)
+    // console.log(this.state.postings)
+    // console.log(this.state.notesy)
     const styles = {
 
 
@@ -337,6 +345,8 @@ this.setState({ scrollVals: joined })
     <div style={styles.chatContainer} className={`${this.state.feedback}`} >
       <section style={styles.chatContainer} className={`${this.state.feedback}`}>
           <ReactStickyNotes className='stickyButton'
+            onChange={this.sendTypingEvent}
+            onSubmit={this.sendMessage}
             backgroundColor="#fefefe"
             useCSS={true}
             scrollScreen={this.state.scrollScreen}
@@ -345,6 +355,7 @@ this.setState({ scrollVals: joined })
             onScroll= {this.handleScroll}
             convoBoxSize={this.state.convoBoxSize}
             hidden={this.state.hidden}
+            notesy={this.state.notesy}
           />
           <div className="messages"style={styles.MessageList}>
             <MessageList messages={this.state.messages}/>

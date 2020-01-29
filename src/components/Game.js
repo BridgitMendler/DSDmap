@@ -98,3 +98,28 @@ export function newIDLog(newID) {
   emitChangeFour()
   return latestID
 }
+
+
+
+let latestDel = ''
+let observersFive = []
+function emitChangeFive() {
+  observersFive.forEach(o => o && o(latestDel))
+//   console.log(observersThree)
+}
+
+export function observeFive(o) {
+    observersFive.push(o)
+    emitChangeFive()
+    return () => {
+      observersFive = observersFive.filter(t => t !== o)
+    //   console.log(observersThree)
+    }
+  }
+
+export function newDelLog(newDel) {
+  latestDel = newDel
+  console.log(typeof newDel)
+  emitChangeFive()
+  return latestDel
+}

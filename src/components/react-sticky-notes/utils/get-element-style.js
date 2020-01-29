@@ -25,10 +25,12 @@ export function getElementStyle(nodeName, props, defaultStyle={}) {
                 }
         break;
         case "note-body":
-            style.width = props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":props.noteWidth,
-            style.height = props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":props.noteHeight,
-            style.backgroundColor= props.data.color,
-            style.overflow = "auto";
+            style = {
+            width : props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":props.noteWidth,
+            height: props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":props.noteHeight,
+            backgroundColor: props.data.color,
+            overflow :"auto"
+        }
             if(props.data.selected){
                 style.minWidth = props.noteWidth,
                 style.resize = "both";
