@@ -15,6 +15,7 @@ class Note extends React.Component{
         return (randomnum+this.props.scrollScreen)
     }
     getRandom= () => {
+        // console.log('getting random for x')
         var precision = 1;
         var n = Math.floor(Math.random() * (10-(-10)) + (-10))
         var randomnum = Math.floor(Math.random() * (1300 * precision - 400 * precision) + 400 * precision) / (1*precision);
@@ -25,14 +26,42 @@ class Note extends React.Component{
         var n = Math.floor(Math.random() * (10-(-10)) + (-10))
         var randomnum = Math.floor(Math.random() * (180 * precision - 165 * precision) + 165 * precision) / (1*precision);
         return randomnum
-    }    
+    }   
+    
+    getNotePositionY =() => {
+        var i
+        // console.log(this.props.notesy.length)
+        for (i=0; i< this.props.notesy.length; i++){
+            if (this.props.notesy[i].id === this.props.data.id){
+                var yVal = parseInt(this.props.notesy[i].y)
+                console.log(this.props.notesy[i].id, yVal)
+                return yVal
+            }
+            // else {return 0}
+        }}
+
+        getNotePositionX =() => {
+        var i
+        // if (this.props.notesy.length>10){
+        for (i=0; i< this.props.notesy.length; i++){
+            // console.log(i)
+            if (this.props.notesy[i].id === this.props.data.id){
+                var xVal = parseInt(this.props.notesy[i].x)
+                console.log(this.props.notesy[i].id, xVal)
+                return xVal
+            }
+            else {
+                // console.log(this.props.notesy[i].id,this.props.data.id)
+            }
+        }}
+    // }
     constructor(props){
         super(props);
         this.targetRef = React.createRef();
         this.state= {
             match: false,
-            positionX: this.getRandom(),
-            positionY: this.getRandom2(),
+            positionX: this.getNotePositionX(),
+            positionY: this.getNotePositionY(),
             mouseStatus: false,
             firstAv: [],
             firstRan: this.getRandomThree(),
@@ -44,7 +73,7 @@ class Note extends React.Component{
 		}
     }
 
-    
+ 
     // handleScroll(event) {
     //      window.addEventListener('scroll', this.handleScroll);
     //     const source = ReactDOM.findDOMNode(this).getElementsByClassName('join')[0];
@@ -63,6 +92,8 @@ class Note extends React.Component{
 
 
     render(){
+
+        console.log(this.props.notesy)
         var thisty = () => {
             var thisy = document.getElementsByClassName(`${this.props.prefix}--full-note-${this.props.data.id}`)
             if (thisy.length > 0) {
@@ -197,15 +228,18 @@ thisty()
                     }
                     else {
                         if (this.props.visible === false){
-                        return `${this.state.positionX}px`
+                            // console.log('getting state pos '+ this.state.positionX)
+                        return this.state.positionX
                         }
                         else {
                             if ((this.state.positionX *.75) > 400) {
                                 if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
                                     // console.log('it is true')
-                                    return `${(this.state.positionX)}px`
+                                    // console.log('getting state pos '+ this.state.positionX)
+                                    return (this.state.positionX)
                                 }
                                 else {
+                                    // console.log('getting state pos '+ this.state.positionX)
                                 return (this.state.positionX *.75)}
                             }
                             else{
@@ -216,16 +250,20 @@ thisty()
                 }
                 else {
                     if (this.props.visible === false){
-                    return this.state.positionX
+                        // console.log('getting state pos '+ props.data.id, this.state.positionX)
+                        var whereToGo = this.state.positionX
+                    return whereToGo
                     }
                     else {
                         if ((this.state.positionX *.75) > 400) {
                             if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
-                                // console.log('it is true')
+                                
+                                // console.log('getting state pos '+ this.state.positionX)
                                 return (this.state.positionX)
                             }
                             else {
                             // console.log(this.state.visibleList[this.state.visibleList.length-1])
+                            // console.log('getting state pos '+ this.state.positionX)
                             return (this.state.positionX *.75)}
                         }
                         else{
@@ -237,6 +275,8 @@ thisty()
 
     var firstAv = []
     var firstRan = []
+    console.log(props.data.id, this.state.positionX)
+    console.log(props.data.id, this.state.positionY)
 
     const hashtagMoveY= () => {
         var i
@@ -368,14 +408,14 @@ thisty()
                 onDragComplete:(pos)=> (setWhatDragShouldDo(),
                     // props.callbacks.updateItem(null, {id: props.data.id, position:pos, className:`'${props.data.selected}`})
                 (this.setState({positionX: pos.x, positionY:pos.y}))
-                
+                // props.onSubmit(('ggggg' + text+ `_${props.left},${props.top}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`))
                 
                 ),
                 style: {
                     transition: (this.state.mouseStatus === false) ?"left .40s linear":null,
                     position: 'absolute',
-                    left: hashtagMoveX(),
-                    top: hashtagMoveY(),
+                    left: this.getNotePositionX(),
+                    top: this.getNotePositionY(),
                     width: props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":null,
                     height: props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":null,
                     boxShadow: '1px 1px 2px rgba(0,0,0,.15)',
@@ -390,7 +430,7 @@ thisty()
                     targetRef: this.targetRef,
                     prefix: `${props.prefix}--header`,
                     removeTodo: this.props.removeTodo,
-                    buttons: [ButtonTitle, ButtonAddDot, ButtonTrash]
+                    buttons: [ButtonTitle, ButtonTrash]
                 }),
                 h(NoteBody,{
                     key:'note-body',

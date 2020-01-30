@@ -183,7 +183,7 @@ const removeTodo = () => {
 
             // style: getElementStyle('container', props)
         }, 
-            props.items.map( data => h( NoteBubble, {settingLine: settingLine, convoBoxSize: props.convoBoxSize, visible: props.visible, myArrayPos: props.myArrayPos, myArray: props.myArray, key: `note-${data.id}`,...props, data })
+            newNot.map( data => h( NoteBubble, {settingLine: settingLine, convoBoxSize: props.convoBoxSize, visible: props.visible, myArrayPos: props.myArrayPos, myArray: props.myArray, key: `note-${data.id}`,...props, data })
         )),
         h('div', {
             key: `${props.prefix}-line`, 
@@ -191,7 +191,7 @@ const removeTodo = () => {
             style: getElementStyle('container', props)
         }, 
         h("span", null,
-            props.items.map( data => props.hidden ? (props.visible === true)? h( LineTo, { borderColor:'wheat',borderStyle: 'dashed', borderWidth: 1, from:`dropped${data.id}`, to:`rs-notes--full-note-${data.id}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } ):null: 
+            newNot.map( data => props.hidden ? (props.visible === true)? h( LineTo, { borderColor:'wheat',borderStyle: 'dashed', borderWidth: 1, from:`dropped${data.id}`, to:`rs-notes--full-note-${data.id}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } ):null: 
             h( LineTo, { opacity:(selectedLine===data.id)?1:0,borderColor: 'red', borderStyle: 'dashed', borderWidth: 1, from:`dropped${selectedLine}`, to:`rs-notes--full-note-${selectedLine}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } ))
         ),),
         h(NavBar, { ...props, key: 'navbar' }),

@@ -14,7 +14,10 @@ body {
   position: relative;
 }
 
-
+.forNotes::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:white;
+  opacity: 1; /* Firefox */
+}
 .Resizer {
   background: #000;
   opacity: 0.2;
@@ -139,6 +142,10 @@ circle.node.yellow {
 
 .node:hover text {
   display: inline;
+}
+
+.noteSend {
+  fill: blue
 }
 
 text {

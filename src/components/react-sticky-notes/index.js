@@ -306,8 +306,8 @@ var resultTwo= []
 var result
 var toRemove = []
 var array2 = []
-console.log(this.props.notesy)
-console.log(this.state.items)
+// console.log(this.props.notesy)
+// console.log(this.state.items)
 		const findDupsArr = () => {
 			var newArray = this.props.notesy
 			var newArray2 = []
@@ -321,6 +321,7 @@ console.log(this.state.items)
 				newArray[i]['color']= newText[4]
 				newArray[i]['position']={'x':newText[6],'y':newText[7]}
 				newArray[i]['time']= ((new Date(newArray[i]['createdAt'])).getTime()) /1000
+				newArray[i]['print'] = newText[0]
 				// newArray[i]['deleted']= (isDeleted())
 				// console.log(newText)
 			}
@@ -434,7 +435,7 @@ observeFive(newPos => {setDelLog(newPos)})
 
 
 // console.log(this.state.dontAdd)
-console.log(newNotesy)
+// console.log(newNotesy)
 
 
 // const filtering = () => {
@@ -475,6 +476,7 @@ console.log(newNotesy)
 	// if (newMap.length > 0) {
 	// 		console.log(typeof newMap[0]['id'])}
 	// console.log(newNotesy)
+	var newNotez = newNotesy
 
 		const { items, viewSize } = this.state;
 		// if (newNotesy.length > 2){
@@ -486,7 +488,7 @@ console.log(newNotesy)
 			...this.props,
 			onChange: this.props.onChange,
 			notesy: this.props.notesy,
-			newNotesy: newNotesy,
+			newNotesy: newNotez,
 			onSubmit: this.props.onSubmit,
 			myArrayPos:this.state.myArrayPos,
 			myArrayID: this.state.myArrayID,

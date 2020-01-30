@@ -5,14 +5,22 @@ function NoteText(props) {
 const { data, index, prefix, callbacks } = props;
 
 const [text, setText] = useState('')
-// console.log(props)
+// console.log(props.notesy[0].text)
 const onSubmit=(e) =>{
     // console.log('submitted')
     e.preventDefault()
     props.onSubmit(('ggggg' + text+ `_${props.left},${props.top}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`))
-    setText('')
+    setText(text)
   }
-
+  const setText2 = () =>{
+    var i
+    for (i=0; i < props.notesy.length; i++){
+        if (props.notesy[i].id ===data.id){
+            // console.log(props.notesy[i].print)
+            return props.notesy[i].print
+        }
+    }
+}
 const onChange= (e) =>{
     // console.log(props.left)
     setText(e.target.value)
@@ -35,13 +43,14 @@ const onChange= (e) =>{
     }, 
             h('div', null, 
             h('form', {
-                onSubmit: onSubmit,
+                // onSubmit: onSubmit,
             style: {
                 display: 'flex'
             }}, 
             h('input', {
+                className: 'forNotes',
                 type: "text",
-                placeholder: "Type message...",
+                placeholder: setText2(),
                 onChange: onChange,
                 value: text,
                 style: {
@@ -51,14 +60,29 @@ const onChange= (e) =>{
                     border: 'none',
                     flex: 1,
                     fontSize: 16,
-                    fontFamily: 'avenir next'
+                    fontFamily: 'avenir next',
+                    overflowY: 'scroll'
                     }
                 })
             )
-        )
+        ),h("button", {onClick: onSubmit, className: 'noteSend', style: {color: 'grey', outline: 'yellow'}}, "share")
+        
     )
 }
 export default NoteText;
+
+// React.createElement("button", null, "Click me");
+
+
+// React.createElement("form", {
+//     onSubmit: myFunction()
+//   }, "Enter name: ", React.createElement("input", {
+//     type: "text",
+//     name: "fname"
+//   }), h("input", {
+//     type: "submit",
+//     value: "Submit"
+//   }));
 
 
 // import React, { Component, useContext, useState } from 'react'
