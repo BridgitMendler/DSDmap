@@ -37,7 +37,7 @@ export const Cheese = () => {
   // useEffect(() => observe(newPos => (setKnightPos(newPos))))
 
   const onUsernameSubmitted = (username) => {
-    fetch('/users', {
+    fetch('http://localhost:3001/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

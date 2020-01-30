@@ -154,10 +154,10 @@ this.setState({ scrollVals: joined })
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
     const chatManager = new Chatkit.ChatManager({
-      instanceLocator: 'v1:us1:acacef6e-aaf4-4aa6-9871-cd0e7739435d',
+      instanceLocator: 'v1:us1:d273e0b5-92c2-4e8e-9ad3-ed684d17f602',
       userId: this.props.currentUsername,
       tokenProvider: new Chatkit.TokenProvider({
-        url: '/authenticate',
+        url: 'http://localhost:3001/authenticate',
       }),
     })
 
@@ -167,7 +167,7 @@ this.setState({ scrollVals: joined })
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: '6affb851-08f0-4944-bf8c-b2eece5831de',
+          roomId: '30850ff7-bb20-4ae9-9d28-78542522bc48',
           messageLimit: 100,
           hooks: {
             onMessage: message => {

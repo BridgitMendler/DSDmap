@@ -6,9 +6,9 @@ const Chatkit = require('@pusher/chatkit-server')
 const app = express()
 
 const chatkit = new Chatkit.default({
-  instanceLocator: 'v1:us1:acacef6e-aaf4-4aa6-9871-cd0e7739435d',
+  instanceLocator: 'v1:us1:d273e0b5-92c2-4e8e-9ad3-ed684d17f602',
   key:
-    'dfc784e5-fb02-49ee-9ea9-86b32a02fdff:K8/XVaX1R9NxtF8ldfgZh9KldBoUTe3ZNO+BFc68VAs='
+    '71dc4b66-0aba-4fcd-80af-87fbfec744c8:bihEnUdHCaB25NkkzjsBW3wWEAv76HETsCJSbvcgMXs='
 })
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -37,7 +37,7 @@ app.post('/authenticate', (req, res) => {
   res.status(authData.status).send(authData.body)
 })
 
-const PORT = 80
+const PORT = 3001
 app.listen(PORT, err => {
   if (err) {
     console.error(err)
