@@ -151,20 +151,13 @@ this.setState({ scrollVals: joined })
     })
   }
 
-  sendMessage(text) {
-    this.state.currentUser.sendMessage({ 
-      text,
-      roomId: this.state.currentRoom.id,
-    })
-  }
-
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
     const chatManager = new Chatkit.ChatManager({
       instanceLocator: 'v1:us1:acacef6e-aaf4-4aa6-9871-cd0e7739435d',
       userId: this.props.currentUsername,
       tokenProvider: new Chatkit.TokenProvider({
-        url: 'http://dsdmap.media.mit.edu/authenticate',
+        url: '/authenticate',
       }),
     })
 

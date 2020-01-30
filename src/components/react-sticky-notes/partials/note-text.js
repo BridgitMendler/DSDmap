@@ -4,8 +4,23 @@ function NoteText(props) {
 
 const { data, index, prefix, callbacks } = props;
 
+var myItemsTwo = props.notesy
 const [text, setText] = useState('')
-// console.log(props.notesy[0].text)
+// console.log(window.event)
+if (typeof window.event !== 'undefined'){
+    if (window.event.type === 'click') {
+        if (window.event.target.innerText=== 'delete_outlined') {
+            var myVariable = window.event.path[1].parentNode.parentNode.classList[2]
+            for (var i = 0; i<myItemsTwo.length; i++){
+                if (Object.values(myItemsTwo[i]).indexOf(myVariable) > -1) {
+                    if (myItemsTwo[i]['id'] !== 'undefined') {
+                        props.onSubmit(('ggggg' + text+ `_${props.left},${props.top}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`+ `_yes`))
+                }
+                // else 
+            }}
+        }
+    }
+}
 const onSubmit=(e) =>{
     // console.log('submitted')
     e.preventDefault()
