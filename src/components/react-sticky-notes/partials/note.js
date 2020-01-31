@@ -34,7 +34,7 @@ class Note extends React.Component{
         for (i=0; i< this.props.notesy.length; i++){
             if (this.props.notesy[i].id === this.props.data.id){
                 var yVal = parseInt(this.props.notesy[i].y)
-                console.log(this.props.notesy[i].id, yVal)
+                // console.log(this.props.notesy[i].id, yVal)
                 return yVal
             }
             // else {return 0}
@@ -47,7 +47,7 @@ class Note extends React.Component{
             // console.log(i)
             if (this.props.notesy[i].id === this.props.data.id){
                 var xVal = parseInt(this.props.notesy[i].x)
-                console.log(this.props.notesy[i].id, xVal)
+                // console.log(this.props.notesy[i].id, xVal)
                 return xVal
             }
             else {
@@ -93,7 +93,7 @@ class Note extends React.Component{
 
     render(){
 
-        console.log(this.props.notesy)
+        // console.log(this.props.notesy)
         var thisty = () => {
             var thisy = document.getElementsByClassName(`${this.props.prefix}--full-note-${this.props.data.id}`)
             if (thisy.length > 0) {
@@ -275,8 +275,8 @@ thisty()
 
     var firstAv = []
     var firstRan = []
-    console.log(props.data.id, this.state.positionX)
-    console.log(props.data.id, this.state.positionY)
+    // console.log(props.data.id, this.state.positionX)
+    // console.log(props.data.id, this.state.positionY)
 
     const hashtagMoveY= () => {
         var i
@@ -393,9 +393,11 @@ thisty()
 // }
 // // }
 // conditions()
-// console.log(props.onChange)
+// console.log(props.data)
 // console.log(this.state.visibleList)
-// console.log(this.state.scrollVal)
+
+var newText = props.data.text.split(/[_,]+/);
+// console.log(console.log(newText[0]))
         return h(NoteDraggable, {
                 // className:`${props.data.selected?'note-selected':'note-unselected'}`,
                 scrollScreen: props.scrollScreen,
@@ -405,7 +407,8 @@ thisty()
                 target: this.targetRef,
                 onMouseDownMove:(pos) => (this.setState({mouseStatus:pos.mouseStatus, listyPos:pos.listyPos, genericLoc:pos.genericLoc})),
                 // onClick: (e) =>(console.log('clicked'),onStart(e)),
-                onDragComplete:(pos)=> (setWhatDragShouldDo(),
+                onDragComplete:(pos)=> (setWhatDragShouldDo(), 
+                props.onSubmit(('ggggg' + `${newText[0]}`+ `_${pos.x},${pos.y}`+`_${props.data.id}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.x}_${pos.y}`)),
                     // props.callbacks.updateItem(null, {id: props.data.id, position:pos, className:`'${props.data.selected}`})
                 (this.setState({positionX: pos.x, positionY:pos.y}))
                 // props.onSubmit(('ggggg' + text+ `_${props.left},${props.top}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`))
@@ -430,6 +433,7 @@ thisty()
                     targetRef: this.targetRef,
                     prefix: `${props.prefix}--header`,
                     removeTodo: this.props.removeTodo,
+                    onSubmit: props.onSubmit,
                     buttons: [ButtonTitle, ButtonTrash]
                 }),
                 h(NoteBody,{

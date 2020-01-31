@@ -186,6 +186,11 @@ this.setState({ scrollVals: joined })
                 this.setState({
                   notesy: [...this.state.notesy, message]})
               }
+              else if (/^bbbbb/.test(message.text)){
+                message.text=(message.text.removeCharAt(0))
+                this.setState({
+                  notesy: [...this.state.delNote, message]})
+              }
               else {this.setState({
                 messages: [...this.state.messages, message],
               })
@@ -216,7 +221,7 @@ this.setState({ scrollVals: joined })
   render() {
     // console.log(this.state.messages)
     // console.log(this.state.postings)
-    // console.log(this.state.notesy)
+    console.log(this.state.notesy)
     const styles = {
 
 

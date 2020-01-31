@@ -83,15 +83,26 @@ export function ButtonHideShow({prefix, data, icons, callbacks }){
 }
 
 export function ButtonTrash({prefix, data, icons, callbacks, removeTodo}, props){
-    // console.log(removeTodo)
+    // console.log(data.text)
+
+    // const sendMessage= (text) =>{
+    //     this.state.currentUser.sendMessage({ 
+    //       text,
+    //       roomId: this.state.currentRoom.id,
+    //     })
+    //   }
     const removeItem =(e)=> {
         // console.log(removeTodo)
+        
         removeTodo(e);
     }
+    var newText = data.text.split(/[_,]+/);
+    // console.log(newText[0])
     return h('button',{
         key: `${prefix}--button__trash`,
         className:`${prefix}--button ${prefix}--button__trash`,
-        // onClick:(e)=>(removeItem(data.id))
+        onClick:(e)=>(
+        callbacks.onSubmit(('bbbbb' + `${newText[0]}`+ `_${data.position.x},${data.position.x}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`+ '_yes')))
     }, 
         icons.trash
     );

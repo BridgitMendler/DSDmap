@@ -7,9 +7,9 @@ const { data, index, prefix, callbacks } = props;
 const [text, setText] = useState('')
 // console.log(props.notesy[0].text)
 const onSubmit=(e) =>{
-    // console.log('submitted')
+    // console.log(e)
     e.preventDefault()
-    props.onSubmit(('ggggg' + text+ `_${props.left},${props.top}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`))
+    props.onSubmit(('ggggg' + text+ `_${data.position.x},${data.position.y}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`))
     setText(text)
   }
   const setText2 = () =>{

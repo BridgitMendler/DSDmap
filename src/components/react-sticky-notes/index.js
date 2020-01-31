@@ -475,9 +475,9 @@ observeFive(newPos => {setDelLog(newPos)})
 // 	filtering()
 	// if (newMap.length > 0) {
 	// 		console.log(typeof newMap[0]['id'])}
-	// console.log(newNotesy)
-	var newNotez = newNotesy
 
+	var newNotez = newNotesy
+	// console.log(this.props.notesy)
 		const { items, viewSize } = this.state;
 		// if (newNotesy.length > 2){
 		// console.log(typeof this.state.items[0].id, typeof newNotesy[2]['id'])}
@@ -501,6 +501,7 @@ observeFive(newPos => {setDelLog(newPos)})
 			icons: { ...icons, ...this.props.icons },
 			viewSize,
 			callbacks: {
+				onSubmit: this.props.onSubmit,
 				changeView: this.changeView,
 				addItem: this.addItem,
 				updateItem: this.updateItem,

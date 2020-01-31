@@ -73,6 +73,7 @@ const settingLineOut = (value) => {
 
 const myItemsTwo = props.newNotesy
 var newNot = props.newNotesy.filter(obj => {
+    // console.log(obj)
     return obj.deleted !== 'yes'
   })
 // console.log(myItemsTwo.length)
