@@ -343,6 +343,7 @@ var array2 = []
 				soloTime[j].splice((0),(soloTime[j].length-1))
 				// var bigTime = Math.max(times)
 				resultTwo.push(soloTime[j][0])
+				// console.log(soloTime[j])
 			}
 			var k
 			for (k = 0; k < newArray.length; k++) {
@@ -384,9 +385,10 @@ var array2 = []
 const setDelLog = (val) => {
 	if (typeof val !== 'undefined') {
 	if (val.length > 2){
-		// console.log('hi')
-		if (this.state.dontAdd.indexOf(val) < -1){
+		console.log(this.state.dontAdd.indexOf(val))
+		if (this.state.dontAdd.indexOf(val) < 0){
 	var joined = this.state.dontAdd.concat(val);
+	// console.log(joined)
 this.setState({ dontAdd: joined })
 }
 else {
@@ -427,6 +429,7 @@ for (i = 0; i< this.state.items.length; i++) {
 // 		return obj.deleted !== 'yes'
 // 	  })
 // }
+console.log(this.state.dontAdd)
 findDupsArr()
 observeFive(newPos => {setDelLog(newPos)})
 
@@ -488,6 +491,7 @@ observeFive(newPos => {setDelLog(newPos)})
 			...this.props,
 			onChange: this.props.onChange,
 			notesy: this.props.notesy,
+			delNote: this.props.delNote,
 			newNotesy: newNotez,
 			onSubmit: this.props.onSubmit,
 			myArrayPos:this.state.myArrayPos,
@@ -496,6 +500,7 @@ observeFive(newPos => {setDelLog(newPos)})
 			allHashtags: this.state.allHashtags,
 			hashtagDups: this.state.hashtagDups,
 			visible: this.props.visible,
+			dontAdd: this.state.dontAdd,
 			convoBoxSize: this.props.convoBoxSize,
 			items,
 			icons: { ...icons, ...this.props.icons },

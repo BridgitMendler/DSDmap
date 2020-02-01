@@ -102,7 +102,7 @@ export function ButtonTrash({prefix, data, icons, callbacks, removeTodo}, props)
         key: `${prefix}--button__trash`,
         className:`${prefix}--button ${prefix}--button__trash`,
         onClick:(e)=>(
-        callbacks.onSubmit(('bbbbb' + `${newText[0]}`+ `_${data.position.x},${data.position.x}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`+ '_yes')))
+        callbacks.onSubmit(('hhhhh' + `${newText[0]}`+ `_${data.position.x},${data.position.x}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`+ '_yes')))
     }, 
         icons.trash
     );

@@ -31,6 +31,7 @@ class ChatScreen extends Component {
       currentRoom: {},
       messages: [],
       postings: [],
+      delNote: [],
       notesy: [],
       usersWhoAreTyping: [],
       scrollScreen: 0,
@@ -157,7 +158,7 @@ this.setState({ scrollVals: joined })
       instanceLocator: 'v1:us1:d273e0b5-92c2-4e8e-9ad3-ed684d17f602',
       userId: this.props.currentUsername,
       tokenProvider: new Chatkit.TokenProvider({
-        url: 'http://localhost:3001/authenticate',
+        url: 'http://localhost:3006/authenticate',
       }),
     })
 
@@ -186,10 +187,10 @@ this.setState({ scrollVals: joined })
                 this.setState({
                   notesy: [...this.state.notesy, message]})
               }
-              else if (/^bbbbb/.test(message.text)){
+              else if (/^hhhhh/.test(message.text)){
                 message.text=(message.text.removeCharAt(0))
                 this.setState({
-                  notesy: [...this.state.delNote, message]})
+                  delNote: [...this.state.delNote, message]})
               }
               else {this.setState({
                 messages: [...this.state.messages, message],
@@ -219,7 +220,7 @@ this.setState({ scrollVals: joined })
   }
 
   render() {
-    // console.log(this.state.messages)
+    // console.log(this.state.notesy)
     // console.log(this.state.postings)
     console.log(this.state.notesy)
     const styles = {
@@ -354,6 +355,7 @@ this.setState({ scrollVals: joined })
             convoBoxSize={this.state.convoBoxSize}
             hidden={this.state.hidden}
             notesy={this.state.notesy}
+            delNote={this.state.delNote}
           />
           <div className="messages"style={styles.MessageList}>
             <MessageList messages={this.state.messages}/>

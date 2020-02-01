@@ -119,7 +119,7 @@ export function observeFive(o) {
 
 export function newDelLog(newDel) {
   latestDel = newDel
-  console.log(typeof newDel)
+  console.log(newDel)
   emitChangeFive()
   return latestDel
 }

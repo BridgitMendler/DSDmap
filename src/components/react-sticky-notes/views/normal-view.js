@@ -70,12 +70,32 @@ export function NormalView(props){
 const settingLineOut = (value) => {
     setSelectedLine(value)
 }
-
+console.log(props.delNote)
+var newArray = props.delNote
+var newArIds = []
+const delList = () => {
+var i
+for (i=0;i<props.delNote.length; i++){
+    var newText = newArray[i].text.split(/[_,]+/);
+    newArIds.push(newText[3])
+}
+console.log(newArIds)}
+delList()
 const myItemsTwo = props.newNotesy
 var newNot = props.newNotesy.filter(obj => {
-    // console.log(obj)
-    return obj.deleted !== 'yes'
+
+    // console.log(obj.id,)
+    return (newArIds.indexOf(obj.id) < 0)
   })
+
+
+
+
+//         newArray[i]['id'] = newText[3]
+//         newArray[i]['x'] = newText[1]
+//         newArray[i]['y']= newText[2]
+//         console.log(newText)
+//      console.log(newArray)
 // console.log(myItemsTwo.length)
 // setTheArray(oldArray => [...oldArray, newElement]);
 const removeTodo = () => {
@@ -153,12 +173,7 @@ const removeTodo = () => {
 // console.log(props.newNotesy)
         // console.log
         
-//         var newText = newArray[i].text.split(/[_,]+/);
-//         newArray[i]['id'] = newText[3]
-//         newArray[i]['x'] = newText[1]
-//         newArray[i]['y']= newText[2]
-//         console.log(newText)
-//      console.log(newArray)
+
 
 //     }
 
