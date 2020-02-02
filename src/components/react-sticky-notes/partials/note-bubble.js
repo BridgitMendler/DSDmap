@@ -110,29 +110,34 @@ mouseEventFind()
 //                 }
 // console.log(dropPositions[`${props.prefix}--note-${props.data.id}`]['positionXY'])
     const findX = (idValue) => {
-        // console.log(dropPositions)
-        const myObj = dropPositions
-        const theMatch = `${props.prefix}--note-${idValue}`
-        const location = Object.keys(myObj).indexOf(theMatch)
-        if (location > -1) {
-            if (typeof dropPositions[theMatch]['positionXY'] !== 'undefined'){
-            return (dropPositions[theMatch]['positionXY'][0]-15)
-        }
-    }
-        else {
-            var propsKeys =Object.keys(props.myArrayPos)
-            if (props.myArrayPos.length !== 0){
-                // console.log(propsKeys.length)
-            var i
-            for (i = 0; i <propsKeys.length; i++){
-                // console.log(idValue)
-                if (propsKeys[i]=== idValue){
+        // console.log(idValue)
+
+ 
+        
+// console.log(findit)
+    //     const myObj = dropPositions
+    //     const theMatch = `${props.prefix}--note-${idValue}`
+    //     const location = Object.keys(myObj).indexOf(theMatch)
+    //     console.log(myObj)
+    //     if (location > -1) {
+    //         if (typeof dropPositions[theMatch]['positionXY'] !== 'undefined'){
+    //         return (dropPositions[theMatch]['positionXY'][0]-15)
+    //     }
+    // }
+    //     else {
+    //         var propsKeys =Object.keys(props.myArrayPos)
+    //         if (props.myArrayPos.length !== 0){
+    //             // console.log(propsKeys.length)
+    //         var i
+    //         for (i = 0; i <propsKeys.length; i++){
+    //             // console.log(idValue)
+    //             if (propsKeys[i]=== idValue){
           
-            return(props.myArrayPos[idValue][0]+30)
-        }
-    }
-    }
-    else {
+    //         return(props.myArrayPos[idValue][0]+30)
+    //     }
+    // }
+    // }
+    // else {
             var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.id}`)[0]
             if ( typeof myEl !== 'undefined') {
                 myEl = myEl.style.left
@@ -141,9 +146,9 @@ mouseEventFind()
                 return ((myEl))
             }
         // return (props.data.position.x+30)
-    }        }
+    }        
 
-    }
+    // }
 
     // console.log(props.visible)
 
@@ -220,8 +225,8 @@ const location = Object.keys(myObj).indexOf(theMatch)
 // if (location > -1) {
 
     return h(NoteDraggable, {
-                className: (location > -1) ?`dropped${props.data.id} ${props.prefix}--note-${props.data.id} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.id}`:
-                `${props.prefix}--note-${props.data.id} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.id}`,
+                className: (location > -1) ?`${props.data.id} dropped${props.data.id} ${props.prefix}--note-${props.data.id} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.id}`:
+                `${props.data.id} ${props.prefix}--note-${props.data.id} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.id}`,
                 position: props.data.position,
                 selected: props.data.selected,
                 target: drag,
@@ -235,8 +240,8 @@ const location = Object.keys(myObj).indexOf(theMatch)
             //     zIndex: props.data.selected ? 1: null
             // }
                     // position: 'relative',
-                    left: findX(props.data.id),
-                    top: findY(props.data.id),
+                    left: parseFloat(props.data.x),
+                    top: parseFloat(props.data.y),
                     width: '30px',
                     height: '30px',
                     textAlign: 'center',

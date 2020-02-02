@@ -194,7 +194,7 @@ class ReactStickyNotes extends Component {
 	}
 	
 	updateItem = (e, data) => {
-		console.log(data)
+		// console.log(data)
 		this.dispatch({
 			type: 'update',
 			payload: {
@@ -243,7 +243,8 @@ class ReactStickyNotes extends Component {
 		}
 	}
 	deleteItem = (e, data) => {
-		console.log(data)
+		// console.log(data)
+
 		this.dispatch({
 			type: 'delete',
 			payload: {
@@ -272,70 +273,6 @@ var toRemove = []
 var toRemove2 = []
 var array2 = []
 var newBubble = []
-const noteBubz = () => {
-	var i
-	var newArray = this.props.bubblePosList
-	for (i = 0; i< this.props.bubblePosList.length; i++) {
-		var newText = newArray[i].text.split(/[_]+/);
-		var newNot = newArray.filter(obj => {
-			return (obj.text.split(/[_]+/).length === 7)
-		  })
-		if (newText.length === 7){
-			// console.log(newText)
-		newArray[i]['id'] = newText[5].replace(/\D/g, '')
-		newArray[i]['x'] = newText[1]
-		newArray[i]['y']= newText[2]
-		newArray[i]['selected'] = newText[4]
-		newArray[i]['label']= newText[3]
-		newArray[i]['time']= newText[6]
-		}
-	}
-	if (typeof newNot !== 'undefined' && newNot.length > 1) {
-// console.log(newNot)
-	resultFour = Object.values(newNot.reduce((c, v) => {
-		let k = v.id;
-		c[k] = c[k] || [];
-		c[k].push(v);
-		return c;
-	  }, {}))
-	//   console.log(resultFour)
-	  var j
-	for (j = 0; j< resultFour.length; j++) {
-		var h
-		for (h = 0; h< resultFour[j].length; h++)
-		  // var times = (result[j][h]['time'])
-		  var soloTime = resultFour
-		  // console.log(soloTime)
-		  soloTime[j].splice((0),(soloTime[j].length-1))
-		  // var bigTime = Math.max(times)
-		  resultThree.push(soloTime[j][0])
-		  // console.log(soloTime[j])
-	  }
-	  var k
-	  for (k = 0; k < newNot.length; k++) {
-		  var l
-		  for (l = 0; l < resultFour.length; l++) {
-			//   console.log(Object.values(newNot[k]).indexOf((resultFour[l][0].id)))
-	  if (newNot[k].id === undefined || newNot[k].id === resultFour[l][0].id && newNot[k].time !== resultFour[l][0].time)  
-	  {
-		  console.log(newNot[k])
-		  toRemove2.push(k)
-	  }
-	  
-  }
-	//   console.log(resultThree)
-	  }
-  var i = toRemove2.length;
-  while (i--) {
-  newNot.splice(toRemove2[i], 1);
-  }
-
-  console.log(toRemove2)
-  newBubble = newNot
-}}
-
-noteBubz()
-console.log(newBubble)
 
 		const findDupsArr = () => {
 			var newArray = this.props.notesy
@@ -412,11 +349,10 @@ console.log(newBubble)
 	}
 
 
-
 const setDelLog = (val) => {
 	if (typeof val !== 'undefined') {
 	if (val.length > 2){
-		console.log(this.state.dontAdd.indexOf(val))
+		// console.log(this.state.dontAdd.indexOf(val))
 		if (this.state.dontAdd.indexOf(val) < 0){
 	var joined = this.state.dontAdd.concat(val);
 	// console.log(joined)
@@ -436,7 +372,7 @@ else {
 for (i = 0; i< this.state.items.length; i++) {
 	if (typeof this.state.items[i] !== 'undefined') {
 		if (this.state.items[i]['id'] === val){
-			console.log('it matches items')
+			// console.log('it matches items')
 			this.state.items.splice(i,1)
 		}
 }
@@ -463,7 +399,6 @@ for (i = 0; i< this.state.items.length; i++) {
 
 findDupsArr()
 observeFive(newPos => {setDelLog(newPos)})
-
 var getTags = () =>{
 // const newText = newNotesy.print
 // console.log(newText)
@@ -578,6 +513,143 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 	// if (typeof newNotesy !== 'undefined'){
 
 	// 	console.log((newNotesy.print))}
+
+	const noteBubz = () => {
+		// console.log(newNotesy)
+		var i
+		var newArray = this.props.bubblePosList
+		// console.log(this.props.bubblePosList)
+		for (i = 0; i< this.props.bubblePosList.length; i++) {
+			var newText = newArray[i].text.split(/[_]+/);
+			// var newNot = newArray
+			var newNot = newArray.filter(obj => {
+				return (obj.text.split(/[_]+/).length === 7)
+			  })
+			if (newText.length === 7){
+
+			newArray[i]['id'] = newText[5]
+			newArray[i]['x'] = newText[1]
+			newArray[i]['y']= newText[2]
+			newArray[i]['selected'] = newText[4]
+			newArray[i]['label']= newText[3]
+			newArray[i]['time']= newText[6]
+			// console.log(newArray[i].id)
+			}
+		}
+	//   console.log(newNot)
+	// console.log(fresh)
+		if (typeof newNot !== 'undefined' && newNot.length > 0) {
+			var p
+			var q
+			var newThangs = newNotesy
+			//   console.log(newNotesy)
+			var newList = []
+			var arrayIds = []
+			var unusedIds = []
+			if (typeof newNot !== 'undefined' && typeof newThangs !== 'undefined') {
+				for (q = 0; q < newNot.length; q++) {
+					arrayIds.push(newNot[q]['id'])
+				}
+			for (p = 0; p < newThangs.length; p++) {
+				if (arrayIds.indexOf(newThangs[p].id) === -1) {
+					unusedIds.push(newThangs[p])
+				}
+			}
+			}
+			newNot =newNot.concat(unusedIds)
+	// console.log(newNot)
+		resultFour = Object.values(newNot.reduce((c, v) => {
+			let k = v.id;
+			c[k] = c[k] || [];
+			c[k].push(v);
+			return c;
+		  }, {}))
+		//   console.log(resultFour)
+		  var j
+		for (j = 0; j< resultFour.length; j++) {
+	
+			  // var times = (result[j][h]['time'])
+			  var soloTime = resultFour
+			//   console.log(soloTime)
+			  soloTime[j].splice((0),(soloTime[j].length-1))
+			  // var bigTime = Math.max(times)
+			  resultThree.push(soloTime[j][0])
+			//   console.log(soloTime[j].length)
+		  }
+		  var k
+		  for (k = 0; k < newNot.length; k++) {
+			  var l
+			  for (l = 0; l < resultFour.length; l++) {
+				//   console.log(resultFour[l].length)
+		  if (newNot[k].id === undefined || newNot[k].id === resultFour[l][0].id && newNot[k].time !== resultFour[l][0].time)  
+		  {
+			//   console.log(newNot[k])
+			  toRemove2.push(k)
+		  }
+		  
+	  }
+		//   console.log(resultThree)
+		  }
+	  var i = toRemove2.length;
+	  while (i--) {
+	  newNot.splice(toRemove2[i], 1);
+	  }
+	  var resultSix = []
+	  var resultFive = Object.values(newNot.reduce((c, v) => {
+		let k = v.id;
+		c[k] = c[k] || [];
+		c[k].push(v);
+		return c;
+	  }, {}))
+	//   console.log(resultFive)
+	  var o
+	  for (o = 0; o< resultFive.length; o++) {
+	
+		// var times = (result[j][h]['time'])
+		var soloTime2 = resultFive
+		// console.log(soloTime2)
+		soloTime2[o].splice((1),(soloTime[o].length-1))
+		// var bigTime = Math.max(times)
+		resultSix.push(soloTime2[o][0])
+	
+	// console.log(resultSix)
+	
+	  newBubble = resultSix
+
+
+	}
+
+}
+	else {
+// 		console.log('else')
+// 	var p
+// 	var q
+// 	var newThangs = newNotesy
+//   //   console.log(newNotesy)
+// 	var newList = []
+// 	var arrayIds = []
+// 	var unusedIds = []
+// 	if (typeof this.props.bubblePosList !== 'undefined' && typeof newThangs !== 'undefined') {
+// 		for (q = 0; q < this.props.bubblePosList.length; q++) {
+// 			arrayIds.push(this.props.bubblePosList[q]['id'])
+// 		}
+// 	for (p = 0; p < newThangs.length; p++) {
+// 		if (arrayIds.indexOf(newThangs[p].id) === -1) {
+// 			unusedIds.push(newThangs[p])
+// 		}
+// 	}
+//   }
+//   var fresh =this.props.bubblePosList.concat(unusedIds)
+}
+// if (typeof fresh !== 'undefined')
+// {  newBubble = fresh
+// 	//   console.log(newBubble)
+// }
+}
+	
+	noteBubz()
+
+
 	var newNotez = newNotesy
 
 		const { items, viewSize } = this.state;
@@ -592,6 +664,7 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 			notesy: this.props.notesy,
 			delNote: this.props.delNote,
 			newNotesy: newNotez,
+			newBubble: newBubble,
 			onSubmit: this.props.onSubmit,
 			myArrayPos:this.state.myArrayPos,
 			myArrayID: this.state.myArrayID,

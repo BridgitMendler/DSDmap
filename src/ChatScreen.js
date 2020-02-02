@@ -169,7 +169,7 @@ this.setState({ scrollVals: joined })
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: '30850ff7-bb20-4ae9-9d28-78542522bc48',
+          roomId: '50e665bf-86f0-48f5-9290-7f1363829c0e',
           messageLimit: 100,
           hooks: {
             onMessage: message => {
@@ -228,7 +228,7 @@ this.setState({ scrollVals: joined })
   render() {
     // console.log(this.state.notesy)
     // console.log(this.state.postings)
-    console.log(this.state.notesy)
+    // console.log(this.state.notesy)
     const styles = {
 
 

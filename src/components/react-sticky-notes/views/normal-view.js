@@ -89,9 +89,37 @@ var newNot = props.newNotesy.filter(obj => {
     return (newArIds.indexOf(obj.id) < 0)
   })
 
+var newBub = props.newBubble.filter(obj => {
+    var i
+    for (i = 0; i < newNot.length; i++){
+    // console.log(Object.values(newNot[i]), obj.id)
+    return (newArIds.indexOf(obj.id) < 0)
+}
+})
 
+var newBub2 = () => {
+var findit =document.querySelectorAll(`[data-name]`);
+var i
+// console.log(findit)
+for (i=0; i < findit.length; i++) {
+    // console.log(findit[i]['__data__'].id)
+    var j
+    for (j = 0; j< newBub.length; j++){
+        if (typeof newBub[i] !== 'undefined') {
+        // console.log(newBub[i])
+        if (findit[i]['__data__'].id === newBub[i].label) {
+//  console.log(findit[i]['__data__'].id, newBub[i].label)
+        newBub[i]['x'] = findit[i].getBoundingClientRect().x
+        newBub[i]['y']= findit[i].getBoundingClientRect().y
+console.log(findit[i].getBoundingClientRect().x)
+}
 
+}}
 
+}}
+newBub2()
+console.log(newBub)
+// console.log(newNot)
 //         newArray[i]['id'] = newText[3]
 //         newArray[i]['x'] = newText[1]
 //         newArray[i]['y']= newText[2]
@@ -200,7 +228,7 @@ const removeTodo = () => {
 
             // style: getElementStyle('container', props)
         }, 
-            newNot.map( data => h( NoteBubble, {settingLine: settingLine, convoBoxSize: props.convoBoxSize, visible: props.visible, myArrayPos: props.myArrayPos, myArray: props.myArray, key: `note-${data.id}`,...props, data })
+            newBub.map( data => h( NoteBubble, {settingLine: settingLine, convoBoxSize: props.convoBoxSize, visible: props.visible, myArrayPos: props.myArrayPos, myArray: props.myArray, key: `note-${data.id}`,...props, data })
         )),
         h('div', {
             key: `${props.prefix}-line`, 

@@ -103,8 +103,9 @@ export default class Draggable {
     for  (i=0; i<sourceThree.length; i++) {
 
         var myVal = ((document.getElementsByClassName('listyTwo')[i].offsetTop) - sourceTwo)
-
+console.log(myVal)
         counts.push(myVal)
+        console.log(counts)
 
 
     }
@@ -112,11 +113,11 @@ export default class Draggable {
         return (Math.abs(curr - goal) < Math.abs(prev - goal) ? curr : prev);
       });
 
-    // var theActual = goal-closest
-var theActual = goal
+    var theActual = goal-closest
+// var theActual = goal
 // console.log(theActual, closest)
-    // var genericLoc = sourceTwo+closest
-var genericLoc = sourceTwo
+    var genericLoc = sourceTwo+closest
+// var genericLoc = sourceTwo
 var listyLoc = sourceTwo+goal
 var thePosition = 0
 for  (i=0; i<sourceThree.length; i++) {

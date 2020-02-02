@@ -35,7 +35,7 @@ export const Map = (props) => {
         setdragState('dragend')
 
         var targetRect = e.target.getBoundingClientRect()
-        console.log(e.target.attributes[1].value)
+        console.log(window.event.target.attributes)
         setbubblePos({x:targetRect.x, y:targetRect.y})
         // moveKnight(bubblePos.x,bubblePos.y)
         moveDropped(hasDropped)
@@ -103,7 +103,7 @@ return
         // console.log(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
 
         const diamonds = [
-          { id: "2", icon: RectGreen,reflexive: false, x: 250, y: 200 },
+          { id: "2mortgagemortgage", icon: RectGreen,reflexive: false, x: 250, y: 200 },
           { id: "3lender file sworn statement of debt including costs associated with foreclosure process on the homeowner's tab", icon: RectRed,reflexive: false, x: 150, y: 200},
           { id: "4loss mitigation affadavit to homeowner with form allowing homeowner to request mediation", icon: RectGreen,reflexive: true, x: 200, y: 200},
           { id: "7Can file a motion asking the court to waive the fee", icon: RectGreen,reflexive: true, x: 300, y: 425},
