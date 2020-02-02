@@ -55,6 +55,7 @@ export default class Draggable {
     }
 
     onMouseDown = (e, id) => {
+        // console.log('mousedown')
         const el = this.options.element;
         const parentElement = el.parentElement;
         const rect = el.getBoundingClientRect();
@@ -91,12 +92,14 @@ export default class Draggable {
     // const sourceTwo = document.getElementsByClassName('listyThree')[0].scrollTop;
 
     onMouseUp = (e) => {
+
     const sourceThree = document.getElementsByClassName('listyTwo');
     const sourceTwo = document.getElementsByClassName('listyThree')[0].scrollTop;
     // var elemClos = elementMouseIsOver.closest('.chatContainer')   
     var i
     var counts = []
     var goal = this.currentY
+    // console.log(sourceThree)
     for  (i=0; i<sourceThree.length; i++) {
 
         var myVal = ((document.getElementsByClassName('listyTwo')[i].offsetTop) - sourceTwo)
@@ -109,10 +112,11 @@ export default class Draggable {
         return (Math.abs(curr - goal) < Math.abs(prev - goal) ? curr : prev);
       });
 
-      
-var theActual = goal-closest
+    // var theActual = goal-closest
+var theActual = goal
 // console.log(theActual, closest)
-var genericLoc = sourceTwo+closest
+    // var genericLoc = sourceTwo+closest
+var genericLoc = sourceTwo
 var listyLoc = sourceTwo+goal
 var thePosition = 0
 for  (i=0; i<sourceThree.length; i++) {
@@ -126,8 +130,19 @@ for  (i=0; i<sourceThree.length; i++) {
 }
 
 // console.log((document.getElementsByClassName('listyTwo')))
-// console.log(listyLoc)
-        const el = this.options.element;
+if (typeof e.target.offsetParent!== 'undefined'){
+    // console.log(e.target.offsetParent)
+if (typeof e.target.offsetParent.offsetParent !== 'undefined'){
+    // console.log(e.target.offsetParent.offsetParent)
+if (typeof e.target.offsetParent.offsetParent.lastElementChild !== 'undefined'){
+    // console.log(e.target.offsetParent.offsetParent.lastElementChild)
+if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0] !== 'undefined'){
+    if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.attributes.placeholder !== 'undefined'){
+var myText = e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.attributes.placeholder.value
+}}}}}
+//    console.log(myText)
+// console.log(e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.attributes.placeholder.value)
+const el = this.options.element;
         this.mouseStatus = false
         const parentElement = el.parentElement;
         if(this.options.onDragComplete){
@@ -135,7 +150,8 @@ for  (i=0; i<sourceThree.length; i++) {
                 x: this.currentX,
                 y: this.currentY,
                 px: this.percentX,
-                py: this.percentY
+                py: this.percentY,
+                text: myText
             })
         }
         if (this.options.onMouseDownMove){
@@ -184,3 +200,4 @@ for  (i=0; i<sourceThree.length; i++) {
         }
     }
 }
+

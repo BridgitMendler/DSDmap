@@ -25,7 +25,7 @@ export function ButtonAddG({prefix, data, icons, callbacks}){
     return h('button',{
         key: `${prefix}--button__addR`,
         className:`${prefix}--buttonR ${prefix}--button__addR`,
-        onClick:(e)=>callbacks.addItem(e, {id: data?data.id:null, position:data?data.position:null, selected: true})
+        onClick:(e)=>(callbacks.addItem(e, {id: data?data.id:null, position:data?data.position:null, selected: true}), console.log('clicked'))
     }, 
         icons.addR
     )
@@ -107,4 +107,5 @@ export function ButtonTrash({prefix, data, icons, callbacks, removeTodo}, props)
         icons.trash
     );
 }
+
 

@@ -5,7 +5,7 @@ function NoteText(props) {
 const { data, index, prefix, callbacks } = props;
 
 const [text, setText] = useState('')
-// console.log(props.notesy[0].text)
+// console.log(text)
 const onSubmit=(e) =>{
     // console.log(e)
     e.preventDefault()

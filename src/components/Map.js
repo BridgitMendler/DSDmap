@@ -50,6 +50,7 @@ export const Map = (props) => {
     const over= ()=> {
       if (isOver === true) {
         var e = window.event
+        if (typeof e.clientX !== 'undefined' && typeof e.clientY !== 'undefined'){
         var selection = document.elementsFromPoint(e.clientX,e.clientY)[0].classList[0]
         var selectionTwo =document.elementsFromPoint(e.clientX,e.clientY)[0].localName
         console.log(selectionTwo)
@@ -87,7 +88,7 @@ export const Map = (props) => {
       }
 return
 
-    }
+    }}
 
 
     // 2,3,4 ((150-250),200)
@@ -98,8 +99,8 @@ return
         // const arrayAddTwo = (newPos) => {
         //   setEveID(newPos)
         //   console.log(eveID)}
-        observeThree(newPos => {setEveID(newPos)})
-        // moveKnight(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
+        observeThree(newPos => {setEveID(newPos), console.log(newPos)})
+        // console.log(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
 
         const diamonds = [
           { id: "2", icon: RectGreen,reflexive: false, x: 250, y: 200 },
@@ -218,7 +219,8 @@ return
             var pathOne = document.querySelectorAll(".link")
 
 
-                path.attr("d", function (d) {
+                path
+                .attr("d", function (d) {
                     var dx = d.target.x - d.source.x,
                         dy = d.target.y - d.source.y,
                         dr = Math.sqrt(dx * dx + dy * dy);
@@ -485,7 +487,7 @@ return
 
               function mouseover(d,i) {
                 moveKnight(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
-                // console.log(window.event.target.attributes)
+                // console.log(bubblePos.x,bubblePos.y, window.event.target.attributes)
               d3.select(this).transition()
                   .duration(750)
                   .attr("r", 20);
@@ -570,7 +572,7 @@ return
 return (  <g ref= {drop}>
       <g  id="myanchor" x={x} y={y} />
       {isOver && over()}
-      {hasDropped && moveDropped(hasDropped) && moveKnight(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value) && newIDLog(eveID)
+      {hasDropped && moveDropped(hasDropped) && moveKnight(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value) && newIDLog(eveID) && props.onSubmit('jljljl' + `_${bubblePos.x}`+ `_${bubblePos.y}`+`_${window.event.target.attributes[1].value}`+`_${hasDropped}`+`_${eveID}`+`_${Math.round((new Date()).getTime() / 1000)}`) && console.log(window.event.target.attributes)
       }
       {/* {!isOver && canDrop && console.log('yes!')} */}
       {/* {isOver && console.log(drop)} */} */}
@@ -580,3 +582,4 @@ return (  <g ref= {drop}>
 }
 
 export default Map
+

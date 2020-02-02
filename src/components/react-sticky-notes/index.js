@@ -192,8 +192,9 @@ class ReactStickyNotes extends Component {
 		});
 		// console.log(document.getElementsByClassName('harry'))
 	}
+	
 	updateItem = (e, data) => {
-		// console.log(data.position)
+		console.log(data)
 		this.dispatch({
 			type: 'update',
 			payload: {
@@ -204,28 +205,13 @@ class ReactStickyNotes extends Component {
 		}
 
 		);
-		// console.log(data)
 
-if (Object.keys(data).includes('text')) {
-const newText = data.text
-		var regexp = /\B\#\w\w+\b/g
-		var result = newText.match(regexp);
-		if (result) {
-			this.state.allHashtags.push(result[0])
-			// console.log(this.state.allHashtags)
-			// console.log(result, data.id);
-			var newInput = Object.assign({}, 
-				this.state.myHashtags, {[data.id]: [result]});
-				  this.setState({
-					myHashtags: newInput,
-				  });
-				//   console.log(this.state.myHashtags)
-		} else {
-			// console.log('false');
-		}
+
+// if (Object.keys(data).includes('text')) {
+
 						  
 	// console.log(data.text)
-}
+// }
 
 // const findDuplicates = (arr) => {
 // 	let sorted_arr = arr.slice().sort(); // You can define the comparing function here. 
@@ -243,30 +229,6 @@ const newText = data.text
 // findDuplicates(this.state.allHashtags)
 
 
-const findDuplicatesTwo = (arr) => {
-	function Comparator(a, b) {
-		if (a[1] < b[1]) return -1;
-		if (a[1] > b[1]) return 1;
-		return 0;
-	  }
-	let sorted_arr = arr.slice().sort(); // You can define the comparing function here. 
-	let results = [];
-	let resultsTwo = []
-	for (let i = 0; i < sorted_arr.length - 1; i++) {
-		const index = arr.indexOf(sorted_arr[i]);
-	  if (sorted_arr[i + 1] == sorted_arr[i]) {
-		results.push([sorted_arr[i],index]);
-	  }
-	}
-	var myArray = results.sort(Comparator);
-	for (let i = 0; i < myArray.length; i++) {
-		resultsTwo.push(myArray[i][0]);
-	}
-this.setState({hashtagDups:resultsTwo})
-// console.log(resultsTwo)
-  }
-
-findDuplicatesTwo(this.state.allHashtags)	
 
 		if (data.position == undefined) {
 			return null
@@ -277,7 +239,7 @@ findDuplicatesTwo(this.state.allHashtags)
 			this.setState({
 			  myArrayPos: newInput,
 			});
-			console.log(this.state.myArrayPos)
+			// console.log(this.state.myArrayPos)
 		}
 	}
 	deleteItem = (e, data) => {
@@ -303,18 +265,85 @@ findDuplicatesTwo(this.state.allHashtags)
 	render() {
 var newNotesy 
 var resultTwo= []
+var resultThree= []
+var resultFour= []
 var result
 var toRemove = []
+var toRemove2 = []
 var array2 = []
-// console.log(this.props.notesy)
-// console.log(this.state.items)
+var newBubble = []
+const noteBubz = () => {
+	var i
+	var newArray = this.props.bubblePosList
+	for (i = 0; i< this.props.bubblePosList.length; i++) {
+		var newText = newArray[i].text.split(/[_]+/);
+		var newNot = newArray.filter(obj => {
+			return (obj.text.split(/[_]+/).length === 7)
+		  })
+		if (newText.length === 7){
+			// console.log(newText)
+		newArray[i]['id'] = newText[5].replace(/\D/g, '')
+		newArray[i]['x'] = newText[1]
+		newArray[i]['y']= newText[2]
+		newArray[i]['selected'] = newText[4]
+		newArray[i]['label']= newText[3]
+		newArray[i]['time']= newText[6]
+		}
+	}
+	if (typeof newNot !== 'undefined' && newNot.length > 1) {
+// console.log(newNot)
+	resultFour = Object.values(newNot.reduce((c, v) => {
+		let k = v.id;
+		c[k] = c[k] || [];
+		c[k].push(v);
+		return c;
+	  }, {}))
+	//   console.log(resultFour)
+	  var j
+	for (j = 0; j< resultFour.length; j++) {
+		var h
+		for (h = 0; h< resultFour[j].length; h++)
+		  // var times = (result[j][h]['time'])
+		  var soloTime = resultFour
+		  // console.log(soloTime)
+		  soloTime[j].splice((0),(soloTime[j].length-1))
+		  // var bigTime = Math.max(times)
+		  resultThree.push(soloTime[j][0])
+		  // console.log(soloTime[j])
+	  }
+	  var k
+	  for (k = 0; k < newNot.length; k++) {
+		  var l
+		  for (l = 0; l < resultFour.length; l++) {
+			//   console.log(Object.values(newNot[k]).indexOf((resultFour[l][0].id)))
+	  if (newNot[k].id === undefined || newNot[k].id === resultFour[l][0].id && newNot[k].time !== resultFour[l][0].time)  
+	  {
+		  console.log(newNot[k])
+		  toRemove2.push(k)
+	  }
+	  
+  }
+	//   console.log(resultThree)
+	  }
+  var i = toRemove2.length;
+  while (i--) {
+  newNot.splice(toRemove2[i], 1);
+  }
+
+  console.log(toRemove2)
+  newBubble = newNot
+}}
+
+noteBubz()
+console.log(newBubble)
+
 		const findDupsArr = () => {
 			var newArray = this.props.notesy
 			var newArray2 = []
 			var i
 			for (i = 0; i< this.props.notesy.length; i++) {
 				var newText = newArray[i].text.split(/[_,]+/);
-				newArray[i]['id'] = newText[3]
+				newArray[i]['id'] = newText[3] 
 				newArray[i]['x'] = newText[1]
 				newArray[i]['y']= newText[2]
 				newArray[i]['selected'] = newText[5]
@@ -340,6 +369,7 @@ var array2 = []
 			  for (h = 0; h< result[j].length; h++)
 				// var times = (result[j][h]['time'])
 				var soloTime = result
+				// console.log(soloTime)
 				soloTime[j].splice((0),(soloTime[j].length-1))
 				// var bigTime = Math.max(times)
 				resultTwo.push(soloTime[j][0])
@@ -351,6 +381,7 @@ var array2 = []
 				for (l = 0; l < result.length; l++) {
 			if (newArray[k].id === undefined || newArray[k].id === result[l][0].id && newArray[k].time !== result[l][0].time)  
 			{
+				// console.log(k)
 				toRemove.push(k)
 			}
 		}
@@ -429,14 +460,80 @@ for (i = 0; i< this.state.items.length; i++) {
 // 		return obj.deleted !== 'yes'
 // 	  })
 // }
-console.log(this.state.dontAdd)
+
 findDupsArr()
 observeFive(newPos => {setDelLog(newPos)})
 
+var getTags = () =>{
+// const newText = newNotesy.print
+// console.log(newText)
+var i
+for (i=0; i<newNotesy.length; i++){
+		var regexp = /\B\#\w\w+\b/g
+		if (typeof newNotesy[i].print !== 'undefined'){
+		var result = newNotesy[i].print.match(regexp);
+
+		if (result !== null) {
+			// console.log(result[0], i)
+			if (this.state.allHashtags.indexOf(result[0])< 0){
+			this.state.allHashtags.push(result[0])
+		}
+			// console.log(Object.values(this.state.myHashtags))
+			// console.log(result, data.id);
+			if (Object.keys(this.state.myHashtags).indexOf(newNotesy[i].id)< 0 ){
+				// console.log(Object.keys(this.state.myHashtags).indexOf(newNotesy[i].id))
+			var newInput = Object.assign({}, 
+				this.state.myHashtags, {[newNotesy[i].id]: result[0]});
+				// console.log(this.state.myHashtags)
+				  this.setState({
+					myHashtags: newInput,
+				  });
+
+		}else if (Object.keys(this.state.myHashtags).indexOf(newNotesy[i].id)> 0 && this.state.myHashtags[newNotesy[i].id] !== result[0]) {
+			let myHashtagsCopy = JSON.parse(JSON.stringify(this.state.myHashtags))
+
+			myHashtagsCopy[newNotesy[i].id] = result[0]
+			// var newInput = Object.assign({}, 
+			// 	this.state.myHashtags, {[newNotesy[i].id]: result[0]});
+				// console.log(myHashtagsCopy)
+				  this.setState({
+					myHashtags: myHashtagsCopy,
+				  });
+			// console.log('false');
+
+		}}
+		// console.log(this.state.myHashtags)
+// console.log(newNotesy)
 // define()
 //   console.log(newNot)
+}}}
+getTags()
+let resultsTwoDups = []
+const findDuplicatesTwo = (arr) => {
+	function Comparator(a, b) {
+		if (a[1] < b[1]) return -1;
+		if (a[1] > b[1]) return 1;
+		return 0;
+	  }
+	let sorted_arr = arr.slice().sort();
+	let results = [];
 
-
+	for (let i = 0; i < sorted_arr.length - 1; i++) {
+		const index = arr.indexOf(sorted_arr[i]);
+	  if (sorted_arr[i + 1] == sorted_arr[i]) {
+		results.push([sorted_arr[i],index]);
+	  }
+	}
+	var myArray = results.sort(Comparator);
+	for (let i = 0; i < myArray.length; i++) {
+		if (resultsTwoDups.indexOf(myArray[i][0])<0){
+		resultsTwoDups.push(myArray[i][0]);
+	}
+}
+// console.log(resultsTwoDups)
+  }
+findDuplicatesTwo(Object.values(this.state.myHashtags))	
+// console.log(this.state.allHashtags)
 // console.log(this.state.dontAdd)
 // console.log(newNotesy)
 
@@ -478,9 +575,11 @@ observeFive(newPos => {setDelLog(newPos)})
 // 	filtering()
 	// if (newMap.length > 0) {
 	// 		console.log(typeof newMap[0]['id'])}
+	// if (typeof newNotesy !== 'undefined'){
 
+	// 	console.log((newNotesy.print))}
 	var newNotez = newNotesy
-	// console.log(this.props.notesy)
+
 		const { items, viewSize } = this.state;
 		// if (newNotesy.length > 2){
 		// console.log(typeof this.state.items[0].id, typeof newNotesy[2]['id'])}
@@ -498,7 +597,7 @@ observeFive(newPos => {setDelLog(newPos)})
 			myArrayID: this.state.myArrayID,
 			myHashtags: this.state.myHashtags,
 			allHashtags: this.state.allHashtags,
-			hashtagDups: this.state.hashtagDups,
+			hashtagDups: resultsTwoDups,
 			visible: this.props.visible,
 			dontAdd: this.state.dontAdd,
 			convoBoxSize: this.props.convoBoxSize,

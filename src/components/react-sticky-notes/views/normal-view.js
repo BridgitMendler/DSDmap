@@ -70,7 +70,7 @@ export function NormalView(props){
 const settingLineOut = (value) => {
     setSelectedLine(value)
 }
-console.log(props.delNote)
+// console.log(props.delNote)
 var newArray = props.delNote
 var newArIds = []
 const delList = () => {
@@ -79,7 +79,8 @@ for (i=0;i<props.delNote.length; i++){
     var newText = newArray[i].text.split(/[_,]+/);
     newArIds.push(newText[3])
 }
-console.log(newArIds)}
+// console.log(newArIds)
+}
 delList()
 const myItemsTwo = props.newNotesy
 var newNot = props.newNotesy.filter(obj => {

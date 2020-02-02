@@ -30,7 +30,6 @@ class Note extends React.Component{
     
     getNotePositionY =() => {
         var i
-        // console.log(this.props.notesy.length)
         for (i=0; i< this.props.notesy.length; i++){
             if (this.props.notesy[i].id === this.props.data.id){
                 var yVal = parseInt(this.props.notesy[i].y)
@@ -70,7 +69,7 @@ class Note extends React.Component{
             genericLoc: 0,
             visibleList: []
 
-		}
+        }
     }
 
  
@@ -152,26 +151,30 @@ thisty()
             var i
             if (props.hashtagDups.length > 0) {
                 if (Object.keys(props.myHashtags).includes(props.data.id)){
-                    const myValue = (props.myHashtags)[(props.data.id)][0][0]
+                    const myValue = (props.myHashtags)[(props.data.id)]
+                    // console.log(myValue)
                     if (props.hashtagDups.includes(myValue)) {
-                        // console.log(props.hashtagDups)
+                        // console.log('yes')
                         var indexHashtag =props.hashtagDups.indexOf(myValue)
                         const vals = (Object.values(props.myHashtags))
                         var i
                         var leftPos = []
                         var total = 0
                         for (i=0; i < vals.length; i++){
-                            if (vals[i][0][0]=== myValue){
+                            if (vals[i]=== myValue && typeof myValue !== 'undefined' ){
+                            // console.log(vals[i])
                                 var classID = (Object.keys(props.myHashtags)[i])
                                 // console.log(parseFloat(document.getElementsByClassName(`${props.prefix}--full-note-${classID}`[0].style.left) !== 'undefined'))
                                 // console.log((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0]))
-                                if ((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0] !== 'undefined')) {
-
+                                if (typeof document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0] !== 'undefined') {
+                                    if (typeof document.getElementsByClassName(`${props.prefix}--full-note-${classID}`[0].style !== 'undefined')) {
+                                    // console.log(typeof document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0])
                                 var styleLeft = parseFloat(document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0].style.left)
+                                // var styleLeft = 0
                                 leftPos.push(styleLeft)
                                 total += styleLeft
                                 // console.log(styles)
-                            }}
+                            }}}
                         }
                         if (leftPos.length > 1) {
                                                         
@@ -229,18 +232,18 @@ thisty()
                     else {
                         if (this.props.visible === false){
                             // console.log('getting state pos '+ this.state.positionX)
-                        return this.state.positionX
+                        return this.getNotePositionX()
                         }
                         else {
-                            if ((this.state.positionX *.75) > 400) {
+                            if ((this.getNotePositionX() *.75) > 400) {
                                 if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
                                     // console.log('it is true')
                                     // console.log('getting state pos '+ this.state.positionX)
-                                    return (this.state.positionX)
+                                    return (this.getNotePositionX())
                                 }
                                 else {
                                     // console.log('getting state pos '+ this.state.positionX)
-                                return (this.state.positionX *.75)}
+                                return (this.getNotePositionX() *.75)}
                             }
                             else{
                                 return 400
@@ -251,20 +254,20 @@ thisty()
                 else {
                     if (this.props.visible === false){
                         // console.log('getting state pos '+ props.data.id, this.state.positionX)
-                        var whereToGo = this.state.positionX
+                        var whereToGo = this.getNotePositionX()
                     return whereToGo
                     }
                     else {
-                        if ((this.state.positionX *.75) > 400) {
+                        if ((this.getNotePositionX() *.75) > 400) {
                             if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
                                 
                                 // console.log('getting state pos '+ this.state.positionX)
-                                return (this.state.positionX)
+                                return (this.getNotePositionX())
                             }
                             else {
                             // console.log(this.state.visibleList[this.state.visibleList.length-1])
                             // console.log('getting state pos '+ this.state.positionX)
-                            return (this.state.positionX *.75)}
+                            return (this.getNotePositionX() *.75)}
                         }
                         else{
                             return 400
@@ -338,7 +341,7 @@ thisty()
                     // console.log(myScroll)
                     return this.state.listyPos - (props.scrollScreen)
             }
-            else {return this.state.positionY - (props.scrollScreen)}
+            else {return this.getNotePositionY() - (props.scrollScreen)}
         }
     }
     else {
@@ -348,7 +351,7 @@ thisty()
             return this.state.listyPos - (props.scrollScreen)
     }
     else {
-        return this.state.positionY - (props.scrollScreen)}
+        return this.getNotePositionY() - (props.scrollScreen)}
 }
     }
     else {
@@ -357,7 +360,7 @@ thisty()
             // console.log(this.state.listyPos)
             return this.state.listyPos - (props.scrollScreen)
     }
-    else {return this.state.positionY - (props.scrollScreen)}
+    else {return this.getNotePositionY() - (props.scrollScreen)}
 }
     }
 
@@ -408,7 +411,7 @@ var newText = props.data.text.split(/[_,]+/);
                 onMouseDownMove:(pos) => (this.setState({mouseStatus:pos.mouseStatus, listyPos:pos.listyPos, genericLoc:pos.genericLoc})),
                 // onClick: (e) =>(console.log('clicked'),onStart(e)),
                 onDragComplete:(pos)=> (setWhatDragShouldDo(), 
-                props.onSubmit(('ggggg' + `${newText[0]}`+ `_${pos.x},${pos.y}`+`_${props.data.id}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.x}_${pos.y}`)),
+                props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.x},${pos.y}`+`_${props.data.id}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.x}_${pos.y}`)),
                     // props.callbacks.updateItem(null, {id: props.data.id, position:pos, className:`'${props.data.selected}`})
                 (this.setState({positionX: pos.x, positionY:pos.y}))
                 // props.onSubmit(('ggggg' + text+ `_${props.left},${props.top}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`))
@@ -417,8 +420,8 @@ var newText = props.data.text.split(/[_,]+/);
                 style: {
                     transition: (this.state.mouseStatus === false) ?"left .40s linear":null,
                     position: 'absolute',
-                    left: this.getNotePositionX(),
-                    top: this.getNotePositionY(),
+                    left: hashtagMoveX(),
+                    top: hashtagMoveY(),
                     width: props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":null,
                     height: props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":null,
                     boxShadow: '1px 1px 2px rgba(0,0,0,.15)',
@@ -455,4 +458,5 @@ var newText = props.data.text.split(/[_,]+/);
     }
 }
 export default Note;
+
 

@@ -32,6 +32,7 @@ class ChatScreen extends Component {
       messages: [],
       postings: [],
       delNote: [],
+      bubblePosList: [],
       notesy: [],
       usersWhoAreTyping: [],
       scrollScreen: 0,
@@ -192,6 +193,11 @@ this.setState({ scrollVals: joined })
                 this.setState({
                   delNote: [...this.state.delNote, message]})
               }
+              else if (/^jljljl/.test(message.text)){
+              message.text=(message.text.removeCharAt(0))
+              this.setState({
+              bubblePosList: [...this.state.bubblePosList, message]})
+              }
               else {this.setState({
                 messages: [...this.state.messages, message],
               })
@@ -336,7 +342,7 @@ this.setState({ scrollVals: joined })
               </div>
           </aside>   
           <svg className={`${this.state.mapName}`} height="700">
-               <Map className={`${this.state.mapName}`} knightPosition={this.state.knightPos}/> 
+               <Map className={`${this.state.mapName}`} onSubmit={this.sendMessage} knightPosition={this.state.knightPos}/> 
                </svg> 
     <div style={styles[this.state.sidePanel]} className={`${this.state.sidePanel}`} >
       <MessageListTwo className='messageListTwo' messages={this.state.postings} style={styles.transforming}/>
@@ -349,6 +355,7 @@ this.setState({ scrollVals: joined })
             backgroundColor="#fefefe"
             useCSS={true}
             scrollScreen={this.state.scrollScreen}
+            bubblePosList={this.state.bubblePosList}
             scrollVals={this.state.scrollVals}
             visible = {this.state.visible}
             onScroll= {this.handleScroll}

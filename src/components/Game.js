@@ -25,7 +25,7 @@ export function moveKnight(toX, toY, circleClass) {
     var n = Math.floor(Math.random() * (10-(-10)) + (-10))
     var randomnum = Math.floor(Math.random() * (15 * precision - 7 * precision) + 7 * precision) / (1*precision);
   knightPosition = [toX-randomnum, toY-randomnum, circleClass]
-  console.log(knightPosition)
+  // console.log(knightPosition)
   emitChange()
 //   console.log(knightPosition)
   return knightPosition
