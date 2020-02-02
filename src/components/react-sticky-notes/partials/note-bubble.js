@@ -27,12 +27,13 @@ export const NoteBubble = (props) => {
       })
     const [hasDropped, setHasDropped] = useState(false)
     var e = window.event
-
-
     var myIDs = []
 
-// myElementLeft()
-
+var findit =document.getElementById(props.data['label']);
+let word_With_Numbers = props.data.id
+let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
+var myRand = word_Without_Numbers[0]
+console.log(myRand)
 var myElementTop = () => {
 var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.id}`)[0]
 if ( typeof myEl !== 'undefined') {
@@ -95,7 +96,6 @@ mouseEventFind()
 
                 }
                 else {
-                    // console.log('else ' +knightPos)
                     var newID = newPos
                     setDropPositions({...dropPositions,  [newID]:
                         {positionXY: knightPosVersion}
@@ -103,106 +103,80 @@ mouseEventFind()
 
                 }
             }
-            // console.log(dropPositions)
 
-                // console.log(props.myArrayPos)
-                // console.log('after ' +knightPos)
-//                 }
-// console.log(dropPositions[`${props.prefix}--note-${props.data.id}`]['positionXY'])
     const findX = (idValue) => {
-        // console.log(idValue)
-
- 
-        
-// console.log(findit)
-    //     const myObj = dropPositions
-    //     const theMatch = `${props.prefix}--note-${idValue}`
-    //     const location = Object.keys(myObj).indexOf(theMatch)
-    //     console.log(myObj)
-    //     if (location > -1) {
-    //         if (typeof dropPositions[theMatch]['positionXY'] !== 'undefined'){
-    //         return (dropPositions[theMatch]['positionXY'][0]-15)
-    //     }
-    // }
-    //     else {
-    //         var propsKeys =Object.keys(props.myArrayPos)
-    //         if (props.myArrayPos.length !== 0){
-    //             // console.log(propsKeys.length)
-    //         var i
-    //         for (i = 0; i <propsKeys.length; i++){
-    //             // console.log(idValue)
-    //             if (propsKeys[i]=== idValue){
-          
-    //         return(props.myArrayPos[idValue][0]+30)
-    //     }
-    // }
-    // }
-    // else {
+if (typeof props.data.label !== 'undefined' && props.data.label.length > 1){
+        if (findit !== null) {
+            console.log(myRand)
+            return ((findit.getBoundingClientRect().left -30)+ (myRand/.75))
+        }
+    }
+    else {
             var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.id}`)[0]
             if ( typeof myEl !== 'undefined') {
                 myEl = myEl.style.left
                 myEl = parseFloat(myEl)
-                // console.log(((myEl)*.75) +30)
                 return ((myEl))
             }
-        // return (props.data.position.x+30)
     }        
-
-    // }
-
-    // console.log(props.visible)
+    }
 
     const colorSetting =(idValue) => {
         const myObj = dropPositions
         const theMatch = `${props.prefix}--note-${idValue}`
         const location = Object.keys(myObj).indexOf(theMatch)
         
-        if (location > -1) {    
-            if (typeof dropPositions[theMatch]['positionXY'] !== 'undefined'){
-                const myLabel = dropPositions[theMatch]['positionXY'][2]
-                const knightPosVersion = knightPos[knightPos.length-1][2]
-                // console.log(myLabel, knightPosVersion)
-        if (myLabel===knightPosVersion) {
-            // console.log('match!')
+        if (typeof props.data.label !== 'undefined' && props.data.label.length > 1) {    
+            if (typeof knightPos[0] !== 'undefined' && knightPos.length > 0){
+                const knightPosVersion = knightPos[0][2]
+                console.log(knightPosVersion)
+        if (props.data.label===knightPos[0][2]) {
+            console.log('match!')
             return 'tomato'
         }
-        else {
-            // console.log(myLabel, knightPosVersion)
-            return 'grey'
-        }
-    }
-    else {
-        return 'grey'
-    }
-}
 else {
     return 'grey'
 }
 }
+else {
+    return 'grey'
+}
+}}
 
-    const findY = (idValue) => {
-        const myObj = dropPositions
-        const theMatch = `${props.prefix}--note-${idValue}`
-        const location = Object.keys(myObj).indexOf(theMatch)
-        if (location > -1) {
-            
-            if (typeof dropPositions[theMatch]['positionXY'] !== 'undefined'){
-            return (dropPositions[theMatch]['positionXY'][1])
+
+
+
+    const findY = () => {
+
+        if (typeof props.data.label !== 'undefined' && props.data.label.length > 1){
+            if (findit !== null) {
+                // console.log(findit.getBoundingClientRect())
+                return (findit.getBoundingClientRect().top + (myRand/.75))
+            }
         }
-    }
-    else {
-        var propsKeys =Object.keys(props.myArrayPos)
-        if (props.myArrayPos.length !== 0){
-            // console.log(propsKeys.length)
-        var i
-        for (i = 0; i <propsKeys.length; i++){
-            // console.log(idValue)
-            if (propsKeys[i]=== idValue){
+
+//         const myObj = dropPositions
+//         const theMatch = `${props.prefix}--note-${idValue}`
+//         const location = Object.keys(myObj).indexOf(theMatch)
+//         if (location > -1) {
+            
+//             if (typeof dropPositions[theMatch]['positionXY'] !== 'undefined'){
+//             return (dropPositions[theMatch]['positionXY'][1])
+//         }
+//     }
+//     else {
+//         var propsKeys =Object.keys(props.myArrayPos)
+//         if (props.myArrayPos.length !== 0){
+//             // console.log(propsKeys.length)
+//         var i
+//         for (i = 0; i <propsKeys.length; i++){
+//             // console.log(idValue)
+//             if (propsKeys[i]=== idValue){
       
-        return(props.myArrayPos[idValue][1]+110)
-    }
-}
-}
+//         return(props.myArrayPos[idValue][1]+110)
+//     }
+// }
+// }
         else {
 
                 var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.id}`)[0]
@@ -212,20 +186,28 @@ else {
                     // console.log(myEl)
                     return myEl + 110
                 }
-            // return ((myElementTop())+110)
         }
-    }}
+    }
 const setThatLine=(dataID)=> {
 props.settingLine(dataID)
 }
-
-const myObj = dropPositions
-const theMatch = `${props.prefix}--note-${props.data.id}`
-const location = Object.keys(myObj).indexOf(theMatch)
-// if (location > -1) {
+// var myObj2 = []
+// const findNewDrop = () => {
+//     var i
+//     if (typeof props.data.label !== 'undefined'){
+//     console.log(props.data.label.length)}
+//     for (i=0; i < props.data.length; i++){
+//         console.log(props.data[i])
+//     }
+// }
+// findNewDrop()
+// const myObj = dropPositions
+// const theMatch = `${props.prefix}--note-${props.data.id}`
+// const location = Object.keys(myObj).indexOf(theMatch)
+// console.log(dropPositions)
 
     return h(NoteDraggable, {
-                className: (location > -1) ?`${props.data.id} dropped${props.data.id} ${props.prefix}--note-${props.data.id} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.id}`:
+                className: (typeof props.data.label !== 'undefined' && props.data.label.length > 1) ?`${props.data.id} dropped${props.data.id} ${props.prefix}--note-${props.data.id} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.id}`:
                 `${props.data.id} ${props.prefix}--note-${props.data.id} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.id}`,
                 position: props.data.position,
                 selected: props.data.selected,
@@ -240,8 +222,8 @@ const location = Object.keys(myObj).indexOf(theMatch)
             //     zIndex: props.data.selected ? 1: null
             // }
                     // position: 'relative',
-                    left: parseFloat(props.data.x),
-                    top: parseFloat(props.data.y),
+                    left: findX(),
+                    top: findY(),
                     width: '30px',
                     height: '30px',
                     textAlign: 'center',

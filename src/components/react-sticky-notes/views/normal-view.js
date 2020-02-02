@@ -97,27 +97,30 @@ var newBub = props.newBubble.filter(obj => {
 }
 })
 
-var newBub2 = () => {
-var findit =document.querySelectorAll(`[data-name]`);
-var i
+// var newBub2 = () => {
+
+// var i
 // console.log(findit)
-for (i=0; i < findit.length; i++) {
-    // console.log(findit[i]['__data__'].id)
-    var j
-    for (j = 0; j< newBub.length; j++){
-        if (typeof newBub[i] !== 'undefined') {
-        // console.log(newBub[i])
-        if (findit[i]['__data__'].id === newBub[i].label) {
-//  console.log(findit[i]['__data__'].id, newBub[i].label)
-        newBub[i]['x'] = findit[i].getBoundingClientRect().x
-        newBub[i]['y']= findit[i].getBoundingClientRect().y
-console.log(findit[i].getBoundingClientRect().x)
-}
+// // for (i=0; i < findit.length; i++) {
+//     // console.log(findit[i]['__data__'].id)
+//     var j
+//     for (j = 0; j< newBub.length; j++){
+//         if (typeof newBub[j] !== 'undefined') {
+//         // console.log(newBub[j])
+//         var findit =document.getElementById(newBub[j]['label']);
+//         console.log(findit)
+// //         if (findit[i] === newBub[i].label) {
+// // //  console.log(findit[i]['__data__'].id, newBub[i].label)
+// //         newBub[i]['x'] = findit[i].getBoundingClientRect().x
+// //         newBub[i]['y']= findit[i].getBoundingClientRect().y
+// // console.log(findit[i].getBoundingClientRect().x)
+// // }
 
-}}
+// }}
 
-}}
-newBub2()
+// // }
+// }
+// newBub2()
 console.log(newBub)
 // console.log(newNot)
 //         newArray[i]['id'] = newText[3]
@@ -236,7 +239,7 @@ const removeTodo = () => {
             style: getElementStyle('container', props)
         }, 
         h("span", null,
-            newNot.map( data => props.hidden ? (props.visible === true)? h( LineTo, { borderColor:'wheat',borderStyle: 'dashed', borderWidth: 1, from:`dropped${data.id}`, to:`rs-notes--full-note-${data.id}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } ):null: 
+            newNot.map( data => props.hidden ? (props.visible === true)? (h( LineTo, { borderColor:'wheat',borderStyle: 'dashed', borderWidth: 1, from:`dropped${data.id}`, to:`rs-notes--full-note-${data.id}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } )):null: 
             h( LineTo, { opacity:(selectedLine===data.id)?1:0,borderColor: 'red', borderStyle: 'dashed', borderWidth: 1, from:`dropped${selectedLine}`, to:`rs-notes--full-note-${selectedLine}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } ))
         ),),
         h(NavBar, { ...props, key: 'navbar' }),

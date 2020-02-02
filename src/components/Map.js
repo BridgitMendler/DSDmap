@@ -53,7 +53,7 @@ export const Map = (props) => {
         if (typeof e.clientX !== 'undefined' && typeof e.clientY !== 'undefined'){
         var selection = document.elementsFromPoint(e.clientX,e.clientY)[0].classList[0]
         var selectionTwo =document.elementsFromPoint(e.clientX,e.clientY)[0].localName
-        console.log(selectionTwo)
+        // console.log(selectionTwo)
         if (selection === 'node') {
           document.elementsFromPoint(e.clientX,e.clientY)[0].style.transition = 'all 1s'
           document.elementsFromPoint(e.clientX,e.clientY)[0].setAttribute('r', 15)
@@ -67,7 +67,7 @@ export const Map = (props) => {
           // console.log('i am a link!')
         }
         else if (selectionTwo === 'image') {
-          console.log('selected!')
+          // console.log('selected!')
           document.elementsFromPoint(e.clientX,e.clientY)[0].style.transition = 'all 1s'
           document.elementsFromPoint(e.clientX,e.clientY)[0].setAttribute("x", "-16px")
           document.elementsFromPoint(e.clientX,e.clientY)[0].setAttribute("y", "-16px")
@@ -116,17 +116,17 @@ return
       const nodes = [
         { id: "0default on mortgage", reflexive: false, x: 200, y: 50},
         { id: "1notice of intent to forclose from lender", reflexive: true, x: 200, y: 125},
-        { id: "2lender mail a copy of order to docket",  reflexive: false, x: 250, y: 200 },
-        { id: "3lender file sworn statement of debt including costs associated with foreclosure process on the homeowner's tab", icon: RectGreen.png,reflexive: false, x: 150, y: 200},
-        { id: "4loss mitigation affadavit to homeowner with form allowing homeowner to request mediation", icon: RectGreen.png,reflexive: true, x: 200, y: 200},
+        { id: "2",  reflexive: false, x: 250, y: 200 },
+        { id: "3", icon: RectGreen.png,reflexive: false, x: 150, y: 200},
+        { id: "4", icon: RectGreen.png,reflexive: true, x: 200, y: 200},
         { id: "5Reach out to Maryland HOPE for free counseling, can discuss mediation strategy", reflexive: false, x: 250, y: 275 },
         { id: "6Homeowner 25 days to submit request for mediation and pay mediation fee", reflexive: false, x: 250, y: 350},
-        { id: "7Can file a motion asking the court to waive the fee", icon: RectGreen.png, reflexive: true, x: 300, y: 425},
-        { id: "8Mediation requested (can add up to 60 days to the foreclosure process, valuable time to use to avoid forclosure)", icon: RectGreen.png, reflexive: false, x: 200, y: 425 },
-        { id: "9Office of administrative hearings (OAH) sends a letter stating the time, date, and place of mediation", icon: RectGreen.png, reflexive: false, x: 250, y: 425},
+        { id: "7", icon: RectGreen.png, reflexive: true, x: 300, y: 425},
+        { id: "8", icon: RectGreen.png, reflexive: false, x: 200, y: 425 },
+        { id: "9", icon: RectGreen.png, reflexive: false, x: 250, y: 425},
         { id: "10Send documents to foreclosure attorneys and the office of administrative hearings in the “document exchange” process", reflexive: true, x: 300, y: 500},
-        { id: "11Mediation session", icon: RectGreen.png, reflexive: false, x: 325, y: 575 },
-        { id: "12Discuss a range of solutions", icon: RectGreen.png, reflexive: false, x: 275, y: 575},
+        { id: "11", icon: RectGreen.png, reflexive: false, x: 325, y: 575 },
+        { id: "12", icon: RectGreen.png, reflexive: false, x: 275, y: 575},
         { id: "13Loan modification (change terms of the loan so that you can afford the payment)", reflexive: true, x: 325, y: 650},
 
       ];
@@ -245,6 +245,7 @@ return
                 // update existing links
                 path.classed('selected', (d) => d === selectedLink)
                 .attr('data-name', (d) => d.id)
+                .attr('id', (d) => d.id)
 
                   .style('marker-start', (d) => d.left ? 'url(#start-arrow)' : '')
                   .style('marker-end', (d) => d.right ? 'url(#end-arrow)' : '');
@@ -339,6 +340,7 @@ return
               diamEnter.append("image")
                   .attr("xlink:href", function(d) { return d.icon; })
                   .attr('data-name', (d) => d.id)
+                  .attr('id', (d) => d.id)
                   .attr("x", "-12px")
                   .attr("y", "-12px")
                   .attr("width", "24px")
@@ -390,6 +392,7 @@ return
                   // .attr('class', node')
                   .attr('class', 'node')
                   .attr('data-name', (d) => d.id)
+                  .attr('id', (d) => d.id)
                   .attr('r', 7)
                   .style('fill', "grey")
                   .classed('reflexive', (d) => d.reflexive)
@@ -487,7 +490,7 @@ return
 
               function mouseover(d,i) {
                 moveKnight(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
-                // console.log(bubblePos.x,bubblePos.y, window.event.target.attributes)
+                console.log(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
               d3.select(this).transition()
                   .duration(750)
                   .attr("r", 20);
