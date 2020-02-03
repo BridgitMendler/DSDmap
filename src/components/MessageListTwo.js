@@ -18,6 +18,7 @@ export function MessageListTwo(props){
     li: {
       marginTop: 13,
       marginBottom: 13,
+      backgroundColor: 'grey'
     },
     senderUsername: {
       font: 'avenir next',
@@ -75,9 +76,9 @@ export function MessageListTwo(props){
       const source = ReactDOM.findDOMNode(this)
       var ourSelect = event.target.parentElement.parentElement
       event.target.parentElement.parentElement.attributes.class.value = 'listyTwo dropTarget selectionssss'
-      console.log(event.target.parentElement.parentElement.attributes.class.value);
-      console.log(event.target.parentElement.parentElement.children[1].innerText)
-      console.log(event.target.parentElement.parentElement.parentElement);
+      // console.log(event.target.parentElement.parentElement.attributes.class.value);
+      // console.log(event.target.parentElement.parentElement.children[1].innerText)
+      // console.log(event.target.parentElement.parentElement.parentElement);
       var ssss = (document.getElementsByClassName('selectionssss'))
       var i
       for (i=0; i < ssss.length; i++){
@@ -87,10 +88,11 @@ export function MessageListTwo(props){
 
         }
       }
-      console.log(toChange)
+      // console.log(toChange)
       if (toChange.length > 0){
       toChange[0].attributes.class.value = 'listyTwo dropTarget'
-      console.log(toChange[0].attributes.class.value)}
+      // console.log(toChange[0].attributes.class.value)
+    }
       // if (target == 'rs-notes--header--button rs-notes--header--button__title') {
       //   // this.toggleSidenav(child)
   
@@ -124,7 +126,7 @@ return styles.li}
 //     }
 
     const onDragEnter=(e) =>{
-      console.log(e)
+      // console.log(e)
           }
 
          const onDragOver = (event) => {
@@ -144,7 +146,7 @@ const messageClean = () => {
     newArray[i]['print']= newText[0]
     newArray[i]['time']= newText[3]
     // newArray[i]['deleted']= (isDeleted())
-    console.log(newArray)
+    // console.log(newArray)
   }
   var messageList = []
   var messageNoID = []
@@ -157,7 +159,7 @@ const messageClean = () => {
     c[k].push(v);
     return c;
   }, {}))
-  console.log(result)
+  // console.log(result)
   var j
   for (j = 0; j< result.length; j++) {
     var h
@@ -170,7 +172,7 @@ const messageClean = () => {
     resultTwo.push(soloTime[j][0])
     // console.log(soloTime[j])
   }
-  console.log(result)
+  // console.log(result)
   var k
   for (k = 0; k < newArray.length; k++) {
     var l
@@ -178,13 +180,13 @@ const messageClean = () => {
   if (newArray[k].classNameParent === newArray[l].classNameParent && newArray[k].time < newArray[l].time || typeof newArray[k].time === 'undefined')
   {
     newArray[k].classNameParent = 'listyTwo dropTarget'
-    console.log(newArray[k].classNameParent, newArray[l].classNameParent)
+    // console.log(newArray[k].classNameParent, newArray[l].classNameParent)
     // toRemove.push(k)
   }
 }
   // console.log(newArray2)
   }
-console.log(resultTwo)
+// console.log(resultTwo)
 }
 messageClean()
 

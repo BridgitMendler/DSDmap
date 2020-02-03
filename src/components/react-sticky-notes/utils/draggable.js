@@ -149,6 +149,7 @@ for (c=0; c<counts3.length; c++) {
         // listyTwoHeight = counts3[c]
     }
 }
+console.log('text height ' + textHeight)
 console.log(sourceTwo)
 console.log(sourceTwo, goal)
 console.log('listyTwo height '+ listyTwoHeight)

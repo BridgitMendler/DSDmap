@@ -339,9 +339,23 @@ thisty()
             }
             else {
                 if (this.state.listyPos !== 0) {
-        
+                    if (this.state.listyPos > this.state.genericLoc && this.state.listyPos < (this.state.genericBottom+this.state.genericLoc)){
+                        console.log('yes '+ 'listypos ' + this.state.listyPos + ' generictop ' + this.state.genericLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)
+                        if (this.state.listyPos < (this.state.genericLoc + this.state.textHeight+80)){
+                        // console.log(this.state.listyPos)
+                        return (this.state.genericLoc + this.state.textHeight+110)- (props.scrollScreen)
+                    }
+                    else if (this.state.listyPos < this.state.genericLoc){
+                        // console.log(this.state.listyPos)
+                    return (this.state.genericLoc + this.state.textHeight+30)- (props.scrollScreen)
+                    
+                    }
+                    else {return this.state.listyPos - (props.scrollScreen)}
+                }
+                    else{
                     console.log('listypossing' + this.state.listyPos)
-                    return this.state.listyPos - (props.scrollScreen)
+                    console.log('listypos ' + this.state.listyPos + ' generictop ' + this.state.genericLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)
+                    return this.state.listyPos - (props.scrollScreen)}
             }
             else {return this.getNotePositionY() - (props.scrollScreen)}
         }
@@ -350,6 +364,7 @@ thisty()
         if (this.state.listyPos !== 0) {
 
             console.log('listypossing')
+            console.log('listypos ' + this.state.listyPos + ' generictop ' + this.state.genericLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)
             return this.state.listyPos - (props.scrollScreen)
     }
     else {
