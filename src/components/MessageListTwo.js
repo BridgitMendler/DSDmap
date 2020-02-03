@@ -108,16 +108,23 @@ export function MessageListTwo(props){
 
 // console.log(window.event)
     const windowFocus = (val) => {
-      // console.log(this.props.data.selected, this.props.data.id)
+      console.log(val)
       var theOne = (document.getElementsByClassName('selectionssss'))
+      console.log(theOne)
       if (typeof theOne[0] !== 'undefined'){
+        console.log('not undefined')
         if (theOne[0].innerText === val.print) {
+          console.log('yes theOne[0].innerText ' +typeof theOne[0].innerText + ' val.print ' + typeof val.print)
+          console.log('yes theOne[0].innerText ' +theOne[0].innerText + ' val.print ' + val.print)
           return styles.li2
         }
-        else { return styles.li}
+        else { console.log('no theOne[0].innerText ' +theOne[0].innerText + ' val.print ' + val.print)
+          return styles.li}
     }
       else{
-return styles.li}
+        console.log('was undefined '+ 'theOne' +theOne + ' val.print ' + val.print)
+return styles.li
+}
 }
 // windowFocus('lksagl')
 //     const handleClick=() =>{
@@ -186,7 +193,7 @@ const messageClean = () => {
 }
   console.log(newArray)
   }
-// console.log(resultTwo)
+console.log(resultTwo)
 }
 messageClean()
 
