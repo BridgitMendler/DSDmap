@@ -67,37 +67,37 @@ export function MessageListTwo(props){
     //     dispatch({ type: 'UPDATE_INPUT', data: newValue,});
     // };
 
-   const handleClick =(event) =>{
-     var toChange =[]
-      const target = event.target.className;
-      const child = event.target
-      const layer = child.parentElement
-      const layerTwo = layer.parentElement
-      const source = ReactDOM.findDOMNode(this)
-      var ourSelect = event.target.parentElement.parentElement
-      event.target.parentElement.parentElement.attributes.class.value = 'listyTwo dropTarget selectionssss'
-      // console.log(event.target.parentElement.parentElement.attributes.class.value);
-      // console.log(event.target.parentElement.parentElement.children[1].innerText)
-      // console.log(event.target.parentElement.parentElement.parentElement);
-      var ssss = (document.getElementsByClassName('selectionssss'))
-      var i
-      for (i=0; i < ssss.length; i++){
-        if (ssss[i] !== ourSelect) {
-          toChange.push(ssss[i])
+  //  const handleClick =(event) =>{
+  //    var toChange =[]
+  //     const target = event.target.className;
+  //     const child = event.target
+  //     const layer = child.parentElement
+  //     const layerTwo = layer.parentElement
+  //     const source = ReactDOM.findDOMNode(this)
+  //     var ourSelect = event.target.parentElement.parentElement
+  //     event.target.parentElement.parentElement.attributes.class.value = 'listyTwo dropTarget selectionssss'
+  //     // console.log(event.target.parentElement.parentElement.attributes.class.value);
+  //     // console.log(event.target.parentElement.parentElement.children[1].innerText)
+  //     // console.log(event.target.parentElement.parentElement.parentElement);
+  //     var ssss = (document.getElementsByClassName('selectionssss'))
+  //     var i
+  //     for (i=0; i < ssss.length; i++){
+  //       if (ssss[i] !== ourSelect) {
+  //         toChange.push(ssss[i])
 
 
-        }
-      }
-      // console.log(toChange)
-      if (toChange.length > 0){
-      toChange[0].attributes.class.value = 'listyTwo dropTarget'
-      // console.log(toChange[0].attributes.class.value)
-    }
-      // if (target == 'rs-notes--header--button rs-notes--header--button__title') {
-      //   // this.toggleSidenav(child)
+  //       }
+  //     }
+  //     // console.log(toChange)
+  //     if (toChange.length > 0){
+  //     toChange[0].attributes.class.value = 'listyTwo dropTarget'
+  //     // console.log(toChange[0].attributes.class.value)
+  //   }
+  //     // if (target == 'rs-notes--header--button rs-notes--header--button__title') {
+  //     //   // this.toggleSidenav(child)
   
-      // } 
-    }
+  //     // } 
+  //   }
 
 
   const onSubmit =(e)=> {
@@ -184,7 +184,7 @@ const messageClean = () => {
     // toRemove.push(k)
   }
 }
-  // console.log(newArray2)
+  console.log(newArray)
   }
 // console.log(resultTwo)
 }
@@ -206,7 +206,7 @@ if (props.currentUser.id === 'B')
             <li className={message.classNameParent} key={index} style={windowFocus(message)} >
               <h1 style={styles.button}
             className="title"
-            onClick={onSubmit, handleClick}
+            onClick={onSubmit}
           ><img className='pictureThree noselect' src={pic}></img></h1>
               <p className='listyText noselect' style={styles.message}>{message.print}</p>
             </li>
@@ -214,6 +214,7 @@ if (props.currentUser.id === 'B')
         </ul>
       </div>
     )
+    
           }
           else {
             return (
