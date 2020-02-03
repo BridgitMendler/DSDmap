@@ -212,6 +212,9 @@ const removeTodo = () => {
     const [hasDropped, setHasDropped] = useState(false)
 
     return [
+        h(NavBar, { ...props, key: 'navbar' }),
+        h(NavBarTwo, { ...props, key: 'green' }),
+        h(NavBarThree, { ...props, key: 'red' }),
         h('div', {
             key: props.prefix, 
             className: props.prefix,
@@ -242,8 +245,5 @@ const removeTodo = () => {
             newNot.map( data => props.hidden ? (props.visible === true)? (h( LineTo, { borderColor:'wheat',borderStyle: 'dashed', borderWidth: 1, from:`dropped${data.id}`, to:`rs-notes--full-note-${data.id}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } )):null: 
             h( LineTo, { opacity:(selectedLine===data.id)?1:0,borderColor: 'red', borderStyle: 'dashed', borderWidth: 1, from:`dropped${selectedLine}`, to:`rs-notes--full-note-${selectedLine}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } ))
         ),),
-        h(NavBar, { ...props, key: 'navbar' }),
-        h(NavBarTwo, { ...props, key: 'green' }),
-        h(NavBarThree, { ...props, key: 'red' }),
     ]
 }

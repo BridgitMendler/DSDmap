@@ -100,6 +100,8 @@ handleMapClick(event) {
 
 handleLineClick(event) {
   const hidden = this.state.hidden
+  // console.log(event)
+  // console.log(this.state.hidden)
    if (hidden === true) {
      this.setState({
        hidden: this.state.hidden = false,
@@ -281,10 +283,10 @@ this.setState({ scrollVals: joined })
         width: 55,
         height: 55,
         margin: 10,
-        flex: 'right',
+        // flex: 'right',
         textAlign: 'center',
-        display: 'block',
-        // float: 'right'
+        display: 'inline-block',
+        float: 'right'
       },
 
       button2: {
@@ -293,7 +295,7 @@ this.setState({ scrollVals: joined })
         margin: 10,
         flex: 'right',
         textAlign: 'center',
-        display: 'block',
+        display: 'inline-block',
         float: 'right'
       },
 
@@ -306,10 +308,16 @@ this.setState({ scrollVals: joined })
         justifyContent: 'center',
         alignItems: 'center',
       },
+
+      onlineList: {
+        float: 'left',
+        flex: 'right',
+        display: 'inline-block',
+      },
       MessageList: {
         width: '23vw',
         borderBottom: '1px solid grey',
-        borderTop: '1px solid grey'
+        // borderTop: '1px solid grey'
       },
       divStyle: {
         padding: 20,
@@ -323,13 +331,15 @@ this.setState({ scrollVals: joined })
     return (<div>
     <div onClick={this.handleClick} onScroll= {this.handleScroll}>       
         <aside style={styles.whosOnlineListContainer}>
-          <div style={styles.borderBox}>
-          <MessageTwo onSubmit={this.sendMessage} />
-          <WhosOnlineList 
+        <WhosOnlineList 
+                    style= {styles.onlineList}
             className='onlineList noselect' 
             currentUser={this.state.currentUser} 
             users={this.state.currentRoom.users}
           />
+          <div style={styles.borderBox}>
+          <MessageTwo onSubmit={this.sendMessage} />
+
           <h1 style={styles.button2}
             className="title2"
             onClick={this.handleLineClick}
@@ -338,18 +348,7 @@ this.setState({ scrollVals: joined })
             className="title"
             onClick={this.handleMapClick}
           ><img className='pictureThree noselect' src={pic}></img></h1>
-
-              </div>
-          </aside>   
-          <svg className={`${this.state.mapName}`} height="700">
-               <Map className={`${this.state.mapName}`} onSubmit={this.sendMessage} knightPosition={this.state.knightPos}/> 
-               </svg> 
-    <div style={styles[this.state.sidePanel]} className={`${this.state.sidePanel}`} >
-      <MessageListTwo className='messageListTwo' onSubmit={this.sendMessage} messages={this.state.postings} style={styles.transforming}/>
-    </div>
-    <div style={styles.chatContainer} className={`${this.state.feedback}`} >
-      <section style={styles.chatContainer} className={`${this.state.feedback}`}>
-          <ReactStickyNotes className='stickyButton'
+               <ReactStickyNotes className='stickyButton'
             onChange={this.sendTypingEvent}
             onSubmit={this.sendMessage}
             backgroundColor="#fefefe"
@@ -364,8 +363,19 @@ this.setState({ scrollVals: joined })
             notesy={this.state.notesy}
             delNote={this.state.delNote}
           />
+              </div>
+              
+          </aside>   
+          <svg className={`${this.state.mapName}`} height="700">
+               <Map className={`${this.state.mapName}`} onSubmit={this.sendMessage} knightPosition={this.state.knightPos}/> 
+               </svg> 
+    <div style={styles[this.state.sidePanel]} className={`${this.state.sidePanel}`} >
+      <MessageListTwo className='messageListTwo' onSubmit={this.sendMessage} messages={this.state.postings} style={styles.transforming}/>
+    </div>
+    <div style={styles.chatContainer} className={`${this.state.feedback}`} >
+      <section style={styles.chatContainer} className={`${this.state.feedback}`}>
           <div className="messages"style={styles.MessageList}>
-            <MessageList messages={this.state.messages}/>
+            <MessageList messages={this.state.messages} users={this.state.currentRoom.users} currentUsername={this.props.currentUsername}/>
             <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping} />
             <SendMessageForm onSubmit={this.sendMessage}onChange={this.sendTypingEvent}/>
           </div>

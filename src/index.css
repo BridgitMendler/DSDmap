@@ -378,16 +378,20 @@ Popup {
   }
 
 .rs-notes--navbar {
-  margin-left: 180%;
-  margin-top: 50%;
+  margin-left: 20%;
+  /* margin-top: 0%;  */
   /* height: '100px';
   width: '50px';
   margin-top: '50px';  */
   background-color: #ECCC8E;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
-  /* margin: 100; */
+  /* margin: 0 auto; */
+  float: 'left';
+  display:inline-block;
   /* display: flex;
   flex-wrap: wrap; */
+  /* display: flex;
+  float: 'left' */
 }
 
 /* .rs-notes--navbar__nav {
@@ -438,16 +442,20 @@ Popup {
 
 
 .rs-notes--green {
-  margin-left: 180%;
-  margin-top: 50%;
+  margin-left: 2%;
+  /* margin-top: 0%;  */
   /* height: '100px';
   width: '50px';
   margin-top: '50px';  */
   background-color: #5B7961;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
-  /* margin: 100; */
-  /* display: flex;
-  flex-wrap: wrap; */
+  /* margin: 0 auto; */
+  float: 'left';
+  display:inline-block;
+  /* display: flex; 
+  flex-wrap: wrap;
+  display: flex;
+  float: 'right' */
 }
 
 
@@ -482,16 +490,21 @@ Popup {
 
 
 .rs-notes--red {
-  margin-left: 180%;
-  margin-top: 50%;
+  margin-left: 2%;
+  /* margin-left: 10%;
+  margin-top: 0%; */
   /* height: '100px';
   width: '50px';
   margin-top: '50px';  */
   background-color: #975347;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
-  /* margin: 100; */
+  float: 'left';
+  display:inline-block;
+  /* margin: 0 auto; */
   /* display: flex;
   flex-wrap: wrap; */
+  /* display: flex;
+
 }
 
 
@@ -530,7 +543,6 @@ Popup {
   display:flex;
   font-family: 'avenir next';
   /* float: right */
-  /* text-align: right; */
 }
 
 .listyNess {
@@ -559,11 +571,11 @@ Popup {
 }
 
 .messages {
-  border-top: 1px solid grey;
+  /* border-top: 1px solid grey; */
   border-bottom: 1px solid grey;
   padding: 10px;
   float: left;
-  transform: translate(0px, 90.5px)
+  /* transform: translate(0px, 90.5px) */
   /* text-align: right; */
 }
 
@@ -590,14 +602,17 @@ Popup {
 
   width: 72px;
   height: 60px;
-  margin-top: 10px
+  margin-top: 10px;
+  display: inline-block
 }
 
 .pictureThree {
   margin-top: 3px;
   width: 40px;
   height: 40px;
-  align-items: center;
+  /* align-items: center; */
+  float: 'left';
+  display:inline-block;
 }
 .pictureLine {
   margin-bottom: 23px;
@@ -611,8 +626,8 @@ Popup {
 }
 
 .title2 {
-  transform: translateY(-10px);
-  padding-right: 640px;
+  /* transform: translateY(-10px);
+  padding-right: 640px; */
   cursor: pointer;
 }
 
@@ -631,9 +646,10 @@ Popup {
 
 
 .stickyButton {
-float: left
+/* float: left */
 }
 
-.onlineList {
+/* .onlineList {
+  padding-left: 111;
   float: left
-  }
+  } */

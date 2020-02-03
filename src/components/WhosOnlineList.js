@@ -77,9 +77,8 @@ class WhosOnlineListItem extends Component {
     const styles = {
       li: {
         display: 'inline-block',
-            // alignItems: 'center',
-        float: 'right',
-        marginTop: 5,
+        float: 'left',
+        marginTop: 25,
         marginBottom: 5,
         paddingTop: 2,
         paddingBottom: 2,
@@ -102,36 +101,17 @@ class WhosOnlineListItem extends Component {
     }
     const name = this.props.children[2].toString()
     const fullname = this.props.children[0]
-    // console.log(name)
 
 
     
     return (
-      
-/* <li style={styles.li}>
-        <div
-          style={{
-            ...styles.div,
-            backgroundColor:
-              this.props.presenceState === 'online' ? '#539eff' : '#414756',
-          }}
-        />
-        {this.props.children}
-      </li>
- */
-
-
-
-
-
       <li style={styles.li}>
         <div data-tip data-for={name}
           style={{
             ...styles.div,
             backgroundColor: this.state.selectedColor,
-              // width: this.props.presenceState === 'online' ? 51 :41,
-              // height:this.props.presenceState === 'online' ? 51 :41,
-  }}><p style={{...styles.cats}}>{fullname[0]}</p>
+  }}>
+    <p style={{...styles.cats}}>{fullname[0]}</p>
 
             </div>
             <ReactTooltip id={name}type='error'>
