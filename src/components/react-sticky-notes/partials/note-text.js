@@ -65,7 +65,7 @@ const onChange= (e) =>{
                     }
                 })
             )
-        ),h("button", {onClick: onSubmit, className: 'noteSend', style: {color: 'grey', outline: 'yellow'}}, "share")
+        ),h("button", {onClick: onSubmit, className: 'noteSend noselect', style: {color: 'grey', outline: 'yellow'}}, "share")
         
     )
 }

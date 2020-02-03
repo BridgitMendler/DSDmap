@@ -4,7 +4,7 @@ import { h, getNoteTitle } from './../utils';
 export function ButtonAdd({prefix, data, icons, callbacks}){
     return h('button',{
         key: `${prefix}--button__add`,
-        className:`${prefix}--button ${prefix}--button__add`,
+        className:`${prefix}--button ${prefix}--button__add noselect`,
         onClick:(e)=>callbacks.addItem(e, {id: data?data.id:null, position:data?data.position:null, selected: true})
     }, 
         icons.add
@@ -13,8 +13,8 @@ export function ButtonAdd({prefix, data, icons, callbacks}){
 
 export function ButtonAddR({prefix, data, icons, callbacks}){
     return h('button',{
-        key: `${prefix}--button__addG`,
-        className:`${prefix}--buttonG ${prefix}--button__addG`,
+        key: `${prefix}--button__addG `,
+        className:`${prefix}--buttonG ${prefix}--button__addG noselect`,
         onClick:(e)=>callbacks.addItem(e, {id: data?data.id:null, position:data?data.position:null, selected: true})
     }, 
         icons.addG
@@ -24,7 +24,7 @@ export function ButtonAddR({prefix, data, icons, callbacks}){
 export function ButtonAddG({prefix, data, icons, callbacks}){
     return h('button',{
         key: `${prefix}--button__addR`,
-        className:`${prefix}--buttonR ${prefix}--button__addR`,
+        className:`${prefix}--buttonR ${prefix}--button__addR noselect`,
         onClick:(e)=>(callbacks.addItem(e, {id: data?data.id:null, position:data?data.position:null, selected: true}), console.log('clicked'))
     }, 
         icons.addR
@@ -100,7 +100,7 @@ export function ButtonTrash({prefix, data, icons, callbacks, removeTodo}, props)
     // console.log(newText[0])
     return h('button',{
         key: `${prefix}--button__trash`,
-        className:`${prefix}--button ${prefix}--button__trash`,
+        className:`${prefix}--button ${prefix}--button__trash noselect`,
         onClick:(e)=>(
         callbacks.onSubmit(('hhhhh' + `${newText[0]}`+ `_${data.position.x},${data.position.x}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`+ '_yes')))
     }, 

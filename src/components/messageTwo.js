@@ -14,7 +14,7 @@ class MessageTwo extends Component {
 
   onSubmit(e) {
     e.preventDefault()
-    this.props.onSubmit(('fffff' + this.state.text))
+    this.props.onSubmit(('fffff' + this.state.text + '_listyTwo dropTarget selectionssss'+ '_listyText noselect'+ `_${Math.round((new Date()).getTime() / 1000)}`))
     this.setState({ text: '' })
     
   }
@@ -54,7 +54,7 @@ class MessageTwo extends Component {
     // >
     //   <span> Modal content </span>
     // </Popup>
-      <Popup trigger={<button onClick={this.handleClick} className='myButton'> <img className='pictureTwo' src={pic}></img></button>} modal position="right center">
+      <Popup trigger={<button onClick={this.handleClick} className='myButton'> <img className='pictureTwo noselect' src={pic}></img></button>} modal position="right center">
       <div style={styles.container}>
         <div>
           <form onSubmit={this.onSubmit} style={styles.form}>

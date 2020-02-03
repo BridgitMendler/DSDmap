@@ -326,18 +326,18 @@ this.setState({ scrollVals: joined })
           <div style={styles.borderBox}>
           <MessageTwo onSubmit={this.sendMessage} />
           <WhosOnlineList 
-            className='onlineList' 
+            className='onlineList noselect' 
             currentUser={this.state.currentUser} 
             users={this.state.currentRoom.users}
           />
           <h1 style={styles.button2}
             className="title2"
             onClick={this.handleLineClick}
-          ><img className='pictureLine' src={this.state.hidden? pic3:pic2}></img></h1>
+          ><img className='pictureLine noselect' src={this.state.hidden? pic3:pic2}></img></h1>
           <h1 style={styles.button}
             className="title"
             onClick={this.handleMapClick}
-          ><img className='pictureThree' src={pic}></img></h1>
+          ><img className='pictureThree noselect' src={pic}></img></h1>
 
               </div>
           </aside>   
@@ -345,7 +345,7 @@ this.setState({ scrollVals: joined })
                <Map className={`${this.state.mapName}`} onSubmit={this.sendMessage} knightPosition={this.state.knightPos}/> 
                </svg> 
     <div style={styles[this.state.sidePanel]} className={`${this.state.sidePanel}`} >
-      <MessageListTwo className='messageListTwo' messages={this.state.postings} style={styles.transforming}/>
+      <MessageListTwo className='messageListTwo' onSubmit={this.sendMessage} messages={this.state.postings} style={styles.transforming}/>
     </div>
     <div style={styles.chatContainer} className={`${this.state.feedback}`} >
       <section style={styles.chatContainer} className={`${this.state.feedback}`}>

@@ -92,9 +92,9 @@ const MessagesList = (props) => {
           {props.messages.map((message, index) => (
             <li key={index}  style={styles.li} >
               <div>
-                <span style={styles.senderUsername}>{message.senderId}</span>
+                <span className='noselect' style={styles.senderUsername}>{message.senderId}</span>
               </div>
-              <p className="listy" style={styles.message}>{'   ' + message.text}</p>
+              <p className="listy noselect" style={styles.message}>{'   ' + message.text}</p>
             </li>
           ))}
                 <div ref={messagesEndRef} />
