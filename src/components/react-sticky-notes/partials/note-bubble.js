@@ -33,13 +33,13 @@ var findit =document.getElementById(props.data['label']);
 let word_With_Numbers = props.data.id
 let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
 var myRand = word_Without_Numbers[0]
-console.log(myRand)
+// console.log(myRand)
 var myElementTop = () => {
 var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.id}`)[0]
 if ( typeof myEl !== 'undefined') {
     myEl = myEl.style.top
     myEl = parseFloat(myEl.replace(/\D/g, ''))
-    console.log(myEl, myEl + 110)
+    // console.log(myEl, myEl + 110)
     return myEl + 510
 }}
 
@@ -107,7 +107,7 @@ mouseEventFind()
     const findX = (idValue) => {
 if (typeof props.data.label !== 'undefined' && props.data.label.length > 1){
         if (findit !== null) {
-            console.log(myRand)
+            // console.log(myRand)
             return ((findit.getBoundingClientRect().left -30)+ (myRand/.75))
         }
     }
@@ -129,9 +129,9 @@ if (typeof props.data.label !== 'undefined' && props.data.label.length > 1){
         if (typeof props.data.label !== 'undefined' && props.data.label.length > 1) {    
             if (typeof knightPos[0] !== 'undefined' && knightPos.length > 0){
                 const knightPosVersion = knightPos[0][2]
-                console.log(knightPosVersion)
+                // console.log(knightPosVersion)
         if (props.data.label===knightPos[0][2]) {
-            console.log('match!')
+            // console.log('match!')
             return 'tomato'
         }
 else {

@@ -67,7 +67,9 @@ class Note extends React.Component{
             listyPos: 0,
             listy: [],
             genericLoc: 0,
-            visibleList: []
+            visibleList: [],
+            textHeight: 0,
+            genericBottom: 0
 
         }
     }
@@ -338,7 +340,7 @@ thisty()
             else {
                 if (this.state.listyPos !== 0) {
         
-                    // console.log(myScroll)
+                    console.log('listypossing' + this.state.listyPos)
                     return this.state.listyPos - (props.scrollScreen)
             }
             else {return this.getNotePositionY() - (props.scrollScreen)}
@@ -347,7 +349,7 @@ thisty()
     else {
         if (this.state.listyPos !== 0) {
 
-            // console.log(myScroll)
+            console.log('listypossing')
             return this.state.listyPos - (props.scrollScreen)
     }
     else {
@@ -356,8 +358,20 @@ thisty()
     }
     else {
         if (this.state.listyPos !== 0) {
+if (this.state.listyPos > this.state.genericLoc && this.state.listyPos < (this.state.genericBottom+this.state.genericLoc)){
+    if (this.state.listyPos < (this.state.genericLoc + this.state.textHeight)){
+    // console.log(this.state.listyPos)
+    return (this.state.genericLoc + this.state.textHeight+30)
+}
 
-            // console.log(this.state.listyPos)
+}
+else if (this.state.listyPos < this.state.genericLoc){
+    // console.log(this.state.listyPos)
+return (this.state.genericLoc + this.state.textHeight+30)
+
+}
+else{
+            console.log('listypos ' + this.state.listyPos + ' generictop ' + this.state.genericLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)}
             return this.state.listyPos - (props.scrollScreen)
     }
     else {return this.getNotePositionY() - (props.scrollScreen)}
@@ -408,7 +422,7 @@ var newText = props.data.text.split(/[_,]+/);
                 className: `${props.prefix}--full-note-${props.data.id} full-notey-note' ${props.data.id}`,
                 selected: props.data.selected,
                 target: this.targetRef,
-                onMouseDownMove:(pos) => (this.setState({mouseStatus:pos.mouseStatus, listyPos:pos.listyPos, genericLoc:pos.genericLoc})),
+                onMouseDownMove:(pos) => (this.setState({mouseStatus:pos.mouseStatus, listyPos:pos.listyPos, genericLoc:pos.genericLoc, textHeight:pos.textHeight, genericBottom: pos.genericBottom})),
                 // onClick: (e) =>(console.log('clicked'),onStart(e)),
                 onDragComplete:(pos)=> (setWhatDragShouldDo(), 
                 props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.x},${pos.y}`+`_${props.data.id}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.x}_${pos.y}`)),

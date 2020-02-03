@@ -21,7 +21,7 @@ export function MessageListTwo(props){
       font: 'avenir next',
       fontWeight: 'medium',
     },
-    message: { fontWeight: 'medium', font:'avenir next', fontSize: 75 },
+    message: { fontWeight: 'medium', font:'avenir next', fontSize: 40 },
 }
   
 // const {state, dispatch} = useContext(AppContext);
