@@ -34,7 +34,7 @@ const MessagesList = (props) => {
       marginBottom: 13,
     },
     senderUsername: {
-      fontWeight: 'bold',
+      fontSize: 10 
     },
     message: { fontSize: 15 },
 
@@ -91,12 +91,8 @@ const MessagesList = (props) => {
         <ul style={styles.ul}>
           {props.messages.map((message, index) => (
             <li key={index}  style={styles.li} >
-              <div className="listyNess" style={{
-            ...styles.div,
-            backgroundColor:
-              props.presenceState === 'online' ? 'white': 'white',
-              float: props.presenceState === 'right' ? 'right' : 'left', border: '1px solid grey'}}>
-                <span style={styles.senderUsername}>{message.senderId[0]}</span>
+              <div>
+                <span style={styles.senderUsername}>{message.senderId}</span>
               </div>
               <p className="listy" style={styles.message}>{'   ' + message.text}</p>
             </li>

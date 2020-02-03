@@ -361,13 +361,13 @@ thisty()
 if (this.state.listyPos > this.state.genericLoc && this.state.listyPos < (this.state.genericBottom+this.state.genericLoc)){
     if (this.state.listyPos < (this.state.genericLoc + this.state.textHeight)){
     // console.log(this.state.listyPos)
-    return (this.state.genericLoc + this.state.textHeight+30)
+    return (this.state.genericLoc + this.state.textHeight+30)- (props.scrollScreen)
 }
 
 }
 else if (this.state.listyPos < this.state.genericLoc){
     // console.log(this.state.listyPos)
-return (this.state.genericLoc + this.state.textHeight+30)
+return (this.state.genericLoc + this.state.textHeight+30)- (props.scrollScreen)
 
 }
 else{
