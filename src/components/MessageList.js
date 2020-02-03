@@ -8,11 +8,11 @@ const MessagesList = (props) => {
 
   const whichUser = (id) => {
     if (id.senderId === props.currentUsername) {
-      console.log(id)
+      // console.log(id)
       return styles.li2
     }
-    console.log(id)
-    console.log(props.currentUsername)
+    // console.log(id)
+    // console.log(props.currentUsername)
     return styles.li
   }
 
@@ -112,7 +112,7 @@ const MessagesList = (props) => {
 
   },[])
   if (typeof props.users !== 'undefined') {
-console.log(props.users)
+// console.log(props.users)
   }
 
   // if (user.id === this.props.currentUser.id) {
@@ -129,7 +129,7 @@ console.log(props.users)
   // )
   // const name = props.children[2].toString()
   // const fullname = props.children[0]
-console.log(props.messages)
+// console.log(props.messages)
     return (
       <div 
       style={{...props.style,

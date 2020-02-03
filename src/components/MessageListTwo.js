@@ -190,6 +190,8 @@ const messageClean = () => {
 }
 messageClean()
 
+if (props.currentUser.id === 'B')
+{
     return (
       <div className="listyThree" 
       // value={state.inputValue} onChange={e => changeInputValue(e.target.value)}
@@ -212,5 +214,26 @@ messageClean()
         </ul>
       </div>
     )
+          }
+          else {
+            return (
+              <div className="listyThree" 
+              // value={state.inputValue} onChange={e => changeInputValue(e.target.value)}
+                style={{
+                  ...props.style,
+                  ...styles.container,
+                }}
+                 
+              >
+                <ul style={styles.ul} id='listyTwoId'>
+                  {resultTwo.slice(0).reverse().map((message, index) => (
+                    <li className={message.classNameParent} key={index} style={windowFocus(message)} >
+                      <p className='listyText noselect' style={styles.message}>{message.print}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
   }
   export default MessageListTwo

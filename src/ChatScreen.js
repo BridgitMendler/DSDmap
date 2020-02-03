@@ -338,7 +338,9 @@ this.setState({ scrollVals: joined })
             users={this.state.currentRoom.users}
           />
           <div style={styles.borderBox}>
-          <MessageTwo onSubmit={this.sendMessage} />
+          <MessageTwo onSubmit={this.sendMessage} 
+          currentUser={this.state.currentUser} 
+            users={this.state.currentRoom.users}/>
 
           <h1 style={styles.button2}
             className="title2"
@@ -370,7 +372,7 @@ this.setState({ scrollVals: joined })
                <Map className={`${this.state.mapName}`} onSubmit={this.sendMessage} knightPosition={this.state.knightPos}/> 
                </svg> 
     <div style={styles[this.state.sidePanel]} className={`${this.state.sidePanel}`} >
-      <MessageListTwo className='messageListTwo' onSubmit={this.sendMessage} messages={this.state.postings} style={styles.transforming}/>
+      <MessageListTwo className='messageListTwo' currentUser={this.state.currentUser} onSubmit={this.sendMessage} messages={this.state.postings} style={styles.transforming}/>
     </div>
     <div style={styles.chatContainer} className={`${this.state.feedback}`} >
       <section style={styles.chatContainer} className={`${this.state.feedback}`}>

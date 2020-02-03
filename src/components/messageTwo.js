@@ -46,6 +46,13 @@ class MessageTwo extends Component {
         fontFamily: 'avenir next'
       },
     }
+
+    // console.log(this.props.currentUser.id)
+
+    if (this.props.currentUser.id === 'B')
+    {
+      // console.log('yay')
+    
     return (
     //   <Popup
     //   trigger={<button className="button"> Open Modal </button>}
@@ -70,6 +77,10 @@ class MessageTwo extends Component {
       </div>
       </Popup>
     )
+    }
+    else {
+      return (<div />)
+    }
   }
 }
 
