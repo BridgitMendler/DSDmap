@@ -168,7 +168,9 @@ const weMove =()=> {
     if (resultTwo[i].classNameParent === theOne[0].className){
   // console.log(resultTwo[i])
     if (typeof locaa !== 'undefined'){
-      locaa[0].scrollTo({behavior: "smooth",
+      if (typeof locaa[0] !== 'undefined'){
+        var locaaa = locaa[0]
+      locaaa.scrollTo({behavior: "smooth",
       top:resultTwo[i].scrollPos})}
     }}
       }}
