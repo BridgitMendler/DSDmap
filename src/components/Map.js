@@ -8,7 +8,7 @@ import Draggable from './react-sticky-notes/utils/draggable';
 import Overlay from './Overlay';
 import {NoteBubble} from './react-sticky-notes/partials/note-bubble'
 import RectGreen from './RectGreen.png';
-import RectRed from './RectRed.png';
+import RectPale from './Rect.png';
 
 export const Map = (props) => {
     const [nodes1, setNodes] = useState(null);
@@ -103,14 +103,14 @@ return
         // console.log(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
 
         const diamonds = [
-          { id: "2mortgagemortgage", icon: RectGreen,reflexive: false, x: 250, y: 200 },
-          { id: "3lender file sworn statement of debt including costs associated with foreclosure process on the homeowner's tab", icon: RectRed,reflexive: false, x: 150, y: 200},
-          { id: "4loss mitigation affadavit to homeowner with form allowing homeowner to request mediation", icon: RectGreen,reflexive: true, x: 200, y: 200},
-          { id: "7Can file a motion asking the court to waive the fee", icon: RectGreen,reflexive: true, x: 300, y: 425},
-          { id: "8Mediation requested (can add up to 60 days to the foreclosure process, valuable time to use to avoid forclosure)", icon: RectRed,reflexive: false, x: 200, y: 425 },
-          { id: "9Office of administrative hearings (OAH) sends a letter stating the time, date, and place of mediation", icon: RectGreen,reflexive: false, x: 250, y: 425},
-          { id: "11Mediation session", icon: RectGreen,reflexive: false, x: 325, y: 575 },
-          { id: "12Discuss a range of solutions", icon: RectRed,reflexive: false, x: 275, y: 575}
+          { id: "2mortgagemortgage", icon: RectPale,reflexive: false, x: 250, y: 200 },
+          { id: "3lender file sworn statement of debt including costs associated with foreclosure process on the homeowner's tab", icon: RectPale,reflexive: false, x: 150, y: 200},
+          { id: "4loss mitigation affadavit to homeowner with form allowing homeowner to request mediation", icon: RectPale,reflexive: true, x: 200, y: 200},
+          { id: "7Can file a motion asking the court to waive the fee", icon: RectPale,reflexive: true, x: 300, y: 425},
+          { id: "8Mediation requested (can add up to 60 days to the foreclosure process, valuable time to use to avoid forclosure)", icon: RectPale,reflexive: false, x: 200, y: 425 },
+          { id: "9Office of administrative hearings (OAH) sends a letter stating the time, date, and place of mediation", icon: RectPale,reflexive: false, x: 250, y: 425},
+          { id: "11Mediation session", icon: RectPale,reflexive: false, x: 325, y: 575 },
+          { id: "12Discuss a range of solutions", icon: RectPale,reflexive: false, x: 275, y: 575}
         ]
 
       const nodes = [
@@ -185,7 +185,7 @@ return
               .attr('orient', 'auto')
             .append('path')
               // .attr('d', 'M0,-5L10,0L0,5')
-              .attr('fill', '#61776E');
+              .attr('fill', '#9FA7B8');
 
 
           // line displayed when dragging new nodes
@@ -320,8 +320,10 @@ return
 
                   diamond.selectAll('diamond')
                   .attr("xlink:href", function(d) { return d.icon; })
-                  .attr("width", "24px")
-                  .attr("height", "24px")
+                  .attr("width", "34px")
+                  .attr("height", "34px")
+                  .style('stroke', 'black')
+                  .style('stroke-width', 7)
                   .classed('reflexive', (d) => d.reflexive);
 
                 // remove old nodes
@@ -341,10 +343,12 @@ return
                   .attr("xlink:href", function(d) { return d.icon; })
                   .attr('data-name', (d) => d.id)
                   .attr('id', (d) => d.id)
-                  .attr("x", "-12px")
-                  .attr("y", "-12px")
-                  .attr("width", "24px")
-                  .attr("height", "24px")
+                  .attr("x", "-14px")
+                  .attr("y", "-14px")
+                  .attr("width", "28px")
+                  .attr("height", "28px")
+                  .style('stroke', 'black')
+                  .style('stroke-width', 7)
                   .on("mouseenter", function(e) {
                     tooltipElement.textContent = (e.id)
                     d3.select("#tooltip").classed("hidden", false);
@@ -360,10 +364,10 @@ return
                     d3.select(this).attr('class', 'diamond')
                     d3.select(this).transition()
                     .duration(750)
-                    .attr("x", "-12px")
-                    .attr("y", "-12px")
-                    .attr("width", "24px")
-                    .attr("height", "24px")
+                    .attr("x", "-14px")
+                    .attr("y", "-14px")
+                    .attr("width", "28px")
+                    .attr("height", "28px")
                   })
 
 
@@ -394,7 +398,9 @@ return
                   .attr('data-name', (d) => d.id)
                   .attr('id', (d) => d.id)
                   .attr('r', 7)
-                  .style('fill', "grey")
+                  .style('fill', "#CACFDA")
+                  // .style('stroke', '#82827E')
+                  // .style('stroke-width', .5)
                   .classed('reflexive', (d) => d.reflexive)
                   .on("mouseover", function(e) {
                       tooltipElement.textContent = (e.id)

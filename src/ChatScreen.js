@@ -251,23 +251,23 @@ this.setState({ scrollVals: joined })
       chatContainerTwo: {
         // width:'77%' ,
         float: 'right',
-        borderRight: '1px solid grey',
-        borderLeft: '1px solid grey',
+        borderRight: '1px solid rgba(0, 0, 0, 0.14)',
+        borderLeft: '1px solid rgba(0, 0, 0, 0.14)',
         // display: 'flex',
         // flex: 1,
       },
       chatContainerTwoClosed: {
         // width:'49.75%' ,
         float: 'right',
-        borderRight: '1px solid grey',
-        borderLeft: '1px solid grey',
+        borderRight: '1px solid rgba(0, 0, 0, 0.14)',
+        borderLeft: '1px solid rgba(0, 0, 0, 0.14)',
         // display: 'flex',
         // flex: 1,
       },
       borderBox: {
         padding: '10px',
-        borderBottom: '1px solid grey',
-        borderTop: '1px solid grey'
+        borderBottom: '1px solid rgba(0, 0, 0, 0.14)',
+        borderTop: '1px solid rgba(0, 0, 0, 0.14)'
         // display: 'flex',
         // flex: 1,
       },
@@ -278,7 +278,7 @@ this.setState({ scrollVals: joined })
       },
 
       button: {
-        border: '1px solid grey',
+        border: '1px solid rgba(0, 0, 0, 0.14)',
         borderRadius: 70,
         width: 55,
         height: 55,
@@ -316,7 +316,7 @@ this.setState({ scrollVals: joined })
       },
       MessageList: {
         width: '23vw',
-        borderBottom: '1px solid grey',
+        borderBottom: '1px solid rgba(0, 0, 0, 0.14)',
         // borderTop: '1px solid grey'
       },
       divStyle: {

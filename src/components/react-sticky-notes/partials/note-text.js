@@ -54,7 +54,7 @@ const onChange= (e) =>{
                 onChange: onChange,
                 value: text,
                 style: {
-                    color: 'white',
+                    color: '#515151',
                     background: 'none',
                     outline: 'none',
                     border: 'none',

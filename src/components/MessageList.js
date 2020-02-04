@@ -35,6 +35,7 @@ const MessagesList = (props) => {
       height: '600px',
       // width: '350px',
       overflowY: 'scroll',
+      backgroundColor: 'rgba(0, 0, 0, 0.03)',
       flex: 1,
     },
     ul: {
@@ -49,23 +50,42 @@ const MessagesList = (props) => {
 
 
 //     },
+
+// .listy {
+//   border: 1px solid grey;
+//   padding: 10px;
+//   border-radius: 25px;
+//   display:flex;
+//   font-family: 'avenir next';
+//   box-shadow: '4px 4px 10px rgba(0, 0, 0, 0.4)'
+//   /* float: right */
+// }
+
     li: {
       marginTop: 8,
       marginBottom: 13,
-      marginRight: 30
+      marginRight: 30,
+
+      // boxShadow: '4px 4px 10px rgba(0, 0, 0, 0.4)'
     },
     li2: {
       // width: 245,
       marginTop: 8,
       marginBottom: 13,
       marginLeft: 60,
-      textAlign: 'right'
+      textAlign: 'right',
+
     },
       
     senderUsername: {
       fontSize: 10 
     },
-    message: { fontSize: 15},
+    message: { fontSize: 15,
+      borderRadius: 25,
+      fontFamily: 'avenir next',
+            boxShadow: '2px 2px 6px rgba(0, 0, 0, 0.3)',
+            backgroundColor: 'white'
+    },
 
     div: {
       borderRadius: '150%',

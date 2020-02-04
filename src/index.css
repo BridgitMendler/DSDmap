@@ -15,7 +15,7 @@ body {
 }
 
 .forNotes::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color:white;
+  color:#515151;
   opacity: 1; /* Firefox */
 }
 .Resizer {
@@ -38,8 +38,8 @@ body {
 .Resizer.horizontal {
   height: 11px;
   margin: -5px 0;
-  border-top: 5px solid rgba(255, 255, 255, 0);
-  border-bottom: 5px solid rgba(255, 255, 255, 0);
+  border-top: 5px solid pink;
+  border-bottom: 5px solid pink;
   cursor: row-resize;
   width: 100%;
 }
@@ -101,7 +101,7 @@ svg {
 
 path.link {
   fill: none;
-  stroke:wheat;
+  stroke:#9FA7B8;
   stroke-dasharray: 0,0;
   /* stroke-width: 10; */
   cursor: default;
@@ -208,7 +208,7 @@ text.id {
 position: relative;
 display: flex;
 transition: all .3s linear;
-border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .rs-notes--header--button {
@@ -252,16 +252,16 @@ Popup {
   animation-duration: 300ms;
   width:50%;
   float: 'right';
-  border-right: '1px solid grey';
-  border-left: '1px solid grey';
+  border-right: '1px pink';
+  border-left: '1px pink';
 }
 .chatContainerTwo {
   animation-name: fade-outFeedback;
   animation-duration: 700ms;
   width: 77%;
   float: 'right';
-  border-right: '1px solid grey';
-  border-left: '1px solid grey';
+  border-right: '1px solid pink';
+  border-left: '1px solid pink';
 }
 
 @keyframes fade-inFeedback {
@@ -383,7 +383,7 @@ Popup {
   /* height: '100px';
   width: '50px';
   margin-top: '50px';  */
-  background-color: #ECCC8E;
+  background-color: #FAE3B6;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
   /* margin: 0 auto; */
   float: 'left';
@@ -447,7 +447,7 @@ Popup {
   /* height: '100px';
   width: '50px';
   margin-top: '50px';  */
-  background-color: #5B7961;
+  background-color: #88A18A;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
   /* margin: 0 auto; */
   float: 'left';
@@ -496,7 +496,7 @@ Popup {
   /* height: '100px';
   width: '50px';
   margin-top: '50px';  */
-  background-color: #975347;
+  background-color: #BC8276;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
   float: 'left';
   display:inline-block;
@@ -537,11 +537,12 @@ Popup {
 }
 
 .listy {
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   padding: 10px;
-  border-radius: 25px;
+  /* border-radius: 25px; */
   display:flex;
   font-family: 'avenir next';
+  box-shadow: '4px 4px 10px rgba(0, 0, 0, 0.4)'
   /* float: right */
 }
 
@@ -552,9 +553,9 @@ Popup {
 }
 
 .listyTwo {
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   padding-bottom: 300px;
-  border-radius: 25px;
+  border-radius: 10px;
   text-align: center;
 }
 
@@ -572,8 +573,8 @@ Popup {
 
 .messages {
   /* border-top: 1px solid grey; */
-  border-bottom: 1px solid grey;
-  padding: 10px;
+  border-bottom: 1px solid pink;
+  /* padding: 10px; */
   float: left;
   /* transform: translate(0px, 90.5px) */
   /* text-align: right; */

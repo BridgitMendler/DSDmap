@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useContext, useState, useRef } from 'react'
 import pic from './system.png';
+import pic2 from './lightpin.png'
 import ReactDOM from 'react-dom'
 import { observeSix, newScrollLog} from "./Game";
 
@@ -10,6 +11,7 @@ export function MessageListTwo(props){
       height: '700px',
       width: '100%',
       overflowY: 'scroll',
+      backgroundColor:'rgba(0, 0, 0, 0.03)'
     },
     ul: {
       listStyle: 'none',
@@ -18,7 +20,8 @@ export function MessageListTwo(props){
       marginTop: 13,
       marginBottom: 13,
       transition: 'all 1s',
-      backgroundColor: 'grey'
+      opacity: '0.2',
+      backgroundColor: 'rgba(0, 0, 0, 0.03)'
     },
     senderUsername: {
       font: 'avenir next',
@@ -30,9 +33,11 @@ export function MessageListTwo(props){
       scrollBehavior: 'smooth',
       marginTop: 13,
       marginBottom: 13,
-      border: '10px solid blue',
+      border: '5px #ECCC8E',
       transition: 'all 1s',
-      borderRadius: 40,
+      // borderRadius: 40,
+      backgroundColor:'white',
+      boxShadow: '4px 4px 10px rgba(0, 0, 0, 0.3)'
     },
     senderUsername2: {
       font: 'avenir next',
@@ -42,14 +47,15 @@ export function MessageListTwo(props){
     
 
     button: {
-      border: '1px solid grey',
-      borderRadius: 70,
+      // border: '1px solid grey',
+      // borderRadius: 70,
       width: 55,
       height: 55,
       margin: 10,
       flex: 'right',
       textAlign: 'center',
       display: 'block',
+      float: 'left'
     },
 }
 
@@ -154,7 +160,7 @@ if (props.currentUser.id === 'B')
               <h1 style={styles.button}
             className="title"
             onClick={onSubmit}
-          ><img className='pictureThree noselect' src={pic}></img></h1>
+          ><img className='pictureThree noselect' src={pic2}></img></h1>
               <p className='listyText noselect' style={styles.message}>{message.print}</p>
             </li>
           ))}
