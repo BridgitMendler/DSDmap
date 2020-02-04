@@ -132,21 +132,22 @@ let latestScroll = ''
 let observersSix = []
 function emitChangeSix() {
   observersSix.forEach(o => o && o(latestScroll))
-//   console.log(observersThree)
+  console.log(observersSix)
 }
 
 export function observeSix(o) {
+    console.log(observersSix)
     observersSix.push(o)
     emitChangeSix()
     return () => {
       observersSix = observersSix.filter(t => t !== o)
-    //   console.log(observersThree)
+      
     }
   }
 
 export function newScrollLog(newScroll) {
   latestScroll = newScroll
-  console.log(newScroll)
+  console.log(latestScroll)
   emitChangeSix()
   return latestScroll
 }
