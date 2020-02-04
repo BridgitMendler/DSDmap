@@ -108,16 +108,32 @@ export function MessageListTwo(props){
     
   }
 
+
+
+  const whichUser = (id) => {
+    if (id.senderId === props.currentUsername) {
+      // console.log(id)
+      return styles.li2
+    }
+    // console.log(id)
+    // console.log(props.currentUsername)
+    return styles.li
+  }
+
 // console.log(window.event)
     const windowFocus = (val) => {
-      // console.log(val)
+      console.log(val)
       var theOne = (document.getElementsByClassName('selectionssss'))
-      // console.log(val.classNameParent[2])
+
       if (typeof theOne[0] !== 'undefined'){
+
         // console.log('not undefined')
         if (theOne[0].innerText === val.print) {
-          // console.log('yes theOne[0].innerText ' +theOne[0].innerText.length + ' val.print ' + val.print.length)
-          // console.log('yes theOne[0].innerText ' +theOne[0].innerText + ' val.print ' + val.print)
+          console.log('yes theOne[0].innerText ' +theOne[0].innerText.length + ' val.print ' + val.print.length)
+          console.log('yes theOne[0].innerText ' +theOne[0].innerText + ' val.print ' + val.print)
+          return styles.li2
+        }
+        else if (theOne[0].className === val.classNameParent) {
           return styles.li2
         }
         else { 
