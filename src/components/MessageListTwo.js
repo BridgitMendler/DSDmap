@@ -173,7 +173,7 @@ const weMove =()=> {
       locaaa.scrollTo({behavior: "smooth",
       top:resultTwo[i].scrollPos})}
     }}
-      }}
+      }}}
       weMove()
 
             return (
