@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useContext, useState, useRef } from 'react'
 import pic from './system.png';
 import ReactDOM from 'react-dom'
+import { observeSix, newScrollLog} from "./Game";
 // import { AppContext } from '../index'
 
 
@@ -217,7 +218,21 @@ const myRef = useRef(null)
 const blah = useRef(null)
 
 // scrollToRef(myRef) // Scroll on mount
-
+  // useEffect(() => {
+  // var loca = document.getElementsByClassName('selectionssss')
+  // var locaa = document.getElementsByClassName('listyThree')
+  //       if (typeof loca !== 'undefined'){
+  //         if (typeof loca[0] !== 'undefined'){
+  //         console.log(loca)
+  //         console.log(locaa)
+  //         if (typeof locaa !== 'undefined'){
+  //           if (typeof locaa[0] !== 'undefined'){
+  //         locaa[0].scrollTo({behavior: "smooth",
+  //         top:loca[0].offsetTop-300})
+  //       }
+  //       }
+  //     }
+  //   }})
 const onSubmit =(e)=> {
   // console.log(myRef)
   // scrollToRef(myRef)
@@ -233,10 +248,20 @@ var locaa = e.target.parentElement.parentElement.parentElement.parentElement
     console.log(locaa)
     if (typeof locaa !== 'undefined'){
     locaa.scrollTo({behavior: "smooth",
-    top:loca.offsetTop-300})}}
+    top:loca.offsetTop-300})}
+    newScrollLog(loca.offsetTop-300)
+  }
     }
 if (props.currentUser.id === 'B')
 {
+
+  const setScrollPos = (pos) => {
+    // console.log(pos)
+    
+  }
+  observeSix(newPos => {setScrollPos(newPos)})
+
+
     return (
       <div className="listyThree" 
       // value={state.inputValue} onChange={e => changeInputValue(e.target.value)}
@@ -248,7 +273,7 @@ if (props.currentUser.id === 'B')
       >
         <ul style={styles.ul} id='listyTwoId'>
           {resultTwo.slice(0).reverse().map((message, index) => (
-            <li className={message.classNameParent} key={index} style={windowFocus(message)} ref={windowTime(message)}>
+            <li className={message.classNameParent} key={index} style={windowFocus(message)}>
               <h1 style={styles.button}
             className="title"
             onClick={onSubmit}
@@ -263,37 +288,19 @@ if (props.currentUser.id === 'B')
           }
 
           else {
-  useEffect(() => {
-  var loca = document.getElementsByClassName('selectionssss')
-  var locaa = document.getElementsByClassName('listyThree')
-        if (typeof loca !== 'undefined'){
-          if (typeof loca[0] !== 'undefined'){
-          console.log(loca)
-          console.log(locaa)
-          if (typeof locaa !== 'undefined'){
-            if (typeof locaa[0] !== 'undefined'){
-          locaa[0].scrollTo({behavior: "smooth",
-          top:loca[0].offsetTop-300})
-        }
-        }
-      }
-    }})
-const setNew = ()=> {
-      var loca = document.getElementsByClassName('selectionssss')
-      var locaa = document.getElementsByClassName('listyThree')
-            if (typeof loca !== 'undefined'){
-              if (typeof loca[0] !== 'undefined'){
-              console.log(loca)
-              console.log(locaa)
-              if (typeof locaa !== 'undefined'){
-                if (typeof locaa[0] !== 'undefined'){
-              locaa[0].scrollTo({behavior: "smooth",
-              top:loca[0].offsetTop-300})
-            }
-            }
-          }
-        }
-      }
+
+var locaa = document.getElementsByClassName('listyThree')
+
+const setScrollPos = (pos) => {
+  if (typeof locaa !== 'undefined'){
+    if (typeof locaa[0] !== 'undefined')
+    locaa[0].scrollTo({behavior: "smooth",
+    top:pos})}
+}
+
+
+observeSix(newPos => {setScrollPos(newPos)})
+
 
             return (
               <div className="listyThree" 
@@ -304,9 +311,9 @@ const setNew = ()=> {
                 }}
                  
               >
-                <ul style={styles.ul} id='listyTwoId'onChange={setNew}>
+                <ul style={styles.ul} id='listyTwoId'>
                   {resultTwo.slice(0).reverse().map((message, index) => (
-                    <li className={message.classNameParent} key={index} style={windowFocus(message)} ref={windowTime(message)}>
+                    <li className={message.classNameParent} key={index} style={windowFocus(message)}>
                       <p className='listyText noselect' style={styles.message}>{message.print}</p>
                     </li>
                   ))}

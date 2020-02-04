@@ -123,3 +123,30 @@ export function newDelLog(newDel) {
   emitChangeFive()
   return latestDel
 }
+
+
+
+
+
+let latestScroll = ''
+let observersSix = []
+function emitChangeSix() {
+  observersSix.forEach(o => o && o(latestScroll))
+//   console.log(observersThree)
+}
+
+export function observeSix(o) {
+    observersSix.push(o)
+    emitChangeSix()
+    return () => {
+      observersSix = observersSix.filter(t => t !== o)
+    //   console.log(observersThree)
+    }
+  }
+
+export function newScrollLog(newScroll) {
+  latestScroll = newScroll
+  console.log(newScroll)
+  emitChangeSix()
+  return latestScroll
+}
