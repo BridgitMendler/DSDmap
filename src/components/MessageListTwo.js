@@ -72,14 +72,13 @@ var locaa = e.target.parentElement.parentElement.parentElement.parentElement
   e.preventDefault()
   if (typeof loca !== 'undefined'){
   if (typeof locaa !== 'undefined'){
-  props.onSubmit(('fffff' + e.target.parentElement.parentElement.children[1].innerText + '_listyTwo dropTarget selectionssss'+ '_listyText noselect'+ `_${Math.round((new Date()).getTime() / 1000)}`+ `_${(loca.offsetTop-300)}`))
+  props.onSubmit(('fffff' + e.target.parentElement.parentElement.children[1].innerText + '_listyTwo dropTarget selectionssss'+ '_listyText noselect'+ `_${Math.round((new Date()).getTime() / 1000)}`))
     locaa.scrollTo({behavior: "smooth",
     top:loca.offsetTop-300})}
     newScrollLog(loca.offsetTop-300)
   }
     }
 
-// console.log(props.messages)
 var result
 var resultTwo = []
 const messageClean = () => {
@@ -90,7 +89,6 @@ const messageClean = () => {
     newArray[i]['className'] = newText[2]
     newArray[i]['print']= newText[0]
     newArray[i]['time']= newText[3]
-    newArray[i]['scrollPos'] = newText[4]
   }
   var messageList = []
   var messageNoID = []
@@ -124,6 +122,20 @@ const messageClean = () => {
 }
 messageClean()
 
+const weMove =()=> {
+  var theOne = (document.getElementsByClassName('selectionssss'))
+
+  if (typeof theOne[0] !== 'undefined'){
+    console.log(theOne[0].offsetTop)
+    if (typeof locaa !== 'undefined'){
+      if (typeof locaa[0] !== 'undefined'){
+        var locaaa = locaa[0]
+        console.log(locaaa)
+      locaaa.scrollTo({behavior: "smooth",
+      top:theOne[0].offsetTop})}
+    }}
+    }
+
 if (props.currentUser.id === 'B')
 {
 
@@ -156,24 +168,7 @@ if (props.currentUser.id === 'B')
 
 var locaa = document.getElementsByClassName('listyThree')
 // console.log(resultTwo)
-const weMove =()=> {
-  var i
-  for (i = 0; i < resultTwo.length; i++){
-    // console.log(resultTwo[i].scrollPos)
-  
 
-  var theOne = (document.getElementsByClassName('selectionssss'))
-  if (typeof theOne[0] !== 'undefined'){
-    if (typeof resultTwo[i].scrollPos !== 'undefined')
-    if (resultTwo[i].classNameParent === theOne[0].className){
-  // console.log(resultTwo[i])
-    if (typeof locaa !== 'undefined'){
-      if (typeof locaa[0] !== 'undefined'){
-        var locaaa = locaa[0]
-      locaaa.scrollTo({behavior: "smooth",
-      top:resultTwo[i].scrollPos})}
-    }}
-      }}}
       weMove()
 
             return (
