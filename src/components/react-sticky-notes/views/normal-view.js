@@ -131,38 +131,38 @@ console.log(newBub)
 // console.log(myItemsTwo.length)
 // setTheArray(oldArray => [...oldArray, newElement]);
 const removeTodo = () => {
-    if (typeof window.event !== 'undefined'){
+//     if (typeof window.event !== 'undefined'){
 
-    if (window.event.type === 'click') {
-        // const dontAdd = []
-        // console.log('is click')
-        if (window.event.target.innerText=== 'delete_outlined') {
+//     if (window.event.type === 'click') {
+//         // const dontAdd = []
+//         // console.log('is click')
+//         if (window.event.target.innerText=== 'delete_outlined') {
 
-            var myVariable = window.event.path[1].parentNode.parentNode.classList[2]
-            // console.log(myVariable)
-// console.log(Object.values(myItemsTwo)[1]).indexOf(myVariable)
-            for (var i = 0; i<myItemsTwo.length; i++){
-                // if (typeof myVariable !== 'undefined' && typeof myItemsTwo !== 'undefined') {
-                if (Object.values(myItemsTwo[i]).indexOf(myVariable) > -1) {
-                    if (myItemsTwo[i]['id'] !== 'undefined') {
-                    newDelLog(myVariable)
-                //     const removeNote= (name)=>{
+//             var myVariable = window.event.path[1].parentNode.parentNode.classList[2]
+//             // console.log(myVariable)
+// // console.log(Object.values(myItemsTwo)[1]).indexOf(myVariable)
+//             for (var i = 0; i<myItemsTwo.length; i++){
+//                 // if (typeof myVariable !== 'undefined' && typeof myItemsTwo !== 'undefined') {
+//                 if (Object.values(myItemsTwo[i]).indexOf(myVariable) > -1) {
+//                     if (myItemsTwo[i]['id'] !== 'undefined') {
+//                     newDelLog(myVariable)
+//                 //     const removeNote= (name)=>{
 
-                //         // return myItemsTwo.splice(name, 1)
-                //     // }
-                //     // removeNote(i);
+//                 //         // return myItemsTwo.splice(name, 1)
+//                 //     // }
+//                 //     // removeNote(i);
 
 
-                //  }
-                }
-            }}
-// console.log(myItemsTwo)
+//                 //  }
+//                 }
+//             }}
+// // console.log(myItemsTwo)
 
-        }
-        // else {return myItemsTwo}
-    }
-    // else {return myItemsTwo}
-}
+//         }
+//         // else {return myItemsTwo}
+//     }
+//     // else {return myItemsTwo}
+// }
 // else {return myItemsTwo}
 }
 
@@ -205,7 +205,7 @@ const removeTodo = () => {
 // console.log(props.newNotesy)
         // console.log
         
-
+// console.log(iclicked)
 
 //     }
 
@@ -219,7 +219,7 @@ const removeTodo = () => {
             key: props.prefix, 
             className: props.prefix,
             style: getElementStyle('container', props),
-            onClick: () => (removeTodo(), setIclicked(iclicked+1))
+            // onClick: () => (console.log('clicking!'))
         }, 
             newNot.map( data => !data.hidden ? (h( Note, {items: props.items, notesy: props.notesy, onSubmit: props.onSubmit, onChange: props.onChange, removeTodo: props.removeTodo, convoBoxSize: props.convoBoxSize, hashtagDups: props.hashtagDups,allHashtags: props.allHashtags, myHashtags: props.myHashtags, handleScroll: props.onScroll, scrollVals: props.scrollVals, scrollScreen: props.scrollScreen, className: 'full-notey', key: `note-${data.id}`,...props, data } )):h( NoteBubble, { key: `note-${data.id}`,...props, data } ) )
         ),

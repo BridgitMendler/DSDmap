@@ -68,6 +68,7 @@ export function MessageListTwo(props){
     // };
 
    const handleClick =(event) =>{
+     console.log('walaaa')
      var toChange =[]
       const target = event.target.className;
       const child = event.target
@@ -101,6 +102,7 @@ export function MessageListTwo(props){
 
 
   const onSubmit =(e)=> {
+    console.log('submitting!')
     e.preventDefault()
     props.onSubmit(('fffff' + e.target.parentElement.parentElement.children[1].innerText + '_listyTwo dropTarget selectionssss'+ '_listyText noselect'+ `_${Math.round((new Date()).getTime() / 1000)}`))
     
@@ -108,15 +110,25 @@ export function MessageListTwo(props){
 
 // console.log(window.event)
     const windowFocus = (val) => {
-        if (val.classNameParent === 'listyTwo dropTarget selectionssss') {
-          console.log('yes match '+ val.classNameParent)
+      // console.log(val)
+      var theOne = (document.getElementsByClassName('selectionssss'))
+      // console.log(val.classNameParent[2])
+      if (typeof theOne[0] !== 'undefined'){
+        // console.log('not undefined')
+        if (theOne[0].innerText === val.print) {
+          // console.log('yes theOne[0].innerText ' +theOne[0].innerText.length + ' val.print ' + val.print.length)
           // console.log('yes theOne[0].innerText ' +theOne[0].innerText + ' val.print ' + val.print)
           return styles.li2
         }
-        else { console.log('no match '+ val.classNameParent)
+        else { 
+          // console.log('no theOne[0].innerText ' +theOne[0].innerText + ' val.print ' + val.print)
           return styles.li}
     }
-
+      else{
+        // console.log('was undefined '+ 'theOne' +theOne + ' val.print ' + val.print)
+return styles.li
+}
+}
 // windowFocus('lksagl')
 //     const handleClick=() =>{
 //       // let event = e as Event;
@@ -128,11 +140,11 @@ export function MessageListTwo(props){
           }
 
          const onDragOver = (event) => {
-           console.log(event)
+          //  console.log(event)
             // event.preventDefault();
         }
   
-// console.log(this)
+console.log(props.messages)
 var result
 var resultTwo = []
 const messageClean = () => {
@@ -188,8 +200,8 @@ const messageClean = () => {
 }
 messageClean()
 
-// if (props.currentUser.id === 'B')
-// {
+if (props.currentUser.id === 'B')
+{
     return (
       <div className="listyThree" 
       // value={state.inputValue} onChange={e => changeInputValue(e.target.value)}
@@ -204,7 +216,7 @@ messageClean()
             <li className={message.classNameParent} key={index} style={windowFocus(message)} >
               <h1 style={styles.button}
             className="title"
-            onClick={onSubmit,handleClick}
+            onClick={onSubmit}
           ><img className='pictureThree noselect' src={pic}></img></h1>
               <p className='listyText noselect' style={styles.message}>{message.print}</p>
             </li>
@@ -215,25 +227,25 @@ messageClean()
     
           }
 
-          // else {
-          //   return (
-          //     <div className="listyThree" 
-          //     // value={state.inputValue} onChange={e => changeInputValue(e.target.value)}
-          //       style={{
-          //         ...props.style,
-          //         ...styles.container,
-          //       }}
+          else {
+            return (
+              <div className="listyThree" 
+              // value={state.inputValue} onChange={e => changeInputValue(e.target.value)}
+                style={{
+                  ...props.style,
+                  ...styles.container,
+                }}
                  
-          //     >
-          //       <ul style={styles.ul} id='listyTwoId'>
-          //         {resultTwo.slice(0).reverse().map((message, index) => (
-          //           <li className={message.classNameParent} key={index} style={windowFocus(message)} >
-          //             <p className='listyText noselect' style={styles.message}>{message.print}</p>
-          //           </li>
-          //         ))}
-          //       </ul>
-          //     </div>
-          //   )
-          // }
-  // }
+              >
+                <ul style={styles.ul} id='listyTwoId'>
+                  {resultTwo.slice(0).reverse().map((message, index) => (
+                    <li className={message.classNameParent} key={index} style={windowFocus(message)} >
+                      <p className='listyText noselect' style={styles.message}>{message.print}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+  }
   export default MessageListTwo
