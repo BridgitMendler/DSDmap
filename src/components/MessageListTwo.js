@@ -1,11 +1,12 @@
-import React, { Component, useContext, useState } from 'react'
+import React, { Component, useEffect, useContext, useState, useRef } from 'react'
 import pic from './system.png';
 import ReactDOM from 'react-dom'
 // import { AppContext } from '../index'
 
 
 export function MessageListTwo(props){
-  
+  // const [isLoading, setIsLoading] = useState(true);
+
   const styles={
     container: {
       height: '700px',
@@ -18,6 +19,7 @@ export function MessageListTwo(props){
     li: {
       marginTop: 13,
       marginBottom: 13,
+      transition: 'all 1s',
       backgroundColor: 'grey'
     },
     senderUsername: {
@@ -27,9 +29,11 @@ export function MessageListTwo(props){
     message: { fontWeight: 'medium', font:'avenir next', fontSize: 40 },
 
     li2: {
+      scrollBehavior: 'smooth',
       marginTop: 13,
       marginBottom: 13,
       border: '10px solid blue',
+      transition: 'all 1s',
       borderRadius: 40,
     },
     senderUsername2: {
@@ -52,7 +56,27 @@ export function MessageListTwo(props){
     },
 }
 
-  
+// const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
+// const useMountEffect = (fun) => useEffect(fun, [])
+// var loca = document.getElementsByClassName('selectionssss')
+// var locaa = document.getElementsByClassName('listyThree')
+// if (typeof loca !== 'undefined'){
+//   if (typeof loca[0] !== 'undefined'){
+// console.log(loca[0].offsetTop)
+
+// if (typeof locaa !== 'undefined'){
+//   if (typeof locaa[0] !== 'undefined'){
+// locaa[0].scrollTo(0,loca[0].offsetTop)}}
+// }}
+// useEffect(() => {
+//   if (resultsRef.current) {
+//   locaa.scrollTo({
+//     behavior: "smooth",
+//     top: resultsRef.current.offsetTop
+//   });
+// }
+// }, [isLoading]);
+
 // const {state, dispatch} = useContext(AppContext);
 
 // const changeInputValue = (newValue) => {
@@ -68,7 +92,7 @@ export function MessageListTwo(props){
     // };
 
    const handleClick =(event) =>{
-     console.log('walaaa')
+    //  console.log('walaaa')
      var toChange =[]
       const target = event.target.className;
       const child = event.target
@@ -77,90 +101,65 @@ export function MessageListTwo(props){
       const source = ReactDOM.findDOMNode(this)
       var ourSelect = event.target.parentElement.parentElement
       event.target.parentElement.parentElement.attributes.class.value = 'listyTwo dropTarget selectionssss'
-      // console.log(event.target.parentElement.parentElement.attributes.class.value);
-      // console.log(event.target.parentElement.parentElement.children[1].innerText)
-      // console.log(event.target.parentElement.parentElement.parentElement);
       var ssss = (document.getElementsByClassName('selectionssss'))
       var i
       for (i=0; i < ssss.length; i++){
         if (ssss[i] !== ourSelect) {
           toChange.push(ssss[i])
-
-
         }
       }
-      // console.log(toChange)
       if (toChange.length > 0){
       toChange[0].attributes.class.value = 'listyTwo dropTarget'
-      // console.log(toChange[0].attributes.class.value)
+
     }
-      // if (target == 'rs-notes--header--button rs-notes--header--button__title') {
-      //   // this.toggleSidenav(child)
-  
-      // } 
     }
 
 
-  const onSubmit =(e)=> {
-    console.log('submitting!')
-    e.preventDefault()
-    props.onSubmit(('fffff' + e.target.parentElement.parentElement.children[1].innerText + '_listyTwo dropTarget selectionssss'+ '_listyText noselect'+ `_${Math.round((new Date()).getTime() / 1000)}`))
-    
-  }
+
 
 
 
   const whichUser = (id) => {
     if (id.senderId === props.currentUsername) {
-      // console.log(id)
       return styles.li2
     }
-    // console.log(id)
-    // console.log(props.currentUsername)
     return styles.li
   }
 
-// console.log(window.event)
     const windowFocus = (val) => {
-      console.log(val)
+      // console.log(val)
       var theOne = (document.getElementsByClassName('selectionssss'))
-
       if (typeof theOne[0] !== 'undefined'){
-
-        // console.log('not undefined')
-        if (theOne[0].innerText === val.print) {
-          console.log('yes theOne[0].innerText ' +theOne[0].innerText.length + ' val.print ' + val.print.length)
-          console.log('yes theOne[0].innerText ' +theOne[0].innerText + ' val.print ' + val.print)
-          return styles.li2
-        }
-        else if (theOne[0].className === val.classNameParent) {
+        if (theOne[0].className === val.classNameParent) {
           return styles.li2
         }
         else { 
-          // console.log('no theOne[0].innerText ' +theOne[0].innerText + ' val.print ' + val.print)
           return styles.li}
     }
       else{
-        // console.log('was undefined '+ 'theOne' +theOne + ' val.print ' + val.print)
 return styles.li
 }
 }
-// windowFocus('lksagl')
-//     const handleClick=() =>{
-//       // let event = e as Event;
-// console.log('clicking')
-//     }
 
-    const onDragEnter=(e) =>{
-      // console.log(e)
-          }
 
-         const onDragOver = (event) => {
-          //  console.log(event)
-            // event.preventDefault();
-        }
+const windowTime = (val) => {
+  // console.log(val)
+  var theOne = (document.getElementsByClassName('selectionssss'))
+
+  if (typeof theOne[0] !== 'undefined'){
+    if (theOne[0].className === val.classNameParent) {
+      return myRef
+    }
+    else { 
+      return blah}
+}
+  else{
+return blah
+}
   
-console.log(props.messages)
+}
+  
+// console.log(props.messages)
 var result
 var resultTwo = []
 const messageClean = () => {
@@ -171,8 +170,6 @@ const messageClean = () => {
     newArray[i]['className'] = newText[2]
     newArray[i]['print']= newText[0]
     newArray[i]['time']= newText[3]
-    // newArray[i]['deleted']= (isDeleted())
-    // console.log(newArray)
   }
   var messageList = []
   var messageNoID = []
@@ -216,6 +213,28 @@ const messageClean = () => {
 }
 messageClean()
 
+const myRef = useRef(null)
+const blah = useRef(null)
+
+// scrollToRef(myRef) // Scroll on mount
+
+const onSubmit =(e)=> {
+  // console.log(myRef)
+  // scrollToRef(myRef)
+  // console.log('submitting!')
+//     var loca = document.getElementsByClassName('selectionssss')
+// var locaa = document.getElementsByClassName('listyThree')
+var loca =e.target.parentElement.parentElement
+var locaa = e.target.parentElement.parentElement.parentElement.parentElement
+  e.preventDefault()
+  props.onSubmit(('fffff' + e.target.parentElement.parentElement.children[1].innerText + '_listyTwo dropTarget selectionssss'+ '_listyText noselect'+ `_${Math.round((new Date()).getTime() / 1000)}`))
+  if (typeof loca !== 'undefined'){
+    console.log(loca)
+    console.log(locaa)
+    if (typeof locaa !== 'undefined'){
+    locaa.scrollTo({behavior: "smooth",
+    top:loca.offsetTop-300})}}
+    }
 if (props.currentUser.id === 'B')
 {
     return (
@@ -229,7 +248,7 @@ if (props.currentUser.id === 'B')
       >
         <ul style={styles.ul} id='listyTwoId'>
           {resultTwo.slice(0).reverse().map((message, index) => (
-            <li className={message.classNameParent} key={index} style={windowFocus(message)} >
+            <li className={message.classNameParent} key={index} style={windowFocus(message)} ref={windowTime(message)}>
               <h1 style={styles.button}
             className="title"
             onClick={onSubmit}
@@ -244,6 +263,18 @@ if (props.currentUser.id === 'B')
           }
 
           else {
+
+      var loca = document.getElementsByClassName('selectionssss')
+      var locaa = document.getElementsByClassName('listyThree')
+            if (typeof loca !== 'undefined'){
+              if (typeof loca[0] !== 'undefined'){
+              console.log(loca)
+              console.log(locaa)
+              if (typeof locaa !== 'undefined'){
+                if (typeof locaa[0] !== 'undefined'){
+              locaa[0].scrollTo({behavior: "smooth",
+              top:loca[0].offsetTop-300})}}}}
+
             return (
               <div className="listyThree" 
               // value={state.inputValue} onChange={e => changeInputValue(e.target.value)}
@@ -255,7 +286,7 @@ if (props.currentUser.id === 'B')
               >
                 <ul style={styles.ul} id='listyTwoId'>
                   {resultTwo.slice(0).reverse().map((message, index) => (
-                    <li className={message.classNameParent} key={index} style={windowFocus(message)} >
+                    <li className={message.classNameParent} key={index} style={windowFocus(message)} ref={windowTime(message)}>
                       <p className='listyText noselect' style={styles.message}>{message.print}</p>
                     </li>
                   ))}

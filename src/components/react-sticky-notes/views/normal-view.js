@@ -121,7 +121,7 @@ var newBub = props.newBubble.filter(obj => {
 // // }
 // }
 // newBub2()
-console.log(newBub)
+// console.log(newBub)
 // console.log(newNot)
 //         newArray[i]['id'] = newText[3]
 //         newArray[i]['x'] = newText[1]
