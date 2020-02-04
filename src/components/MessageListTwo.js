@@ -263,7 +263,22 @@ if (props.currentUser.id === 'B')
           }
 
           else {
-
+  useEffect(() => {
+  var loca = document.getElementsByClassName('selectionssss')
+  var locaa = document.getElementsByClassName('listyThree')
+        if (typeof loca !== 'undefined'){
+          if (typeof loca[0] !== 'undefined'){
+          console.log(loca)
+          console.log(locaa)
+          if (typeof locaa !== 'undefined'){
+            if (typeof locaa[0] !== 'undefined'){
+          locaa[0].scrollTo({behavior: "smooth",
+          top:loca[0].offsetTop-300})
+        }
+        }
+      }
+    }})
+const setNew = ()=> {
       var loca = document.getElementsByClassName('selectionssss')
       var locaa = document.getElementsByClassName('listyThree')
             if (typeof loca !== 'undefined'){
@@ -273,7 +288,12 @@ if (props.currentUser.id === 'B')
               if (typeof locaa !== 'undefined'){
                 if (typeof locaa[0] !== 'undefined'){
               locaa[0].scrollTo({behavior: "smooth",
-              top:loca[0].offsetTop-300})}}}}
+              top:loca[0].offsetTop-300})
+            }
+            }
+          }
+        }
+      }
 
             return (
               <div className="listyThree" 
@@ -284,7 +304,7 @@ if (props.currentUser.id === 'B')
                 }}
                  
               >
-                <ul style={styles.ul} id='listyTwoId'>
+                <ul style={styles.ul} id='listyTwoId'onChange={setNew}>
                   {resultTwo.slice(0).reverse().map((message, index) => (
                     <li className={message.classNameParent} key={index} style={windowFocus(message)} ref={windowTime(message)}>
                       <p className='listyText noselect' style={styles.message}>{message.print}</p>
