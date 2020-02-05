@@ -175,9 +175,9 @@ for  (i=0; i<sourceThree.length; i++) {
 }
 console.log(listyLoc)
 // console.log((document.getElementsByClassName('listyTwo')))
-if (typeof e.target.offsetParent!== 'undefined'){
+if (typeof e.target.offsetParent!== 'undefined' && e.target.offsetParent !== null){
     // console.log(e.target.offsetParent)
-if (typeof e.target.offsetParent.offsetParent !== 'undefined'){
+if (typeof e.target.offsetParent.offsetParent !== 'undefined' && e.target.offsetParent.offsetParent !== null){
     // console.log(e.target.offsetParent.offsetParent)
 if (typeof e.target.offsetParent.offsetParent.lastElementChild !== 'undefined'){
     // console.log(e.target.offsetParent.offsetParent.lastElementChild)

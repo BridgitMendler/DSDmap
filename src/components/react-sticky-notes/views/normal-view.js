@@ -74,8 +74,10 @@ const settingLineOut = (value) => {
 var newArray = props.delNote
 var newArIds = []
 const delList = () => {
+    // console.log(newArray)
 var i
-for (i=0;i<props.delNote.length; i++){
+for (i=0;i<newArray.length; i++){
+
     var newText = newArray[i].text.split(/[_,]+/);
     newArIds.push(newText[3])
 }
@@ -85,7 +87,7 @@ delList()
 const myItemsTwo = props.newNotesy
 var newNot = props.newNotesy.filter(obj => {
 
-    // console.log(obj.id,)
+    // console.log(obj.id, newArIds)
     return (newArIds.indexOf(obj.id) < 0)
   })
 
@@ -98,7 +100,7 @@ var newBub = props.newBubble.filter(obj => {
 })
 
 // var newBub2 = () => {
-
+// console.log(newNot)
 // var i
 // console.log(findit)
 // // for (i=0; i < findit.length; i++) {
@@ -243,7 +245,7 @@ const removeTodo = () => {
         }, 
         h("span", null,
             newNot.map( data => props.hidden ? (props.visible === true)? (h( LineTo, { borderColor:'wheat',borderStyle: 'dashed', borderWidth: 1, from:`dropped${data.id}`, to:`rs-notes--full-note-${data.id}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } )):null: 
-            h( LineTo, { opacity:(selectedLine===data.id)?1:0,borderColor: 'red', borderStyle: 'dashed', borderWidth: 1, from:`dropped${selectedLine}`, to:`rs-notes--full-note-${selectedLine}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } ))
+            h( LineTo, { opacity:(selectedLine===data.id)?1:0,borderColor: '#9FA7B8', borderStyle: 'dashed', borderWidth: 1, from:`dropped${selectedLine}`, to:`rs-notes--full-note-${selectedLine}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } ))
         ),),
     ]
 }

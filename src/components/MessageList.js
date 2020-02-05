@@ -32,7 +32,7 @@ const MessagesList = (props) => {
   const [selectedColorTwo, setSelectedColorTwo]= useState('')
   const [styles] = useState({
     container: {
-      height: '600px',
+      height: (window.screen.height*.60),
       // width: '350px',
       overflowY: 'scroll',
       backgroundColor: 'rgba(0, 0, 0, 0.03)',

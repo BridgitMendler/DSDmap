@@ -11,7 +11,7 @@ class ReactStickyNotes extends Component {
 	static defaultProps = {
 		useCSS: true,
 		prefix: 'rs-notes',
-		colorCodes: ['#ECCC8E', '#975347', '#5B7961'],
+		colorCodes: ['#975347', '#5B7961', '#ECCC8E'],
 		navbar: true,
 		sessionKey: 'react-sticky-notes',
 		noteWidth: 115,
@@ -136,7 +136,8 @@ class ReactStickyNotes extends Component {
 				}
 			}
 		});
-// console.log(e)
+console.log(this.state.items)
+
 		if (this.state.items.length === 0) {
 			return null
 		} 
@@ -651,6 +652,7 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 
 
 	var newNotez = newNotesy
+	// console.log(newNotez)
 
 		const { items, viewSize } = this.state;
 		// if (newNotesy.length > 2){

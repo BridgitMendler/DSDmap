@@ -35,6 +35,7 @@ class ChatScreen extends Component {
       delNote: [],
       bubblePosList: [],
       notesy: [],
+      allMes: [],
       usersWhoAreTyping: [],
       scrollScreen: 0,
       scrollVals: [],
@@ -180,29 +181,40 @@ this.setState({ scrollVals: joined })
                 var tmp = this.split(''); // convert to an array
                 tmp.splice(i, 5); // remove 1 element from the array (adjusting for non-zero-indexed counts)
                 return tmp.join('');
+                // console.log(tmp)
               }
+
               if (/^fffff/.test(message.text)) {
                 message.text=(message.text.removeCharAt(0))
                 this.setState({
-                  postings: [...this.state.postings, message]})
+                  postings: [...this.state.postings, message],
+                  allMes:[...this.state.allMes, message]
+                })
                 }
               else if (/^ggggg/.test(message.text)){
                 message.text=(message.text.removeCharAt(0))
                 this.setState({
-                  notesy: [...this.state.notesy, message]})
+                  notesy: [...this.state.notesy, message],
+                  allMes:[...this.state.allMes, message]
+                })
               }
               else if (/^hhhhh/.test(message.text)){
                 message.text=(message.text.removeCharAt(0))
                 this.setState({
-                  delNote: [...this.state.delNote, message]})
+                  delNote: [...this.state.delNote, message],
+                  allMes:[...this.state.allMes, message]
+                })
               }
               else if (/^jljljl/.test(message.text)){
               message.text=(message.text.removeCharAt(0))
               this.setState({
-              bubblePosList: [...this.state.bubblePosList, message]})
+              bubblePosList: [...this.state.bubblePosList, message],
+              allMes:[...this.state.allMes, message]
+            })
               }
               else {this.setState({
                 messages: [...this.state.messages, message],
+                allMes:[...this.state.allMes, message]
               })
             }},
             onUserStartedTyping: user => {
@@ -229,7 +241,8 @@ this.setState({ scrollVals: joined })
   }
 
   render() {
-
+    // console.log(this.state.allMes)
+// console.log((this.state.delNote),(this.state.messages),(this.state.postings),(this.state.bubblePosList),(this.state.notesy))
     const x = -55
     const y = 19
     const a = -19
@@ -408,7 +421,7 @@ this.setState({ scrollVals: joined })
               </div>
               
           </aside>   
-          <svg className={`${this.state.mapName}`} height="700">
+          <svg className={`${this.state.mapName}`} height={window.screen.height*.65}>
                <Map className={`${this.state.mapName}`} onSubmit={this.sendMessage} knightPosition={this.state.knightPos}/> 
                </svg> 
     <div style={styles[this.state.sidePanel]} className={`${this.state.sidePanel}`} >

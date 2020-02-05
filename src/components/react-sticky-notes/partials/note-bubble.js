@@ -5,6 +5,9 @@ import { DragPreviewImage, useDrag, dragSource } from "react-dnd";
 import ItemTypes from "./../../../ItemTypes";
 import NoteDraggable from './note-draggable';
 import { observe, moveKnight, observeTwo, newDropped, observeFour} from "../../Game";
+import red from '../../../components/red2.png'
+import green from '../../../components/green2.png'
+import yellow from '../../../components/yellow2.png'
 
 export const NoteBubble = (props) => {
     const [dropPositions, setDropPositions] = useState([])
@@ -116,7 +119,7 @@ if (typeof props.data.label !== 'undefined' && props.data.label.length > 1){
             if ( typeof myEl !== 'undefined') {
                 myEl = myEl.style.left
                 myEl = parseFloat(myEl)
-                return ((myEl))
+                return ((myEl+100))
             }
     }        
     }
@@ -184,7 +187,7 @@ else {
                     myEl = myEl.style.top
                     myEl = parseFloat(myEl)
                     // console.log(myEl)
-                    return myEl + 110
+                    return myEl + 90
                 }
         }
     }
@@ -205,7 +208,19 @@ props.settingLine(dataID)
 // const theMatch = `${props.prefix}--note-${props.data.id}`
 // const location = Object.keys(myObj).indexOf(theMatch)
 // console.log(dropPositions)
+// console.log(props.data.color)
 
+const whichColor = (val) => {
+ if (val === '#BC8276'){
+     return red
+ }
+ else if (val === '#FAE3B6'){
+     return yellow
+ }
+ else {
+     return  green
+ }
+}
     return h(NoteDraggable, {
                 className: (typeof props.data.label !== 'undefined' && props.data.label.length > 1) ?`${props.data.id} dropped${props.data.id} ${props.prefix}--note-${props.data.id} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.id}`:
                 `${props.data.id} ${props.prefix}--note-${props.data.id} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.id}`,
@@ -239,15 +254,24 @@ props.settingLine(dataID)
                 style: {
                     // pointerEvents : isDragging ? 'none': 'auto',
                     opacity: (props.visible === true) ? 1 : 0,
-                    width: '10px',
-                    height: '10px',
-                    // borderRadius: '100%',
-                    backgroundColor: colorSetting(props.data.id),
-                    boxShadow: '1px 1px 2px rgba(0,0,0,.15)',
+                    background: 'transparent',
+                    border: 'none !important',
+                    width: '18px',
+                    height: '20px',
+                    borderRadius: '100%',
+                    // backgroundColor: 'none',
+                    // color: 'none',
+                    // boxShadow: '1px 1px 2px rgba(0,0,0,.15)',
                     // zIndex: -5
                 }
 
+            },
+            h('img', {
+                src: whichColor(props.data.color),
+                width: '18px',
+                height: '20px'
             })
+            )
         )
     }
 

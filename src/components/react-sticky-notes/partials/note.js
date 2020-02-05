@@ -32,12 +32,19 @@ class Note extends React.Component{
         var i
         for (i=0; i< this.props.notesy.length; i++){
             if (this.props.notesy[i].id === this.props.data.id){
+                // console.log(this.props.notesy[i])
                 var yVal = parseInt(this.props.notesy[i].y)
                 // console.log(this.props.notesy[i].id, yVal)
                 return yVal
             }
+            else {
+                // console.log(this.props.data.position.y)
+                return this.props.data.position.y
+            }
             // else {return 0}
-        }}
+        }
+        
+    }
 
         getNotePositionX =() => {
         var i
@@ -50,7 +57,8 @@ class Note extends React.Component{
                 return xVal
             }
             else {
-                // console.log(this.props.notesy[i].id,this.props.data.id)
+                // console.log(this.props.data.position.x)
+                return this.props.data.position.x
             }
         }}
     // }
@@ -93,7 +101,7 @@ class Note extends React.Component{
 
 
     render(){
-
+// console.log(this.state.listyPos)
         // console.log(this.props.notesy)
         var thisty = () => {
             var thisy = document.getElementsByClassName(`${this.props.prefix}--full-note-${this.props.data.id}`)
@@ -110,40 +118,71 @@ thisty()
             this.setState({ visibleList: joined })
         }
         // console.log(this.props.visible)
-        const windowFocus = () => {
-            // console.log(this.props.data.selected, this.props.data.id)
-            // console.log(window.event)
-            if (typeof window.event !== 'undefined'){
-            if (window.event.type === 'click'&& window.event.target.classList[0] ==='rs-notes--text') {
-                // console.log(window.event)
-                if (window.event.target.classList[1]=== this.props.data.id) {
-                    // console.log('yes ' +this.props.data.id +this.props.data.selected)
-                return '10'}
-                else {
-                    // console.log('no ' +this.props.data.id+this.props.data.selected)
-                    return '0'}
-                // return this.state.showIncreaced === id ? '10' : '0'
-            }
-            else if(window.event.type === 'click' && window.event.target.classList[0] ==='rs-notes--header--button')
-            { if (window.event.target.classList[2] === this.props.data.id   ) {
-                // console.log('front')
-                return '10'
-            }
-            else { 
-                // console.log('back')
-                return '0'}
-                // console.log(window.event.target.classList[2])}
+        const windowFocus = (val) => {
+            // console.log(val)
+            // return 'yes'
+            document.body.addEventListener('click', function (event) {
+                if (window.event.target.classList[0] ==='rs-notes--header--button' || 'innerTextNote' || 'forNotes') {
+                    if (typeof props !== 'undefined'){
+                    if (window.event.target.classList[1] === val){
+                        var newThing = document.getElementsByClassName(`${props.prefix}--full-note-${window.event.target.classList[1]}`)
+                        newThing[0].style.zIndex = 10
+                    }
+                        else if (window.event.target.classList[2]=== val){
+                            var newThing = document.getElementsByClassName(`${props.prefix}--full-note-${window.event.target.classList[2]}`)
+                            newThing[0].style.zIndex = 10
+                        }
+                        else {
+                            var newThing = document.getElementsByClassName(`${props.prefix}--full-note-${val}`)
+                            if (typeof newThing[0] !== 'undefined'){
+                                newThing[0].style.zIndex = 0
+                            // console.log(newThing[0])
+                        }}
+                    }
+                        else {return 0}
+                        
+             }
+             else {return 0}
+             })
+        }
 
-        }
-        else if (window.event.type === 'mousedown' && window.event.target.classList[0]==='rs-notes--header--button')
-        { if (window.event.target.classList[2] === this.props.data.id   ) {
-            return '10'
-        }
-        else { return '0'}
-    } return '0'
-    }
-    else { return '0'}
-}
+        windowFocus(this.props.data.id)
+
+// windowFocus(props.data.id)
+//             // console.log(this.props.data.selected, this.props.data.id)
+// console.log(window.event)
+//             if (typeof window.event !== 'undefined'){
+//                 console.log(window.event.type)
+//             if (window.event.type === 'click'&& window.event.target.classList[0] ==='rs-notes--text') {
+//                 // console.log(window.event)
+//                 if (window.event.target.classList[1]=== this.props.data.id) {
+//                     // console.log('yes ' +this.props.data.id +this.props.data.selected)
+//                 return '10'}
+//                 else {
+//                     // console.log('no ' +this.props.data.id+this.props.data.selected)
+//                     return '0'}
+//                 // return this.state.showIncreaced === id ? '10' : '0'
+//             }
+//             else if(window.event.type === 'click' && window.event.target.classList[0] ==='rs-notes--header--button')
+//             { if (window.event.target.classList[2] === this.props.data.id   ) {
+//                 // console.log('front')
+//                 return '10'
+//             }
+//             else { 
+//                 // console.log('back')
+//                 return '0'}
+//                 // console.log(window.event.target.classList[2])}
+
+//         }
+//         else if (window.event.type === 'mousedown' && window.event.target.classList[0]==='rs-notes--header--button')
+//         { if (window.event.target.classList[2] === this.props.data.id   ) {
+//             return '10'
+//         }
+//         else { return '0'}
+//     } return '0'
+//     }
+//     else { return '0'}
+// }
         // windowFocus()
         var precision = 100;
         var n = Math.floor(Math.random() * (10-(-10)) + (-10))
@@ -256,7 +295,7 @@ thisty()
                 }
                 else {
                     if (this.props.visible === false){
-                        // console.log('getting state pos '+ props.data.id, this.state.positionX)
+                        // console.log('this is me')
                         var whereToGo = this.getNotePositionX()
                     return whereToGo
                     }
@@ -286,7 +325,7 @@ thisty()
 
     const hashtagMoveY= () => {
         var i
-
+// console.log(props.data)
         if (props.hashtagDups.length > 0) {
         if (Object.keys(props.myHashtags).includes(props.data.id)){
             const myValue = (props.myHashtags)[(props.data.id)][0][0]
@@ -309,6 +348,7 @@ thisty()
                         }
                     }
                         if (topPos.length > 1) {
+                            console.log('this is happening')
                             for (i=0; i < topPos.length+1; i++){
                                 let word_With_Numbers = props.data.id
                                 let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
@@ -322,11 +362,12 @@ thisty()
                                     var numbs = myRand*2
                                     // console.log('this is numbs ' +numbs)
                                     if (this.state.listyPos !== 0) {
-        
+                                        console.log('this is happening')
                                         // console.log(this.state.listyPos)
                                         return (numbs+(this.state.genericLoc+100)) - props.scrollScreen}
                                 
                                 else {
+                                    console.log('this is happening')
                                     return (numbs+200) - props.scrollScreen}
                                 
                             }
@@ -342,16 +383,18 @@ thisty()
                 if (this.state.listyPos !== 0) {
                     if (this.state.listyPos > this.state.genericLoc && this.state.listyPos < (this.state.genericBottom+this.state.genericLoc)){
                         console.log('yes '+ 'listypos ' + this.state.listyPos + ' generictop ' + this.state.genericLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)
-                        if (this.state.listyPos < (this.state.genericLoc + this.state.textHeight+80)){
-                        // console.log(this.state.listyPos)
+                        if (this.state.listyPos < (this.state.genericLoc + this.state.textHeight+30)){
+                        console.log(this.state.listyPos)
                         return (this.state.genericLoc + this.state.textHeight+110)- (props.scrollScreen)
                     }
                     else if (this.state.listyPos < this.state.genericLoc){
-                        // console.log(this.state.listyPos)
+                        console.log(this.state.listyPos)
                     return (this.state.genericLoc + this.state.textHeight+30)- (props.scrollScreen)
                     
                     }
-                    else {return this.state.listyPos - (props.scrollScreen)}
+                    else {
+                        console.log('this is happening')
+                        return this.state.listyPos - (props.scrollScreen)}
                 }
                     else{
                     console.log('listypossing' + this.state.listyPos)
@@ -369,29 +412,36 @@ thisty()
             return this.state.listyPos - (props.scrollScreen)
     }
     else {
+        console.log('this is happening')
         return this.getNotePositionY() - (props.scrollScreen)}
 }
     }
     else {
         if (this.state.listyPos !== 0) {
-if (this.state.listyPos > this.state.genericLoc && this.state.listyPos < (this.state.genericBottom+this.state.genericLoc)){
-    if (this.state.listyPos < (this.state.genericLoc + this.state.textHeight)){
-    // console.log(this.state.listyPos)
-    return (this.state.genericLoc + this.state.textHeight+30)- (props.scrollScreen)
+// if (this.state.listyPos > this.state.genericLoc && this.state.listyPos < (this.state.genericBottom+this.state.genericLoc)){
+//     if (this.state.listyPos < (this.state.genericLoc + this.state.textHeight+30)){
+//     console.log(this.state.listyPos)
+//     return (this.state.genericLoc + this.state.textHeight)- (props.scrollScreen)
+// }
+
+// }
+// else if (this.state.listyPos > (this.state.genericLoc)){
+//     console.log('listypos ' + (this.state.listyPos) + ' generictop ' + (this.state.genericLoc)+ ' generic bottom ' + (this.state.genericBottom) + ' text height ' + (this.state.textHeight))
+// return (this.state.genericLoc + this.state.textHeight)- (props.scrollScreen)
+
+// }
+// else{
+//     if (typeof this.state.listyPos !== 'undefined'){
+//             console.log('listypos ' + (this.state.listyPos) + ' generictop ' + (this.state.genericLoc)+ ' generic bottom ' + (this.state.genericBottom) + ' text height ' + (this.state.textHeight))}
+//             return this.state.listyPos - (props.scrollScreen)
+//     }}
+//     else {
+//         // console.log('this is happening, listypos is 0')
+        return this.getNotePositionY() - (props.scrollScreen)}
+        else {return this.getNotePositionY() - (props.scrollScreen)}
 }
 
-}
-else if (this.state.listyPos < this.state.genericLoc){
-    // console.log(this.state.listyPos)
-return (this.state.genericLoc + this.state.textHeight+30)- (props.scrollScreen)
 
-}
-else{
-            console.log('listypos ' + this.state.listyPos + ' generictop ' + this.state.genericLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)}
-            return this.state.listyPos - (props.scrollScreen)
-    }
-    else {return this.getNotePositionY() - (props.scrollScreen)}
-}
     }
 
         let word_With_Numbers = props.data.id
@@ -430,14 +480,14 @@ else{
 // console.log(this.state.visibleList)
 const setOpac = () => {
     // console.log(props.data)
-    if ((props.data.y - props.scrollScreen)< 20){
+    if ((props.data.y - props.scrollScreen)< 20&& props.scrollScreen > 0){
         return 0.0
     }
     else { return 1}
 }
 
 var newText = props.data.text.split(/[_,]+/);
-// console.log(console.log(newText[0]))
+// console.log(props.data.id)
         return h(NoteDraggable, {
                 // className:`${props.data.selected?'note-selected':'note-unselected'}`,
                 scrollScreen: props.scrollScreen,
@@ -462,7 +512,6 @@ var newText = props.data.text.split(/[_,]+/);
                     width: props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":null,
                     height: props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":null,
                     boxShadow: '1px 1px 2px rgba(0,0,0,.15)',
-                    zIndex: windowFocus(),
                     opacity: setOpac()
                     }
             }, [
@@ -475,13 +524,14 @@ var newText = props.data.text.split(/[_,]+/);
                     prefix: `${props.prefix}--header`,
                     removeTodo: this.props.removeTodo,
                     onSubmit: props.onSubmit,
-                    buttons: [ButtonTitle, ButtonTrash]
+                    buttons: [ButtonTrash, ButtonTitle]
                 }),
                 h(NoteBody,{
                     key:'note-body',
                     left: hashtagMoveX(),
                     top: hashtagMoveY(),
                     items: props.items,
+                    // onClick: console.log('clicking!'),
                     onSubmit: props.onSubmit,
                     onChange: props.onChange,
                     notesy: props.notesy,

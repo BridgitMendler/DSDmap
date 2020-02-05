@@ -7,7 +7,7 @@ export function MessageListTwo(props){
 
   const styles={
     container: {
-      height: '700px',
+      height: (window.screen.height*.65),
       width: '100%',
       overflowY: 'scroll',
       backgroundColor:'rgba(0, 0, 0, 0.03)'

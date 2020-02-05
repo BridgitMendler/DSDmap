@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 function NoteText(props) {
 
 const { data, index, prefix, callbacks } = props;
-const x = 57
-const y = 37
+const x = 50
+const y = -10
 const [text, setText] = useState('')
 const [opac, setOpac] = useState(0)
 // console.log(text)
@@ -32,12 +32,12 @@ const onChange= (e) =>{
   }
 
   const handleBlur = (e) => {
-      console.log(e)
+    //   console.log(e)
       setOpac(0)
   }
 
   const handleClick = (e) => {
-console.log(e)
+// console.log(e)
 setOpac(1)
   }
     return h('div',{
@@ -51,16 +51,19 @@ setOpac(1)
         // onFocus:(e)=>(
         // callbacks.updateItem(e, {id:data.id, selected:true, datetime: getCurrentDateTime() })),
         // dangerouslySetInnerHTML:{__html:nlToBr(data.text)},
-        style: (getElementStyle('note-input'))
+        style: {
+            height: '100%'
+        }
     }, 
-            h('div', null, 
+            h('div', {className: `innerTextNote ${data.id}`}, 
             h('form', {
+                className: `innerTextNote ${data.id}` ,
                 // onSubmit: onSubmit,
             style: {
-                display: 'flex'
+                // display: 'flex'
             }}, 
-            h('input', {
-                className: 'forNotes',
+            h('textarea', {
+                className: `forNotes ${data.id} innerTextNote`,
                 type: "text",
                 placeholder: setText2(),
                 onChange: onChange,
@@ -73,14 +76,19 @@ setOpac(1)
                     outline: 'none',
                     border: 'none',
                     flex: 1,
-                    fontSize: 16,
+                    fontSize: 14,
                     fontFamily: 'avenir next',
-                    overflowY: 'scroll'
+                    overflowY: 'scroll',
+                    wordWrap: 'break-word',
+                    // overflow: 'hidden',
+                    whiteSpace: 'initial',
+                    textOverflow: 'ellipsis',
+                    resize: 'none'
                     }
                 })
             )
         )
-        ,h("button", {onClick: onSubmit, type: 'button', className: 'noteSend noselect', style: {backgroundColor: '#CACFDA', /* Green */
+        ,h("button", {onClick: onSubmit, type: 'button', className: 'noteSend', style: {backgroundColor: '#CACFDA', /* Green */
             border: 'none',
             color: 'white',
             borderRadius: 2,
