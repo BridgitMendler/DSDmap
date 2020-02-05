@@ -408,7 +408,7 @@ Popup {
 }
 
 .rs-notes--navbar__item{
-  margin-top: '20px';
+  /* margin-top: '20px'; */
   /* display: flex;
   flex-grow: 1;
   position: relative;
@@ -422,7 +422,7 @@ Popup {
   background: none;
   border: none;
   color:#fff;
-  padding: 3px 5px;
+  /* padding: 3px 5px; */
 }
 
 .rs-notes--navbar__item--button__title{
@@ -617,18 +617,19 @@ Popup {
 }
 .pictureLine {
   margin-bottom: 23px;
-  /* margin-left: 210px;
+  /* border-radius: 50px; */
+  /* box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.14); */
+  /* margin-left: 210px;*/
 
-  /* transform: translateX(100px); */
-  width: 58px;
-  height: 58px;
+  transform: translateY(18px);
+  width: 45px;
+  height: 12px;
   /* float: left; */
   align-items: center;
 }
 
 .title2 {
-  /* transform: translateY(-10px);
-  padding-right: 640px; */
+  /* transform: translateY(-10px); */
   cursor: pointer;
 }
 

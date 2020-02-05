@@ -2,7 +2,6 @@ import React, { Component, useEffect, useContext, useState, useRef } from 'react
 import pic from './system.png';
 import pic2 from './lightpin.png'
 import ReactDOM from 'react-dom'
-import { observeSix, newScrollLog} from "./Game";
 
 export function MessageListTwo(props){
 
@@ -81,7 +80,6 @@ var locaa = e.target.parentElement.parentElement.parentElement.parentElement
   props.onSubmit(('fffff' + e.target.parentElement.parentElement.children[1].innerText + '_listyTwo dropTarget selectionssss'+ '_listyText noselect'+ `_${Math.round((new Date()).getTime() / 1000)}`))
     locaa.scrollTo({behavior: "smooth",
     top:loca.offsetTop-300})}
-    newScrollLog(loca.offsetTop-300)
   }
     }
 

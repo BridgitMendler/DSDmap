@@ -3,8 +3,10 @@ import React, { useState, useEffect } from 'react';
 function NoteText(props) {
 
 const { data, index, prefix, callbacks } = props;
-
+const x = 57
+const y = 37
 const [text, setText] = useState('')
+const [opac, setOpac] = useState(0)
 // console.log(text)
 const onSubmit=(e) =>{
     // console.log(e)
@@ -27,6 +29,16 @@ const onChange= (e) =>{
     if (props.onChange) {
       props.onChange()
     }
+  }
+
+  const handleBlur = (e) => {
+      console.log(e)
+      setOpac(0)
+  }
+
+  const handleClick = (e) => {
+console.log(e)
+setOpac(1)
   }
     return h('div',{
         className:`${prefix}--text ${data.id}`,
@@ -52,6 +64,8 @@ const onChange= (e) =>{
                 type: "text",
                 placeholder: setText2(),
                 onChange: onChange,
+                onBlur: handleBlur,
+                onClick: handleClick,
                 value: text,
                 style: {
                     color: '#515151',
@@ -65,7 +79,26 @@ const onChange= (e) =>{
                     }
                 })
             )
-        ),h("button", {onClick: onSubmit, className: 'noteSend noselect', style: {color: 'grey', outline: 'yellow'}}, "share")
+        )
+        ,h("button", {onClick: onSubmit, type: 'button', className: 'noteSend noselect', style: {backgroundColor: '#CACFDA', /* Green */
+            border: 'none',
+            color: 'white',
+            borderRadius: 2,
+            paddingLeft: 3,
+            paddingRight: 3,
+            textAlign: 'center',
+            fontWeight: 'bold',
+            fontFamily: 'avenir next',
+            boxShadow: '1px 1px 2px rgba(0, 0, 0, 0.13)',
+            background: '-moz-linear-gradient(top,  #CACFDA 1%, 9AA5B9 100%)',
+            background: '-webkit-gradient(linear, left top, left bottom, color-stop(1%,#CACFDA), color-stop(100%,9AA5B9))',
+            background: '-webkit-linear-gradient(top,  #CACFDA 1%,9AA5B9 100%)',
+            background: '-o-linear-gradient(top,  #CACFDA 1%,9AA5B9 100%)',
+            background: '-ms-linear-gradient(top,  #CACFDA 1%,9AA5B9 100%)',
+            background: 'linear-gradient(to bottom,  #CACFDA 1%,9AA5B9100%)',
+            transform: `translate(${x}px, ${y}px)`,
+            opacity: opac,
+            fontSize: 16}}, "share")
         
     )
 }

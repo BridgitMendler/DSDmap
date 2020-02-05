@@ -97,9 +97,9 @@ class ReactStickyNotes extends Component {
 
 		this.getColor= () => {
 			if (e.nativeEvent.target.className === 'icons-g') {
-				return '#88A18A'
-			} else if (e.nativeEvent.target.className === 'icons-r') {
 				return '#BC8276'
+			} else if (e.nativeEvent.target.className === 'icons-r') {
+				return '#88A18A'
 			}
 			else {
 			return '#FAE3B6';

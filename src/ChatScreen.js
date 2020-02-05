@@ -9,13 +9,14 @@ import WhosOnlineList from './components/WhosOnlineList'
 import ReactStickyNotes from './components/react-sticky-notes';
 import { Map }from './components/Map'
 import pic from './components/system.png';
-import pic2 from './components/line-im5.png'
-import pic3 from './components/line-im5d.png'
+import pic2 from './components/Group 369.png'
+import pic3 from './components/Group 369.png'
 import NoteTwo from './components/react-sticky-notes/partials/noteTwo';
 import ReactDOM from 'react-dom'
 import NavBar from './components/react-sticky-notes/navbar';
 import { h, getElementStyle } from './components/react-sticky-notes/utils';
 import { EventEmitter } from './components/react-sticky-notes/utils/events.js'
+import { genericTypeAnnotation } from 'babel-types'
 
 
 
@@ -267,7 +268,8 @@ this.setState({ scrollVals: joined })
       borderBox: {
         padding: '10px',
         borderBottom: '1px solid rgba(0, 0, 0, 0.14)',
-        borderTop: '1px solid rgba(0, 0, 0, 0.14)'
+        borderTop: '1px solid rgba(0, 0, 0, 0.14)',
+        zIndex: 1000
         // display: 'flex',
         // flex: 1,
       },
@@ -275,28 +277,43 @@ this.setState({ scrollVals: joined })
         width: '100%',
         backgroundColor: 'white',
         color: 'white',
+        zIndex: 1001, 
+        position: 'relative'
       },
 
       button: {
-        border: '1px solid rgba(0, 0, 0, 0.14)',
-        borderRadius: 70,
-        width: 55,
-        height: 55,
+        backgroundColor: 'rgba(0, 0, 0, 0.03)',
+        borderRadius: 30,
+        width: 205,
+        height: 50,
         margin: 10,
         // flex: 'right',
         textAlign: 'center',
         display: 'inline-block',
-        float: 'right'
+        float: 'right',
+        fontSize: 16,
+        color: 'grey',
+        // fontWeight: 'bold',
+        fontFamily: 'avenir next',
+        boxShadow: '1px 2px 4px rgba(0, 0, 0, .15)',
       },
 
       button2: {
-        width: 55,
-        height: 55,
+        width: 205,
+        height: 50,
         margin: 10,
         flex: 'right',
         textAlign: 'center',
+        // border:'1px solid rgba(0, 0, 0, 0.14)',
+        backgroundColor: 'rgba(0, 0, 0, 0.03)',
+        borderRadius: 30,
         display: 'inline-block',
-        float: 'right'
+        float: 'right',
+        fontSize: 16,
+        color: 'grey',
+        // fontWeight: 'bold',
+        fontFamily: 'avenir next',
+        boxShadow: '1px 2px 4px rgba(0, 0, 0, .15)'
       },
 
       chatListContainer: {
@@ -345,11 +362,11 @@ this.setState({ scrollVals: joined })
           <h1 style={styles.button2}
             className="title2"
             onClick={this.handleLineClick}
-          ><img className='pictureLine noselect' src={this.state.hidden? pic3:pic2}></img></h1>
+          ><img className='pictureLine noselect' src={this.state.hidden? pic3:pic2}></img>show line</h1>
           <h1 style={styles.button}
             className="title"
             onClick={this.handleMapClick}
-          ><img className='pictureThree noselect' src={pic}></img></h1>
+          ><img className='pictureThree noselect' src={pic}></img>show map</h1>
                <ReactStickyNotes className='stickyButton'
             onChange={this.sendTypingEvent}
             onSubmit={this.sendMessage}

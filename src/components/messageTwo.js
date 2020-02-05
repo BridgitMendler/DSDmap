@@ -36,6 +36,21 @@ class MessageTwo extends Component {
       form: {
         display: 'flex',
       },
+      button: {
+        border: '1px solid rgba(0, 0, 0, 0.14)',
+        borderRadius: 20,
+        width: 205,
+        height: 50,
+        margin: 10,
+        // flex: 'right',
+        textAlign: 'center',
+        display: 'inline-block',
+        float: 'right',
+        fontSize: 16,
+        color: 'grey',
+        fontWeight: 'bold',
+        fontFamily: 'avenir next'
+      },
       input: {
         color: '#646465',
         background: 'none',
@@ -61,7 +76,7 @@ class MessageTwo extends Component {
     // >
     //   <span> Modal content </span>
     // </Popup>
-      <Popup trigger={<button onClick={this.handleClick} className='myButton'> <img className='pictureTwo noselect' src={pic}></img></button>} modal position="right center">
+      <Popup trigger={<button onClick={this.handleClick} style={styles.button} className='myButton'> <img className='pictureTwo noselect' src={pic}></img>write post</button>} modal position="right center">
       <div style={styles.container}>
         <div>
           <form onSubmit={this.onSubmit} style={styles.form}>

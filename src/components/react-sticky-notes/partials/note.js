@@ -142,6 +142,7 @@ thisty()
         else { return '0'}
     } return '0'
     }
+    else { return '0'}
 }
         // windowFocus()
         var precision = 100;
@@ -427,6 +428,13 @@ else{
 // conditions()
 // console.log(props.data)
 // console.log(this.state.visibleList)
+const setOpac = () => {
+    // console.log(props.data)
+    if ((props.data.y - props.scrollScreen)< 20){
+        return 0.0
+    }
+    else { return 1}
+}
 
 var newText = props.data.text.split(/[_,]+/);
 // console.log(console.log(newText[0]))
@@ -454,7 +462,8 @@ var newText = props.data.text.split(/[_,]+/);
                     width: props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":null,
                     height: props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":null,
                     boxShadow: '1px 1px 2px rgba(0,0,0,.15)',
-                    zIndex: windowFocus()
+                    zIndex: windowFocus(),
+                    opacity: setOpac()
                     }
             }, [
                 h(NoteHeader, {
