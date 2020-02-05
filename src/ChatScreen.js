@@ -9,8 +9,8 @@ import WhosOnlineList from './components/WhosOnlineList'
 import ReactStickyNotes from './components/react-sticky-notes';
 import { Map }from './components/Map'
 import pic from './components/system.png';
-import pic2 from './components/Group 369.png'
-import pic3 from './components/Group 369.png'
+import pic2 from './components/linePic.png'
+import pic3 from './components/linePic.png'
 import NoteTwo from './components/react-sticky-notes/partials/noteTwo';
 import ReactDOM from 'react-dom'
 import NavBar from './components/react-sticky-notes/navbar';
