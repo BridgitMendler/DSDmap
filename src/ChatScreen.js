@@ -229,6 +229,15 @@ this.setState({ scrollVals: joined })
   }
 
   render() {
+
+    const x = -55
+    const y = 19
+    const a = -19
+    const z = 22
+    const b = -57
+    const c = 3
+    const d = 22
+    const e = -25
     // console.log(this.state.notesy)
     // console.log(this.state.postings)
     // console.log(this.state.notesy)
@@ -284,7 +293,7 @@ this.setState({ scrollVals: joined })
       button: {
         backgroundColor: 'rgba(0, 0, 0, 0.03)',
         borderRadius: 30,
-        width: 205,
+        width: 180,
         height: 50,
         margin: 10,
         // flex: 'right',
@@ -299,7 +308,7 @@ this.setState({ scrollVals: joined })
       },
 
       button2: {
-        width: 205,
+        width: 180,
         height: 50,
         margin: 10,
         flex: 'right',
@@ -311,7 +320,6 @@ this.setState({ scrollVals: joined })
         float: 'right',
         fontSize: 16,
         color: 'grey',
-        // fontWeight: 'bold',
         fontFamily: 'avenir next',
         boxShadow: '1px 2px 4px rgba(0, 0, 0, .15)'
       },
@@ -342,8 +350,23 @@ this.setState({ scrollVals: joined })
       },
       transforming: {
         color: '#646465',
+      },
+      imagee: {
+        transform: `translate(${x}px, ${y}px)`,
+      },
+      text: {
+        transform: `translate(${z}px, ${a}px)`,
+      },
+      imagee2: {
+        transform: `translate(${b}px, ${c}px)`,
+      },
+      text2: {
+        transform: `translate(${d}px, ${e}px)`,
       }
+
     }
+
+  
 
     return (<div>
     <div onClick={this.handleClick} onScroll= {this.handleScroll}>       
@@ -362,11 +385,11 @@ this.setState({ scrollVals: joined })
           <h1 style={styles.button2}
             className="title2"
             onClick={this.handleLineClick}
-          ><img className='pictureLine noselect' src={this.state.hidden? pic3:pic2}></img>show line</h1>
+          ><img className='pictureLine noselect' style={styles.imagee} src={this.state.hidden? pic3:pic2}></img><p style={styles.text}>show line</p></h1>
           <h1 style={styles.button}
             className="title"
             onClick={this.handleMapClick}
-          ><img className='pictureThree noselect' src={pic}></img>show map</h1>
+          ><img className='pictureThree noselect' style={styles.imagee2} src={pic}></img><p style={styles.text2}>show map</p></h1>
                <ReactStickyNotes className='stickyButton'
             onChange={this.sendTypingEvent}
             onSubmit={this.sendMessage}

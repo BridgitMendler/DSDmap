@@ -49,13 +49,11 @@ class WhosOnlineListItem extends Component {
     super(props);
       this.state = {
         bgColor: [
-          '#ECCC8E',
-          '#5B7961',
-          '#B87F75',
-          '#65766E',
-          '#646464',
-          '#DEBD95',
-          '#9FA7B8'
+          '#F7E3BB',
+          '#B48479',
+          '#8DA08C',
+          '#CBCFD9',
+          '#A0A7B7'
         ],
         selectedColor: '',
       };
@@ -95,7 +93,7 @@ class WhosOnlineListItem extends Component {
         fontFamily: 'sans-serif',
         fontSize: '20px',
         textAlign: "center",
-        color: '#864A5E',
+        color: 'grey',
         paddingLeft: 0,
       }
     }

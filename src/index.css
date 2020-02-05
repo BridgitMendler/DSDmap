@@ -601,22 +601,26 @@ Popup {
 }
 .pictureTwo {
 
-  width: 72px;
-  height: 60px;
-  margin-top: 10px;
+  width: 35px;
+  height: 35px;
+  margin-top: 6.5px;
+  float: 'left';
   display: inline-block
 }
 
 .pictureThree {
-  margin-top: 3px;
-  width: 40px;
-  height: 40px;
+  margin-top: 6px;
+  /* margin-left: 2%; */
+  width: 35px;
+  transform: translateX(-20px);
+  height: 35px;
   /* align-items: center; */
   float: 'left';
   display:inline-block;
 }
 .pictureLine {
   margin-bottom: 23px;
+  /* transform: translateY(-90px); */
   /* border-radius: 50px; */
   /* box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.14); */
   /* margin-left: 210px;*/
@@ -639,8 +643,9 @@ Popup {
   height: 4px;
   border: none;
   outline: none;
-  float: left;
-  padding-left: 7%;
+  float: right;
+  padding-left: 2.1%;
+  cursor: pointer;
   /* padding-right: 950px; */
   /* padding-bottom: 50px */
 }

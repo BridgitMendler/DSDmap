@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Popup from "reactjs-popup";
-import pic from './write.png';
+import pic from './pencil.png';
 
 class MessageTwo extends Component {
   constructor(props) {
@@ -27,6 +27,8 @@ class MessageTwo extends Component {
   }
 
   render() {
+    const x = -5
+    const y = 15
     const styles = {
       container: {
         marginBottom: 10,
@@ -37,9 +39,9 @@ class MessageTwo extends Component {
         display: 'flex',
       },
       button: {
-        border: '1px solid rgba(0, 0, 0, 0.14)',
-        borderRadius: 20,
-        width: 205,
+        backgroundColor: 'rgba(0, 0, 0, 0.03)',
+        borderRadius: 30,
+        width: 180,
         height: 50,
         margin: 10,
         // flex: 'right',
@@ -48,8 +50,21 @@ class MessageTwo extends Component {
         float: 'right',
         fontSize: 16,
         color: 'grey',
-        fontWeight: 'bold',
-        fontFamily: 'avenir next'
+        // fontWeight: 'bold',
+        fontFamily: 'avenir next',
+        boxShadow: '1px 2px 4px rgba(0, 0, 0, .15)',
+
+
+      },
+
+      img: {
+        float: 'left',
+        textAlign: 'center',
+        display: 'inline-block',
+      },
+
+      imgee: {
+        transform: `translate(${x}px, ${y}px)`,
       },
       input: {
         color: '#646465',
@@ -76,7 +91,7 @@ class MessageTwo extends Component {
     // >
     //   <span> Modal content </span>
     // </Popup>
-      <Popup trigger={<button onClick={this.handleClick} style={styles.button} className='myButton'> <img className='pictureTwo noselect' src={pic}></img>write post</button>} modal position="right center">
+      <Popup trigger={<h1 onClick={this.handleClick} style={styles.button} className='myButton'> <img className='pictureTwo noselect' src={pic} style={styles.img}></img><p style={styles.imgee}>write post</p></h1>} modal position="right center">
       <div style={styles.container}>
         <div>
           <form onSubmit={this.onSubmit} style={styles.form}>
