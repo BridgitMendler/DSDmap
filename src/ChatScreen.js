@@ -182,7 +182,7 @@ var oldestM = 300000000
               if (message.id < oldestM){
                 oldestM = message.id
               }
-              console.log(oldestM)
+              // console.log(oldestM)
               String.prototype.removeCharAt = function (i) {
                 var tmp = this.split(''); // convert to an array
                 tmp.splice(i, 5); // remove 1 element from the array (adjusting for non-zero-indexed counts)
@@ -253,11 +253,11 @@ var oldestM = 300000000
         limit:100, 
        })
         .then(message => {
-            console.log('message!')
+            // console.log('message!')
             if (message.id < oldestM){
               oldestM = message.id
             }
-            console.log(oldestM)
+            // console.log(oldestM)
             String.prototype.removeCharAt = function (i) {
               var tmp = this.split(''); // convert to an array
               tmp.splice(i, 5); // remove 1 element from the array (adjusting for non-zero-indexed counts)
@@ -317,7 +317,7 @@ var oldestM = 300000000
       // console.log(this.state.oldestM)
     // console.log(oldestM)
       // console.log(...this.state.allMes.map(m => m.id))
-      console.log(this.state.allMes)
+      // console.log(this.state.allMes)
 
     // console.log(this.state.allMes)
 // console.log((this.state.delNote),(this.state.messages),(this.state.postings),(this.state.bubblePosList),(this.state.notesy))

@@ -78,7 +78,7 @@ var locaa = e.target.parentElement.parentElement.parentElement.parentElement
   if (typeof loca !== 'undefined'){
   if (typeof locaa !== 'undefined'){
   props.onSubmit(('fffff' + e.target.parentElement.parentElement.children[1].innerText + '_listyTwo dropTarget selectionssss'+ '_listyText noselect'+ `_${Math.round((new Date()).getTime() / 1000)}`))
-    locaa.scrollTo({behavior: "smooth",
+    locaa.scrollTo({ behavior: 'smooth',
     top:loca.offsetTop-300})}
   }
     }
@@ -130,12 +130,12 @@ const weMove =()=> {
   var theOne = (document.getElementsByClassName('selectionssss'))
 
   if (typeof theOne[0] !== 'undefined'){
-    console.log(theOne[0].offsetTop)
+    // console.log(theOne[0].offsetTop)
     if (typeof locaa !== 'undefined'){
       if (typeof locaa[0] !== 'undefined'){
         var locaaa = locaa[0]
-        console.log(locaaa)
-      locaaa.scrollTo({behavior: "smooth",
+        // console.log(locaaa)
+      locaaa.scrollTo({
       top:theOne[0].offsetTop})}
     }}
     }

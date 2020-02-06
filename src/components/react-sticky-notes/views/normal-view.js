@@ -210,6 +210,7 @@ const removeTodo = () => {
 // console.log(iclicked)
 
 //     }
+// console.log(props.notesy)
 
     const [hasDropped, setHasDropped] = useState(false)
 

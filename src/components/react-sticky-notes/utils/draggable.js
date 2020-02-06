@@ -19,6 +19,7 @@ export default class Draggable {
         if (e.cancelable) {
             e.preventDefault();
         }
+        // console.log('moving!')
         const el = this.options.element;
         const parentElement = el.parentElement;
         const pRect = parentElement?parentElement.getBoundingClientRect():{left:0,top:0};
@@ -83,97 +84,97 @@ export default class Draggable {
         }
         
     }
-    // var elemClos = elementMouseIsOver.closest('.chatContainer')   
+    // var elemClos = elementMouseIsOver.closestCard('.chatContainer')   
     // var i
-    // for  (i=0; i<sourceThree.length; i++) {
+    // for  (i=0; i<allCards.length; i++) {
     //     (document.getElementsByClassName('listyTwo')[i].offsetTop) - 
     // }
-    // const sourceThree = document.getElementsByClassName('listyTwo');
+    // const allCards = document.getElementsByClassName('listyTwo');
     // const sourceTwo = document.getElementsByClassName('listyThree')[0].scrollTop;
 
     onMouseUp = (e) => {
 
-    const sourceThree = document.getElementsByClassName('listyTwo');
-    const sourceTwo = document.getElementsByClassName('listyThree')[0].scrollTop;
-    const sourceFour = document.getElementsByClassName('listyText')
-    // var elemClos = elementMouseIsOver.closest('.chatContainer')   
+    const allCards = document.getElementsByClassName('listyTwo');
+    const scrollVal = document.getElementsByClassName('listyThree')[0].scrollTop;
+    const allCardText = document.getElementsByClassName('listyText')
+    // var elemClos = elementMouseIsOver.closestCard('.chatContainer')   
     var i
-    var counts = []
-    var counts2 = []
-    var counts3 = []
-    var counts4 = []
+    var liRelCardTop = []
+    var liListTextHeight = []
+    var liAbsolCardTop = []
+    var liCardHeight = []
 
-    var goal = this.currentY
-    // console.log(sourceThree)
-    for  (i=0; i<sourceThree.length; i++) {
-        var myVal2 = ((document.getElementsByClassName('listyTwo')[i].offsetTop))
-        var myVal3 = ((document.getElementsByClassName('listyTwo')[i].offsetHeight))
-        var myVal = ((document.getElementsByClassName('listyTwo')[i].offsetTop) - sourceTwo)
-        var ListTextHeight = ((document.getElementsByClassName('listyText')[i]).offsetHeight)
+    var screenY = this.currentY
+    // console.log(allCards)
+    for  (i=0; i<allCards.length; i++) {
+        var absolCardTop = ((document.getElementsByClassName('listyTwo')[i].offsetTop))
+        var cardHeight = ((document.getElementsByClassName('listyTwo')[i].offsetHeight))
+        var relCardTop = ((document.getElementsByClassName('listyTwo')[i].offsetTop) - scrollVal)
+        var listTextHeight = ((document.getElementsByClassName('listyText')[i]).offsetHeight)
         // var ListWidth = ((document.getElementsByClassName('listyTwo')[i].offsetWidth))
 // console.log(myVal)
-        counts.push(myVal)
-        counts2.push(ListTextHeight)
-        counts3.push(myVal2)
-        counts4.push(myVal3)
+        liRelCardTop.push(relCardTop)
+        liListTextHeight.push(listTextHeight)
+        liAbsolCardTop.push(absolCardTop)
+        liCardHeight.push(cardHeight)
         // console.log(document.getElementsByClassName('listyTwo'))
 
 
     }
 
-    console.log(counts4)
-    var closest = counts.reduce(function(prev, curr) {
+    console.log(liCardHeight)
+    var closestCard = liRelCardTop.reduce(function(prev, curr) {
 
-        return (Math.abs(curr - goal) < Math.abs(prev - goal) ? curr : prev);
+        return (Math.abs(curr - screenY) < Math.abs(prev - screenY) ? curr : prev);
       });
 
-    var theActual = goal-closest
+    var theActual = screenY-closestCard
 
     var textHeight
-    var boxBottom
+    var bottomOfCard
     var c
-    var listyTwoHeight
-for (c=0; c<counts3.length; c++) {
-    if (closest+sourceTwo === counts3[c]){
-        console.log(" counts3[c] " + counts3[c])
-        console.log(counts2[c], c)
+    var cardDepth
+for (c=0; c<liAbsolCardTop.length; c++) {
+    if (closestCard+scrollVal === liAbsolCardTop[c]){
+        console.log(" liAbsolCardTop[c] " + liAbsolCardTop[c])
+        console.log(liListTextHeight[c], c)
 
-        textHeight = counts2[c]
-        boxBottom = counts4[c]
-        listyTwoHeight = counts3[c]
+        textHeight = liListTextHeight[c]
+        bottomOfCard = liCardHeight[c]
+        cardDepth = liAbsolCardTop[c]
     }
     else {
-        console.log("closest-sourceTwo " + (closest-sourceTwo) + " counts3[c] " + counts3[c])
+        console.log("closestCard-scrollVal " + (closestCard-scrollVal) + " liAbsolCardTop[c] " + liAbsolCardTop[c])
         // textHeight = counts2[c]
-        // boxBottom = counts4[c]
-        // listyTwoHeight = counts3[c]
+        // bottomOfCard = liCardHeight[c]
+        // cardDepth = counts3[c]
     }
 }
 console.log('text height ' + textHeight)
-console.log(sourceTwo)
-console.log(sourceTwo, goal)
-console.log('listyTwo height '+ listyTwoHeight)
-console.log('boxBottom '+ boxBottom)
-// var theActual = goal
-// console.log(theActual, closest)
-    var genericLoc = sourceTwo + closest - 110
-    var textBottom = genericLoc + textHeight
-    var genericBottom = boxBottom
-// var genericLoc = sourceTwo
-var listyLoc = sourceTwo+goal
+console.log(scrollVal)
+console.log(scrollVal, screenY)
+console.log('cardDepth '+ cardDepth)
+console.log('bottomOfCard '+ bottomOfCard)
+// var theActual = screenY
+// console.log(theActual, closestCard)
+    var absolLoc = scrollVal + closestCard - 110
+    var textBottom = absolLoc + textHeight
+    var genericBottom = bottomOfCard
+// var absolLoc = sourceTwo
+var relCick = scrollVal+screenY
 var thePosition = 0
 var thePositionDrop
-for  (i=0; i<sourceThree.length; i++) {
+for  (i=0; i<allCards.length; i++) {
 
     var myVal = (document.getElementsByClassName('listyTwo')[i].offsetTop)
 
-    if (listyLoc === myVal){
+    if (relCick === myVal){
     thePosition = document.getElementsByClassName('listyTwo')[i]
     thePositionDrop = document.getElementsByClassName('listyText')[i]
     }
 
 }
-console.log(listyLoc)
+console.log(relCick)
 // console.log((document.getElementsByClassName('listyTwo')))
 if (typeof e.target.offsetParent!== 'undefined' && e.target.offsetParent !== null){
     // console.log(e.target.offsetParent)
@@ -203,8 +204,8 @@ const el = this.options.element;
             this.options.onMouseDownMove.call(this, {
                 mouseStatus: this.mouseStatus,
                 listy: thePosition,
-                listyPos: listyLoc,
-                genericLoc: genericLoc,
+                relClick: relCick,
+                absolLoc: absolLoc,
                 textBottom: textBottom,
                 genericBottom: genericBottom,
                 textHeight: textHeight

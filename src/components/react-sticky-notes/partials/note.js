@@ -29,35 +29,48 @@ class Note extends React.Component{
     }   
     
     getNotePositionY =() => {
-        var i
-        for (i=0; i< this.props.notesy.length; i++){
-            if (this.props.notesy[i].od === this.props.data.od){
-                // console.log(this.props.notesy[i])
-                var yVal = parseInt(this.props.notesy[i].y)
-                // console.log(this.props.notesy[i].id, yVal)
+        var i = 1
+        while (i< this.props.notesy.length){
+            // console.log(Object.keys(this.props.notesy[i]).indexOf('od'))
+            var newVal = this.props.notesy[i]
+            if ((newVal.od) !== null){
+            // console.log(this.props.notesy, typeof this.props.data.od)
+            i++
+            if (newVal.od === this.props.data.od){
+
+                var yVal = parseInt(newVal.y)
+                // console.log(yVal)
                 return yVal
             }
+        }
             else {
-                // console.log(this.props.data.position.y)
+            //     console.log('else' + this.props.data.position.y)
                 return this.props.data.position.y
             }
-            // else {return 0}
         }
+            // else {return 0}
+        // }
         
     }
 
+
         getNotePositionX =() => {
-        var i
-        // if (this.props.notesy.length>10){
-        for (i=0; i< this.props.notesy.length; i++){
-            // console.log(i)
-            if (this.props.notesy[i].od === this.props.data.od){
-                var xVal = parseInt(this.props.notesy[i].x)
-                // console.log(this.props.notesy[i].id, xVal)
-                return xVal
+            var i = 1
+            while (i< this.props.notesy.length){
+                // console.log(Object.keys(this.props.notesy[i]).indexOf('od'))
+                var newVal = this.props.notesy[i]
+                if ((newVal.od) !== null){
+                // console.log(this.props.notesy, typeof this.props.data.od)
+                i++
+                if (newVal.od === this.props.data.od){
+    
+                    var xVal = parseInt(newVal.x)
+                    // console.log(xVal)
+                    return xVal
+                }
             }
             else {
-                // console.log(this.props.data.position.x)
+                // console.log('else ' + this.props.data.position.x)
                 return this.props.data.position.x
             }
         }}
@@ -72,9 +85,9 @@ class Note extends React.Component{
             mouseStatus: false,
             firstAv: [],
             firstRan: this.getRandomThree(),
-            listyPos: 0,
+            relCick: 0,
             listy: [],
-            genericLoc: 0,
+            absolLoc: 0,
             visibleList: [],
             textHeight: 0,
             genericBottom: 0
@@ -351,7 +364,7 @@ thisty()
                         }
                     }
                         if (topPos.length > 1) {
-                            console.log('this is happening')
+                            // console.log('this is happening')
                             for (i=0; i < topPos.length+1; i++){
                                 let word_With_Numbers = props.data.od
                                 let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
@@ -364,13 +377,13 @@ thisty()
     
                                     var numbs = myRand*2
                                     // console.log('this is numbs ' +numbs)
-                                    if (this.state.listyPos !== 0) {
-                                        console.log('this is happening')
-                                        // console.log(this.state.listyPos)
-                                        return (numbs+(this.state.genericLoc+100)) - props.scrollScreen}
+                                    if (this.state.relCick !== 0) {
+                                        // console.log('this is happening')
+                                        // console.log(this.state.relCick)
+                                        return (numbs+(this.state.absolLoc+100)) - props.scrollScreen}
                                 
                                 else {
-                                    console.log('this is happening')
+                                    // console.log('this is happening')
                                     return (numbs+200) - props.scrollScreen}
                                 
                             }
@@ -383,65 +396,65 @@ thisty()
                 // return (100+(50*(indexH+1)-randomnum-props.scrollScreen))
             }
             else {
-                if (this.state.listyPos !== 0) {
-                    if (this.state.listyPos > this.state.genericLoc && this.state.listyPos < (this.state.genericBottom+this.state.genericLoc)){
-                        console.log('yes '+ 'listypos ' + this.state.listyPos + ' generictop ' + this.state.genericLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)
-                        if (this.state.listyPos < (this.state.genericLoc + this.state.textHeight+30)){
-                        console.log(this.state.listyPos)
-                        return (this.state.genericLoc + this.state.textHeight+110)- (props.scrollScreen)
+                if (this.state.relCick !== 0) {
+                    if (this.state.relCick > this.state.absolLoc && this.state.relCick < (this.state.genericBottom+this.state.absolLoc)){
+                        // console.log('yes '+ 'relCick ' + this.state.relCick + ' generictop ' + this.state.absolLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)
+                        if (this.state.relCick < (this.state.absolLoc + this.state.textHeight+30)){
+                        // console.log(this.state.relCick)
+                        return (this.state.absolLoc + this.state.textHeight+110)- (props.scrollScreen)
                     }
-                    else if (this.state.listyPos < this.state.genericLoc){
-                        console.log(this.state.listyPos)
-                    return (this.state.genericLoc + this.state.textHeight+30)- (props.scrollScreen)
+                    else if (this.state.relCick < this.state.absolLoc){
+                        // console.log(this.state.relCick)
+                    return (this.state.absolLoc + this.state.textHeight+30)- (props.scrollScreen)
                     
                     }
                     else {
-                        console.log('this is happening')
-                        return this.state.listyPos - (props.scrollScreen)}
+                        // console.log('this is happening')
+                        return this.state.relCick - (props.scrollScreen)}
                 }
                     else{
-                    console.log('listypossing' + this.state.listyPos)
-                    console.log('listypos ' + this.state.listyPos + ' generictop ' + this.state.genericLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)
-                    return this.state.listyPos - (props.scrollScreen)}
+                    // console.log('relCicksing' + this.state.relCick)
+                    // console.log('relCick ' + this.state.relCick + ' generictop ' + this.state.absolLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)
+                    return this.state.relCick - (props.scrollScreen)}
             }
             else {return this.getNotePositionY() - (props.scrollScreen)}
         }
     }
     else {
-        if (this.state.listyPos !== 0) {
+        if (this.state.relCick !== 0) {
 
-            console.log('listypossing')
-            console.log('listypos ' + this.state.listyPos + ' generictop ' + this.state.genericLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)
-            return this.state.listyPos - (props.scrollScreen)
+            // console.log('relCicksing')
+            // console.log('relCick ' + this.state.relCick + ' generictop ' + this.state.absolLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)
+            return this.state.relCick - (props.scrollScreen)
     }
     else {
-        console.log('this is happening')
+        // console.log('this is happening')
         return this.getNotePositionY() - (props.scrollScreen)}
 }
     }
     else {
-        if (this.state.listyPos !== 0) {
-// if (this.state.listyPos > this.state.genericLoc && this.state.listyPos < (this.state.genericBottom+this.state.genericLoc)){
-//     if (this.state.listyPos < (this.state.genericLoc + this.state.textHeight+30)){
-//     console.log(this.state.listyPos)
-//     return (this.state.genericLoc + this.state.textHeight)- (props.scrollScreen)
-// }
+        if (this.state.relCick !== 0) {
+if (this.state.relCick > this.state.absolLoc && this.state.relCick < (this.state.genericBottom+this.state.absolLoc)){
+    if (this.state.relCick < (this.state.absolLoc + this.state.textHeight+30)){
+    console.log(this.state.relCick)
+    return (this.state.absolLoc + this.state.textHeight)- (props.scrollScreen)
+}
 
-// }
-// else if (this.state.listyPos > (this.state.genericLoc)){
-//     console.log('listypos ' + (this.state.listyPos) + ' generictop ' + (this.state.genericLoc)+ ' generic bottom ' + (this.state.genericBottom) + ' text height ' + (this.state.textHeight))
-// return (this.state.genericLoc + this.state.textHeight)- (props.scrollScreen)
+}
+else if (this.state.relCick < (this.state.absolLoc)){
+    console.log('relCick ' + (this.state.relCick) + ' generictop ' + (this.state.absolLoc)+ ' generic bottom ' + (this.state.genericBottom) + ' text height ' + (this.state.textHeight))
+return (this.state.absolLoc + this.state.textHeight)- (props.scrollScreen)
 
-// }
-// else{
-//     if (typeof this.state.listyPos !== 'undefined'){
-//             console.log('listypos ' + (this.state.listyPos) + ' generictop ' + (this.state.genericLoc)+ ' generic bottom ' + (this.state.genericBottom) + ' text height ' + (this.state.textHeight))}
-//             return this.state.listyPos - (props.scrollScreen)
-//     }}
-//     else {
-//         // console.log('this is happening, listypos is 0')
+}
+else{
+    if (typeof this.state.relCick !== 'undefined'){
+            console.log('relCick ' + (this.state.relCick) + ' generictop ' + (this.state.absolLoc)+ ' generic bottom ' + (this.state.genericBottom) + ' text height ' + (this.state.textHeight))}
+            return this.state.relCick - (props.scrollScreen)
+    }}
+    else {
+        // console.log('this is happening, relCick is 0')
         return this.getNotePositionY() - (props.scrollScreen)}
-        else {return this.getNotePositionY() - (props.scrollScreen)}
+        // else {return this.getNotePositionY() - (props.scrollScreen)}
 }
 
 
@@ -500,11 +513,12 @@ var newText = props.data.text.split(/[_,]+/);
                 className: `${props.prefix}--full-note-${props.data.od} full-notey-note' ${props.data.od}`,
                 selected: props.data.selected,
                 target: this.targetRef,
-                onMouseDownMove:(pos) => (this.setState({mouseStatus:pos.mouseStatus, listyPos:pos.listyPos, genericLoc:pos.genericLoc, textHeight:pos.textHeight, genericBottom: pos.genericBottom})),
+                onMouseDownMove:(pos) => (this.setState({mouseStatus:pos.mouseStatus, relCick:pos.relCick, absolLoc:pos.absolLoc, textHeight:pos.textHeight, genericBottom: pos.genericBottom})),
                 // onClick: (e) =>(console.log('clicked'),onStart(e)),
-                onDragComplete:(pos)=> (setWhatDragShouldDo(), 
+                onDragComplete:(pos)=> (setWhatDragShouldDo(),
                 props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.x},${pos.y}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.x}_${pos.y}`)),
                     // props.callbacks.updateItem(null, {id: props.data.id, position:pos, className:`'${props.data.selected}`})
+                    // console.log(('ggggg' + `${pos.text}`+ `_${pos.x},${pos.y}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.x}_${pos.y}`)),
                 (this.setState({positionX: pos.x, positionY:pos.y}))
                 // props.onSubmit(('ggggg' + text+ `_${props.left},${props.top}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`))
                 
