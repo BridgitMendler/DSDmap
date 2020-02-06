@@ -33,12 +33,12 @@ export const NoteBubble = (props) => {
     var myIDs = []
 
 var findit =document.getElementById(props.data['label']);
-let word_With_Numbers = props.data.id
+let word_With_Numbers = props.data.od
 let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
 var myRand = word_Without_Numbers[0]
 // console.log(myRand)
 var myElementTop = () => {
-var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.id}`)[0]
+var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)[0]
 if ( typeof myEl !== 'undefined') {
     myEl = myEl.style.top
     myEl = parseFloat(myEl.replace(/\D/g, ''))
@@ -115,7 +115,7 @@ if (typeof props.data.label !== 'undefined' && props.data.label.length > 1){
         }
     }
     else {
-            var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.id}`)[0]
+            var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)[0]
             if ( typeof myEl !== 'undefined') {
                 myEl = myEl.style.left
                 myEl = parseFloat(myEl)
@@ -182,7 +182,7 @@ else {
 // }
         else {
 
-                var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.id}`)[0]
+                var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)[0]
                 if ( typeof myEl !== 'undefined') {
                     myEl = myEl.style.top
                     myEl = parseFloat(myEl)
@@ -222,8 +222,8 @@ const whichColor = (val) => {
  }
 }
     return h(NoteDraggable, {
-                className: (typeof props.data.label !== 'undefined' && props.data.label.length > 1) ?`${props.data.id} dropped${props.data.id} ${props.prefix}--note-${props.data.id} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.id}`:
-                `${props.data.id} ${props.prefix}--note-${props.data.id} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.id}`,
+                className: (typeof props.data.label !== 'undefined' && props.data.label.length > 1) ?`${props.data.od} dropped${props.data.od} ${props.prefix}--note-${props.data.od} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.od}`:
+                `${props.data.od} ${props.prefix}--note-${props.data.od} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.od}`,
                 position: props.data.position,
                 selected: props.data.selected,
                 target: drag,
@@ -246,8 +246,8 @@ const whichColor = (val) => {
                 }
             }, 
             h('button',{
-                className: `${props.data.id} ${props.prefix}--note__bubble `,
-                onMouseEnter: () => (props.settingLine(props.data.id)),
+                className: `${props.data.od} ${props.prefix}--note__bubble `,
+                onMouseEnter: () => (props.settingLine(props.data.od)),
                 ref: drag,
                 title: props.data.title?props.data.title: getNoteTitle(props.data),
                 // onClick: (pos)=> (props.callbacks.updateItem(null, {id: props.data.id, position:pos, hidden: false })),

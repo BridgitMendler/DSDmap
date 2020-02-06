@@ -36,7 +36,7 @@ export function ButtonTitle({prefix, data, targetRef, callbacks }){
         key: `${prefix}--button__title`,
         className:`${prefix}--button ${prefix}--button__title ${data.id}`,
         ref: targetRef,
-        onClick:(e)=>callbacks.updateItem(e, { id: data?data.id:null, menu: false, selected: true, hidden: false })
+        onClick:(e)=>callbacks.updateItem(e, { od: data?data.od:null, menu: false, selected: true, hidden: false })
     },
         data.title?data.title: getNoteTitle(data)
     )
@@ -76,7 +76,7 @@ export function ButtonHideShow({prefix, data, icons, callbacks }){
     return h('button',{
         key: `${prefix}--button__hideshow`,
         className:`${prefix}--button ${prefix}--button__hideshow`,
-        onClick:(e)=>callbacks.updateItem(e, {id: data?data.id:null, position:data?data.position:null, hidden: !data.hidden})
+        onClick:(e)=>callbacks.updateItem(e, {id: data?data.od:null, position:data?data.position:null, hidden: !data.hidden})
     }, 
         data.hidden?icons.hide:icons.show
     );
@@ -102,7 +102,7 @@ export function ButtonTrash({prefix, data, icons, callbacks, removeTodo}, props)
         key: `${prefix}--button__trash`,
         className:`${prefix}--button ${prefix}--button__trash noselect`,
         onClick:(e)=>(
-        callbacks.onSubmit(('hhhhh' + `${newText[0]}`+ `_${data.position.x},${data.position.x}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`+ '_yes')))
+        callbacks.onSubmit(('hhhhh' + `${newText[0]}`+ `_${data.position.x},${data.position.x}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`+ '_yes')))
     }, 
         icons.trash
     );

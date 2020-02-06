@@ -125,7 +125,7 @@ class ReactStickyNotes extends Component {
 			payload: {
 				index,
 				data: {
-					id: getUUID(),
+					od: getUUID(),
 					color: this.getColor(),
 					text: '',
 					selected: true,
@@ -136,7 +136,7 @@ class ReactStickyNotes extends Component {
 				}
 			}
 		});
-console.log(this.state.items)
+// console.log(this.state.items)
 
 		if (this.state.items.length === 0) {
 			return null
@@ -145,7 +145,7 @@ console.log(this.state.items)
 
 
 	var dataPos = this.state.items[this.state.items.length-1].position
-	var dataID = this.state.items[this.state.items.length-1].id
+	var dataID = this.state.items[this.state.items.length-1].od
 		if (dataPos === undefined) {
 			return null
 		} else {
@@ -179,7 +179,7 @@ console.log(this.state.items)
 			payload: {
 				index,
 				data: {
-					id: getUUID(),
+					od: getUUID(),
 					color: this.getColor(),
 					width: '100px',
 					position: {
@@ -274,14 +274,14 @@ var toRemove = []
 var toRemove2 = []
 var array2 = []
 var newBubble = []
-
+// console.log(this.props.notesy)
 		const findDupsArr = () => {
 			var newArray = this.props.notesy
 			var newArray2 = []
 			var i
 			for (i = 0; i< this.props.notesy.length; i++) {
 				var newText = newArray[i].text.split(/[_,]+/);
-				newArray[i]['id'] = newText[3] 
+				newArray[i]['od'] = newText[3] 
 				newArray[i]['x'] = newText[1]
 				newArray[i]['y']= newText[2]
 				newArray[i]['selected'] = newText[5]
@@ -296,7 +296,7 @@ var newBubble = []
 
 			// }
 			result = Object.values(newArray.reduce((c, v) => {
-			  let k = v.id;
+			  let k = v.od;
 			  c[k] = c[k] || [];
 			  c[k].push(v);
 			  return c;
@@ -317,7 +317,7 @@ var newBubble = []
 			for (k = 0; k < newArray.length; k++) {
 				var l
 				for (l = 0; l < result.length; l++) {
-			if (newArray[k].id === undefined || newArray[k].id === result[l][0].id && newArray[k].time !== result[l][0].time)  
+			if (newArray[k].od === undefined || newArray[k].od === result[l][0].od && newArray[k].time !== result[l][0].time)  
 			{
 				// console.log(k)
 				toRemove.push(k)
@@ -337,13 +337,15 @@ var newBubble = []
 		var unusedIds = []
 		if (newArray[0] !== undefined&& newThangs[0] !== undefined) {
 			for (n = 0; n < newArray.length; n++) {
-				arrayIds.push(newArray[n]['id'])
+				arrayIds.push(newArray[n]['od'])
 			}
 		for (m = 0; m < newThangs.length; m++) {
-			if (arrayIds.indexOf(newThangs[m].id) === -1) {
+			// console.log(newThangs[m].od)
+			if (typeof newThangs[m].od !== 'undefined'){
+			if (arrayIds.indexOf(newThangs[m].od) === -1) {
 				unusedIds.push(newThangs[m])
 			}
-		}
+		}}
 	}
 	var fresh =newArray.concat(unusedIds)
 		newNotesy = fresh
@@ -363,7 +365,7 @@ else {
 	var i
 	for (i = 0; i< newNotesy.length; i++) {
             if (typeof newNotesy[i] !== 'undefined') {
-                if (newNotesy[i]['id'] === val){
+                if (newNotesy[i]['od'] === val){
 					newNotesy[i]['deleted'] = 'yes'
                     // console.log(newNotesy)
                     // newNotesy.splice(i,1)
@@ -416,19 +418,19 @@ for (i=0; i<newNotesy.length; i++){
 		}
 			// console.log(Object.values(this.state.myHashtags))
 			// console.log(result, data.id);
-			if (Object.keys(this.state.myHashtags).indexOf(newNotesy[i].id)< 0 ){
+			if (Object.keys(this.state.myHashtags).indexOf(newNotesy[i].od)< 0 ){
 				// console.log(Object.keys(this.state.myHashtags).indexOf(newNotesy[i].id))
 			var newInput = Object.assign({}, 
-				this.state.myHashtags, {[newNotesy[i].id]: result[0]});
+				this.state.myHashtags, {[newNotesy[i].od]: result[0]});
 				// console.log(this.state.myHashtags)
 				  this.setState({
 					myHashtags: newInput,
 				  });
 
-		}else if (Object.keys(this.state.myHashtags).indexOf(newNotesy[i].id)> 0 && this.state.myHashtags[newNotesy[i].id] !== result[0]) {
+		}else if (Object.keys(this.state.myHashtags).indexOf(newNotesy[i].od)> 0 && this.state.myHashtags[newNotesy[i].od] !== result[0]) {
 			let myHashtagsCopy = JSON.parse(JSON.stringify(this.state.myHashtags))
 
-			myHashtagsCopy[newNotesy[i].id] = result[0]
+			myHashtagsCopy[newNotesy[i].od] = result[0]
 			// var newInput = Object.assign({}, 
 			// 	this.state.myHashtags, {[newNotesy[i].id]: result[0]});
 				// console.log(myHashtagsCopy)
@@ -528,7 +530,7 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 			  })
 			if (newText.length === 7){
 
-			newArray[i]['id'] = newText[5]
+			newArray[i]['od'] = newText[5]
 			newArray[i]['x'] = newText[1]
 			newArray[i]['y']= newText[2]
 			newArray[i]['selected'] = newText[4]
@@ -549,10 +551,11 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 			var unusedIds = []
 			if (typeof newNot !== 'undefined' && typeof newThangs !== 'undefined') {
 				for (q = 0; q < newNot.length; q++) {
-					arrayIds.push(newNot[q]['id'])
+					arrayIds.push(newNot[q]['od'])
 				}
 			for (p = 0; p < newThangs.length; p++) {
-				if (arrayIds.indexOf(newThangs[p].id) === -1) {
+				console.log(newThangs[p].od)
+				if (arrayIds.indexOf(newThangs[p].od) === -1) {
 					unusedIds.push(newThangs[p])
 				}
 			}
@@ -560,7 +563,7 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 			newNot =newNot.concat(unusedIds)
 	// console.log(newNot)
 		resultFour = Object.values(newNot.reduce((c, v) => {
-			let k = v.id;
+			let k = v.od;
 			c[k] = c[k] || [];
 			c[k].push(v);
 			return c;
@@ -582,7 +585,7 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 			  var l
 			  for (l = 0; l < resultFour.length; l++) {
 				//   console.log(resultFour[l].length)
-		  if (newNot[k].id === undefined || newNot[k].id === resultFour[l][0].id && newNot[k].time !== resultFour[l][0].time)  
+		  if (newNot[k].od === undefined || newNot[k].od === resultFour[l][0].od && newNot[k].time !== resultFour[l][0].time)  
 		  {
 			//   console.log(newNot[k])
 			  toRemove2.push(k)
@@ -597,7 +600,7 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 	  }
 	  var resultSix = []
 	  var resultFive = Object.values(newNot.reduce((c, v) => {
-		let k = v.id;
+		let k = v.od;
 		c[k] = c[k] || [];
 		c[k].push(v);
 		return c;

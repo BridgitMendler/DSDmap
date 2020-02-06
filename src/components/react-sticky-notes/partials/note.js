@@ -31,7 +31,7 @@ class Note extends React.Component{
     getNotePositionY =() => {
         var i
         for (i=0; i< this.props.notesy.length; i++){
-            if (this.props.notesy[i].id === this.props.data.id){
+            if (this.props.notesy[i].od === this.props.data.od){
                 // console.log(this.props.notesy[i])
                 var yVal = parseInt(this.props.notesy[i].y)
                 // console.log(this.props.notesy[i].id, yVal)
@@ -51,7 +51,7 @@ class Note extends React.Component{
         // if (this.props.notesy.length>10){
         for (i=0; i< this.props.notesy.length; i++){
             // console.log(i)
-            if (this.props.notesy[i].id === this.props.data.id){
+            if (this.props.notesy[i].od === this.props.data.od){
                 var xVal = parseInt(this.props.notesy[i].x)
                 // console.log(this.props.notesy[i].id, xVal)
                 return xVal
@@ -104,9 +104,9 @@ class Note extends React.Component{
 // console.log(this.state.listyPos)
         // console.log(this.props.notesy)
         var thisty = () => {
-            var thisy = document.getElementsByClassName(`${this.props.prefix}--full-note-${this.props.data.id}`)
+            var thisy = document.getElementsByClassName(`${this.props.prefix}--full-note-${this.props.data.od}`)
             if (thisy.length > 0) {
-                var thirsy = document.getElementsByClassName(`${this.props.prefix}--full-note-${this.props.data.id}`)[0].style
+                var thirsy = document.getElementsByClassName(`${this.props.prefix}--full-note-${this.props.data.od}`)[0].style
                 // console.log(thirsy.zIndex)
             }
         }
@@ -125,7 +125,9 @@ thisty()
                 if (window.event.target.classList[0] ==='rs-notes--header--button' || 'innerTextNote' || 'forNotes') {
                     if (typeof props !== 'undefined'){
                     if (window.event.target.classList[1] === val){
+                        // console.log(window.event.target.classList, val)
                         var newThing = document.getElementsByClassName(`${props.prefix}--full-note-${window.event.target.classList[1]}`)
+                        // console.log(newThing)
                         newThing[0].style.zIndex = 10
                     }
                         else if (window.event.target.classList[2]=== val){
@@ -146,7 +148,8 @@ thisty()
              })
         }
 
-        windowFocus(this.props.data.id)
+        windowFocus(this.props.data.od)
+        // console.log(this.props.data.od)
 
 // windowFocus(props.data.id)
 //             // console.log(this.props.data.selected, this.props.data.id)
@@ -192,8 +195,8 @@ thisty()
         const hashtagMoveX = () => {
             var i
             if (props.hashtagDups.length > 0) {
-                if (Object.keys(props.myHashtags).includes(props.data.id)){
-                    const myValue = (props.myHashtags)[(props.data.id)]
+                if (Object.keys(props.myHashtags).includes(props.data.od)){
+                    const myValue = (props.myHashtags)[(props.data.od)]
                     // console.log(myValue)
                     if (props.hashtagDups.includes(myValue)) {
                         // console.log('yes')
@@ -220,7 +223,7 @@ thisty()
                         }
                         if (leftPos.length > 1) {
                                                         
-                            let word_With_Numbers = props.data.id
+                            let word_With_Numbers = props.data.od
                                 let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
                                     var myRand = word_Without_Numbers[0]
                             var avg = (total / leftPos.length)-((this.state.firstRan+myRand));
@@ -327,8 +330,8 @@ thisty()
         var i
 // console.log(props.data)
         if (props.hashtagDups.length > 0) {
-        if (Object.keys(props.myHashtags).includes(props.data.id)){
-            const myValue = (props.myHashtags)[(props.data.id)][0][0]
+        if (Object.keys(props.myHashtags).includes(props.data.od)){
+            const myValue = (props.myHashtags)[(props.data.od)][0][0]
             if (props.hashtagDups.includes(myValue)) {
                 var indexHashtag =props.hashtagDups.indexOf(myValue)
                         const vals = (Object.values(props.myHashtags))
@@ -350,7 +353,7 @@ thisty()
                         if (topPos.length > 1) {
                             console.log('this is happening')
                             for (i=0; i < topPos.length+1; i++){
-                                let word_With_Numbers = props.data.id
+                                let word_With_Numbers = props.data.od
                                 let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
                                 var myRand = word_Without_Numbers[0]
                                 var avg = (total / topPos.length)-((this.state.firstRan+myRand));
@@ -444,9 +447,11 @@ thisty()
 
     }
 
-        let word_With_Numbers = props.data.id
-        let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
-        var myRand = word_Without_Numbers[0]
+        let word_With_Numbers = props.data.od
+        // console.log(word_With_Numbers)
+        // let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
+        var myRand = 2
+        // var myRand = word_Without_Numbers[0]
 
         const onStart= (pos) =>{
             if (typeof pos !== 'undefined') {
@@ -492,13 +497,13 @@ var newText = props.data.text.split(/[_,]+/);
                 // className:`${props.data.selected?'note-selected':'note-unselected'}`,
                 scrollScreen: props.scrollScreen,
                 handleScroll: props.handleScroll,
-                className: `${props.prefix}--full-note-${props.data.id} full-notey-note' ${props.data.id}`,
+                className: `${props.prefix}--full-note-${props.data.od} full-notey-note' ${props.data.od}`,
                 selected: props.data.selected,
                 target: this.targetRef,
                 onMouseDownMove:(pos) => (this.setState({mouseStatus:pos.mouseStatus, listyPos:pos.listyPos, genericLoc:pos.genericLoc, textHeight:pos.textHeight, genericBottom: pos.genericBottom})),
                 // onClick: (e) =>(console.log('clicked'),onStart(e)),
                 onDragComplete:(pos)=> (setWhatDragShouldDo(), 
-                props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.x},${pos.y}`+`_${props.data.id}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.x}_${pos.y}`)),
+                props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.x},${pos.y}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.x}_${pos.y}`)),
                     // props.callbacks.updateItem(null, {id: props.data.id, position:pos, className:`'${props.data.selected}`})
                 (this.setState({positionX: pos.x, positionY:pos.y}))
                 // props.onSubmit(('ggggg' + text+ `_${props.left},${props.top}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`))

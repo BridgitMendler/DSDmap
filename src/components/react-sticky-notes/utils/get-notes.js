@@ -3,7 +3,7 @@ export function getNotes(colorCodes, notes ) {
 	let _notes = [];
 	if(notes){
 		_notes = notes.map((note)=>{
-			note.id = note.id?note.id:getUUID();
+			note.od = note.od?note.od:getUUID();
 			note.position = note.position?note.position:{ x: 0, y: 0 };
 			note.color= note.color?note.color:colorCodes[Math.floor(Math.random() * colorCodes.length)];
 			return note;
@@ -13,7 +13,7 @@ export function getNotes(colorCodes, notes ) {
 	}else{
 		_notes = [
 			{
-				id: getUUID(),
+				od: getUUID(),
 				text: '',
 				position: { x: 0, y: 0 },
 				color: colorCodes[Math.floor(Math.random() * colorCodes.length)],

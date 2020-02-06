@@ -8,7 +8,7 @@ function NoteHeader(props) {
         props.buttons?props.buttons.map((Button,i)=> 
             h(Button, { 
                 // onClick:(e)=>(console.log('hi')),
-                key: `${props.prefix}${props.data?props.data.id:'all'}__note-button__${i}`,
+                key: `${props.prefix}${props.data?props.data.od:'all'}__note-button__${i}`,
                 removeTodo: props.removeTodo,
                 ...props 
             })

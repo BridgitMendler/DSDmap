@@ -88,17 +88,17 @@ const myItemsTwo = props.newNotesy
 var newNot = props.newNotesy.filter(obj => {
 
     // console.log(obj.id, newArIds)
-    return (newArIds.indexOf(obj.id) < 0)
+    return (newArIds.indexOf(obj.od) < 0)
   })
 
 var newBub = props.newBubble.filter(obj => {
     var i
     for (i = 0; i < newNot.length; i++){
-    // console.log(Object.values(newNot[i]), obj.id)
-    return (newArIds.indexOf(obj.id) < 0)
+    // console.log(Object.values(newNot[i]), obj.od)
+    return (newArIds.indexOf(obj.od) < 0)
 }
 })
-
+// console.log(newNot)
 // var newBub2 = () => {
 // console.log(newNot)
 // var i
@@ -223,7 +223,7 @@ const removeTodo = () => {
             style: getElementStyle('container', props),
             // onClick: () => (console.log('clicking!'))
         }, 
-            newNot.map( data => !data.hidden ? (h( Note, {items: props.items, notesy: props.notesy, onSubmit: props.onSubmit, onChange: props.onChange, removeTodo: props.removeTodo, convoBoxSize: props.convoBoxSize, hashtagDups: props.hashtagDups,allHashtags: props.allHashtags, myHashtags: props.myHashtags, handleScroll: props.onScroll, scrollVals: props.scrollVals, scrollScreen: props.scrollScreen, className: 'full-notey', key: `note-${data.id}`,...props, data } )):h( NoteBubble, { key: `note-${data.id}`,...props, data } ) )
+            newNot.map( data => !data.hidden ? (h( Note, {items: props.items, notesy: props.notesy, onSubmit: props.onSubmit, onChange: props.onChange, removeTodo: props.removeTodo, convoBoxSize: props.convoBoxSize, hashtagDups: props.hashtagDups,allHashtags: props.allHashtags, myHashtags: props.myHashtags, handleScroll: props.onScroll, scrollVals: props.scrollVals, scrollScreen: props.scrollScreen, className: 'full-notey', key: `note-${data.od}`,...props, data } )):h( NoteBubble, { key: `note-${data.od}`,...props, data } ) )
         ),
         h('div', {
             key: `${props.prefix}-bubble`, 
@@ -236,7 +236,7 @@ const removeTodo = () => {
 
             // style: getElementStyle('container', props)
         }, 
-            newBub.map( data => h( NoteBubble, {settingLine: settingLine, convoBoxSize: props.convoBoxSize, visible: props.visible, myArrayPos: props.myArrayPos, myArray: props.myArray, key: `note-${data.id}`,...props, data })
+            newBub.map( data => h( NoteBubble, {settingLine: settingLine, convoBoxSize: props.convoBoxSize, visible: props.visible, myArrayPos: props.myArrayPos, myArray: props.myArray, key: `note-${data.od}`,...props, data })
         )),
         h('div', {
             key: `${props.prefix}-line`, 
@@ -244,8 +244,8 @@ const removeTodo = () => {
             style: getElementStyle('container', props)
         }, 
         h("span", null,
-            newNot.map( data => props.hidden ? (props.visible === true)? (h( LineTo, { borderColor:'wheat',borderStyle: 'dashed', borderWidth: 1, from:`dropped${data.id}`, to:`rs-notes--full-note-${data.id}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } )):null: 
-            h( LineTo, { opacity:(selectedLine===data.id)?1:0,borderColor: '#9FA7B8', borderStyle: 'dashed', borderWidth: 1, from:`dropped${selectedLine}`, to:`rs-notes--full-note-${selectedLine}`, toAnchor: 'top right', key: `note-${data.id}`,...props, data } ))
+            newNot.map( data => props.hidden ? (props.visible === true)? (h( LineTo, { borderColor:'wheat',borderStyle: 'dashed', borderWidth: 1, from:`dropped${data.od}`, to:`rs-notes--full-note-${data.od}`, toAnchor: 'top right', key: `note-${data.od}`,...props, data } )):null: 
+            h( LineTo, { opacity:(selectedLine===data.od)?1:0,borderColor: '#9FA7B8', borderStyle: 'dashed', borderWidth: 1, from:`dropped${selectedLine}`, to:`rs-notes--full-note-${selectedLine}`, toAnchor: 'top right', key: `note-${data.od}`,...props, data } ))
         ),),
     ]
 }

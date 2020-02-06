@@ -11,13 +11,13 @@ const [opac, setOpac] = useState(0)
 const onSubmit=(e) =>{
     // console.log(e)
     e.preventDefault()
-    props.onSubmit(('ggggg' + text+ `_${data.position.x},${data.position.y}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`))
+    props.onSubmit(('ggggg' + text+ `_${data.position.x},${data.position.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`))
     setText(text)
   }
   const setText2 = () =>{
     var i
     for (i=0; i < props.notesy.length; i++){
-        if (props.notesy[i].id ===data.id){
+        if (props.notesy[i].od ===data.od){
             // console.log(props.notesy[i].print)
             return props.notesy[i].print
         }
@@ -41,7 +41,7 @@ const onChange= (e) =>{
 setOpac(1)
   }
     return h('div',{
-        className:`${prefix}--text ${data.id}`,
+        className:`${prefix}--text ${data.od}`,
         placeholder:"react-hooks",
         contentEditable:"true",
         // onBlur:(e)=>callbacks.updateItem(index, {
@@ -55,15 +55,15 @@ setOpac(1)
             height: '100%'
         }
     }, 
-            h('div', {className: `innerTextNote ${data.id}`}, 
+            h('div', {className: `innerTextNote ${data.od}`}, 
             h('form', {
-                className: `innerTextNote ${data.id}` ,
+                className: `innerTextNote ${data.od}` ,
                 // onSubmit: onSubmit,
             style: {
                 // display: 'flex'
             }}, 
             h('textarea', {
-                className: `forNotes ${data.id} innerTextNote`,
+                className: `forNotes ${data.od} innerTextNote`,
                 type: "text",
                 placeholder: setText2(),
                 onChange: onChange,

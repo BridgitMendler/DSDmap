@@ -24,20 +24,20 @@ const reducer = (state, action) => {
             break;
         case 'update':
             items = items.map((item)=>{
-                if(item.id===action.payload.data.id){
+                if(item.od===action.payload.data.od){
                     item = {...item, ...action.payload.data };
                 }
                 if(params.indexOf('selected')!==-1){
-                    item.selected = item.id===action.payload.data.id?action.payload.data.selected:false;
+                    item.selected = item.od===action.payload.data.od?action.payload.data.selected:false;
                 }
                 if(params.indexOf('menu')!==-1){
-                    item.menu = item.id===action.payload.data.id?action.payload.data.menu:false;
+                    item.menu = item.od===action.payload.data.od?action.payload.data.menu:false;
                 }
                 return item;
             });
             break;
         case 'delete':
-            const index = items.findIndex(item=>action.payload.data.id===item.id);
+            const index = items.findIndex(item=>action.payload.data.od===item.od);
             if(index!==-1){
                 items.splice(index,1);
             }else{
