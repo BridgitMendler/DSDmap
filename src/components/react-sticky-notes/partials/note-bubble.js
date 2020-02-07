@@ -31,27 +31,49 @@ export const NoteBubble = (props) => {
     const [hasDropped, setHasDropped] = useState(false)
     var e = window.event
     var myIDs = []
+var myBub
+const findNewBub = () => {
+    var i
+    // console.log(props.newBub)
+    if (props.newBub.length > 0){
+        for (i =0;i < props.newBub.length; i++){
+            // console.log('there are bubbles in the list')
+            if (typeof props.newBub[i] !== 'undefined'){
+                if (props.newBub[i].od === props.data.od) {
+                    // console.log('there are matches ' +props.newBub[i].id + ' '+ props.newBub[i].id)
+                    myBub = props.newBub[i]
+                }
+                // else{
+                //     console.log('else is happening')
+                //     myBub = props.data
+                // }
+            }
+        }
+    }
+    else {
+        // console.log('else is happening')
+        myBub = props.data
+    }
+}
+findNewBub()
 
-var findit =document.getElementById(props.data['label']);
+
+var findit =document.getElementById(myBub['label']);
+// console.log(myBub)
 let word_With_Numbers = props.data.od
 let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
 var myRand = word_Without_Numbers[0]
-// console.log(myRand)
-var myElementTop = () => {
-var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)[0]
-if ( typeof myEl !== 'undefined') {
-    myEl = myEl.style.top
-    myEl = parseFloat(myEl.replace(/\D/g, ''))
-    // console.log(myEl, myEl + 110)
-    return myEl + 510
-}}
 
-// myElementTop()
+
+// console.log(props.newBub)
+// console.log(myBub)
+// console.log(props.posX)
+// console.log(dropPositions)
 const mouseEventFind = () => {
 if (typeof window.event !== 'undefined') {
     if (window.event.type === 'dragstart'){
         const evID = window.event.target.parentElement.classList[0]
-// console.log(evID)
+        // console.log(evID)
 newDropped(evID)
 }
 
@@ -106,34 +128,51 @@ mouseEventFind()
 
                 }
             }
+var ElLeft
+var ElTop
+var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)[0]
+var mapEl = document.getElementsByClassName('bigSpace')[0]
+var self = document.getElementsByClassName(`${props.prefix}--note-${props.data.od}`)[0]
+if (typeof myEl !== 'undefined'){
+ElTop = parseFloat(myEl.style.top)
+ElLeft = parseFloat(myEl.style.left)
+console.log(self)
+console.log(mapEl)
 
+        }
     const findX = (idValue) => {
-if (typeof props.data.label !== 'undefined' && props.data.label.length > 1){
+        // console.log(myBub)
+if (typeof myBub.label !== 'undefined' && myBub.label.length > 0){
+    // console.log(findit)
         if (findit !== null) {
-            // console.log(myRand)
+            // console.log((findit.getBoundingClientRect().left -30)+ (myRand/.75))
+            if (typeof mapEl !== 'undefined'){
+            mapEl.appendChild(self)}
             return ((findit.getBoundingClientRect().left -30)+ (myRand/.75))
         }
     }
     else {
+            return 100
             var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)[0]
-            if ( typeof myEl !== 'undefined') {
-                myEl = myEl.style.left
-                myEl = parseFloat(myEl)
-                return ((myEl+100))
+            // if ( typeof myEl !== 'undefined') {
+            //     myEl = myEl.style.left
+            //     myEl = parseFloat(myEl)
+            //     console.log('going the myEl route' + myEl)
+            //     return ((myEl))
             }
     }        
-    }
+    
 
     const colorSetting =(idValue) => {
         const myObj = dropPositions
         const theMatch = `${props.prefix}--note-${idValue}`
         const location = Object.keys(myObj).indexOf(theMatch)
         
-        if (typeof props.data.label !== 'undefined' && props.data.label.length > 1) {    
+        if (typeof myBub.label !== 'undefined' && myBub.label.length > 1) {    
             if (typeof knightPos[0] !== 'undefined' && knightPos.length > 0){
                 const knightPosVersion = knightPos[0][2]
                 // console.log(knightPosVersion)
-        if (props.data.label===knightPos[0][2]) {
+        if (myBub.label===knightPos[0][2]) {
             // console.log('match!')
             return 'tomato'
         }
@@ -150,13 +189,13 @@ else {
 
 
     const findY = () => {
-
-        if (typeof props.data.label !== 'undefined' && props.data.label.length > 1){
+// console.log('finding y!')
+        if (typeof myBub.label !== 'undefined' && myBub.label.length > 1){
             if (findit !== null) {
-                // console.log(findit.getBoundingClientRect())
+                // console.log(findit.getBoundingClientRect().top + (myRand/.75))
                 return (findit.getBoundingClientRect().top + (myRand/.75))
             }
-        }
+        // }
 
 //         const myObj = dropPositions
 //         const theMatch = `${props.prefix}--note-${idValue}`
@@ -179,16 +218,17 @@ else {
 //         return(props.myArrayPos[idValue][1]+110)
 //     }
 // }
-// }
+}
         else {
 
                 var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)[0]
-                if ( typeof myEl !== 'undefined') {
-                    myEl = myEl.style.top
-                    myEl = parseFloat(myEl)
-                    // console.log(myEl)
-                    return myEl + 90
-                }
+                return -10
+                // if ( typeof myEl !== 'undefined') {
+                //     myEl = myEl.style.top
+                //     myEl = parseFloat(myEl)
+                //     console.log('going the myEl route' + myEl)
+                //     return myEl
+                // }
         }
     }
 const setThatLine=(dataID)=> {
@@ -222,10 +262,10 @@ const whichColor = (val) => {
  }
 }
     return h(NoteDraggable, {
-                className: (typeof props.data.label !== 'undefined' && props.data.label.length > 1) ?`${props.data.od} dropped${props.data.od} ${props.prefix}--note-${props.data.od} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.od}`:
-                `${props.data.od} ${props.prefix}--note-${props.data.od} ${props.data.selected?props.prefix+'--note__selected':'' } ${props.data.od}`,
-                position: props.data.position,
-                selected: props.data.selected,
+                className: (typeof myBub.label !== 'undefined' && myBub.label.length > 1) ?`${myBub.od} dropped${myBub.od} ${props.prefix}--note-${props.data.od} ${myBub.selected?props.prefix+'--note__selected':'' } ${myBub.od}`:
+                `${myBub.od} ${props.prefix}--note-${myBub.od} ${myBub.selected?props.prefix+'--note__selected':'' } ${myBub.od}`,
+                position: myBub.position,
+                selected: myBub.selected,
                 target: drag,
                 // ref: drag,
                 style: {
@@ -246,10 +286,10 @@ const whichColor = (val) => {
                 }
             }, 
             h('button',{
-                className: `${props.data.od} ${props.prefix}--note__bubble `,
+                className: `${myBub.od} ${props.prefix}--note__bubble `,
                 onMouseEnter: () => (props.settingLine(props.data.od)),
                 ref: drag,
-                title: props.data.title?props.data.title: getNoteTitle(props.data),
+                title: myBub.title?myBub.title: getNoteTitle(props.data),
                 // onClick: (pos)=> (props.callbacks.updateItem(null, {id: props.data.id, position:pos, hidden: false })),
                 style: {
                     // pointerEvents : isDragging ? 'none': 'auto',

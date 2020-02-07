@@ -132,7 +132,7 @@ var newBub = props.newBubble.filter(obj => {
 //      console.log(newArray)
 // console.log(myItemsTwo.length)
 // setTheArray(oldArray => [...oldArray, newElement]);
-const removeTodo = () => {
+// const removeTodo = () => {
 //     if (typeof window.event !== 'undefined'){
 
 //     if (window.event.type === 'click') {
@@ -166,7 +166,7 @@ const removeTodo = () => {
 //     // else {return myItemsTwo}
 // }
 // else {return myItemsTwo}
-}
+// }
 
 // var i = toRemove.length;
 // while (i--) {
@@ -210,7 +210,7 @@ const removeTodo = () => {
 // console.log(iclicked)
 
 //     }
-// console.log(props.notesy)
+console.log(newBub)
 
     const [hasDropped, setHasDropped] = useState(false)
 
@@ -224,21 +224,21 @@ const removeTodo = () => {
             style: getElementStyle('container', props),
             // onClick: () => (console.log('clicking!'))
         }, 
-            newNot.map( data => !data.hidden ? (h( Note, {items: props.items, notesy: props.notesy, onSubmit: props.onSubmit, onChange: props.onChange, removeTodo: props.removeTodo, convoBoxSize: props.convoBoxSize, hashtagDups: props.hashtagDups,allHashtags: props.allHashtags, myHashtags: props.myHashtags, handleScroll: props.onScroll, scrollVals: props.scrollVals, scrollScreen: props.scrollScreen, className: 'full-notey', key: `note-${data.od}`,...props, data } )):h( NoteBubble, { key: `note-${data.od}`,...props, data } ) )
+            newNot.map( data => !data.hidden ? (h( Note, {items: props.items, newBub: newBub, notesy: props.notesy, onSubmit: props.onSubmit, onChange: props.onChange, removeTodo: props.removeTodo, convoBoxSize: props.convoBoxSize, hashtagDups: props.hashtagDups,allHashtags: props.allHashtags, myHashtags: props.myHashtags, handleScroll: props.onScroll, scrollVals: props.scrollVals, scrollScreen: props.scrollScreen, className: 'full-notey', key: `note-${data.od}`,...props, data } )):h( NoteBubble, { key: `note-${data.od}`,...props, data } ) )
         ),
-        h('div', {
-            key: `${props.prefix}-bubble`, 
-            className: `${props.prefix}-bubble`,
-            width: 30,
-            height: 30,
-            onMouseEnter: ()=> (settingLine(window.event.relatedTarget.classList[0])),
-            onMouseOut: () => (settingLineOut(null)),
+        // h('div', {
+        //     key: `${props.prefix}-bubble`, 
+        //     className: `${props.prefix}-bubble`,
+        //     width: 30,
+        //     height: 30,
+        //     onMouseEnter: ()=> (settingLine(window.event.relatedTarget.classList[0])),
+        //     onMouseOut: () => (settingLineOut(null)),
 
 
-            // style: getElementStyle('container', props)
-        }, 
-            newBub.map( data => h( NoteBubble, {settingLine: settingLine, convoBoxSize: props.convoBoxSize, visible: props.visible, myArrayPos: props.myArrayPos, myArray: props.myArray, key: `note-${data.od}`,...props, data })
-        )),
+        //     // style: getElementStyle('container', props)
+        // }, 
+        //     newBub.map( data => h( NoteBubble, {settingLine: settingLine, convoBoxSize: props.convoBoxSize, visible: props.visible, myArrayPos: props.myArrayPos, myArray: props.myArray, key: `note-${data.od}`,...props, data })
+        // )),
         h('div', {
             key: `${props.prefix}-line`, 
             className: `${props.prefix}-line`,

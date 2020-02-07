@@ -4,31 +4,56 @@ import { h, getElementStyle } from '../utils';
 import NoteDraggable from './note-draggable';
 import NoteHeader from './note-header';
 import NoteBody from './note-body';
+import {NoteBubble} from './note-bubble';
 import {ButtonAddDot, ButtonTitle, ButtonMenu, ButtonHideShow, ButtonTrash } from './../buttons' ;
 
 class Note extends React.Component{
+    constructor(props){
+        super(props);
+        this.targetRef = React.createRef();
+        this.state= {
+            match: false,
+            positionX: this.hashtagMoveX(),
+            positionY: this.hashtagMoveY(),
+            mouseStatus: false,
+            firstAv: [],
+            firstRan: this.getRandomThree(),
+            relClick: 0,
+            listy: [],
+            absolLoc: 0,
+            visibleList: [],
+            textHeight: 0,
+            cardHeight: 0,
+            cardWidth: 0,
+            absolCardLeft: 0,
+            upperSpace: 0,
+            selectedLine: ''
 
-    getRandom2= () => {
+        }
+    }
+
+
+getRandom2= () => {
         var precision = 1;
         var n = Math.floor(Math.random() * (10-(-10)) + (-10))
         var randomnum = Math.floor(Math.random() * (250 * precision - 100 * precision) + 100 * precision) / (1*precision);
         return (randomnum+this.props.scrollScreen)
     }
-    getRandom= () => {
+getRandom= () => {
         // console.log('getting random for x')
         var precision = 1;
         var n = Math.floor(Math.random() * (10-(-10)) + (-10))
         var randomnum = Math.floor(Math.random() * (1300 * precision - 400 * precision) + 400 * precision) / (1*precision);
         return randomnum
     } 
-    getRandomThree= () => {
+getRandomThree= () => {
         var precision = 100;
         var n = Math.floor(Math.random() * (10-(-10)) + (-10))
         var randomnum = Math.floor(Math.random() * (180 * precision - 165 * precision) + 165 * precision) / (1*precision);
         return randomnum
     }   
     
-    getNotePositionY =() => {
+getNotePositionY =() => {
         var i = 1
         while (i< this.props.notesy.length){
             // console.log(Object.keys(this.props.notesy[i]).indexOf('od'))
@@ -44,7 +69,7 @@ class Note extends React.Component{
             }
         }
             else {
-            //     console.log('else' + this.props.data.position.y)
+                // console.log('else' + this.props.data.position.y)
                 return this.props.data.position.y
             }
         }
@@ -52,48 +77,352 @@ class Note extends React.Component{
         // }
         
     }
+// }
 
 
-        getNotePositionX =() => {
+getNotePositionX =() => {
             var i = 1
             while (i< this.props.notesy.length){
                 // console.log(Object.keys(this.props.notesy[i]).indexOf('od'))
                 var newVal = this.props.notesy[i]
                 if ((newVal.od) !== null){
-                // console.log(this.props.notesy, typeof this.props.data.od)
+                // console.log(this.props.data.color, this.props.data.od)
                 i++
                 if (newVal.od === this.props.data.od){
     
                     var xVal = parseInt(newVal.x)
-                    // console.log(xVal)
-                    return xVal
+                    if (typeof this.state !== 'undefined'){
+                        if (this.state.cardWidth !== 0 && this.state.absolCardLeft !== 0){
+                            // console.log(' cardWidth ' + this.state.cardWidth + ' cardLeft'+ this.state.absolCardLeft )
+                    // console.log(this.state)}
+                    // if (typeof this.state.cardWidth !== 'undefined' && typeof this.state.absolCardLeft!== 'undefined'){
+                    if (xVal > (this.state.cardWidth + this.state.absolCardLeft)-150){
+                        // this.setState({mouseStatus:true})
+                        // console.log('beyond')
+                        return ((this.state.cardWidth + this.state.absolCardLeft) -150)
+                    }
+                    else if (xVal < (this.state.absolCardLeft)){
+                        // this.setState({mouseStatus:true})
+                        // console.log('before')
+                        return (this.state.absolCardLeft)
+                    }
+                    else { 
+                        return xVal
+                    }
                 }
+                else { 
+                    return xVal 
+                }
+            }
+            else {
+                return xVal
+            }
+        }
             }
             else {
                 // console.log('else ' + this.props.data.position.x)
                 return this.props.data.position.x
             }
         }}
-    // }
-    constructor(props){
-        super(props);
-        this.targetRef = React.createRef();
-        this.state= {
-            match: false,
-            positionX: this.getNotePositionX(),
-            positionY: this.getNotePositionY(),
-            mouseStatus: false,
-            firstAv: [],
-            firstRan: this.getRandomThree(),
-            relCick: 0,
-            listy: [],
-            absolLoc: 0,
-            visibleList: [],
-            textHeight: 0,
-            genericBottom: 0
+hashtagMoveX = () => {
+    var precision = 100;
+    var n = Math.floor(Math.random() * (10-(-10)) + (-10))
+    var randomnum = Math.floor(Math.random() * (55 * precision - 1 * precision) + 1 * precision) / (1*precision);
+    var props = this.props;
+        var i
+        if (props.hashtagDups.length > 0) {
+            if (Object.keys(props.myHashtags).includes(props.data.od)){
+                const myValue = (props.myHashtags)[(props.data.od)]
+                // console.log(myValue)
+                if (props.hashtagDups.includes(myValue)) {
+                    // console.log('yes')
+                    var indexHashtag =props.hashtagDups.indexOf(myValue)
+                    const vals = (Object.values(props.myHashtags))
+                    var i
+                    var leftPos = []
+                    var total = 0
+                    for (i=0; i < vals.length; i++){
+                        if (vals[i]=== myValue && typeof myValue !== 'undefined' ){
+                        // console.log(vals[i])
+                            var classID = (Object.keys(props.myHashtags)[i])
+                            // console.log(parseFloat(document.getElementsByClassName(`${props.prefix}--full-note-${classID}`[0].style.left) !== 'undefined'))
+                            // console.log((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0]))
+                            if (typeof document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0] !== 'undefined') {
+                                if (typeof document.getElementsByClassName(`${props.prefix}--full-note-${classID}`[0].style !== 'undefined')) {
+                                // console.log(typeof document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0])
+                            var styleLeft = parseFloat(document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0].style.left)
+                            // var styleLeft = 0
+                            leftPos.push(styleLeft)
+                            total += styleLeft
+                            // console.log(styles)
+                        }}}
+                    }
+                    if (leftPos.length > 1) {
+                                                    
+                        let word_With_Numbers = props.data.od
+                            let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
+                                var myRand = word_Without_Numbers[0]
+                        var avg = (total / leftPos.length)-((this.state.firstRan+myRand));
+                        var sorted = leftPos.slice().sort(function(a, b) {
+                            var result = a-b
+                            return (a,b);
+                          });
+                        //   console.log(props.visible)
+                        var numbs = this.state.firstRan+myRand
+                            // console.log('first ran ' + this.state.firstRan)
+                            // console.log(myValue+ ' index '+ indexH+ ' this would be your calculation '+ numbs*((indexH+1)))
+                              if (numbs*(indexHashtag+1)>800){
+                                if (this.props.visible === false){
+                                    // console.log('i moved greater than 800, visible false '+ numbs*(indexH+1))
+                                    return (numbs*(indexHashtag+1)-300)
+                                    }
+                                    else {
+                                        if (((numbs*(indexHashtag+1)-300)*.75) > 350) {
+                                            // console.log('i moved greater than 800, visible true, greater than 400 '+ (numbs*(indexH+1)-300)*.75)
+                                            return `${(numbs*(indexHashtag+1)-300)*.75}px`
+                                        }
+                                        else{
+                                            // console.log('i moved greater than 800, visible true, less than 400, return 400'+(numbs*(indexH+1)-300)*.75)
+                                            return 350
+                                        }
+                                    }
+                              }
+                              else {
+                                if (this.props.visible === false){
+                                    // console.log('i moved less than 800, visible false: ' +numbs*(indexH+1)+200)
+                                    return (numbs*(indexHashtag+1)+200)
+                                    }
+                                    else {
+                                        if (((numbs*(indexHashtag+1)+200)*.85) > 350) {
+                                            // console.log('i moved less than 800 props.visible === true and (numbs*(indexH+1)+200)*.75) > 400): ' +(numbs*(indexH+1)+200)*.75)
+                                            return `${(numbs*(indexHashtag+1)+200)*.85}px`
+                                        }
+                                        else{
+                                            // console.log('i moved less than 800, visible true, less than 400, return 400: ' + 350)
+                                            return 350
+                                        }}
+                              }
+                }
 
+                    }
+                    if (this.props.visible === false){
+                    return (85+(200*(indexHashtag+1)-randomnum))
+                    }
+                    else {return (85+(200*(indexHashtag+1)-randomnum)*.75)}
+                }
+                else {
+                    if (this.props.visible === false){
+                                    
+                        if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
+                            // console.log('this is me visible list' + props.data.color)
+                            // console.log('this is me visible list' + props.data.od)
+                            // console.log('getting state pos '+ this.state.positionX)
+                            return (this.getNotePositionX()*(4/3))
+                        }
+                        else {
+                            // console.log('this is me')
+                        // console.log(this.state.visibleList[this.state.visibleList.length-1])
+                        // console.log('getting state pos '+ this.state.positionX)
+                        return (this.getNotePositionX())
+                    }
+
+                    //     var whereToGo = this.getNotePositionX()
+                    // return whereToGo
+                    }
+                    else {
+                        if ((this.getNotePositionX() *.75) > 400) {
+                            if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
+                                // console.log('it is true')
+                                // console.log('getting state pos '+ this.state.positionX)
+                                return (this.getNotePositionX())
+                            }
+                            else {
+                                // console.log('getting state pos '+ this.state.positionX)
+                            return (this.getNotePositionX() *.75)}
+                        }
+                        else{
+                            return 400
+                        }
+                    }
+                }
+            }
+            else {
+                if (this.props.visible === false){
+                                    
+                    // if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
+                        // console.log('this is me visible list' + props.data.color)
+                        // console.log('this is me visible list' + props.data.od)
+                        // console.log('getting state pos '+ this.state.positionX)
+                        return (this.getNotePositionX()*(4/3))
+                        }
+                //     else {
+                //         // console.log('this is me')
+                //     // console.log(this.state.visibleList[this.state.visibleList.length-1])
+                //     // console.log('getting state pos '+ this.state.positionX)
+                //     return (this.getNotePositionX())
+                // }
+
+                //     var whereToGo = this.getNotePositionX()
+                // return whereToGo
+                // }
+                else {
+                    if ((this.getNotePositionX() *.75) > 400) {
+                        if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
+                            
+                            // console.log('getting state pos '+ this.state.positionX)
+                            return (this.getNotePositionX())
+                        }
+                        else {
+                        // console.log(this.state.visibleList[this.state.visibleList.length-1])
+                        // console.log('getting state pos '+ this.state.positionX)
+                        return (this.getNotePositionX() *.75)
+                    }
+                    }
+                    else{
+                        return 400
+                    }
+                }
+            }
+        }
+
+hashtagMoveY= () => {
+    if (typeof this.state !== 'undefined'){
+    var precision = 100;
+    var n = Math.floor(Math.random() * (10-(-10)) + (-10))
+    var randomnum = Math.floor(Math.random() * (55 * precision - 1 * precision) + 1 * precision) / (1*precision);
+    var props = this.props;
+    var i
+    if (props.hashtagDups.length > 0) {
+        if (Object.keys(props.myHashtags).includes(props.data.od)){
+            const myValue = (props.myHashtags)[(props.data.od)][0][0]
+            if (props.hashtagDups.includes(myValue)) {
+                var indexHashtag =props.hashtagDups.indexOf(myValue)
+                const vals = (Object.values(props.myHashtags))
+                var i
+                var topPos = []
+                var total = 0
+                for (i=0; i < vals.length; i++){
+                    if (vals[i][0][0]=== myValue){
+                        var classID = (Object.keys(props.myHashtags)[i])
+                        // console.log((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0]))
+                        if ((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0] !== 'undefined')) {
+                        var styleTop = parseFloat(document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0].style.top)
+                        topPos.push(styleTop)
+                        total += styleTop
+                    }
+                }
+                    if (topPos.length > 1) {
+                        for (i=0; i < topPos.length+1; i++){
+                            let word_With_Numbers = props.data.od
+                            let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
+                            var myRand = word_Without_Numbers[0]
+                            var avg = (total / topPos.length)-((this.state.firstRan+myRand));
+                            var sorted = topPos.slice().sort(function(a, b) {
+                                var result = a-b
+                                return (a,b);
+                              });
+                            var numbs = myRand*2
+                                if (this.state.relClick !== 0) {
+                                    return (numbs+(this.state.absolLoc+100)) - props.scrollScreen
+                                }
+                                else {
+                                    return (numbs+200) - props.scrollScreen
+                                }
+                            }
+                        }
+                    }
+            var figureY = (100+(50*(indexHashtag+1)-randomnum))
+            var figureX = (85+(200*(indexHashtag+1)-randomnum))
+            }
+            else {
+                if (this.state.relClick !== 0) {
+                    if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
+                        if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
+                            return (this.state.absolLoc + this.state.textHeight+40)- (props.scrollScreen)
+                        }
+                        else if (this.state.relClick < this.state.absolLoc){
+                        // console.log(this.state.relClick)
+                            return (this.state.absolLoc + this.state.textHeight+30)- (props.scrollScreen)
+                        }
+                        else {
+                        // console.log('this is happening')
+                            return this.state.relClick - (props.scrollScreen)}
+                        }
+                    else{
+                // console.log('relClicksing' + this.state.relClick)
+                // console.log('relClick ' + this.state.relClick + ' generictop ' + this.state.absolLoc+ ' card height ' + this.state.cardHeight + ' text height ' + this.state.textHeight)
+                        return this.state.relClick - (props.scrollScreen)
+                    }
+                }
+                else {
+                    return this.getNotePositionY() - (props.scrollScreen)
+                }
+            }
+        }
+    else {
+        if (this.state.relClick !== 0) {
+        // console.log('relClicksing')
+        // console.log('relClick ' + this.state.relClick + ' generictop ' + this.state.absolLoc+ ' cardHeight ' + this.state.cardHeight + ' text height ' + this.state.textHeight)
+            return this.state.relClick - (props.scrollScreen)
+        }
+        else {
+    // console.log('this is happening')
+            return this.getNotePositionY() - (props.scrollScreen)
         }
     }
+}
+else {
+    // console.log('hashtag dups is 0, moving on to relclick')
+    if (this.state.relClick !== 0) {
+        // console.log('relclick is not zero')
+        if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
+            // console.log('relclick is in range')
+            if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
+                // console.log('hitting the text')
+                return ((this.state.absolLoc + this.state.textHeight)- (props.scrollScreen)+20)
+            }
+            else if (this.state.relClick > ((this.state.cardHeight - this.state.absolLoc)-145)) {
+                // console.log('below the range')
+                var dif = ((this.state.cardHeight - this.state.absolLoc)-150)
+                // console.log(dif)
+                return (dif)
+            }
+            else {
+                return this.state.relClick
+            }
+
+        }
+        else if (this.state.relClick < (this.state.absolLoc)){
+            // console.log('above the range')
+            // console.log('relClick ' + (this.state.relClick) + ' generictop ' + (this.state.absolLoc)+ ' generic bottom ' + (this.state.cardHeight) + ' text height ' + (this.state.textHeight))
+            return (this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen)
+
+        }
+        else{
+            if (typeof this.state.relClick !== 'undefined'){
+                // console.log('relclick is undefined')
+                // console.log(this.getNotePositionY() - (props.scrollScreen))
+                // console.log('relClick ' + (this.state.relClick) + ' absolLoc ' + (this.state.absolLoc)+ ' cardHeight ' + (this.state.cardHeight) + ' text height ' + (this.state.textHeight))
+                return this.getNotePositionY() - (props.scrollScreen)
+            }
+            else {
+                // console.log('relclick is out of range')
+                // console.log(this.getNotePositionY() - (props.scrollScreen))
+                return this.getNotePositionY() - (props.scrollScreen)
+            }
+        }
+    }
+    else {
+        // console.log('relclick is 0')
+        // console.log((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
+        return ((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
+        // return this.getNotePositionY() - (props.scrollScreen)
+    }
+}
+}
+    }
+
+
 
  
     // handleScroll(event) {
@@ -114,6 +443,8 @@ class Note extends React.Component{
 
 
     render(){
+        // console.log(this.hashtagMoveX)
+        // console.log(this.state.relClick)
 // console.log(this.state.listyPos)
         // console.log(this.props.notesy)
         var thisty = () => {
@@ -126,11 +457,12 @@ class Note extends React.Component{
 
 thisty()
         const setWhatDragShouldDo=() =>{
-            // console.log(this.props.visible)
+            // console.log('doin it!')
             var joined = this.state.visibleList.concat(this.props.visible);
             this.setState({ visibleList: joined })
         }
         // console.log(this.props.visible)
+        // console.log(this.state.visibleList)
         const windowFocus = (val) => {
             // console.log(val)
             // return 'yes'
@@ -289,8 +621,22 @@ thisty()
                     }
                     else {
                         if (this.props.visible === false){
+                                        
+                            if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
+                                // console.log('this is me visible list' + props.data.color)
+                                // console.log('this is me visible list' + props.data.od)
+                                // console.log('getting state pos '+ this.state.positionX)
+                                return (this.getNotePositionX()*(4/3))
+                            }
+                            else {
+                                // console.log('this is me')
+                            // console.log(this.state.visibleList[this.state.visibleList.length-1])
                             // console.log('getting state pos '+ this.state.positionX)
-                        return this.getNotePositionX()
+                            return (this.getNotePositionX())
+                        }
+    
+                        //     var whereToGo = this.getNotePositionX()
+                        // return whereToGo
                         }
                         else {
                             if ((this.getNotePositionX() *.75) > 400) {
@@ -311,9 +657,22 @@ thisty()
                 }
                 else {
                     if (this.props.visible === false){
-                        // console.log('this is me')
-                        var whereToGo = this.getNotePositionX()
-                    return whereToGo
+                                        
+                        if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
+                            // console.log('this is me visible list' + props.data.color)
+                            // console.log('this is me visible list' + props.data.od)
+                            // console.log('getting state pos '+ this.state.positionX)
+                            return (this.getNotePositionX()*(4/3))
+                        }
+                        else {
+                            // console.log('this is me')
+                        // console.log(this.state.visibleList[this.state.visibleList.length-1])
+                        // console.log('getting state pos '+ this.state.positionX)
+                        return (this.getNotePositionX())
+                    }
+
+                    //     var whereToGo = this.getNotePositionX()
+                    // return whereToGo
                     }
                     else {
                         if ((this.getNotePositionX() *.75) > 400) {
@@ -325,7 +684,8 @@ thisty()
                             else {
                             // console.log(this.state.visibleList[this.state.visibleList.length-1])
                             // console.log('getting state pos '+ this.state.positionX)
-                            return (this.getNotePositionX() *.75)}
+                            return (this.getNotePositionX() *.75)
+                        }
                         }
                         else{
                             return 400
@@ -334,37 +694,28 @@ thisty()
                 }
             }
 
-    var firstAv = []
-    var firstRan = []
-    // console.log(props.data.id, this.state.positionX)
-    // console.log(props.data.id, this.state.positionY)
-
     const hashtagMoveY= () => {
         var i
-// console.log(props.data)
         if (props.hashtagDups.length > 0) {
-        if (Object.keys(props.myHashtags).includes(props.data.od)){
-            const myValue = (props.myHashtags)[(props.data.od)][0][0]
-            if (props.hashtagDups.includes(myValue)) {
-                var indexHashtag =props.hashtagDups.indexOf(myValue)
-                        const vals = (Object.values(props.myHashtags))
-                        var i
-                        var topPos = []
-                        var total = 0
-// console.log(vals)
-                        for (i=0; i < vals.length; i++){
-                            if (vals[i][0][0]=== myValue){
-                                var classID = (Object.keys(props.myHashtags)[i])
-                                // console.log((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0]))
-                                if ((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0] !== 'undefined')) {
-                                var styleTop = parseFloat(document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0].style.top)
-                                topPos.push(styleTop)
-                                total += styleTop
-                                
+            if (Object.keys(props.myHashtags).includes(props.data.od)){
+                const myValue = (props.myHashtags)[(props.data.od)][0][0]
+                if (props.hashtagDups.includes(myValue)) {
+                    var indexHashtag =props.hashtagDups.indexOf(myValue)
+                    const vals = (Object.values(props.myHashtags))
+                    var i
+                    var topPos = []
+                    var total = 0
+                    for (i=0; i < vals.length; i++){
+                        if (vals[i][0][0]=== myValue){
+                            var classID = (Object.keys(props.myHashtags)[i])
+                            // console.log((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0]))
+                            if ((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0] !== 'undefined')) {
+                            var styleTop = parseFloat(document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0].style.top)
+                            topPos.push(styleTop)
+                            total += styleTop
                         }
                     }
                         if (topPos.length > 1) {
-                            // console.log('this is happening')
                             for (i=0; i < topPos.length+1; i++){
                                 let word_With_Numbers = props.data.od
                                 let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
@@ -374,110 +725,112 @@ thisty()
                                     var result = a-b
                                     return (a,b);
                                   });
-    
-                                    var numbs = myRand*2
-                                    // console.log('this is numbs ' +numbs)
-                                    if (this.state.relCick !== 0) {
-                                        // console.log('this is happening')
-                                        // console.log(this.state.relCick)
-                                        return (numbs+(this.state.absolLoc+100)) - props.scrollScreen}
-                                
-                                else {
-                                    // console.log('this is happening')
-                                    return (numbs+200) - props.scrollScreen}
-                                
+                                var numbs = myRand*2
+                                    if (this.state.relClick !== 0) {
+                                        return (numbs+(this.state.absolLoc+100)) - props.scrollScreen
+                                    }
+                                    else {
+                                        return (numbs+200) - props.scrollScreen
+                                    }
+                                }
                             }
-                        }}
-                // console.log(indexH)
+                        }
                 var figureY = (100+(50*(indexHashtag+1)-randomnum))
                 var figureX = (85+(200*(indexHashtag+1)-randomnum))
-                // const updateZ = () => props.callbacks.updateItem(null, {id: props.data.id, position:`${figureX},${figureY}`})
-                // updateZ()
-                // return (100+(50*(indexH+1)-randomnum-props.scrollScreen))
-            }
-            else {
-                if (this.state.relCick !== 0) {
-                    if (this.state.relCick > this.state.absolLoc && this.state.relCick < (this.state.genericBottom+this.state.absolLoc)){
-                        // console.log('yes '+ 'relCick ' + this.state.relCick + ' generictop ' + this.state.absolLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)
-                        if (this.state.relCick < (this.state.absolLoc + this.state.textHeight+30)){
-                        // console.log(this.state.relCick)
-                        return (this.state.absolLoc + this.state.textHeight+110)- (props.scrollScreen)
-                    }
-                    else if (this.state.relCick < this.state.absolLoc){
-                        // console.log(this.state.relCick)
-                    return (this.state.absolLoc + this.state.textHeight+30)- (props.scrollScreen)
-                    
+                }
+                else {
+                    if (this.state.relClick !== 0) {
+                        if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
+                            if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
+                                return (this.state.absolLoc + this.state.textHeight+40)- (props.scrollScreen)
+                            }
+                            else if (this.state.relClick < this.state.absolLoc){
+                            // console.log(this.state.relClick)
+                                return (this.state.absolLoc + this.state.textHeight+30)- (props.scrollScreen)
+                            }
+                            else {
+                            // console.log('this is happening')
+                                return this.state.relClick - (props.scrollScreen)}
+                            }
+                        else{
+                    // console.log('relClicksing' + this.state.relClick)
+                    // console.log('relClick ' + this.state.relClick + ' generictop ' + this.state.absolLoc+ ' card height ' + this.state.cardHeight + ' text height ' + this.state.textHeight)
+                            return this.state.relClick - (props.scrollScreen)
+                        }
                     }
                     else {
-                        // console.log('this is happening')
-                        return this.state.relCick - (props.scrollScreen)}
+                        return this.getNotePositionY() - (props.scrollScreen)
+                    }
                 }
-                    else{
-                    // console.log('relCicksing' + this.state.relCick)
-                    // console.log('relCick ' + this.state.relCick + ' generictop ' + this.state.absolLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)
-                    return this.state.relCick - (props.scrollScreen)}
             }
-            else {return this.getNotePositionY() - (props.scrollScreen)}
+        else {
+            if (this.state.relClick !== 0) {
+            // console.log('relClicksing')
+            // console.log('relClick ' + this.state.relClick + ' generictop ' + this.state.absolLoc+ ' cardHeight ' + this.state.cardHeight + ' text height ' + this.state.textHeight)
+                return this.state.relClick - (props.scrollScreen)
+            }
+            else {
+        // console.log('this is happening')
+                return this.getNotePositionY() - (props.scrollScreen)
+            }
         }
     }
     else {
-        if (this.state.relCick !== 0) {
+        // console.log('hashtag dups is 0, moving on to relclick')
+        if (this.state.relClick !== 0) {
+            // console.log('relclick is not zero')
+            if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
+                // console.log('relclick is in range')
+                if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
+                    // console.log('hitting the text')
+                    return ((this.state.absolLoc + this.state.textHeight)- (props.scrollScreen)+20)
+                }
+                else if (this.state.relClick > ((this.state.cardHeight - this.state.absolLoc)-145)) {
+                    // console.log('below the range')
+                    var dif = ((this.state.cardHeight - this.state.absolLoc)-150)
+                    // console.log(dif)
+                    return (dif)
+                }
+                else {
+                    return this.state.relClick
+                }
 
-            // console.log('relCicksing')
-            // console.log('relCick ' + this.state.relCick + ' generictop ' + this.state.absolLoc+ ' generic bottom ' + this.state.genericBottom + ' text height ' + this.state.textHeight)
-            return this.state.relCick - (props.scrollScreen)
+            }
+            else if (this.state.relClick < (this.state.absolLoc)){
+                // console.log('above the range')
+                // console.log('relClick ' + (this.state.relClick) + ' generictop ' + (this.state.absolLoc)+ ' generic bottom ' + (this.state.cardHeight) + ' text height ' + (this.state.textHeight))
+                return (this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen)
+
+            }
+            else{
+                if (typeof this.state.relClick !== 'undefined'){
+                    // console.log('relclick is undefined')
+                    // console.log(this.getNotePositionY() - (props.scrollScreen))
+                    // console.log('relClick ' + (this.state.relClick) + ' absolLoc ' + (this.state.absolLoc)+ ' cardHeight ' + (this.state.cardHeight) + ' text height ' + (this.state.textHeight))
+                    return this.getNotePositionY() - (props.scrollScreen)
+                }
+                else {
+                    // console.log('relclick is out of range')
+                    // console.log(this.getNotePositionY() - (props.scrollScreen))
+                    return this.getNotePositionY() - (props.scrollScreen)
+                }
+            }
+        }
+        else {
+            // console.log('relclick is 0')
+            // console.log((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
+            return ((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
+            // return this.getNotePositionY() - (props.scrollScreen)
+        }
     }
-    else {
-        // console.log('this is happening')
-        return this.getNotePositionY() - (props.scrollScreen)}
 }
-    }
-    else {
-        if (this.state.relCick !== 0) {
-if (this.state.relCick > this.state.absolLoc && this.state.relCick < (this.state.genericBottom+this.state.absolLoc)){
-    if (this.state.relCick < (this.state.absolLoc + this.state.textHeight+30)){
-    console.log(this.state.relCick)
-    return (this.state.absolLoc + this.state.textHeight)- (props.scrollScreen)
-}
-
-}
-else if (this.state.relCick < (this.state.absolLoc)){
-    console.log('relCick ' + (this.state.relCick) + ' generictop ' + (this.state.absolLoc)+ ' generic bottom ' + (this.state.genericBottom) + ' text height ' + (this.state.textHeight))
-return (this.state.absolLoc + this.state.textHeight)- (props.scrollScreen)
-
-}
-else{
-    if (typeof this.state.relCick !== 'undefined'){
-            console.log('relCick ' + (this.state.relCick) + ' generictop ' + (this.state.absolLoc)+ ' generic bottom ' + (this.state.genericBottom) + ' text height ' + (this.state.textHeight))}
-            return this.state.relCick - (props.scrollScreen)
-    }}
-    else {
-        // console.log('this is happening, relCick is 0')
-        return this.getNotePositionY() - (props.scrollScreen)}
-        // else {return this.getNotePositionY() - (props.scrollScreen)}
-}
-
-
-    }
 
         let word_With_Numbers = props.data.od
         // console.log(word_With_Numbers)
-        // let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
-        var myRand = 2
-        // var myRand = word_Without_Numbers[0]
+        let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
+        // var myRand = 2
+        var myRand = word_Without_Numbers[0]
 
-        const onStart= (pos) =>{
-            if (typeof pos !== 'undefined') {
-            // console.log(pos.zIndex)
-            let elems = document.querySelectorAll('.full-notey-note');
-            // console.log(elems)
-            for(let i = 0; i < elems.length; i++) {
-              elems[i].style.zIndex = 1;
-              pos.zIndex = 2;
-            //   console.log(pos.zIndex)
-            }
-          }
-        }
         //   console.log(window.event)
 // console.log(this.state.mouseStatus)
 
@@ -497,31 +850,56 @@ else{
 // console.log(props.data)
 // console.log(this.state.visibleList)
 const setOpac = () => {
-    // console.log(props.data)
     if ((props.data.y - props.scrollScreen)< 20&& props.scrollScreen > 0){
         return 0.0
     }
-    else { return 1}
+    else { 
+        return 1
+    }
 }
 
+const settingLine = (value) =>{
+    //  console.log('hi')
+    const regexp = /note/
+    var result = regexp.test(value)
+    // console.log(result, value)
+    if (result === false){
+        this.setState({selectedLine:value})
+//   setSelectedLine(value)
+//   console.log(selectedLine)
+}
+else {
+    const newValue = value.replace('rs-notes--note-', '')
+    this.setState({selectedLine:newValue})
+    // console.log(newValue)
+    // setSelectedLine(newValue)
+    // console.log(selectedLine)
+
+}
+}
+
+const settingLineOut = (value) => {
+    this.setState({selectedLine:value})
+    // setSelectedLine(value)
+}
+// console.log('relClick' +this.state.relClick)
+// console.log('absoLoc' +this.state.absolLoc)
+// console.log('textHeight' +this.state.textHeight)
+// console.log('cardHeight' +this.state.cardHeight)
+
 var newText = props.data.text.split(/[_,]+/);
-// console.log(props.data.id)
         return h(NoteDraggable, {
-                // className:`${props.data.selected?'note-selected':'note-unselected'}`,
                 scrollScreen: props.scrollScreen,
                 handleScroll: props.handleScroll,
                 className: `${props.prefix}--full-note-${props.data.od} full-notey-note' ${props.data.od}`,
                 selected: props.data.selected,
                 target: this.targetRef,
-                onMouseDownMove:(pos) => (this.setState({mouseStatus:pos.mouseStatus, relCick:pos.relCick, absolLoc:pos.absolLoc, textHeight:pos.textHeight, genericBottom: pos.genericBottom})),
-                // onClick: (e) =>(console.log('clicked'),onStart(e)),
+                onMouseDownMove2:(pos) => (this.setState({mouseStatus:pos.mouseStatus})),
+                onMouseDownMove:(pos) => (this.setState({relClick:pos.relClick})),
                 onDragComplete:(pos)=> (setWhatDragShouldDo(),
+                (this.setState({mouseStatus: false, relClick:pos.relClick, upperSpace:pos.upperSpace, absolLoc:pos.absolLoc, textHeight:pos.textHeight, cardHeight: pos.cardHeight, absolCardLeft: pos.absolCardLeft, cardWidth: pos.cardWidth})),
                 props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.x},${pos.y}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.x}_${pos.y}`)),
-                    // props.callbacks.updateItem(null, {id: props.data.id, position:pos, className:`'${props.data.selected}`})
-                    // console.log(('ggggg' + `${pos.text}`+ `_${pos.x},${pos.y}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.x}_${pos.y}`)),
-                (this.setState({positionX: pos.x, positionY:pos.y}))
-                // props.onSubmit(('ggggg' + text+ `_${props.left},${props.top}`+`_${data.id}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`))
-                
+                 (this.setState({positionX: pos.x, positionY:pos.y}))                
                 ),
                 style: {
                     transition: (this.state.mouseStatus === false) ?"left .40s linear":null,
@@ -534,6 +912,26 @@ var newText = props.data.text.split(/[_,]+/);
                     opacity: setOpac()
                     }
             }, [
+                h('div', {
+                    key: `${props.prefix}-bubble`, 
+                    className: `${props.prefix}-bubble`,
+                    width: 30,
+                    height: 30,
+                    onMouseEnter: ()=> (settingLine(window.event.relatedTarget.classList[0])),
+                    onMouseOut: () => (settingLineOut(null)),
+                }, 
+                h( NoteBubble, {
+                    settingLine: settingLine, 
+                    convoBoxSize: props.convoBoxSize, 
+                    visible: props.visible, 
+                    myArrayPos: props.myArrayPos, 
+                    myArray: props.myArray, 
+                    key: `note-${props.data.od}`,
+                    posX: this.hashtagMoveX(),
+                    posY: this.hashtagMoveY(),
+                    ...props, 
+                    data:props.data
+                })),
                 h(NoteHeader, {
                     ...props,
                     className: 'full-notey-note',
@@ -544,18 +942,17 @@ var newText = props.data.text.split(/[_,]+/);
                     removeTodo: this.props.removeTodo,
                     onSubmit: props.onSubmit,
                     buttons: [ButtonTrash, ButtonTitle]
-                }),
+                }
+                
+                ),
                 h(NoteBody,{
                     key:'note-body',
                     left: hashtagMoveX(),
                     top: hashtagMoveY(),
                     items: props.items,
-                    // onClick: console.log('clicking!'),
                     onSubmit: props.onSubmit,
                     onChange: props.onChange,
                     notesy: props.notesy,
-                    // onMouseDownMove:(pos) => (console.log(pos)),
-                    // onFocus:(e)=>(console.log('focused')),
                     ...props
                 })
             ],

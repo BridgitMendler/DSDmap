@@ -578,7 +578,7 @@ return
           // var xVal = document.getElementsByTagName("g");
           // console.log(xVal)
         //  document.addEventListener("click", )
-return (  <g ref= {drop}>
+return (  <g ref= {drop} className='ourMap'>
       <g  id="myanchor" x={x} y={y} />
       {isOver && over()}
       {hasDropped && moveDropped(hasDropped) && moveKnight(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value) && newIDLog(eveID) && props.onSubmit('jljljl' + `_${bubblePos.x}`+ `_${bubblePos.y}`+`_${window.event.target.attributes[1].value}`+`_${hasDropped}`+`_${eveID}`+`_${Math.round((new Date()).getTime() / 1000)}`) && console.log(window.event.target.attributes)

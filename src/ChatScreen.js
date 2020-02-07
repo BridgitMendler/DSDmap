@@ -312,7 +312,7 @@ var oldestM = 300000000
 
   render() {
 
-
+// console.log(this.state.bubblePosList)
 
       // console.log(this.state.oldestM)
     // console.log(oldestM)
@@ -461,7 +461,7 @@ var oldestM = 300000000
 
     return (<div>
     <div onClick={this.handleClick} onScroll= {this.handleScroll}>       
-        <aside style={styles.whosOnlineListContainer}>
+        <aside className="bigSpace" style={styles.whosOnlineListContainer}>
         <WhosOnlineList 
                     style= {styles.onlineList}
             className='onlineList noselect' 

@@ -27,6 +27,7 @@ class NoteDraggable extends React.Component {
 			position: this.props.position,
 			onDragComplete:this.props.onDragComplete,
 			onMouseDownMove: this.props.onMouseDownMove,
+			onMouseDownMove2: this.props.onMouseDownMove2,
 			onInit:this.props.onInit,
 		};
 		// console.log(options.position)

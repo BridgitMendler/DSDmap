@@ -554,7 +554,7 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 					arrayIds.push(newNot[q]['od'])
 				}
 			for (p = 0; p < newThangs.length; p++) {
-				console.log(newThangs[p].od)
+				// console.log(newThangs[p].od)
 				if (arrayIds.indexOf(newThangs[p].od) === -1) {
 					unusedIds.push(newThangs[p])
 				}

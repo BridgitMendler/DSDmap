@@ -19,7 +19,6 @@ export default class Draggable {
         if (e.cancelable) {
             e.preventDefault();
         }
-        // console.log('moving!')
         const el = this.options.element;
         const parentElement = el.parentElement;
         const pRect = parentElement?parentElement.getBoundingClientRect():{left:0,top:0};
@@ -74,8 +73,8 @@ export default class Draggable {
         document.addEventListener('mouseup', this.onMouseUp, null);
         document.addEventListener('touchmove', this.onMouseMove, {passive: false});
         document.addEventListener('touchend', this.onMouseUp, {passive: false});
-        if (this.options.onMouseDownMove){
-            this.options.onMouseDownMove.call(this, {
+        if (this.options.onMouseDownMove2){
+            this.options.onMouseDownMove2.call(this, {
                 mouseStatus: this.mouseStatus,
                 e:e.currentTarget.style,
                 x: this.currentX,
@@ -96,128 +95,111 @@ export default class Draggable {
 
     const allCards = document.getElementsByClassName('listyTwo');
     const scrollVal = document.getElementsByClassName('listyThree')[0].scrollTop;
-    const allCardText = document.getElementsByClassName('listyText')
-    // var elemClos = elementMouseIsOver.closestCard('.chatContainer')   
     var i
+    var c
     var liRelCardTop = []
     var liListTextHeight = []
     var liAbsolCardTop = []
     var liCardHeight = []
-
     var screenY = this.currentY
-    // console.log(allCards)
+    var screenX = this.currentX
+    var textHeight
+    var cardHeight
+    this.mouseStatus = false
+    var absolCardLeft = ((document.getElementsByClassName('listyTwo')[0]).offsetLeft)
+    var cardWidth = ((document.getElementsByClassName('listyTwo')[0]).offsetWidth)
+    var upperSpace = ((document.getElementsByClassName('bigSpace')[0]).offsetHeight)
+// console.log(upperSpace)
     for  (i=0; i<allCards.length; i++) {
         var absolCardTop = ((document.getElementsByClassName('listyTwo')[i].offsetTop))
         var cardHeight = ((document.getElementsByClassName('listyTwo')[i].offsetHeight))
         var relCardTop = ((document.getElementsByClassName('listyTwo')[i].offsetTop) - scrollVal)
         var listTextHeight = ((document.getElementsByClassName('listyText')[i]).offsetHeight)
-        // var ListWidth = ((document.getElementsByClassName('listyTwo')[i].offsetWidth))
-// console.log(myVal)
+
         liRelCardTop.push(relCardTop)
         liListTextHeight.push(listTextHeight)
         liAbsolCardTop.push(absolCardTop)
         liCardHeight.push(cardHeight)
-        // console.log(document.getElementsByClassName('listyTwo'))
-
 
     }
-
-    console.log(liCardHeight)
+    // console.log(absolCardLeft)
+    // console.log(cardWidth)
     var closestCard = liRelCardTop.reduce(function(prev, curr) {
-
         return (Math.abs(curr - screenY) < Math.abs(prev - screenY) ? curr : prev);
       });
-
-    var theActual = screenY-closestCard
-
-    var textHeight
-    var bottomOfCard
-    var c
-    var cardDepth
-for (c=0; c<liAbsolCardTop.length; c++) {
-    if (closestCard+scrollVal === liAbsolCardTop[c]){
-        console.log(" liAbsolCardTop[c] " + liAbsolCardTop[c])
-        console.log(liListTextHeight[c], c)
-
-        textHeight = liListTextHeight[c]
-        bottomOfCard = liCardHeight[c]
-        cardDepth = liAbsolCardTop[c]
-    }
-    else {
-        console.log("closestCard-scrollVal " + (closestCard-scrollVal) + " liAbsolCardTop[c] " + liAbsolCardTop[c])
-        // textHeight = counts2[c]
-        // bottomOfCard = liCardHeight[c]
-        // cardDepth = counts3[c]
-    }
-}
-console.log('text height ' + textHeight)
-console.log(scrollVal)
-console.log(scrollVal, screenY)
-console.log('cardDepth '+ cardDepth)
-console.log('bottomOfCard '+ bottomOfCard)
-// var theActual = screenY
-// console.log(theActual, closestCard)
     var absolLoc = scrollVal + closestCard - 110
-    var textBottom = absolLoc + textHeight
-    var genericBottom = bottomOfCard
-// var absolLoc = sourceTwo
-var relCick = scrollVal+screenY
-var thePosition = 0
-var thePositionDrop
-for  (i=0; i<allCards.length; i++) {
+    var relLoc = closestCard -110
+    var relClick = scrollVal + screenY
+    // console.log(relClick)
 
-    var myVal = (document.getElementsByClassName('listyTwo')[i].offsetTop)
+    for (c=0; c<liAbsolCardTop.length; c++) {
+        if (closestCard+scrollVal === liAbsolCardTop[c]){
+            // console.log(" liAbsolCardTop[c] " + liAbsolCardTop[c])
+            // console.log(liListTextHeight[c], c)
 
-    if (relCick === myVal){
-    thePosition = document.getElementsByClassName('listyTwo')[i]
-    thePositionDrop = document.getElementsByClassName('listyText')[i]
+            textHeight = liListTextHeight[c]
+            cardHeight = liCardHeight[c]
+        }
     }
 
-}
-console.log(relCick)
-// console.log((document.getElementsByClassName('listyTwo')))
-if (typeof e.target.offsetParent!== 'undefined' && e.target.offsetParent !== null){
-    // console.log(e.target.offsetParent)
-if (typeof e.target.offsetParent.offsetParent !== 'undefined' && e.target.offsetParent.offsetParent !== null){
-    // console.log(e.target.offsetParent.offsetParent)
-if (typeof e.target.offsetParent.offsetParent.lastElementChild !== 'undefined'){
-    // console.log(e.target.offsetParent.offsetParent.lastElementChild)
-if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0] !== 'undefined'){
-    if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.attributes.placeholder !== 'undefined'){
-var myText = e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.attributes.placeholder.value
-}}}}}
-//    console.log(myText)
-// console.log(e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.attributes.placeholder.value)
-const el = this.options.element;
-        this.mouseStatus = false
-        const parentElement = el.parentElement;
-        if(this.options.onDragComplete){
-            this.options.onDragComplete.call(this, {
-                x: this.currentX,
-                y: this.currentY,
-                px: this.percentX,
-                py: this.percentY,
-                text: myText
-            })
-        }
-        if (this.options.onMouseDownMove){
-            this.options.onMouseDownMove.call(this, {
-                mouseStatus: this.mouseStatus,
-                listy: thePosition,
-                relClick: relCick,
-                absolLoc: absolLoc,
-                textBottom: textBottom,
-                genericBottom: genericBottom,
-                textHeight: textHeight
-            })
-        }
-        // console.log(this)
-        this.options.element.classList.remove('draggable');
 
-        document.removeEventListener('mousemove', this.onMouseMove);
-        document.removeEventListener('mouseup', this.onMouseUp);
-        document.removeEventListener('touchmove', this.onMouseMove);
-        document.removeEventListener('touchend', this.onMouseUp);
+    if (typeof e.target.offsetParent!== 'undefined' && e.target.offsetParent !== null){
+        if (typeof e.target.offsetParent.offsetParent !== 'undefined' && e.target.offsetParent.offsetParent !== null){
+            if (typeof e.target.offsetParent.offsetParent.lastElementChild !== 'undefined' && e.target.offsetParent.offsetParent.lastElementChild !== null){
+                if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0] !== 'undefined' &&  e.target.offsetParent.offsetParent.lastElementChild.children[0] !== null){
+                    if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild !== 'undefined' && e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild !== null){
+                        if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild !== 'undefined' && e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild !== null){
+                            if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild !== 'undefined' &&e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild !== null){
+                                // console.log(e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild)
+                                if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.attributes.placeholder !== 'undefined'){
+                                    var myText = e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.attributes.placeholder.value
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if(this.options.onDragComplete){
+        this.options.onDragComplete.call(this, {
+            x: this.currentX,
+            y: this.currentY,
+            px: this.percentX,
+            py: this.percentY,
+            text: myText,
+            mouseStatus: this.mouseStatus,
+            relClick: relClick,
+            relLoc: relLoc,
+            absolLoc: absolLoc,
+            cardHeight: cardHeight,
+            textHeight: textHeight,
+            absolCardLeft: absolCardLeft,
+            cardWidth: cardWidth,
+            upperSpace: upperSpace
+        })
+    }
+    if (this.options.onMouseDownMove){
+        this.options.onMouseDownMove.call(this, {
+            mouseStatus: this.mouseStatus,
+            relClick: relClick,
+            relLoc: relLoc,
+            absolLoc: absolLoc,
+            cardHeight: cardHeight,
+            textHeight: textHeight
+        })
+    }
+    this.options.element.classList.remove('draggable');
+    document.removeEventListener('mousemove', this.onMouseMove);
+    document.removeEventListener('mouseup', this.onMouseUp);
+    document.removeEventListener('touchmove', this.onMouseMove);
+    document.removeEventListener('touchend', this.onMouseUp);
+
+
+    // console.log(scrollVal)
+    // console.log('scrollVal'+ screenY)
+    // console.log('cardHeight '+ cardHeight)
     }
     
     setTranslate(x, y) {
