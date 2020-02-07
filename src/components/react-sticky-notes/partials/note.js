@@ -4,6 +4,7 @@ import { h, getElementStyle } from '../utils';
 import NoteDraggable from './note-draggable';
 import NoteHeader from './note-header';
 import NoteBody from './note-body';
+import LineTo from 'react-lineto';
 import {NoteBubble} from './note-bubble';
 import {ButtonAddDot, ButtonTitle, ButtonMenu, ButtonHideShow, ButtonTrash } from './../buttons' ;
 
@@ -27,12 +28,12 @@ class Note extends React.Component{
             cardWidth: 0,
             absolCardLeft: 0,
             upperSpace: 0,
-            selectedLine: ''
+            selectedLine: '',
 
         }
     }
 
-
+    // const [selectedLine, setSelectedLine] = useState();
 getRandom2= () => {
         var precision = 1;
         var n = Math.floor(Math.random() * (10-(-10)) + (-10))
@@ -335,91 +336,91 @@ hashtagMoveY= () => {
             var figureX = (85+(200*(indexHashtag+1)-randomnum))
             }
             else {
-                if (this.state.relClick !== 0) {
-                    if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
-                        if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
-                            return (this.state.absolLoc + this.state.textHeight+40)- (props.scrollScreen)
-                        }
-                        else if (this.state.relClick < this.state.absolLoc){
+                // if (this.state.relClick !== 0) {
+                    // if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
+                        // if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
+                            // return (this.state.absolLoc + this.state.textHeight+40)- (props.scrollScreen)
+                        // }
+                        // else if (this.state.relClick < this.state.absolLoc){
                         // console.log(this.state.relClick)
-                            return (this.state.absolLoc + this.state.textHeight+30)- (props.scrollScreen)
-                        }
-                        else {
+                            // return (this.state.absolLoc + this.state.textHeight+30)- (props.scrollScreen)
+                        // }
+                        // else {
                         // console.log('this is happening')
-                            return this.state.relClick - (props.scrollScreen)}
-                        }
-                    else{
+                            // return this.state.relClick - (props.scrollScreen)}
+                        // }
+                    // else{
                 // console.log('relClicksing' + this.state.relClick)
                 // console.log('relClick ' + this.state.relClick + ' generictop ' + this.state.absolLoc+ ' card height ' + this.state.cardHeight + ' text height ' + this.state.textHeight)
-                        return this.state.relClick - (props.scrollScreen)
-                    }
-                }
-                else {
+                        // return this.state.relClick - (props.scrollScreen)
+                //     // }
+                // }
+                // else {
                     return this.getNotePositionY() - (props.scrollScreen)
                 }
             }
         }
-    else {
-        if (this.state.relClick !== 0) {
+    // else {
+        // if (this.state.relClick !== 0) {
         // console.log('relClicksing')
         // console.log('relClick ' + this.state.relClick + ' generictop ' + this.state.absolLoc+ ' cardHeight ' + this.state.cardHeight + ' text height ' + this.state.textHeight)
-            return this.state.relClick - (props.scrollScreen)
-        }
+            // return this.state.relClick - (props.scrollScreen)
+        // }
         else {
     // console.log('this is happening')
             return this.getNotePositionY() - (props.scrollScreen)
         }
     }
-}
+// }
 else {
     // console.log('hashtag dups is 0, moving on to relclick')
-    if (this.state.relClick !== 0) {
+    // if (this.state.relClick !== 0) {
         // console.log('relclick is not zero')
-        if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
+        // if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
             // console.log('relclick is in range')
-            if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
+            // if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
                 // console.log('hitting the text')
-                return ((this.state.absolLoc + this.state.textHeight)- (props.scrollScreen)+20)
-            }
-            else if (this.state.relClick > ((this.state.cardHeight - this.state.absolLoc)-145)) {
+                // return ((this.state.absolLoc + this.state.textHeight)- (props.scrollScreen)+20)
+            // }
+            // else if (this.state.relClick > ((this.state.cardHeight - this.state.absolLoc)-145)) {
                 // console.log('below the range')
-                var dif = ((this.state.cardHeight - this.state.absolLoc)-150)
+                // var dif = ((this.state.cardHeight - this.state.absolLoc)-150)
                 // console.log(dif)
-                return (dif)
-            }
-            else {
-                return this.state.relClick
-            }
+                // return (dif)
+            // }
+            // else {
+                // return this.state.relClick
+            // }
 
-        }
-        else if (this.state.relClick < (this.state.absolLoc)){
+        // }
+        // else if (this.state.relClick < (this.state.absolLoc)){
             // console.log('above the range')
             // console.log('relClick ' + (this.state.relClick) + ' generictop ' + (this.state.absolLoc)+ ' generic bottom ' + (this.state.cardHeight) + ' text height ' + (this.state.textHeight))
-            return (this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen)
+            // return (this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen)
 
-        }
-        else{
-            if (typeof this.state.relClick !== 'undefined'){
+        // }
+        // else{
+            // if (typeof this.state.relClick !== 'undefined'){
                 // console.log('relclick is undefined')
                 // console.log(this.getNotePositionY() - (props.scrollScreen))
                 // console.log('relClick ' + (this.state.relClick) + ' absolLoc ' + (this.state.absolLoc)+ ' cardHeight ' + (this.state.cardHeight) + ' text height ' + (this.state.textHeight))
-                return this.getNotePositionY() - (props.scrollScreen)
-            }
-            else {
+                return (this.getNotePositionY() - (this.props.scrollScreen))
+            // }
+            // else {
                 // console.log('relclick is out of range')
                 // console.log(this.getNotePositionY() - (props.scrollScreen))
-                return this.getNotePositionY() - (props.scrollScreen)
-            }
-        }
+                // return this.getNotePositionY() - (props.scrollScreen)
+            // }
+        // }
     }
-    else {
+    // else {
         // console.log('relclick is 0')
         // console.log((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
-        return ((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
+        // return ((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
         // return this.getNotePositionY() - (props.scrollScreen)
-    }
-}
-}
+    // }
+// }
+// }
     }
 
 
@@ -739,91 +740,91 @@ thisty()
                 var figureX = (85+(200*(indexHashtag+1)-randomnum))
                 }
                 else {
-                    if (this.state.relClick !== 0) {
-                        if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
-                            if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
-                                return (this.state.absolLoc + this.state.textHeight+40)- (props.scrollScreen)
-                            }
-                            else if (this.state.relClick < this.state.absolLoc){
-                            // console.log(this.state.relClick)
-                                return (this.state.absolLoc + this.state.textHeight+30)- (props.scrollScreen)
-                            }
-                            else {
-                            // console.log('this is happening')
-                                return this.state.relClick - (props.scrollScreen)}
-                            }
-                        else{
-                    // console.log('relClicksing' + this.state.relClick)
-                    // console.log('relClick ' + this.state.relClick + ' generictop ' + this.state.absolLoc+ ' card height ' + this.state.cardHeight + ' text height ' + this.state.textHeight)
-                            return this.state.relClick - (props.scrollScreen)
-                        }
-                    }
-                    else {
+                    // if (this.state.relClick !== 0) {
+                    //     if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
+                    //         if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
+                    //             return (this.state.absolLoc + this.state.textHeight+40)- (props.scrollScreen)
+                    //         }
+                    //         else if (this.state.relClick < this.state.absolLoc){
+                    //         // console.log(this.state.relClick)
+                    //             return (this.state.absolLoc + this.state.textHeight+30)- (props.scrollScreen)
+                    //         }
+                    //         else {
+                    //         // console.log('this is happening')
+                    //             return this.state.relClick - (props.scrollScreen)}
+                    //         }
+                    //     else{
+                    // // console.log('relClicksing' + this.state.relClick)
+                    // // console.log('relClick ' + this.state.relClick + ' generictop ' + this.state.absolLoc+ ' card height ' + this.state.cardHeight + ' text height ' + this.state.textHeight)
+                    //         return this.state.relClick - (props.scrollScreen)
+                    //     }
+                    // }
+                    // else {
                         return this.getNotePositionY() - (props.scrollScreen)
-                    }
-                }
+                    // }
+                // }
             }
-        else {
-            if (this.state.relClick !== 0) {
+        // else {
+            // if (this.state.relClick !== 0) {
             // console.log('relClicksing')
             // console.log('relClick ' + this.state.relClick + ' generictop ' + this.state.absolLoc+ ' cardHeight ' + this.state.cardHeight + ' text height ' + this.state.textHeight)
-                return this.state.relClick - (props.scrollScreen)
-            }
-            else {
+                // return this.state.relClick - (props.scrollScreen)
+            // }
+            // else {
         // console.log('this is happening')
-                return this.getNotePositionY() - (props.scrollScreen)
-            }
-        }
+                // return this.getNotePositionY() - (props.scrollScreen)
+            // }
+        // }
     }
     else {
         // console.log('hashtag dups is 0, moving on to relclick')
-        if (this.state.relClick !== 0) {
+        // if (this.state.relClick !== 0) {
             // console.log('relclick is not zero')
-            if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
+            // if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
                 // console.log('relclick is in range')
-                if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
+                // if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
                     // console.log('hitting the text')
-                    return ((this.state.absolLoc + this.state.textHeight)- (props.scrollScreen)+20)
-                }
-                else if (this.state.relClick > ((this.state.cardHeight - this.state.absolLoc)-145)) {
+                    // return ((this.state.absolLoc + this.state.textHeight)- (props.scrollScreen)+20)
+                // }
+                // else if (this.state.relClick > ((this.state.cardHeight - this.state.absolLoc)-145)) {
                     // console.log('below the range')
-                    var dif = ((this.state.cardHeight - this.state.absolLoc)-150)
+                    // var dif = ((this.state.cardHeight - this.state.absolLoc)-150)
                     // console.log(dif)
-                    return (dif)
-                }
-                else {
-                    return this.state.relClick
-                }
+                    // return (dif)
+                // }
+                // else {
+                    // return this.state.relClick
+                // }
 
-            }
-            else if (this.state.relClick < (this.state.absolLoc)){
+            // }
+            // else if (this.state.relClick < (this.state.absolLoc)){
                 // console.log('above the range')
                 // console.log('relClick ' + (this.state.relClick) + ' generictop ' + (this.state.absolLoc)+ ' generic bottom ' + (this.state.cardHeight) + ' text height ' + (this.state.textHeight))
-                return (this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen)
+                // return (this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen)
 
-            }
-            else{
-                if (typeof this.state.relClick !== 'undefined'){
+            // }
+            // else{
+                // if (typeof this.state.relClick !== 'undefined'){
                     // console.log('relclick is undefined')
                     // console.log(this.getNotePositionY() - (props.scrollScreen))
                     // console.log('relClick ' + (this.state.relClick) + ' absolLoc ' + (this.state.absolLoc)+ ' cardHeight ' + (this.state.cardHeight) + ' text height ' + (this.state.textHeight))
                     return this.getNotePositionY() - (props.scrollScreen)
-                }
+                }}
                 else {
                     // console.log('relclick is out of range')
                     // console.log(this.getNotePositionY() - (props.scrollScreen))
                     return this.getNotePositionY() - (props.scrollScreen)
-                }
+                // }
             }
         }
-        else {
+        // else {
             // console.log('relclick is 0')
             // console.log((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
-            return ((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
+            // return ((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
             // return this.getNotePositionY() - (props.scrollScreen)
-        }
-    }
-}
+        // }
+    // }
+// }
 
         let word_With_Numbers = props.data.od
         // console.log(word_With_Numbers)
@@ -913,6 +914,15 @@ var newText = props.data.text.split(/[_,]+/);
                     }
             }, [
                 h('div', {
+                    key: `${props.prefix}-line`, 
+                    className: `${props.prefix}-line`,
+                    style: getElementStyle('container', props)
+                }, 
+                h("span", null,
+                    props.hidden ? (props.visible === true)? (h( LineTo, { borderColor:'wheat',borderStyle: 'dashed', borderWidth: 1, from:`dropped${props.data.od}`, to:`rs-notes--full-note-${props.data.od}`, toAnchor: 'top right', key: `note-${props.data.od}`,...props, data: props.data } )):null: 
+                    h( LineTo, { opacity:(this.state.selectedLine===props.data.od)?1:0,borderColor: '#9FA7B8', borderStyle: 'dashed', borderWidth: 1, from:`dropped${props.data.od}`, to:`rs-notes--full-note-${this.state.selectedLine}`, toAnchor: 'top right', key: `note-${props.data.od}`,...props, data: props.data } ))
+                ),
+                h('div', {
                     key: `${props.prefix}-bubble`, 
                     className: `${props.prefix}-bubble`,
                     width: 30,
@@ -954,7 +964,7 @@ var newText = props.data.text.split(/[_,]+/);
                     onChange: props.onChange,
                     notesy: props.notesy,
                     ...props
-                })
+                }),
             ],
 
 

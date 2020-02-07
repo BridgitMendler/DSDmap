@@ -7,7 +7,6 @@ import NavBarTwo from './../navbar/notesIndex';
 import NavBarThree from './../navbar/notesRed';
 import Note from '../partials/note';
 import {NoteBubble} from '../partials/note-bubble';
-import LineTo from 'react-lineto';
 import Switch from "react-switch";
 import { DragPreviewImage, useDrag, useDrop } from "react-dnd";
 import ItemTypes from "./../../../ItemTypes";
@@ -210,7 +209,7 @@ var newBub = props.newBubble.filter(obj => {
 // console.log(iclicked)
 
 //     }
-console.log(newBub)
+// console.log(newBub)
 
     const [hasDropped, setHasDropped] = useState(false)
 
@@ -239,14 +238,5 @@ console.log(newBub)
         // }, 
         //     newBub.map( data => h( NoteBubble, {settingLine: settingLine, convoBoxSize: props.convoBoxSize, visible: props.visible, myArrayPos: props.myArrayPos, myArray: props.myArray, key: `note-${data.od}`,...props, data })
         // )),
-        h('div', {
-            key: `${props.prefix}-line`, 
-            className: `${props.prefix}-line`,
-            style: getElementStyle('container', props)
-        }, 
-        h("span", null,
-            newNot.map( data => props.hidden ? (props.visible === true)? (h( LineTo, { borderColor:'wheat',borderStyle: 'dashed', borderWidth: 1, from:`dropped${data.od}`, to:`rs-notes--full-note-${data.od}`, toAnchor: 'top right', key: `note-${data.od}`,...props, data } )):null: 
-            h( LineTo, { opacity:(selectedLine===data.od)?1:0,borderColor: '#9FA7B8', borderStyle: 'dashed', borderWidth: 1, from:`dropped${selectedLine}`, to:`rs-notes--full-note-${selectedLine}`, toAnchor: 'top right', key: `note-${data.od}`,...props, data } ))
-        ),),
     ]
 }

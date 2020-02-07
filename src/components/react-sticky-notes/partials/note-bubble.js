@@ -136,8 +136,8 @@ var self = document.getElementsByClassName(`${props.prefix}--note-${props.data.o
 if (typeof myEl !== 'undefined'){
 ElTop = parseFloat(myEl.style.top)
 ElLeft = parseFloat(myEl.style.left)
-console.log(self)
-console.log(mapEl)
+// console.log(self)
+// console.log(mapEl)
 
         }
     const findX = (idValue) => {
@@ -146,7 +146,7 @@ if (typeof myBub.label !== 'undefined' && myBub.label.length > 0){
     // console.log(findit)
         if (findit !== null) {
             // console.log((findit.getBoundingClientRect().left -30)+ (myRand/.75))
-            if (typeof mapEl !== 'undefined'){
+            if (typeof mapEl !== 'undefined' && typeof self !== 'undefined'){
             mapEl.appendChild(self)}
             return ((findit.getBoundingClientRect().left -30)+ (myRand/.75))
         }
@@ -262,7 +262,8 @@ const whichColor = (val) => {
  }
 }
     return h(NoteDraggable, {
-                className: (typeof myBub.label !== 'undefined' && myBub.label.length > 1) ?`${myBub.od} dropped${myBub.od} ${props.prefix}--note-${props.data.od} ${myBub.selected?props.prefix+'--note__selected':'' } ${myBub.od}`:
+                className: (typeof myBub.label !== 'undefined' && myBub.label.length > 1) ?
+                `${myBub.od} dropped${myBub.od} ${props.prefix}--note-${props.data.od} ${myBub.selected?props.prefix+'--note__selected':'' } ${myBub.od}`:
                 `${myBub.od} ${props.prefix}--note-${myBub.od} ${myBub.selected?props.prefix+'--note__selected':'' } ${myBub.od}`,
                 position: myBub.position,
                 selected: myBub.selected,
