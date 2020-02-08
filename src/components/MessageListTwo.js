@@ -61,6 +61,7 @@ export function MessageListTwo(props){
 
 const [ didMount, setDidMount ] = useState(false)
 
+
     const windowFocus = (val) => {
       var theOne = (document.getElementsByClassName('selectionssss'))
       if (typeof theOne[0] !== 'undefined'){
@@ -76,6 +77,7 @@ return styles.li
 }
 const onSubmit =(e)=> {
 var loca =e.target.parentElement.parentElement
+console.log(loca)
 var locaa = e.target.parentElement.parentElement.parentElement.parentElement
   e.preventDefault()
   if (typeof loca !== 'undefined'){
@@ -86,6 +88,8 @@ var locaa = e.target.parentElement.parentElement.parentElement.parentElement
     // setCurrentList([...currentList, loca.offsetTop]);
   }
     }
+
+    
 
 // console.log(currentList)
 var result
@@ -136,19 +140,28 @@ messageClean()
 
 
 const weMove =()=> {
-  // console.log('starting the function')
-  var theOne = (document.getElementsByClassName('selectionssss'))
+  var theOne
+  // console.log(resultTwo)
+  var i
+  for (i = 0; i<resultTwo.length; i++){
+    if (resultTwo[i].classNameParent === 'listyTwo dropTarget selectionssss'){
+      theOne = resultTwo[i]
+    }
+  }
+  // var theOne = (document.getElementsByClassName('selectionssss'))
   var locaa = document.getElementsByClassName('listyThree')
   // theOne2 = theOne
-  if (typeof theOne[0] !== 'undefined'){
+  if (typeof theOne !== 'undefined'){
+    console.log('the one not undefined')
     // if (theOne[0].offsetTop !== currentList[currentList.length-1]){
     // console.log(theOne[0].offsetTop)
     if (typeof locaa !== 'undefined'){
       if (typeof locaa[0] !== 'undefined'){
+        console.log(theOne.currentList)
         var locaaa = locaa[0]
         // console.log(locaaa)
       locaaa.scrollTo({behavior: 'smooth',
-      top:theOne[0].offsetTop-200})}
+      top:theOne.currentList-300})}
     }}
     // else{ console.log('undefined the one')}
     }
@@ -198,7 +211,7 @@ if (props.currentUser.id === 'B')
 // console.log(resultTwo)
 
       weMove()
-      // console.log(currentList)
+      console.log(resultTwo)
 
             return (
               <div className="listyThree" 
@@ -208,8 +221,8 @@ if (props.currentUser.id === 'B')
                   ...styles.container,
                 }}
                  
-              >
-                <ul style={styles.ul} id='listyTwoId'>
+              > 
+                <ul style={styles.ul} id='listyTwoId' onChange={weMove()}>
                   {resultTwo.slice(0).reverse().map((message, index) => (
                     <li className={message.classNameParent} key={index} style={windowFocus(message)}>
                       <p className='listyText noselect' style={styles.message}>{message.print}</p>

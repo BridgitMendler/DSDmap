@@ -722,91 +722,17 @@ thisty()
                 var figureX = (85+(200*(indexHashtag+1)-randomnum))
                 }
                 else {
-                    // if (this.state.relClick !== 0) {
-                    //     if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
-                    //         if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
-                    //             return (this.state.absolLoc + this.state.textHeight+40)- (props.scrollScreen)
-                    //         }
-                    //         else if (this.state.relClick < this.state.absolLoc){
-                    //         // console.log(this.state.relClick)
-                    //             return (this.state.absolLoc + this.state.textHeight+30)- (props.scrollScreen)
-                    //         }
-                    //         else {
-                    //         // console.log('this is happening')
-                    //             return this.state.relClick - (props.scrollScreen)}
-                    //         }
-                    //     else{
-                    // // console.log('relClicksing' + this.state.relClick)
-                    // // console.log('relClick ' + this.state.relClick + ' generictop ' + this.state.absolLoc+ ' card height ' + this.state.cardHeight + ' text height ' + this.state.textHeight)
-                    //         return this.state.relClick - (props.scrollScreen)
-                    //     }
-                    // }
-                    // else {
                         return this.getNotePositionY() - (props.scrollScreen)
-                    // }
-                // }
+                }
             }
-        // else {
-            // if (this.state.relClick !== 0) {
-            // console.log('relClicksing')
-            // console.log('relClick ' + this.state.relClick + ' generictop ' + this.state.absolLoc+ ' cardHeight ' + this.state.cardHeight + ' text height ' + this.state.textHeight)
-                // return this.state.relClick - (props.scrollScreen)
-            // }
-            // else {
-        // console.log('this is happening')
-                // return this.getNotePositionY() - (props.scrollScreen)
-            // }
-        // }
-    }
-    else {
-        // console.log('hashtag dups is 0, moving on to relclick')
-        // if (this.state.relClick !== 0) {
-            // console.log('relclick is not zero')
-            // if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
-                // console.log('relclick is in range')
-                // if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
-                    // console.log('hitting the text')
-                    // return ((this.state.absolLoc + this.state.textHeight)- (props.scrollScreen)+20)
-                // }
-                // else if (this.state.relClick > ((this.state.cardHeight - this.state.absolLoc)-145)) {
-                    // console.log('below the range')
-                    // var dif = ((this.state.cardHeight - this.state.absolLoc)-150)
-                    // console.log(dif)
-                    // return (dif)
-                // }
-                // else {
-                    // return this.state.relClick
-                // }
-
-            // }
-            // else if (this.state.relClick < (this.state.absolLoc)){
-                // console.log('above the range')
-                // console.log('relClick ' + (this.state.relClick) + ' generictop ' + (this.state.absolLoc)+ ' generic bottom ' + (this.state.cardHeight) + ' text height ' + (this.state.textHeight))
-                // return (this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen)
-
-            // }
-            // else{
-                // if (typeof this.state.relClick !== 'undefined'){
-                    // console.log('relclick is undefined')
-                    // console.log(this.getNotePositionY() - (props.scrollScreen))
-                    // console.log('relClick ' + (this.state.relClick) + ' absolLoc ' + (this.state.absolLoc)+ ' cardHeight ' + (this.state.cardHeight) + ' text height ' + (this.state.textHeight))
-                    return this.getNotePositionY() - (props.scrollScreen)
-                }}
-                else {
-                    // console.log('relclick is out of range')
-                    // console.log(this.getNotePositionY() - (props.scrollScreen))
-                    return this.getNotePositionY() - (props.scrollScreen)
-                // }
+            else {
+                   return this.getNotePositionY() - (props.scrollScreen)
             }
         }
-        // else {
-            // console.log('relclick is 0')
-            // console.log((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
-            // return ((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
-            // return this.getNotePositionY() - (props.scrollScreen)
-        // }
-    // }
-// }
+        else {
+                    return this.getNotePositionY() - (props.scrollScreen)
+        }
+    }
 
         let word_With_Numbers = props.data.od
         // console.log(word_With_Numbers)
@@ -814,24 +740,6 @@ thisty()
         // var myRand = 2
         var myRand = word_Without_Numbers[0]
 
-        //   console.log(window.event)
-// console.log(this.state.mouseStatus)
-
-// const conditions = () => {
-//     var scrollVals= [0]
-//     var newVals = props.scrollScreen
-//     var i
-//     for (i = 0; i< scrollVals.length; i++) {
-//         if(scrollVals[i] !== newVals) {
-
-//         scrollVals.push(newVals)
-//         // console.log(scrollVals)}
-//     }
-// }
-// // }
-// conditions()
-// console.log(props.data)
-// console.log(this.state.visibleList)
 const setOpac = () => {
     if ((props.data.y - props.scrollScreen)< 20&& props.scrollScreen > 0){
         return 0.0

@@ -312,7 +312,7 @@ var oldestM = 300000000
 
   render() {
 
-console.log(this.state.notesy)
+console.log(this.state.postings)
 
       // console.log(this.state.oldestM)
     // console.log(oldestM)
