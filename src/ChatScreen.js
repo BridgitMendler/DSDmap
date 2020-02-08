@@ -312,7 +312,7 @@ var oldestM = 300000000
 
   render() {
 
-// console.log(this.state.bubblePosList)
+console.log(this.state.notesy)
 
       // console.log(this.state.oldestM)
     // console.log(oldestM)
@@ -453,6 +453,10 @@ var oldestM = 300000000
       },
       text2: {
         transform: `translate(${d}px, ${e}px)`,
+      },
+      rsNotes: {
+        width: 0,
+        height: 0
       }
 
     }
@@ -481,7 +485,7 @@ var oldestM = 300000000
             className="title"
             onClick={this.handleMapClick}
           ><img className='pictureThree noselect' style={styles.imagee2} src={pic}></img><p style={styles.text2}>show map</p></h1>
-               <ReactStickyNotes className='stickyButton'
+               <ReactStickyNotes className='stickyButton' style={styles.rsNotes}
             onChange={this.sendTypingEvent}
             onSubmit={this.sendMessage}
             backgroundColor="#fefefe"
@@ -503,7 +507,7 @@ var oldestM = 300000000
                <Map className={`${this.state.mapName}`} onSubmit={this.sendMessage} knightPosition={this.state.knightPos}/> 
                </svg> 
     <div style={styles[this.state.sidePanel]} className={`${this.state.sidePanel}`} >
-      <MessageListTwo className='messageListTwo' currentUser={this.state.currentUser} onSubmit={this.sendMessage} messages={this.state.postings} style={styles.transforming}/>
+      <MessageListTwo className='messageListTwo' delNote={this.state.delNote} currentUser={this.state.currentUser} onSubmit={this.sendMessage} messages={this.state.postings} style={styles.transforming}/>
     </div>
     <div style={styles.chatContainer} className={`${this.state.feedback}`} >
       <section style={styles.chatContainer} className={`${this.state.feedback}`}>

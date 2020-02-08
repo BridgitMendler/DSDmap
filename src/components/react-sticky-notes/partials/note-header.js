@@ -3,7 +3,11 @@ function NoteHeader(props) {
     // console.log(props)
     return h('div',{
         className: `${props.prefix}`,
-        style: getElementStyle('note-header',{data: props.data})
+        style: {
+        backgroundColor:props.data?props.data.color:'',
+        width: 115
+    }
+        // getElementStyle('note-header',{data: props.data})
     }, 
         props.buttons?props.buttons.map((Button,i)=> 
             h(Button, { 

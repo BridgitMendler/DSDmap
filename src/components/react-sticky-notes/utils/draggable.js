@@ -30,17 +30,24 @@ export default class Draggable {
         var xYa = e.clientX;
         var yYa = e.clientY;
         var elementMouseIsOver = document.elementFromPoint(xYa, yYa);
-
+        var absolCardLeft = ((document.getElementsByClassName('listyTwo')[0]).offsetLeft)
+        var cardWidth = ((document.getElementsByClassName('listyTwo')[0]).offsetWidth)
+        var upperSpace = ((document.getElementsByClassName('bigSpace')[0]).offsetHeight)
+console.log(upperSpace)
         if(this.options.useBoundaries){
-            const maxX = pRect.width-el.offsetWidth;
-            const maxY = pRect.height-el.offsetHeight;
+            const maxX = cardWidth + absolCardLeft-133;
+            const minY = 75;
+            const minX = absolCardLeft
 
             if(this.currentX>=maxX){
                 this.currentX = maxX;
             }
 
-            if(this.currentY>=maxY){
-                this.currentY = maxY;
+            if(this.currentY<=minY){
+                this.currentY = minY;
+            }
+            if(this.currentX<=minX){
+                this.currentX = minX;
             }
         }
         if(this.options.unit==="%"){
@@ -96,6 +103,7 @@ export default class Draggable {
     const allCards = document.getElementsByClassName('listyTwo');
     const scrollVal = document.getElementsByClassName('listyThree')[0].scrollTop;
     var i
+    var b
     var c
     var liRelCardTop = []
     var liListTextHeight = []
@@ -130,18 +138,26 @@ export default class Draggable {
     var absolLoc = scrollVal + closestCard - 110
     var relLoc = closestCard -110
     var relClick = scrollVal + screenY
+    var myCard
     // console.log(relClick)
 
     for (c=0; c<liAbsolCardTop.length; c++) {
         if (closestCard+scrollVal === liAbsolCardTop[c]){
             // console.log(" liAbsolCardTop[c] " + liAbsolCardTop[c])
             // console.log(liListTextHeight[c], c)
-
+            myCard = liAbsolCardTop[c]
             textHeight = liListTextHeight[c]
             cardHeight = liCardHeight[c]
         }
     }
-
+    var theRightCard
+    var getCards = document.getElementsByClassName('listyTwo')
+    for (b = 0; b<getCards.length; b++){
+        if (getCards[b].offsetTop === myCard){
+            theRightCard = getCards[b]
+        }
+        // console.log(getCards[b].offsetTop, myCard)
+    }
 
     if (typeof e.target.offsetParent!== 'undefined' && e.target.offsetParent !== null){
         if (typeof e.target.offsetParent.offsetParent !== 'undefined' && e.target.offsetParent.offsetParent !== null){
@@ -177,7 +193,8 @@ export default class Draggable {
             textHeight: textHeight,
             absolCardLeft: absolCardLeft,
             cardWidth: cardWidth,
-            upperSpace: upperSpace
+            upperSpace: upperSpace,
+            theRightCard: theRightCard
         })
     }
     if (this.options.onMouseDownMove){

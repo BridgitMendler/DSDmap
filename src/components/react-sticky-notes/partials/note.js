@@ -29,6 +29,7 @@ class Note extends React.Component{
             absolCardLeft: 0,
             upperSpace: 0,
             selectedLine: '',
+            theRightCard: []
 
         }
     }
@@ -57,14 +58,14 @@ getRandomThree= () => {
 getNotePositionY =() => {
         var i = 1
         while (i< this.props.notesy.length){
-            // console.log(Object.keys(this.props.notesy[i]).indexOf('od'))
+            // console.log(this.props.notesy[i])
             var newVal = this.props.notesy[i]
             if ((newVal.od) !== null){
             // console.log(this.props.notesy, typeof this.props.data.od)
             i++
             if (newVal.od === this.props.data.od){
-
-                var yVal = parseInt(newVal.y)
+                // console.log(newVal)
+                var yVal = parseInt(newVal.position.y)
                 // console.log(yVal)
                 return yVal
             }
@@ -91,37 +92,14 @@ getNotePositionX =() => {
                 i++
                 if (newVal.od === this.props.data.od){
     
-                    var xVal = parseInt(newVal.x)
+                    var xVal = parseInt(newVal.position.x)
                     if (typeof this.state !== 'undefined'){
-                        if (this.state.cardWidth !== 0 && this.state.absolCardLeft !== 0){
-                            // console.log(' cardWidth ' + this.state.cardWidth + ' cardLeft'+ this.state.absolCardLeft )
-                    // console.log(this.state)}
-                    // if (typeof this.state.cardWidth !== 'undefined' && typeof this.state.absolCardLeft!== 'undefined'){
-                    if (xVal > (this.state.cardWidth + this.state.absolCardLeft)-150){
-                        // this.setState({mouseStatus:true})
-                        // console.log('beyond')
-                        return ((this.state.cardWidth + this.state.absolCardLeft) -150)
-                    }
-                    else if (xVal < (this.state.absolCardLeft)){
-                        // this.setState({mouseStatus:true})
-                        // console.log('before')
-                        return (this.state.absolCardLeft)
-                    }
-                    else { 
-                        return xVal
-                    }
-                }
-                else { 
-                    return xVal 
-                }
-            }
-            else {
                 return xVal
             }
         }
             }
             else {
-                // console.log('else ' + this.props.data.position.x)
+                console.log('else ' + this.props.data.position.x)
                 return this.props.data.position.x
             }
         }}
@@ -213,7 +191,7 @@ hashtagMoveX = () => {
                 }
                 else {
                     if (this.props.visible === false){
-                                    
+                        if (typeof this.state !== 'undefined'){
                         if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
                             // console.log('this is me visible list' + props.data.color)
                             // console.log('this is me visible list' + props.data.od)
@@ -225,7 +203,7 @@ hashtagMoveX = () => {
                         // console.log(this.state.visibleList[this.state.visibleList.length-1])
                         // console.log('getting state pos '+ this.state.positionX)
                         return (this.getNotePositionX())
-                    }
+                    }}
 
                     //     var whereToGo = this.getNotePositionX()
                     // return whereToGo
@@ -359,6 +337,10 @@ hashtagMoveY= () => {
                     return this.getNotePositionY() - (props.scrollScreen)
                 }
             }
+            else {
+                return this.getNotePositionY() - (props.scrollScreen)
+            }
+            
         }
     // else {
         // if (this.state.relClick !== 0) {
@@ -887,6 +869,12 @@ const settingLineOut = (value) => {
 // console.log('absoLoc' +this.state.absolLoc)
 // console.log('textHeight' +this.state.textHeight)
 // console.log('cardHeight' +this.state.cardHeight)
+var self = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)
+// var dest = document.getElementsByClassName()
+// console.log(this.state.theRightCard)
+
+var toAdd = this.state.theRightCard
+
 
 var newText = props.data.text.split(/[_,]+/);
         return h(NoteDraggable, {
@@ -895,10 +883,11 @@ var newText = props.data.text.split(/[_,]+/);
                 className: `${props.prefix}--full-note-${props.data.od} full-notey-note' ${props.data.od}`,
                 selected: props.data.selected,
                 target: this.targetRef,
+                useBoundaries:(pos) =>(console.log('mouseDown')),
                 onMouseDownMove2:(pos) => (this.setState({mouseStatus:pos.mouseStatus})),
                 onMouseDownMove:(pos) => (this.setState({relClick:pos.relClick})),
                 onDragComplete:(pos)=> (setWhatDragShouldDo(),
-                (this.setState({mouseStatus: false, relClick:pos.relClick, upperSpace:pos.upperSpace, absolLoc:pos.absolLoc, textHeight:pos.textHeight, cardHeight: pos.cardHeight, absolCardLeft: pos.absolCardLeft, cardWidth: pos.cardWidth})),
+                (this.setState({mouseStatus: false, relClick:pos.relClick, upperSpace:pos.upperSpace, absolLoc:pos.absolLoc, textHeight:pos.textHeight, cardHeight: pos.cardHeight, absolCardLeft: pos.absolCardLeft, cardWidth: pos.cardWidth, theRightCard: pos.theRightCard})),
                 props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.x},${pos.y}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.x}_${pos.y}`)),
                  (this.setState({positionX: pos.x, positionY:pos.y}))                
                 ),
@@ -907,8 +896,8 @@ var newText = props.data.text.split(/[_,]+/);
                     position: 'absolute',
                     left: hashtagMoveX(),
                     top: hashtagMoveY(),
-                    width: props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":null,
-                    height: props.viewSize==="pageview"||props.viewSize==="fullscreen"?"100%":null,
+                    // width: 115,
+                    // height: 115,
                     boxShadow: '1px 1px 2px rgba(0,0,0,.15)',
                     opacity: setOpac()
                     }

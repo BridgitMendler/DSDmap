@@ -90,7 +90,7 @@ class ReactStickyNotes extends Component {
 
 
 	addItem = (e, data) => {
-		
+
 		const childlike = this.props.icons.add
 		const source = ReactDOM.findDOMNode(this).getElementsByClassName('green')[0];
 		const sourceTwo = ReactDOM.findDOMNode(this).getElementsByClassName('icons-r');
@@ -119,7 +119,7 @@ class ReactStickyNotes extends Component {
 		}
 		
 		const { items } = this.state;
-		const index=data?items.findIndex(item=>item.id===data.id)+1:items.length;
+		const index=data?items.findIndex(item=>item.od===data.od)+1:items.length;
 		this.dispatch({
 			type: 'add',
 			payload: {
@@ -133,16 +133,18 @@ class ReactStickyNotes extends Component {
 						x: this.getRandom(),
 						y: this.getRandom2()
 					}
-				}
+				} 
 			}
+
 		});
 // console.log(this.state.items)
-
+// console.log(data)
 		if (this.state.items.length === 0) {
+			// console.log('these items are null')
 			return null
 		} 
 		else {
-
+// console.log('the items length is not null')
 
 	var dataPos = this.state.items[this.state.items.length-1].position
 	var dataID = this.state.items[this.state.items.length-1].od
@@ -156,6 +158,7 @@ class ReactStickyNotes extends Component {
 			});
 			
 	}
+	// console.log(dataPos)
 }}
 
 		
@@ -347,7 +350,7 @@ var newBubble = []
 			}
 		}}
 	}
-	var fresh =newArray.concat(unusedIds)
+	var fresh =newArray
 		newNotesy = fresh
 	}
 

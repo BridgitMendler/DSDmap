@@ -244,6 +244,7 @@ border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   line-height: 30px;
   text-align: left;
   user-select: none;
+  max-width: 80px;
 
 }
 
@@ -446,6 +447,7 @@ Popup {
   text-align: left;
   flex-grow: 1;
   min-width: 80px;
+  max-width: 81px;
 }
 
 .rs-notes--button__hideshow {
@@ -502,6 +504,7 @@ Popup {
   text-align: left;
   flex-grow: 1;
   min-width: 80px;
+  max-width: 81px;
 }
 
 
@@ -551,6 +554,7 @@ Popup {
   text-align: left;
   flex-grow: 1;
   min-width: 80px;
+  max-width: 81px;
 }
 
 .listy {

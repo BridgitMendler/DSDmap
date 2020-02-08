@@ -2,6 +2,7 @@ import React, { Component, useEffect, useContext, useState, useRef } from 'react
 import pic from './system.png';
 import pic2 from './lightpin.png'
 import ReactDOM from 'react-dom'
+// import { observeFive} from "../Game";
 
 export function MessageListTwo(props){
 
@@ -58,6 +59,8 @@ export function MessageListTwo(props){
     },
 }
 
+const [ didMount, setDidMount ] = useState(false)
+
     const windowFocus = (val) => {
       var theOne = (document.getElementsByClassName('selectionssss'))
       if (typeof theOne[0] !== 'undefined'){
@@ -77,12 +80,14 @@ var locaa = e.target.parentElement.parentElement.parentElement.parentElement
   e.preventDefault()
   if (typeof loca !== 'undefined'){
   if (typeof locaa !== 'undefined'){
-  props.onSubmit(('fffff' + e.target.parentElement.parentElement.children[1].innerText + '_listyTwo dropTarget selectionssss'+ '_listyText noselect'+ `_${Math.round((new Date()).getTime() / 1000)}`))
+  props.onSubmit(('fffff' + e.target.parentElement.parentElement.children[1].innerText + '_listyTwo dropTarget selectionssss'+ '_listyText noselect'+ `_${Math.round((new Date()).getTime() / 1000)}`+`_${loca.offsetTop}`))
     locaa.scrollTo({ behavior: 'smooth',
     top:loca.offsetTop-300})}
+    // setCurrentList([...currentList, loca.offsetTop]);
   }
     }
 
+// console.log(currentList)
 var result
 var resultTwo = []
 const messageClean = () => {
@@ -93,6 +98,7 @@ const messageClean = () => {
     newArray[i]['className'] = newText[2]
     newArray[i]['print']= newText[0]
     newArray[i]['time']= newText[3]
+    newArray[i]['currentList'] =newText[4]
   }
   var messageList = []
   var messageNoID = []
@@ -125,20 +131,38 @@ const messageClean = () => {
   }
 }
 messageClean()
+// console.log(currentList)
+// var theOne2
+
 
 const weMove =()=> {
+  // console.log('starting the function')
   var theOne = (document.getElementsByClassName('selectionssss'))
-
+  var locaa = document.getElementsByClassName('listyThree')
+  // theOne2 = theOne
   if (typeof theOne[0] !== 'undefined'){
+    // if (theOne[0].offsetTop !== currentList[currentList.length-1]){
     // console.log(theOne[0].offsetTop)
     if (typeof locaa !== 'undefined'){
       if (typeof locaa[0] !== 'undefined'){
         var locaaa = locaa[0]
         // console.log(locaaa)
-      locaaa.scrollTo({
-      top:theOne[0].offsetTop})}
+      locaaa.scrollTo({behavior: 'smooth',
+      top:theOne[0].offsetTop-200})}
     }}
+    // else{ console.log('undefined the one')}
     }
+  // }
+
+  useEffect(() => {
+    if (didMount) {
+      if (props.currentUser.id !== 'B'){
+        // console.log('it is me!')
+        weMove()
+      // doStuff()
+    } else setDidMount(true)
+  }})
+
 
 if (props.currentUser.id === 'B')
 {
@@ -170,10 +194,11 @@ if (props.currentUser.id === 'B')
 
           else {
 
-var locaa = document.getElementsByClassName('listyThree')
+// var locaa = document.getElementsByClassName('listyThree')
 // console.log(resultTwo)
 
       weMove()
+      // console.log(currentList)
 
             return (
               <div className="listyThree" 
