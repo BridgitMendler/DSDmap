@@ -17,8 +17,8 @@ export function MessageListTwo(props){
       listStyle: 'none',
     },
     li: {
-      marginTop: 13,
-      marginBottom: 13,
+      // marginTop: 13,
+      // marginBottom: 13,
       transition: 'all 1s',
       opacity: '0.2',
       backgroundColor: 'rgba(0, 0, 0, 0.03)'
@@ -31,8 +31,8 @@ export function MessageListTwo(props){
 
     li2: {
       scrollBehavior: 'smooth',
-      marginTop: 13,
-      marginBottom: 13,
+      // marginTop: 13,
+      // marginBottom: 13,
       border: '5px #ECCC8E',
       transition: 'all 1s',
       // borderRadius: 40,

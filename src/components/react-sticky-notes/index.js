@@ -292,6 +292,7 @@ var newBubble = []
 				newArray[i]['position']={'x':newText[6],'y':newText[7]}
 				newArray[i]['time']= ((new Date(newArray[i]['createdAt'])).getTime()) /1000
 				newArray[i]['print'] = newText[0]
+				newArray[i]['cardText']= newText[8]
 				// newArray[i]['deleted']= (isDeleted())
 				// console.log(newText)
 			}
@@ -681,6 +682,7 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 			hashtagDups: resultsTwoDups,
 			visible: this.props.visible,
 			dontAdd: this.state.dontAdd,
+			messages:this.props.messages,
 			convoBoxSize: this.props.convoBoxSize,
 			items,
 			icons: { ...icons, ...this.props.icons },

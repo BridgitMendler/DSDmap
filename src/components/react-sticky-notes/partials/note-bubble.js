@@ -82,13 +82,41 @@ newDropped(evID)
 
 }
 mouseEventFind()
+const findX = (idValue) => {
+    // console.log(myBub)
+if (typeof myBub.label !== 'undefined' && myBub.label.length > 0){
+// console.log(findit)
+    if (findit !== null) {
+        // console.log((findit.getBoundingClientRect().left -30)+ (myRand/.75))
+        if (typeof mapEl !== 'undefined' && typeof self !== 'undefined'){
+        mapEl.appendChild(self)}
+        return ((findit.getBoundingClientRect().left -30)+ (myRand/.75))
+    }
+}
+else {
+        return 100
+        }
+}  
+
+const findY = () => {
+    if (typeof myBub.label !== 'undefined' && myBub.label.length > 1){
+        if (findit !== null) {
+            return (findit.getBoundingClientRect().top + (myRand/.75))
+        }
+}
+    else {
+
+            var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)[0]
+            return -10
+    }
+}
 
     useEffect(() => 
     (observe(newPos => {arrayAdd(newPos)}),
     observeTwo(newDrop => {
         (setHasDropped(newDrop), newArrayIndex(newDrop))
         })
-        ,observeFour(newPos => {arrayAddTwo(newPos)} )), [arrayIndex])
+        ,observeFour(newPos => {arrayAddTwo(newPos)} )),findX(),findY() [arrayIndex])
 
 
     const newArrayIndex = (newDrop) => {
@@ -139,28 +167,7 @@ ElLeft = parseFloat(myEl.style.left)
 // console.log(self)
 // console.log(mapEl)
 
-        }
-    const findX = (idValue) => {
-        // console.log(myBub)
-if (typeof myBub.label !== 'undefined' && myBub.label.length > 0){
-    // console.log(findit)
-        if (findit !== null) {
-            // console.log((findit.getBoundingClientRect().left -30)+ (myRand/.75))
-            if (typeof mapEl !== 'undefined' && typeof self !== 'undefined'){
-            mapEl.appendChild(self)}
-            return ((findit.getBoundingClientRect().left -30)+ (myRand/.75))
-        }
-    }
-    else {
-            return 100
-            var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)[0]
-            // if ( typeof myEl !== 'undefined') {
-            //     myEl = myEl.style.left
-            //     myEl = parseFloat(myEl)
-            //     console.log('going the myEl route' + myEl)
-            //     return ((myEl))
-            }
-    }        
+        }      
     
 
     const colorSetting =(idValue) => {
@@ -188,49 +195,7 @@ else {
 
 
 
-    const findY = () => {
-// console.log('finding y!')
-        if (typeof myBub.label !== 'undefined' && myBub.label.length > 1){
-            if (findit !== null) {
-                // console.log(findit.getBoundingClientRect().top + (myRand/.75))
-                return (findit.getBoundingClientRect().top + (myRand/.75))
-            }
-        // }
 
-//         const myObj = dropPositions
-//         const theMatch = `${props.prefix}--note-${idValue}`
-//         const location = Object.keys(myObj).indexOf(theMatch)
-//         if (location > -1) {
-            
-//             if (typeof dropPositions[theMatch]['positionXY'] !== 'undefined'){
-//             return (dropPositions[theMatch]['positionXY'][1])
-//         }
-//     }
-//     else {
-//         var propsKeys =Object.keys(props.myArrayPos)
-//         if (props.myArrayPos.length !== 0){
-//             // console.log(propsKeys.length)
-//         var i
-//         for (i = 0; i <propsKeys.length; i++){
-//             // console.log(idValue)
-//             if (propsKeys[i]=== idValue){
-      
-//         return(props.myArrayPos[idValue][1]+110)
-//     }
-// }
-}
-        else {
-
-                var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)[0]
-                return -10
-                // if ( typeof myEl !== 'undefined') {
-                //     myEl = myEl.style.top
-                //     myEl = parseFloat(myEl)
-                //     console.log('going the myEl route' + myEl)
-                //     return myEl
-                // }
-        }
-    }
 const setThatLine=(dataID)=> {
 props.settingLine(dataID)
 }
@@ -268,7 +233,7 @@ const whichColor = (val) => {
                 position: myBub.position,
                 selected: myBub.selected,
                 target: drag,
-                // ref: drag,
+                onChange: (findX(), findY()),
                 style: {
                 position: 'absolute',
             //     left: props.viewSize==="pageview"||props.viewSize==="fullscreen"?0:props.data.position?`${props.data.position.x}px`:0,

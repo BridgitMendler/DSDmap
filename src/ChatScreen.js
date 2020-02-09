@@ -312,7 +312,7 @@ var oldestM = 300000000
 
   render() {
 
-console.log(this.state.postings)
+// console.log(this.state.postings)
 
       // console.log(this.state.oldestM)
     // console.log(oldestM)
@@ -499,6 +499,7 @@ console.log(this.state.postings)
             hidden={this.state.hidden}
             notesy={this.state.notesy}
             delNote={this.state.delNote}
+            messages={this.state.postings}
           />
               </div>
               

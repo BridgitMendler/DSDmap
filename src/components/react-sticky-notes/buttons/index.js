@@ -5,12 +5,24 @@ const sourceTwo = document.getElementsByClassName('listyThree')
 
 
 export function ButtonAdd({prefix, data, icons, callbacks}){
-    
+    var theOne = (document.getElementsByClassName('selectionssss'))
+    var theOneOffset
+    // console.log(theOne)
+    var theOneHeight
+    var theOneText
+    var theCardText
+    if (typeof theOne[0] !== 'undefined') {
+        theOneOffset = theOne[0].offsetTop
+        theOneHeight = theOne[0].offsetHeight
+        theOneText = theOne[0].childNodes[1].offsetHeight
+        theCardText = theOne[0].innerText
+    }
     // if (typeof sourceTwo[0] !== 'undefined'){
     //     console.log(sourceTwo[0].scrollTop)
     //     // scrollHeight = sourceTwo[0].scrollTop
     // }
 // console.log(typeof sourceTwo[0])
+console.log(theOneOffset, theCardText)
     const getColor= (val) => {
         if (val.nativeEvent.target.className === 'icons-g') {
             return '#BC8276'
@@ -26,9 +38,9 @@ export function ButtonAdd({prefix, data, icons, callbacks}){
         var absolCardLeft = ((document.getElementsByClassName('listyTwo')[0]).offsetLeft)
         var cardWidth = ((document.getElementsByClassName('listyTwo')[0]).offsetWidth)
         var upperSpace = ((document.getElementsByClassName('bigSpace')[0]).offsetHeight)
-        var precision = 1;
+        var precision = 100;
         var n = Math.floor(Math.random() * (10-(-10)) + (-10))
-        var randomnum = Math.floor(Math.random() * ((absolCardLeft+cardWidth-115) * precision - (absolCardLeft) * precision) + (absolCardLeft) * precision) / (1*precision);
+        var randomnum = Math.floor(Math.random() * ((0.90) * precision - (0.10) * precision) + (0.10) * precision) / (1*precision);
         return randomnum
     }}
     const getRandom2= () => {
@@ -44,14 +56,24 @@ export function ButtonAdd({prefix, data, icons, callbacks}){
         key: `${prefix}--button__add`,
         className:`${prefix}--button ${prefix}--button__add noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom2()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom2()}`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`)))
     }, 
         icons.add
     )
 }
 
 export function ButtonAddR({prefix, data, icons, callbacks}){
-
+    var theOne = (document.getElementsByClassName('selectionssss'))
+    var theOneOffset
+    var theOneHeight
+    var theOneText
+    var theCardText
+    if (typeof theOne[0] !== 'undefined') {
+        theOneOffset = theOne[0].offsetTop
+        theOneHeight = theOne[0].offsetHeight
+        theOneText = theOne[0].childNodes[1].offsetHeight
+        theCardText = theOne[0].innerText
+    }
     const getColor= (val) => {
         if (val.nativeEvent.target.className === 'icons-g') {
             return '#BC8276'
@@ -67,9 +89,9 @@ export function ButtonAddR({prefix, data, icons, callbacks}){
             var absolCardLeft = ((document.getElementsByClassName('listyTwo')[0]).offsetLeft)
             var cardWidth = ((document.getElementsByClassName('listyTwo')[0]).offsetWidth)
             var upperSpace = ((document.getElementsByClassName('bigSpace')[0]).offsetHeight)
-            var precision = 1;
+            var precision = 100;
             var n = Math.floor(Math.random() * (10-(-10)) + (-10))
-            var randomnum = Math.floor(Math.random() * ((absolCardLeft+cardWidth-115) * precision - (absolCardLeft) * precision) + (absolCardLeft) * precision) / (1*precision);
+            var randomnum = Math.floor(Math.random() * ((0.90) * precision - (0.10) * precision) + (0.10) * precision) / (1*precision);
             return randomnum
         }}
     const getRandom2= () => {
@@ -84,14 +106,24 @@ export function ButtonAddR({prefix, data, icons, callbacks}){
         key: `${prefix}--button__addG `,
         className:`${prefix}--buttonG ${prefix}--button__addG noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom2()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom2()}`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`)))
      }, 
         icons.addG
     )
 }
 
 export function ButtonAddG({prefix, data, icons, callbacks}){
-
+    var theOne = (document.getElementsByClassName('selectionssss'))
+    var theOneOffset
+    var theOneHeight
+    var theOneText
+    var theCardText
+    if (typeof theOne[0] !== 'undefined') {
+        theOneOffset = theOne[0].offsetTop
+        theOneHeight = theOne[0].offsetHeight
+        theOneText = theOne[0].childNodes[1].offsetHeight
+        theCardText = theOne[0].innerText
+    }
     const getColor= (val) => {
         if (val.nativeEvent.target.className === 'icons-g') {
             return '#BC8276'
@@ -107,9 +139,9 @@ export function ButtonAddG({prefix, data, icons, callbacks}){
             var absolCardLeft = ((document.getElementsByClassName('listyTwo')[0]).offsetLeft)
             var cardWidth = ((document.getElementsByClassName('listyTwo')[0]).offsetWidth)
             var upperSpace = ((document.getElementsByClassName('bigSpace')[0]).offsetHeight)
-            var precision = 1;
+            var precision = 100;
             var n = Math.floor(Math.random() * (10-(-10)) + (-10))
-            var randomnum = Math.floor(Math.random() * ((absolCardLeft+cardWidth-115) * precision - (absolCardLeft) * precision) + (absolCardLeft) * precision) / (1*precision);
+            var randomnum = Math.floor(Math.random() * ((0.90) * precision - (0.10) * precision) + (0.10) * precision) / (1*precision);
             return randomnum
         }}
     const getRandom2= () => {
@@ -124,7 +156,7 @@ export function ButtonAddG({prefix, data, icons, callbacks}){
         key: `${prefix}--button__addR`,
         className:`${prefix}--buttonR ${prefix}--button__addR noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom2()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom2()}`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`)))
  
     }, 
         icons.addR

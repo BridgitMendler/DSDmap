@@ -29,7 +29,11 @@ class Note extends React.Component{
             absolCardLeft: 0,
             upperSpace: 0,
             selectedLine: '',
-            theRightCard: []
+            theRightCard: [],
+            percentX: 0,
+            percentY: 0,
+            closestCard: 0,
+            // scrollTop: document.getElementsByClassName('listyThree')[0].scrollTop
 
         }
     }
@@ -91,9 +95,10 @@ getNotePositionX =() => {
                 // console.log(this.props.data.color, this.props.data.od)
                 i++
                 if (newVal.od === this.props.data.od){
-    
+
                     var xVal = parseInt(newVal.position.x)
                     if (typeof this.state !== 'undefined'){
+                        // console.log(xVal)
                 return xVal
             }
         }
@@ -227,23 +232,23 @@ hashtagMoveX = () => {
             }
             else {
                 if (this.props.visible === false){
-                                    
-                    // if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
+                                    if (typeof this.state !== 'undefined'){
+                    if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
                         // console.log('this is me visible list' + props.data.color)
                         // console.log('this is me visible list' + props.data.od)
                         // console.log('getting state pos '+ this.state.positionX)
                         return (this.getNotePositionX()*(4/3))
                         }
-                //     else {
+                    else {
                 //         // console.log('this is me')
                 //     // console.log(this.state.visibleList[this.state.visibleList.length-1])
                 //     // console.log('getting state pos '+ this.state.positionX)
-                //     return (this.getNotePositionX())
-                // }
+                    return (this.getNotePositionX())
+                }}
 
                 //     var whereToGo = this.getNotePositionX()
                 // return whereToGo
-                // }
+                }
                 else {
                     if ((this.getNotePositionX() *.75) > 400) {
                         if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
@@ -301,12 +306,12 @@ hashtagMoveY= () => {
                                 return (a,b);
                               });
                             var numbs = myRand*2
-                                if (this.state.relClick !== 0) {
-                                    return (numbs+(this.state.absolLoc+100)) - props.scrollScreen
-                                }
-                                else {
+                                // if (this.state.relClick !== 0) {
+                                //     return (numbs+(this.state.absolLoc+100)) - props.scrollScreen
+                                // }
+                                // else {
                                     return (numbs+200) - props.scrollScreen
-                                }
+                                // }
                             }
                         }
                     }
@@ -314,26 +319,6 @@ hashtagMoveY= () => {
             var figureX = (85+(200*(indexHashtag+1)-randomnum))
             }
             else {
-                // if (this.state.relClick !== 0) {
-                    // if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
-                        // if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
-                            // return (this.state.absolLoc + this.state.textHeight+40)- (props.scrollScreen)
-                        // }
-                        // else if (this.state.relClick < this.state.absolLoc){
-                        // console.log(this.state.relClick)
-                            // return (this.state.absolLoc + this.state.textHeight+30)- (props.scrollScreen)
-                        // }
-                        // else {
-                        // console.log('this is happening')
-                            // return this.state.relClick - (props.scrollScreen)}
-                        // }
-                    // else{
-                // console.log('relClicksing' + this.state.relClick)
-                // console.log('relClick ' + this.state.relClick + ' generictop ' + this.state.absolLoc+ ' card height ' + this.state.cardHeight + ' text height ' + this.state.textHeight)
-                        // return this.state.relClick - (props.scrollScreen)
-                //     // }
-                // }
-                // else {
                     return this.getNotePositionY() - (props.scrollScreen)
                 }
             }
@@ -355,75 +340,113 @@ hashtagMoveY= () => {
     }
 // }
 else {
-    // console.log('hashtag dups is 0, moving on to relclick')
-    // if (this.state.relClick !== 0) {
-        // console.log('relclick is not zero')
-        // if (this.state.relClick > this.state.absolLoc && this.state.relClick < (this.state.cardHeight+this.state.absolLoc)){
-            // console.log('relclick is in range')
-            // if (this.state.relClick < (this.state.absolLoc + this.state.textHeight+30)){
-                // console.log('hitting the text')
-                // return ((this.state.absolLoc + this.state.textHeight)- (props.scrollScreen)+20)
-            // }
-            // else if (this.state.relClick > ((this.state.cardHeight - this.state.absolLoc)-145)) {
-                // console.log('below the range')
-                // var dif = ((this.state.cardHeight - this.state.absolLoc)-150)
-                // console.log(dif)
-                // return (dif)
-            // }
-            // else {
-                // return this.state.relClick
-            // }
-
-        // }
-        // else if (this.state.relClick < (this.state.absolLoc)){
-            // console.log('above the range')
-            // console.log('relClick ' + (this.state.relClick) + ' generictop ' + (this.state.absolLoc)+ ' generic bottom ' + (this.state.cardHeight) + ' text height ' + (this.state.textHeight))
-            // return (this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen)
-
-        // }
-        // else{
-            // if (typeof this.state.relClick !== 'undefined'){
-                // console.log('relclick is undefined')
-                // console.log(this.getNotePositionY() - (props.scrollScreen))
-                // console.log('relClick ' + (this.state.relClick) + ' absolLoc ' + (this.state.absolLoc)+ ' cardHeight ' + (this.state.cardHeight) + ' text height ' + (this.state.textHeight))
                 return (this.getNotePositionY() - (this.props.scrollScreen))
-            // }
-            // else {
-                // console.log('relclick is out of range')
-                // console.log(this.getNotePositionY() - (props.scrollScreen))
-                // return this.getNotePositionY() - (props.scrollScreen)
-            // }
-        // }
-    }
-    // else {
-        // console.log('relclick is 0')
-        // console.log((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
-        // return ((this.state.absolLoc + this.state.textHeight + 30)- (props.scrollScreen))
-        // return this.getNotePositionY() - (props.scrollScreen)
-    // }
-// }
-// }
+
     }
 
+    }
 
+    newFunc(){
+        
+        var cardWidth = ((document.getElementsByClassName('listyTwo')[0]).offsetWidth)
+        if (this.state.visible === true){
+            if (this.state.absolCardLeft !== 0){
+            return ((this.state.percentX*(cardWidth-133))+this.state.absolCardLeft)
+        }
+        else {
+            this.hashtagMoveX()
+        }
+    }
+        else {
+            if (this.state.absolCardLeft !== 0){
+            return ((this.state.percentX*(cardWidth-133))+this.state.absolCardLeft)
+        }
+        else {
+            this.hashtagMoveX()
+        }
+    }
+    }
 
- 
-    // handleScroll(event) {
-    //      window.addEventListener('scroll', this.handleScroll);
-    //     const source = ReactDOM.findDOMNode(this).getElementsByClassName('join')[0];
-    //     const sourceTwo = ReactDOM.findDOMNode(this).getElementsByClassName('listyThree')[0];
-    //         let scrollTop = sourceTwo.scrollTop,
-    //             itemTranslate = Math.min(0, scrollTop/3 - 60);
-    //     console.log(itemTranslate)
-    //         };
+    componentDidUpdate(prevProps, prevState){
+        // console.log(this.state.scrollTop)
+        if (prevProps.visible !== this.props.visible) {
+            // console.log(prevProps.visible)
+            // window.scrollTo(window.scrollX, window.scrollY - 1);
+            // window.scrollTo(window.scrollX, window.scrollY + 1);
+            // (document.getElementsByClassName('listyThree')[0]).dispatchEvent(new CustomEvent('scroll'))
+            var self = document.getElementsByClassName(`${this.props.prefix}--full-note-${this.props.data.od}`)
+            console.log(window.innerWidth)
+            if (this.props.visible === true){
+                self[0].style.left = ((this.props.data.x*((window.innerWidth*.5)-133))+this.state.absolCardLeft)
+            }
+            else {
+                self[0].style.left = ((this.props.data.x*((window.innerWidth*.77)-133))+this.state.absolCardLeft)
+            }
+        }
+        if (prevProps.messages !== this.props.messages){
+            // console.log('new message!')
+        
+            // var absolCardLeft
+            // if (typeof document.getElementsByClassName('listyTwo')[0] !== 'undefined'){
+            //     var absolCardLeft = ((document.getElementsByClassName('listyTwo')[0]).offsetLeft)}
+            // var cardWidth = ((document.getElementsByClassName('listyTwo')[0]).offsetWidth)
+            
+            // this.newFunc()
+            // self[0].style.left = ((this.props.data.x*(cardWidth-133))+this.state.absolCardLeft)
+            // console.log('cardWidth ' + cardWidth)
+            var self = document.getElementsByClassName(`${this.props.prefix}--full-note-${this.props.data.od}`)
+            var upperSpace
+            if (typeof document.getElementsByClassName('bigSpace')[0] !== 'undefined'){
+                var upperSpace = ((document.getElementsByClassName('bigSpace')[0]).offsetHeight)}
+            var theOne = (document.getElementsByClassName('listyTwo'))
+            // console.log(upperSpace)
+            var ourCard
+            var theCardOffset
+            var theCardHeight
+            var theCardText
+            var i
+            console.log(this.props.data.cardText)
+            for (i=0; i<theOne.length; i++){
+                // console.log(i)
+                if (theOne[i].innerText === this.props.data.cardText){
+                    // console.log(this.props.data.cardText)
+                    ourCard = theOne[i]
+                    theCardOffset = theOne[i].offsetTop
+                    theCardHeight = theOne[i].offsetHeight
+                    theCardText = theOne[i].childNodes[1].offsetHeight
+                }
+            }
+            // console.log(this.props.newNot)
+            console.log(theCardOffset)
 
+            var theOneOffset
+            var theOneHeight
+            var theOneText
+            if (typeof theOne[0] !== 'undefined') {
+                theOneOffset = theOne[0].offsetTop
+                theOneHeight = theOne[0].offsetHeight
+                theOneText = theOne[0].childNodes[1].offsetHeight
+            }
+            // console.log(this.state.theRightCard.innerText)
+            if (this.state.closestCard === 0){
+                if (typeof theCardOffset !== 'undefined'){
+                    console.log('cardoffset is not undefined!')
+                self[0].style.top = (((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardHeight-upperSpace-10))-this.props.scrollScreen)
+                
+            }
+            else {
+                console.log('cardoffset is undefined!')
+                self[0].style.top = (((this.props.data.y*((theOneOffset+theOneHeight-145-theOneText-10-upperSpace)))+theOneHeight+(theOneOffset-upperSpace-10))-this.props.scrollScreen)
+            }}
+            else {
+                console.log('state closest card is not 0')
+                console.log((theCardOffset+theCardHeight-145-theCardText-10-upperSpace))
+                console.log(((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)
+                self[0].style.top = (((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)
+            }
 
-    // onMove(e) {
-    //     console.log(e)
-    //     // this.props.onSubmit(('hi' + this.state.text))
-    //     // this.setState({ text: '' })
-    // }
-
+          }
+    }
 
     render(){
         // console.log(this.hashtagMoveX)
@@ -477,44 +500,7 @@ thisty()
         }
 
         windowFocus(this.props.data.od)
-        // console.log(this.props.data.od)
 
-// windowFocus(props.data.id)
-//             // console.log(this.props.data.selected, this.props.data.id)
-// console.log(window.event)
-//             if (typeof window.event !== 'undefined'){
-//                 console.log(window.event.type)
-//             if (window.event.type === 'click'&& window.event.target.classList[0] ==='rs-notes--text') {
-//                 // console.log(window.event)
-//                 if (window.event.target.classList[1]=== this.props.data.id) {
-//                     // console.log('yes ' +this.props.data.id +this.props.data.selected)
-//                 return '10'}
-//                 else {
-//                     // console.log('no ' +this.props.data.id+this.props.data.selected)
-//                     return '0'}
-//                 // return this.state.showIncreaced === id ? '10' : '0'
-//             }
-//             else if(window.event.type === 'click' && window.event.target.classList[0] ==='rs-notes--header--button')
-//             { if (window.event.target.classList[2] === this.props.data.id   ) {
-//                 // console.log('front')
-//                 return '10'
-//             }
-//             else { 
-//                 // console.log('back')
-//                 return '0'}
-//                 // console.log(window.event.target.classList[2])}
-
-//         }
-//         else if (window.event.type === 'mousedown' && window.event.target.classList[0]==='rs-notes--header--button')
-//         { if (window.event.target.classList[2] === this.props.data.id   ) {
-//             return '10'
-//         }
-//         else { return '0'}
-//     } return '0'
-//     }
-//     else { return '0'}
-// }
-        // windowFocus()
         var precision = 100;
         var n = Math.floor(Math.random() * (10-(-10)) + (-10))
         var randomnum = Math.floor(Math.random() * (55 * precision - 1 * precision) + 1 * precision) / (1*precision);
@@ -606,15 +592,17 @@ thisty()
                         if (this.props.visible === false){
                                         
                             if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
-                                // console.log('this is me visible list' + props.data.color)
+                                // console.log('visible false and state visible list is true')
                                 // console.log('this is me visible list' + props.data.od)
                                 // console.log('getting state pos '+ this.state.positionX)
+                                console.log(this.getNotePositionX() *(4/3))
                                 return (this.getNotePositionX()*(4/3))
                             }
                             else {
                                 // console.log('this is me')
                             // console.log(this.state.visibleList[this.state.visibleList.length-1])
                             // console.log('getting state pos '+ this.state.positionX)
+                            // console.log(this.getNotePositionX())
                             return (this.getNotePositionX())
                         }
     
@@ -624,13 +612,15 @@ thisty()
                         else {
                             if ((this.getNotePositionX() *.75) > 400) {
                                 if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
-                                    // console.log('it is true')
+                                    // console.log('hashtag yes and (this.getNotePositionX() *.75) > 400) and state visible list is true')
                                     // console.log('getting state pos '+ this.state.positionX)
+                                    // console.log(this.getNotePositionX())
                                     return (this.getNotePositionX())
                                 }
                                 else {
-                                    // console.log('getting state pos '+ this.state.positionX)
-                                return (this.getNotePositionX() *.75)}
+                                    // console.log('hashtag yes and (this.getNotePositionX() *.75) > 400) and state visible list is not true')
+                                    // console.log(this.getNotePositionX() *.75)
+                                    return (this.getNotePositionX() *.75)}
                             }
                             else{
                                 return 400
@@ -642,15 +632,16 @@ thisty()
                     if (this.props.visible === false){
                                         
                         if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
-                            // console.log('this is me visible list' + props.data.color)
-                            // console.log('this is me visible list' + props.data.od)
-                            // console.log('getting state pos '+ this.state.positionX)
+                            // console.log('hashtag no and state visible list is false and visible list last entry is true')
+                            // console.log(this.getNotePositionX() *(4/3))
                             return (this.getNotePositionX()*(4/3))
                         }
                         else {
+                            // console.log('hashtag no and state visible list is false and visible list last entry is not true')
                             // console.log('this is me')
                         // console.log(this.state.visibleList[this.state.visibleList.length-1])
                         // console.log('getting state pos '+ this.state.positionX)
+                        // console.log(this.getNotePositionX())
                         return (this.getNotePositionX())
                     }
 
@@ -658,25 +649,39 @@ thisty()
                     // return whereToGo
                     }
                     else {
-                        if ((this.getNotePositionX() *.75) > 400) {
+                        if ((this.getNotePositionX() *.75) > this.state.absolCardLeft) {
                             if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
                                 
-                                // console.log('getting state pos '+ this.state.positionX)
+                                // console.log('(this.getNotePositionX() *.75) > cardleft) and state visible list is true')
+                                // console.log(this.getNotePositionX())
                                 return (this.getNotePositionX())
                             }
                             else {
-                            // console.log(this.state.visibleList[this.state.visibleList.length-1])
-                            // console.log('getting state pos '+ this.state.positionX)
+                                // console.log('(this.getNotePositionX() *.75) > cardleft) and state visible list is not true')
+                            // console.log(this.getNotePositionX() *.75)
                             return (this.getNotePositionX() *.75)
                         }
                         }
                         else{
-                            return 400
+                            if (this.state.visibleList[this.state.visibleList.length-1]=== true) {
+                                
+                                // console.log('(this.getNotePositionX() *.75) not greater cardleft) and state visible list is true')
+                                // console.log(this.getNotePositionX())
+                                return (this.getNotePositionX())
+                            }
+                            else {
+                                // console.log('(this.getNotePositionX() *.75) not greater cardleft) and state visible list is not true')
+                            // console.log(this.state.visibleList[this.state.visibleList.length-1])
+                            // console.log('getting state pos '+ this.state.positionX)
+                            // console.log(this.getNotePositionX() *.75)
+                            return (this.getNotePositionX() *.75)
+                        }
                         }
                     }
                 }
             }
 
+            // console.log(this.state.visibleList)
     const hashtagMoveY= () => {
         var i
         if (props.hashtagDups.length > 0) {
@@ -709,12 +714,12 @@ thisty()
                                     return (a,b);
                                   });
                                 var numbs = myRand*2
-                                    if (this.state.relClick !== 0) {
-                                        return (numbs+(this.state.absolLoc+100)) - props.scrollScreen
-                                    }
-                                    else {
+                                    // if (this.state.relClick !== 0) {
+                                    //     return (numbs+(this.state.absolLoc+100)) - props.scrollScreen
+                                    // }
+                                    // else {
                                         return (numbs+200) - props.scrollScreen
-                                    }
+                                    // }
                                 }
                             }
                         }
@@ -741,7 +746,36 @@ thisty()
         var myRand = word_Without_Numbers[0]
 
 const setOpac = () => {
-    if ((props.data.y - props.scrollScreen)< 20&& props.scrollScreen > 0){
+    var theOne = (document.getElementsByClassName('listyTwo'))
+    // console.log(theOne)
+    var ourCard
+    var theCardOffset
+    var theCardHeight
+    var theCardText
+    var i
+    for (i=0; i<theOne.length; i++){
+        if (theOne[i].innerText === props.data.cardText){
+            ourCard = theOne[i]
+            theCardOffset = theOne[i].offsetTop
+            theCardHeight = theOne[i].offsetHeight
+            theCardText = theOne[i].childNodes[1].offsetHeight
+            // console.log(theCardOffset)
+            
+        }
+    }
+  
+    var theOneOffset
+    var theOneHeight
+    var theOneText
+    if (typeof theOne[0] !== 'undefined') {
+        theOneOffset = theOne[0].offsetTop
+        theOneHeight = theOne[0].offsetHeight
+        theOneText = theOne[0].childNodes[1].offsetHeight
+    }
+
+    if ((((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)< 20&& props.scrollScreen > 0){
+
+        
         return 0.0
     }
     else { 
@@ -777,13 +811,81 @@ const settingLineOut = (value) => {
 // console.log('absoLoc' +this.state.absolLoc)
 // console.log('textHeight' +this.state.textHeight)
 // console.log('cardHeight' +this.state.cardHeight)
-var self = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)
-// var dest = document.getElementsByClassName()
-// console.log(this.state.theRightCard)
-
 var toAdd = this.state.theRightCard
+var self = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)
+var cardWidth
+var absolCardTop
+var relCardTop
+var absolCardLeft
+if (typeof document.getElementsByClassName('listyTwo')[0] !== 'undefined' && typeof document.getElementsByClassName('bigSpace')[0] !== 'undefined' && typeof document.getElementsByClassName('listyText')[0] !== 'undefined'){
+var absolCardLeft = ((document.getElementsByClassName('listyTwo')[0]).offsetLeft)
+var cardWidth = ((document.getElementsByClassName('listyTwo')[0]).offsetWidth)
+var upperSpace = ((document.getElementsByClassName('bigSpace')[0]).offsetHeight)
+    var absolCardTop = ((toAdd.offsetTop))
+    var cardHeight = ((toAdd.offsetHeight))
+    var relCardTop = ((toAdd.offsetTop) - props.scrollScreen)
+    var listTextHeight = ((document.getElementsByClassName('listyText')[0]).offsetHeight)}
 
 
+// var percentageX = (((this.currentX-absolCardLeft))/(cardWidth))
+// console.log('closest Card ' + closestCard + ' plus cardHeight ' + cardHeight + ' minus textHeight ' + textHeight + ' minus upperSpace ' + upperSpace + ' minus 155 equals ' + (closestCard+cardHeight-145-textHeight-23-upperSpace))
+// console.log(' y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus 18 minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +' minus scrollScreen ' + scrollVal + ' equals ' + (this.currentY-textHeight-(closestCard-upperSpace-10)))
+// var percentageY = (((this.currentY-textHeight-(closestCard-upperSpace-10)))/(closestCard+cardHeight-145-textHeight-10-upperSpace))
+if (typeof toAdd.childNodes !== 'undefined' && typeof toAdd !== 'undefined'){
+// console.log('textHeight ' +toAdd.childNodes[1].offsetHeight)
+// console.log('cardHeight ' +toAdd.offsetHeight)
+}
+
+const newFunc = () => {
+    // console.log(window.innerWidth)
+    if (this.props.visible === true){
+        return ((this.props.data.x*((window.innerWidth*.5)-133))+absolCardLeft)
+    }
+    else {
+        return((this.props.data.x*((window.innerWidth*.77)-133))+absolCardLeft)
+    }
+}
+
+const newFunc2 = () => {
+    // console.log(' y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus 18 minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +' minus scrollScreen ' + scrollVal + ' equals ' + (this.currentY-textHeight-(closestCard-upperSpace-10)))
+// var percentageY = (((this.currentY-textHeight-(closestCard-upperSpace-10)))/(this.state.closestCard+cardHeight-145-textHeight-10-upperSpace))
+    // console.log(window.innerWidth)
+    // ((this.props.data.y*((window.innerWidth*.5)-133))+absolCardLeft)
+
+    var theOne = (document.getElementsByClassName('listyTwo'))
+    // console.log(theOne)
+    var ourCard
+    var theCardOffset
+    var theCardHeight
+    var theCardText
+    var i
+    for (i=0; i<theOne.length; i++){
+        if (theOne[i].innerText === props.data.cardText){
+            ourCard = theOne[i]
+            theCardOffset = theOne[i].offsetTop
+            theCardHeight = theOne[i].offsetHeight
+            theCardText = theOne[i].childNodes[1].offsetHeight
+            // console.log(theCardOffset)
+            
+        }
+    }
+  
+    var theOneOffset
+    var theOneHeight
+    var theOneText
+    if (typeof theOne[0] !== 'undefined') {
+        theOneOffset = theOne[0].offsetTop
+        theOneHeight = theOne[0].offsetHeight
+        theOneText = theOne[0].childNodes[1].offsetHeight
+    }
+    // console.log(this.state.theRightCard.offsetTop, this.props.scrollScreen)
+    return (((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)    
+}
+
+
+// console.log(this.props.newNot)
+
+newFunc2()
 var newText = props.data.text.split(/[_,]+/);
         return h(NoteDraggable, {
                 scrollScreen: props.scrollScreen,
@@ -791,19 +893,22 @@ var newText = props.data.text.split(/[_,]+/);
                 className: `${props.prefix}--full-note-${props.data.od} full-notey-note' ${props.data.od}`,
                 selected: props.data.selected,
                 target: this.targetRef,
+                // onChange:newFunc(),
                 useBoundaries:(pos) =>(console.log('mouseDown')),
                 onMouseDownMove2:(pos) => (this.setState({mouseStatus:pos.mouseStatus})),
-                onMouseDownMove:(pos) => (this.setState({relClick:pos.relClick})),
+                // onMouseDownMove:(pos) => (this.setState({relClick:pos.relClick})),
                 onDragComplete:(pos)=> (setWhatDragShouldDo(),
-                (this.setState({mouseStatus: false, relClick:pos.relClick, upperSpace:pos.upperSpace, absolLoc:pos.absolLoc, textHeight:pos.textHeight, cardHeight: pos.cardHeight, absolCardLeft: pos.absolCardLeft, cardWidth: pos.cardWidth, theRightCard: pos.theRightCard})),
-                props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.x},${pos.y}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.x}_${pos.y}`)),
-                 (this.setState({positionX: pos.x, positionY:pos.y}))                
+                (this.setState({mouseStatus: false, theRightCard: pos.theRightCard, closestCard: pos.closestCard, cardHeight: pos.cardHeight, textHeight: pos.textHeight, absolCardLeft:pos.absolCardLeft, percentX:pos.percentX, percentY:pos.percentY})),
+                props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.percentX},${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`))
+                //  (this.setState({positionX: pos.x, positionY:pos.y}
+                    // )
+                    // )                
                 ),
                 style: {
                     transition: (this.state.mouseStatus === false) ?"left .40s linear":null,
                     position: 'absolute',
-                    left: hashtagMoveX(),
-                    top: hashtagMoveY(),
+                    left: newFunc(),
+                    top: newFunc2(),
                     // width: 115,
                     // height: 115,
                     boxShadow: '1px 1px 2px rgba(0,0,0,.15)',
@@ -848,6 +953,7 @@ var newText = props.data.text.split(/[_,]+/);
                     prefix: `${props.prefix}--header`,
                     removeTodo: this.props.removeTodo,
                     onSubmit: props.onSubmit,
+                    data:props.data,
                     buttons: [ButtonTrash, ButtonTitle]
                 }
                 
@@ -869,5 +975,3 @@ var newText = props.data.text.split(/[_,]+/);
     }
 }
 export default Note;
-
-
