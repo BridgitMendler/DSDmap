@@ -893,17 +893,17 @@ const newFunc2 = () => {
     var i
     for (i=0; i<theOne.length; i++){
         if (typeof theOne[i] !== 'undefined'){
-            console.log(typeof theOne[i].childNodes[1])
-            if (typeof theOne[i].childNodes[1] !== 'undefined'){
+            console.log(typeof theOne[i].lastChild)
+            if (typeof theOne[i].lastChild !== 'undefined'){
             console.log(theOne[i].innerText === props.data.cardText)
-            console.log(theOne[i].childNodes[1].innerText)
+            console.log(theOne[i].lastChild.innerText)
             console.log(props.data.cardText)
-        if (theOne[i].childNodes[1].innerText === props.data.cardText){
+        if (theOne[i].lastChild.innerText === props.data.cardText){
             console.log('hi from inside!')
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
             theCardHeight = theOne[i].offsetHeight
-            theCardText = theOne[i].childNodes[1].offsetHeight
+            theCardText = theOne[i].lastChild.offsetHeight
             cIndex = i
             // console.log(ourCard)
             // console.log(i)
