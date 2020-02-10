@@ -284,6 +284,17 @@ var newBubble = []
 			var i
 			for (i = 0; i< this.props.notesy.length; i++) {
 				var newText = newArray[i].text.split(/[_,]+/);
+				// console.log(newText)
+				const noteLab = () =>{
+					if (newText[10] === 'none'){
+						// console.log('returning none!')
+						return newArray[i]['senderId']
+					}
+					else {
+						return newText[10]
+					}
+				}
+
 				newArray[i]['od'] = newText[3] 
 				newArray[i]['x'] = newText[1]
 				newArray[i]['y']= newText[2]
@@ -294,8 +305,12 @@ var newBubble = []
 				newArray[i]['print'] = newText[0]
 				newArray[i]['cardText']= newText[8]
 				newArray[i]['scrollVal']= newText[9]
+				newArray[i]['noteLabel'] = noteLab()
+				newArray[i]['edit'] = newText[11] 
 				// newArray[i]['deleted']= (isDeleted())
 				// console.log(newText)
+				// console.log(newText[10]==='none')
+				// console.log(newArray[i]['senderId'])
 			}
 			// const isDeleted = () => {
 
@@ -684,6 +699,7 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 			visible: this.props.visible,
 			dontAdd: this.state.dontAdd,
 			messages:this.props.messages,
+			currentUser:this.props.currentUser,
 			convoBoxSize: this.props.convoBoxSize,
 			items,
 			icons: { ...icons, ...this.props.icons },
@@ -694,7 +710,7 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 				addItem: this.addItem,
 				updateItem: this.updateItem,
 				deleteItem: this.deleteItem,
-				addUpdate: this.addUpdate		
+				addUpdate: this.addUpdate,		
 			}
 		},
 		)

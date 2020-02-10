@@ -36,7 +36,8 @@ class Note extends React.Component{
             closestCard: 0,
             justDropped: true,
             scrollVal: props.data.scrollVal,
-            theCardOffset: this.getOffset()
+            theCardOffset: this.getOffset(),
+            newNoteLabel: ''
             // scrollTop: document.getElementsByClassName('listyThree')[0].scrollTop
 
         }
@@ -868,13 +869,104 @@ if (typeof toAdd.childNodes !== 'undefined' && typeof toAdd !== 'undefined'){
 
 const newFunc = () => {
     // console.log(window.innerWidth)
+    if (props.hashtagDups.length > 0) {
+        if (Object.keys(props.myHashtags).includes(props.data.od)){
+            const myValue = (props.myHashtags)[(props.data.od)]
+            // console.log(myValue)
+            if (props.hashtagDups.includes(myValue)) {
+                // console.log('yes')
+                var indexHashtag =props.hashtagDups.indexOf(myValue)
+                const vals = (Object.values(props.myHashtags))
+                var i
+                var leftPos = []
+                var total = 0
+                for (i=0; i < vals.length; i++){
+                    if (vals[i]=== myValue && typeof myValue !== 'undefined' ){
+                    // console.log(vals[i])
+                        var classID = (Object.keys(props.myHashtags)[i])
+                        // console.log(parseFloat(document.getElementsByClassName(`${props.prefix}--full-note-${classID}`[0].style.left) !== 'undefined'))
+                        // console.log((document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0]))
+                        if (typeof document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0] !== 'undefined') {
+                            if (typeof document.getElementsByClassName(`${props.prefix}--full-note-${classID}`[0].style !== 'undefined')) {
+                            // console.log(typeof document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0])
+                        var styleLeft = parseFloat(document.getElementsByClassName(`${props.prefix}--full-note-${classID}`)[0].style.left)
+                        // var styleLeft = 0
+                        leftPos.push(styleLeft)
+                        total += styleLeft
+                        // console.log(styles)
+                    }}}
+                }
+                if (leftPos.length > 1) {
+                                                
+                    let word_With_Numbers = props.data.od
+                        let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
+                            var myRand = word_Without_Numbers[0]
+                    var avg = (total / leftPos.length)-((this.state.firstRan+myRand));
+                    var sorted = leftPos.slice().sort(function(a, b) {
+                        var result = a-b
+                        return (a,b);
+                      });
+                    //   console.log(props.visible)
+                    var numbs = this.state.firstRan+myRand
+                        // console.log('first ran ' + this.state.firstRan)
+                        // console.log(myValue+ ' index '+ indexH+ ' this would be your calculation '+ numbs*((indexH+1)))
+                          if (numbs*(indexHashtag+1)>800){
+                            if (this.props.visible === false){
+                                // console.log('i moved greater than 800, visible false '+ numbs*(indexH+1))
+                                return (numbs*(indexHashtag+1)-300)
+                                }
+                                else {
+                                    if (((numbs*(indexHashtag+1)-300)*.75) > 350) {
+                                        // console.log('i moved greater than 800, visible true, greater than 400 '+ (numbs*(indexH+1)-300)*.75)
+                                        return `${(numbs*(indexHashtag+1)-300)*.75}px`
+                                    }
+                                    else{
+                                        // console.log('i moved greater than 800, visible true, less than 400, return 400'+(numbs*(indexH+1)-300)*.75)
+                                        return 350
+                                    }
+                                }
+                          }
+                          else {
+                            if (this.props.visible === false){
+                                // console.log('i moved less than 800, visible false: ' +numbs*(indexH+1)+200)
+                                return (numbs*(indexHashtag+1)+200)
+                                }
+                                else {
+                                    if (((numbs*(indexHashtag+1)+200)*.85) > 350) {
+                                        // console.log('i moved less than 800 props.visible === true and (numbs*(indexH+1)+200)*.75) > 400): ' +(numbs*(indexH+1)+200)*.75)
+                                        return `${(numbs*(indexHashtag+1)+200)*.85}px`
+                                    }
+                                    else{
+                                        // console.log('i moved less than 800, visible true, less than 400, return 400: ' + 350)
+                                        return 350
+                                    }}
+                          }
+            }
+
+                }
+                if (this.props.visible === false){
+                return (85+(200*(indexHashtag+1)-randomnum))
+                }
+                else {return (85+(200*(indexHashtag+1)-randomnum)*.75)}
+            }
+            else {
+                if (this.props.visible === false){
+                                
+                    return((this.props.data.x*((window.innerWidth*.77)-133))+absolCardLeft)
+                }
+                else {
+                    return ((this.props.data.x*((window.innerWidth*.5)-133))+absolCardLeft)
+                }
+            }
+        }
+        else {
     if (this.props.visible === true){
         return ((this.props.data.x*((window.innerWidth*.5)-133))+absolCardLeft)
     }
     else {
         return((this.props.data.x*((window.innerWidth*.77)-133))+absolCardLeft)
     }
-}
+}}
 var cIndex
 const newFunc2 = () => {
     // console.log(' y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus 18 minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +' minus scrollScreen ' + scrollVal + ' equals ' + (this.currentY-textHeight-(closestCard-upperSpace-10)))
@@ -893,13 +985,13 @@ const newFunc2 = () => {
     var i
     for (i=0; i<theOne.length; i++){
         if (typeof theOne[i] !== 'undefined'){
-            console.log(typeof theOne[i].lastChild)
+            // console.log(typeof theOne[i].lastChild)
             if (typeof theOne[i].lastChild !== 'undefined'){
-            console.log(theOne[i].innerText === props.data.cardText)
-            console.log(theOne[i].lastChild.innerText)
-            console.log(props.data.cardText)
+            // console.log(theOne[i].innerText === props.data.cardText)
+            // console.log(theOne[i].lastChild.innerText)
+            // console.log(props.data.cardText)
         if (theOne[i].lastChild.innerText === props.data.cardText){
-            console.log('hi from inside!')
+            // console.log('hi from inside!')
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
             theCardHeight = theOne[i].offsetHeight
@@ -921,10 +1013,10 @@ const newFunc2 = () => {
     }
     // (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
 
-    console.log(ourCard)
+    // console.log(ourCard)
     // console.log(typeof theOne[0])
     // console.log(theOne[0].childNodes[1].innerText)
-    console.log(theOne)
+    // console.log(theOne)
     // console.log((((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) )
     // console.log(this.props.data.y)
     // console.log(theCardHeight-140)
@@ -935,8 +1027,28 @@ const newFunc2 = () => {
     // console.log(this.props.scrollScreen)
     return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  
 }
+// var noteNameLabel
+// if (typeof self[0] !== 'undefined'){
+//     if (typeof self[0].children[2] !== 'undefined'){
+//         if (typeof self[0].children[2].children[2] !== 'undefined'){
+//             if (typeof self[0].children[2].children[2].children[0] !== 'undefined'){
+//                 noteNameLabel = (self[0].children[2].children[2].children[0].innerText)
+//             }
+//         }
+//     }
+// }
 
-// console.log(this.props.newNot)
+// const findNot= ()=>{
+//     var i
+//     for (i=0; i <props.newNot.length; i++){
+//         // console.log(props.newNot[i])
+//         // console.log(noteNameLabel)
+//     }
+// }
+
+// findNot()
+// console.log(props.data.senderId)
+
 newFunc2()
 var newText = props.data.text.split(/[_,]+/);
         return h(NoteDraggable, {
@@ -950,8 +1062,8 @@ var newText = props.data.text.split(/[_,]+/);
                 onMouseDownMove2:(pos) => (this.setState({mouseStatus:pos.mouseStatus})),
                 // onMouseDownMove:(pos) => (this.setState({relClick:pos.relClick})),
                 onDragComplete:(pos)=> (setWhatDragShouldDo(),
-                (this.setState({justDropped: true, mouseStatus: false, scrollVal: pos.scrollVal,theRightCard: pos.theRightCard, closestCard: pos.closestCard, cardHeight: pos.cardHeight, textHeight: pos.textHeight, absolCardLeft:pos.absolCardLeft, percentX:pos.percentX, percentY:pos.percentY})),
-                props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.percentX},${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${0}`))
+                (this.setState({justDropped: true, newNoteLabe: pos.newNoteLabel, mouseStatus: false, scrollVal: pos.scrollVal,theRightCard: pos.theRightCard, closestCard: pos.closestCard, cardHeight: pos.cardHeight, textHeight: pos.textHeight, absolCardLeft:pos.absolCardLeft, percentX:pos.percentX, percentY:pos.percentY})),
+                props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.percentX},${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${0}`+`_${props.data.senderId}`+`_moved by ${props.currentUser.id}`))
                 //  (this.setState({positionX: pos.x, positionY:pos.y}
                     // )
                     // )                
@@ -1005,6 +1117,7 @@ var newText = props.data.text.split(/[_,]+/);
                     prefix: `${props.prefix}--header`,
                     removeTodo: this.props.removeTodo,
                     onSubmit: props.onSubmit,
+                    newNot: props.newNot,
                     data:props.data,
                     buttons: [ButtonTrash, ButtonTitle]
                 }
@@ -1017,6 +1130,7 @@ var newText = props.data.text.split(/[_,]+/);
                     percentX: this.state.percentX,
                     percentY: this.state.percentY,
                     items: props.items,
+                    currentUser:props.currentUser,
                     scrollTop: props.scrollScreen,
                     scrollVal: props.data.scrollVal,
                     onSubmit: props.onSubmit,

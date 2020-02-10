@@ -168,6 +168,7 @@ console.log(window.event)
 
     if (typeof e.target.offsetParent!== 'undefined' && e.target.offsetParent !== null){
         if (typeof e.target.offsetParent.offsetParent !== 'undefined' && e.target.offsetParent.offsetParent !== null){
+            // console.log(e.target.offsetParent.offsetParent !== 'undefined' && e.target.offsetParent.offsetParent)
             if (typeof e.target.offsetParent.offsetParent.lastElementChild !== 'undefined' && e.target.offsetParent.offsetParent.lastElementChild !== null){
                 if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0] !== 'undefined' &&  e.target.offsetParent.offsetParent.lastElementChild.children[0] !== null){
                     if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild !== 'undefined' && e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild !== null){
@@ -184,6 +185,21 @@ console.log(window.event)
             }
         }
     }
+
+    var newNoteLabel
+    if (typeof e.target.offsetParent!== 'undefined' && e.target.offsetParent !== null){
+        if (typeof e.target.offsetParent.offsetParent !== 'undefined' && e.target.offsetParent.offsetParent !== null){
+            if (typeof e.target.offsetParent.offsetParent.children[2] !== 'undefined' && e.target.offsetParent.offsetParent.children[2] !== null){
+                if (typeof e.target.offsetParent.offsetParent.children[2].children[2] !== 'undefined' &&  e.target.offsetParent.offsetParent.children[2].children[2] !== null){
+                    if (typeof e.target.offsetParent.offsetParent.children[2].children[2].children[0] !== 'undefined' && e.target.offsetParent.offsetParent.children[2].children[2].children[0] !== null){
+                        // console.log(e.target.offsetParent.offsetParent.children[2].children[2].children[0].innerText)
+                            newNoteLabel = e.target.offsetParent.offsetParent.children[2].children[2].children[0].innerText
+                                }
+                            }
+                        }
+                    }
+                }
+console.log(newNoteLabel)
 var percentageX = (((this.currentX-absolCardLeft))/(cardWidth-133))
 var yVal = this.currentY +upperSpace -scrollVal
 
@@ -239,7 +255,8 @@ console.log(theRightCard)
             percentX: percentageX,
             percentY: percentageY,
             closestCard: closestCard,
-            scrollVal: scrollVal
+            scrollVal: scrollVal,
+            newNoteLabel: newNoteLabel
         })
     }
     if (this.options.onMouseDownMove){

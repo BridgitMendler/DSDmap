@@ -500,6 +500,7 @@ var oldestM = 300000000
             notesy={this.state.notesy}
             delNote={this.state.delNote}
             messages={this.state.postings}
+            currentUser={this.state.currentUser}
           />
               </div>
               

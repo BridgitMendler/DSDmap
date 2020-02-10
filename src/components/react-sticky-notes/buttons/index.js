@@ -35,7 +35,7 @@ export function ButtonAdd({prefix, data, icons, callbacks}, props){
         else {
         return '#FAE3B6';
     }}
-    console.log(theCardText)
+    // console.log(theCardText)
     const getRandom= () => {
     if (typeof document.getElementsByClassName('listyTwo') !== 'undefined' && typeof document.getElementsByClassName('bigSpace') !== 'undefined'){
         var absolCardLeft = ((document.getElementsByClassName('listyTwo')[0]).offsetLeft)
@@ -59,7 +59,7 @@ export function ButtonAdd({prefix, data, icons, callbacks}, props){
         key: `${prefix}--button__add`,
         className:`${prefix}--button ${prefix}--button__add noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${0}`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${0}`+`_none`)))
     }, 
         icons.add
     )
@@ -113,14 +113,14 @@ export function ButtonAddR({prefix, data, icons, callbacks}, props){
         key: `${prefix}--button__addG `,
         className:`${prefix}--buttonG ${prefix}--button__addG noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${0}`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${0}`+`_none`)))
      }, 
         icons.addG
     )
 }
 
 export function ButtonAddG({prefix, data, icons, callbacks}, props){
-
+// console.log(prefix)
     var theOne = (document.getElementsByClassName('selectionssss'))
     var scrollValOne = document.getElementsByClassName('listyThree')[0]
     var theOneOffset
@@ -136,7 +136,7 @@ export function ButtonAddG({prefix, data, icons, callbacks}, props){
         // theOneText = theOne[0].childNodes[1].offsetHeight
         theCardText = theOne[0].innerText
     }
-    console.log(scrollVal)
+    // console.log(scrollVal)
     const getColor= (val) => {
         if (val.nativeEvent.target.className === 'icons-g') {
             return '#BC8276'
@@ -169,7 +169,7 @@ export function ButtonAddG({prefix, data, icons, callbacks}, props){
         key: `${prefix}--button__addR`,
         className:`${prefix}--buttonR ${prefix}--button__addR noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${0}`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${0}`+`_none`)))
  
     }, 
         icons.addR

@@ -6,6 +6,7 @@ function NavBarThree({viewSize, prefix, items, callbacks, icons}, props){
     if(viewSize==='pageview'||viewSize==='fullscreen'){
         // buttons.splice(1, 0, ButtonMenu )
     }
+    // console.log(props)
     return h('div',{
         className:`${prefix}--red`, style:{height: '60px', width: '60px'},
     },[
@@ -33,6 +34,7 @@ function NavBarThree({viewSize, prefix, items, callbacks, icons}, props){
                 prefix: `${prefix}--red__item`,
                 icons,
                 callbacks,
+                props,
                 scrollScreen: props.scrollScreen,
                 buttons: [ButtonAddR]
             })

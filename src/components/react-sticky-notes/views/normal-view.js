@@ -209,21 +209,21 @@ var newBub = props.newBubble.filter(obj => {
 // console.log(iclicked)
 
 //     }
-// console.log(newNot)
+console.log(newNot)
 
     const [hasDropped, setHasDropped] = useState(false)
 
     return [
-        h(NavBar, { ...props, scrollScreen: props.scrollScreen, key: 'navbar' }),
-        h(NavBarTwo, { ...props, scrollScreen: props.scrollScreen, key: 'green' }),
-        h(NavBarThree, { ...props, scrollScreen: props.scrollScreen, key: 'red' }),
+        h(NavBar, { ...props, key: 'navbar' }),
+        h(NavBarTwo, { ...props, key: 'green' }),
+        h(NavBarThree, { ...props, key: 'red' }),
         h('div', {
             key: props.prefix, 
             className: props.prefix,
             style: getElementStyle('container', props),
             // onClick: () => (console.log('clicking!'))
         }, 
-            newNot.map( data => !data.hidden ? (h( Note, {newNot:newNot, messages: props.messages, visible: props.visible, items: props.items, newBub: newBub, notesy: props.notesy, onSubmit: props.onSubmit, onChange: props.onChange, removeTodo: props.removeTodo, convoBoxSize: props.convoBoxSize, hashtagDups: props.hashtagDups,allHashtags: props.allHashtags, myHashtags: props.myHashtags, handleScroll: props.onScroll, scrollVals: props.scrollVals, scrollScreen: props.scrollScreen, className: 'full-notey', key: `note-${data.od}`,...props, data } )):h( NoteBubble, { key: `note-${data.od}`,...props, data } ) )
+            newNot.map( data => !data.hidden ? (h( Note, {newNot:newNot, messages: props.messages, currentUser:props.currentUser, visible: props.visible, items: props.items, newBub: newBub, notesy: props.notesy, onSubmit: props.onSubmit, onChange: props.onChange, removeTodo: props.removeTodo, convoBoxSize: props.convoBoxSize, hashtagDups: props.hashtagDups,allHashtags: props.allHashtags, myHashtags: props.myHashtags, handleScroll: props.onScroll, scrollVals: props.scrollVals, scrollScreen: props.scrollScreen, className: 'full-notey', key: `note-${data.od}`,...props, data } )):h( NoteBubble, { key: `note-${data.od}`,...props, data } ) )
         ),
         // h('div', {
         //     key: `${props.prefix}-bubble`, 

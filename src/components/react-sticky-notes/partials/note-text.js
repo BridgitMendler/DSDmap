@@ -1,7 +1,7 @@
 import { h, nlToBr, getElementStyle, getCurrentDateTime } from './../utils';
 import React, { useState, useEffect } from 'react';
 function NoteText(props) {
-
+// console.log(props.currentUser.id)
 const { data, index, prefix, callbacks } = props;
 const x = 50
 const y = -10
@@ -9,9 +9,19 @@ const [text, setText] = useState('')
 const [opac, setOpac] = useState(0)
 var theOne = (document.getElementsByClassName('selectionssss'))
 var scrollValOne = document.getElementsByClassName('listyThree')[0]
+var self = document.getElementsByClassName(`${props.prefix}--full-note-${data.od}`)
 var theOneOffset
 var scrollVal
-// console.log(theOne)
+var noteNameLabel
+if (typeof self[0] !== 'undefined'){
+    if (typeof self[0].children[2] !== 'undefined'){
+        if (typeof self[0].children[2].children[2] !== 'undefined'){
+            if (typeof self[0].children[2].children[2].children[0] !== 'undefined'){
+                noteNameLabel = (self[0].children[2].children[2].children[0].innerText)
+            }
+        }
+    }
+}
 var theOneHeight
 var theOneText
 var theCardText
@@ -27,7 +37,7 @@ const onSubmit=(e) =>{
     // console.log(e)
     e.preventDefault()
     // onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${scrollVal}`)))
-    props.onSubmit(('ggggg' + text+ `_${data.x},${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${theCardText}`+ `_${0}`))
+    props.onSubmit(('ggggg' + text+ `_${data.x},${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${theCardText}`+ `_${0}`+`_${noteNameLabel}`+`_edited by ${props.currentUser.id}`))
     setText(text)
   }
   const setText2 = () =>{
@@ -101,8 +111,29 @@ setOpac(1)
                     textOverflow: 'ellipsis',
                     resize: 'none'
                     }
-                })
-            )
+                }),
+                h('h3', {
+                    type: 'text',
+                    className: 'innerEditNote',
+                    value:data.edit,
+                    style: {
+                        color: '#515151',
+                        background: 'none',
+                        outline: 'none',
+                        border: 'none',
+                        flex: 1,
+                        fontSize: 10,
+                        fontFamily: 'avenir next',
+                        overflowY: 'scroll',
+                        wordWrap: 'break-word',
+                        // overflow: 'hidden',
+                        whiteSpace: 'initial',
+                        textOverflow: 'ellipsis',
+                        resize: 'none'
+                        }
+                }, `${data.edit}`)
+            ),
+
         )
         ,h("button", {onClick: onSubmit, type: 'button', className: 'noteSend', style: {backgroundColor: '#CACFDA', /* Green */
             border: 'none',

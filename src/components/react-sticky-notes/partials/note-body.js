@@ -43,6 +43,7 @@ export default function NoteBody(props) {
                 onSubmit: props.onSubmit,
                 notesy: props.notesy,
                 items: props.items,
+                currentUser:props.currentUser,
                 key: 'note-text',
                 onFocus:props.onFocus,
                 ...props

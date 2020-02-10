@@ -2,12 +2,11 @@ import { h, getElementStyle } from './../utils';
 import ReactTooltip from 'react-tooltip'
 
 function NoteHeader(props) {
-
     var name
     if (typeof props.data !== 'undefined'){
         name =props.data.senderId
     }
-    
+    // console.log(props.data)
 
     const styles = {
         li: {
@@ -51,7 +50,7 @@ function NoteHeader(props) {
                 // onClick:(e)=>(console.log('hi')),
                 key: `${props.prefix}${props.data?props.data.od:'all'}__note-button__${i}`,
                 removeTodo: props.removeTodo, scrollScreen: props.scrollScreen,
-                ...props 
+                ...props,
             })
         ):null,
 
@@ -66,7 +65,7 @@ function NoteHeader(props) {
           h("p", {
             style: { ...styles.cats
             }
-          }, props.data?props.data.senderId[0]:'')), 
+          }, props.data?props.data.noteLabel?props.data.noteLabel[0]:'':'')), 
           h(ReactTooltip, {
             id: name,
             type: "error"
