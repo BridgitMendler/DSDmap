@@ -256,7 +256,7 @@ var percentageY = (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-
             percentY: percentageY,
             closestCard: closestCard,
             scrollVal: scrollVal,
-            newNoteLabel: newNoteLabel
+            // newNoteLabel: newNoteLabel
         })
     }
     if (this.options.onMouseDownMove){
