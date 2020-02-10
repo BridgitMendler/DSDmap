@@ -1020,12 +1020,12 @@ const newFunc2 = () => {
     // console.log((((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) )
     console.log(this.props.data.y)
     console.log(theCardHeight-140)
-    // console.log(this.props.data.y*(theCardHeight-140))
+    console.log(this.props.data.y*(theCardHeight-140))
     // console.log((theCardHeight*(cIndex)) -props.data.scrollVal)
     // console.log((theCardHeight*(cIndex)))
     // console.log(props.data.scrollVal)
     // console.log(this.props.scrollScreen)
-    (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) 
+    console.log(((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) 
     return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  
 }
 // var noteNameLabel
