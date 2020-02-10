@@ -293,6 +293,7 @@ var newBubble = []
 				newArray[i]['time']= ((new Date(newArray[i]['createdAt'])).getTime()) /1000
 				newArray[i]['print'] = newText[0]
 				newArray[i]['cardText']= newText[8]
+				newArray[i]['scrollVal']= newText[9]
 				// newArray[i]['deleted']= (isDeleted())
 				// console.log(newText)
 			}

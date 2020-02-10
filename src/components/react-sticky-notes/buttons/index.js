@@ -6,12 +6,15 @@ const sourceTwo = document.getElementsByClassName('listyThree')
 
 export function ButtonAdd({prefix, data, icons, callbacks}){
     var theOne = (document.getElementsByClassName('selectionssss'))
+    var scrollValOne = document.getElementsByClassName('listyThree')[0]
     var theOneOffset
+    var scrollVal
     // console.log(theOne)
     var theOneHeight
     var theOneText
     var theCardText
-    if (typeof theOne[0] !== 'undefined') {
+    if (typeof theOne[0] !== 'undefined' && typeof scrollValOne !== 'undefined') {
+        scrollVal = scrollValOne.scrollTop;
         theOneOffset = theOne[0].offsetTop
         theOneHeight = theOne[0].offsetHeight
         theOneText = theOne[0].childNodes[1].offsetHeight
@@ -22,7 +25,7 @@ export function ButtonAdd({prefix, data, icons, callbacks}){
     //     // scrollHeight = sourceTwo[0].scrollTop
     // }
 // console.log(typeof sourceTwo[0])
-console.log(theOneOffset, theCardText)
+// console.log(theOneOffset, theCardText)
     const getColor= (val) => {
         if (val.nativeEvent.target.className === 'icons-g') {
             return '#BC8276'
@@ -56,7 +59,7 @@ console.log(theOneOffset, theCardText)
         key: `${prefix}--button__add`,
         className:`${prefix}--button ${prefix}--button__add noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${scrollVal}`)))
     }, 
         icons.add
     )
@@ -64,11 +67,15 @@ console.log(theOneOffset, theCardText)
 
 export function ButtonAddR({prefix, data, icons, callbacks}){
     var theOne = (document.getElementsByClassName('selectionssss'))
+    var scrollValOne = document.getElementsByClassName('listyThree')[0]
     var theOneOffset
+    var scrollVal
+    // console.log(theOne)
     var theOneHeight
     var theOneText
     var theCardText
-    if (typeof theOne[0] !== 'undefined') {
+    if (typeof theOne[0] !== 'undefined' && typeof scrollValOne !== 'undefined') {
+        scrollVal = scrollValOne.scrollTop;
         theOneOffset = theOne[0].offsetTop
         theOneHeight = theOne[0].offsetHeight
         theOneText = theOne[0].childNodes[1].offsetHeight
@@ -106,7 +113,7 @@ export function ButtonAddR({prefix, data, icons, callbacks}){
         key: `${prefix}--button__addG `,
         className:`${prefix}--buttonG ${prefix}--button__addG noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${scrollVal}`)))
      }, 
         icons.addG
     )
@@ -114,11 +121,15 @@ export function ButtonAddR({prefix, data, icons, callbacks}){
 
 export function ButtonAddG({prefix, data, icons, callbacks}){
     var theOne = (document.getElementsByClassName('selectionssss'))
+    var scrollValOne = document.getElementsByClassName('listyThree')[0]
     var theOneOffset
+    var scrollVal
+    // console.log(theOne)
     var theOneHeight
     var theOneText
     var theCardText
-    if (typeof theOne[0] !== 'undefined') {
+    if (typeof theOne[0] !== 'undefined' && typeof scrollValOne !== 'undefined') {
+        scrollVal = scrollValOne.scrollTop;
         theOneOffset = theOne[0].offsetTop
         theOneHeight = theOne[0].offsetHeight
         theOneText = theOne[0].childNodes[1].offsetHeight
@@ -156,7 +167,7 @@ export function ButtonAddG({prefix, data, icons, callbacks}){
         key: `${prefix}--button__addR`,
         className:`${prefix}--buttonR ${prefix}--button__addR noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${scrollVal}`)))
  
     }, 
         icons.addR

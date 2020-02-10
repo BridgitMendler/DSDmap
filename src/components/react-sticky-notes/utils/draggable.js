@@ -30,7 +30,8 @@ export default class Draggable {
         var xYa = e.clientX;
         var yYa = e.clientY;
         // console.log(xYa)
-        // console.log(this.currentX)
+        // console.log(parentElement.getBoundingClientRect())
+        // console.log(position)
         var elementMouseIsOver = document.elementFromPoint(xYa, yYa);
         var absolCardLeft = ((document.getElementsByClassName('listyTwo')[0]).offsetLeft)
         var cardWidth = ((document.getElementsByClassName('listyTwo')[0]).offsetWidth)
@@ -80,7 +81,7 @@ export default class Draggable {
         this.dy = position.top - rect.top;
         // console.log(this.currentX)
         el.classList.add('draggable');
-// console.log(e.currentTarget.style)
+console.log(window.event)
         document.addEventListener('mousemove', this.onMouseMove, null);
         document.addEventListener('mouseup', this.onMouseUp, null);
         document.addEventListener('touchmove', this.onMouseMove, {passive: false});
@@ -93,8 +94,9 @@ export default class Draggable {
                 y: this.currentY
             })
         }
-        
+        console.log(this.currentY)   
     }
+    
     // var elemClos = elementMouseIsOver.closestCard('.chatContainer')   
     // var i
     // for  (i=0; i<allCards.length; i++) {
@@ -183,14 +185,40 @@ export default class Draggable {
         }
     }
 var percentageX = (((this.currentX-absolCardLeft))/(cardWidth-133))
+var yVal = this.currentY +upperSpace -scrollVal
+
+var theOne = (document.getElementsByClassName('listyTwo'))
+// console.log(theOne)
+var ourCard
+var theCardOffset
+var theCardHeight
+var theCardText
+var cIndex
+var i
+for (i=0; i<theOne.length; i++){
+    if (theOne[i].innerText === theRightCard.innerText){
+        ourCard = theOne[i]
+        theCardOffset = theOne[i].offsetTop
+        theCardHeight = theOne[i].offsetHeight
+        theCardText = theOne[i].childNodes[1].offsetHeight
+        cIndex = i
+        // console.log(ourCard)
+        // console.log(i)
+        
+    }
+}
 // console.log(' card width ' + cardWidth + ' minus 125 equals ' + (cardWidth-133))
 // console.log('x position' + this.currentX + ' minus absolCardLeft ' + absolCardLeft + ' equals ' +(this.currentX-absolCardLeft) )
-// console.log('closest Card ' + closestCard + ' plus cardHeight ' + cardHeight + ' minus textHeight ' + textHeight + ' minus upperSpace ' + upperSpace + ' minus 155 equals ' + (closestCard+cardHeight-145-textHeight-23-upperSpace))
-// console.log(' y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus 18 minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +' minus scrollScreen ' + scrollVal + ' equals ' + (this.currentY-textHeight-(closestCard-upperSpace-10)))
-var percentageY = (((this.currentY-textHeight-(closestCard-upperSpace-10)))/(closestCard+cardHeight-145-textHeight-10-upperSpace))
 
+console.log('closest Card ' + closestCard + ' plus cardHeight ' + cardHeight + ' minus textHeight ' + textHeight + ' minus upperSpace ' + upperSpace + ' minus 155 equals ' + (closestCard+cardHeight-145-textHeight-23-upperSpace))
+var percentageY = (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
+console.log(' (y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +') divided by (closest card ' + closestCard + ' plus cardHeight ' + cardHeight + ' minus 145 for note, 10 for margin, and minus text height ' + textHeight + ' minus upperSpace' + upperSpace + 'equals ' + percentageY)
+console.log('numerator '+((this.currentY-(cardHeight*cIndex)+scrollVal)))
+console.log('denominator '+((cardHeight-140)))
+// var yDenominator = 
 // console.log(percentageX)
-// console.log(percentageY)
+console.log(percentageY, closestCard)
+console.log(theRightCard)
     if(this.options.onDragComplete){
         this.options.onDragComplete.call(this, {
             x: this.currentX,
@@ -210,7 +238,8 @@ var percentageY = (((this.currentY-textHeight-(closestCard-upperSpace-10)))/(clo
             theRightCard: theRightCard,
             percentX: percentageX,
             percentY: percentageY,
-            closestCard: closestCard
+            closestCard: closestCard,
+            scrollVal: scrollVal
         })
     }
     if (this.options.onMouseDownMove){

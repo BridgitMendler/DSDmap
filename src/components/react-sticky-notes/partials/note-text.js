@@ -7,11 +7,27 @@ const x = 50
 const y = -10
 const [text, setText] = useState('')
 const [opac, setOpac] = useState(0)
-// console.log(text)
+var theOne = (document.getElementsByClassName('selectionssss'))
+var scrollValOne = document.getElementsByClassName('listyThree')[0]
+var theOneOffset
+var scrollVal
+// console.log(theOne)
+var theOneHeight
+var theOneText
+var theCardText
+if (typeof theOne[0] !== 'undefined' && typeof scrollValOne !== 'undefined') {
+    scrollVal = scrollValOne.scrollTop;
+    theOneOffset = theOne[0].offsetTop
+    theOneHeight = theOne[0].offsetHeight
+    theOneText = theOne[0].childNodes[1].offsetHeight
+    theCardText = theOne[0].innerText
+}
+// console.log(scrollVal)
 const onSubmit=(e) =>{
     // console.log(e)
     e.preventDefault()
-    props.onSubmit(('ggggg' + text+ `_${data.position.x},${data.position.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`))
+    // onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${scrollVal}`)))
+    props.onSubmit(('ggggg' + text+ `_${data.x},${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${theCardText}`+ `_${0}`))
     setText(text)
   }
   const setText2 = () =>{

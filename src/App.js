@@ -35,7 +35,7 @@ export const Cheese = () => {
       const [currentScreen, setCurrentScreen] = useState('WhatIsYourUsernameScreen');
 
   // useEffect(() => observe(newPos => (setKnightPos(newPos))))
-
+  // console.log(window.event)
   const onUsernameSubmitted = (username) => {
     fetch('http://dsdmap.media.mit.edu:3001/users', {
       method: 'POST',

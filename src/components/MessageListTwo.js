@@ -168,6 +168,7 @@ const weMove =()=> {
   // }
 
   useEffect(() => {
+    // console.log(window.event)
     if (didMount) {
       if (props.currentUser.id !== 'B'){
         // console.log('it is me!')
