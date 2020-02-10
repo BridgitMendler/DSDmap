@@ -103,31 +103,31 @@ return
         // console.log(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
 
         const diamonds = [
-          { id: "2mortgagemortgage", icon: RectPale,reflexive: false, x: 250, y: 200 },
-          { id: "3lender file sworn statement of debt including costs associated with foreclosure process on the homeowner's tab", icon: RectPale,reflexive: false, x: 150, y: 200},
-          { id: "4loss mitigation affadavit to homeowner with form allowing homeowner to request mediation", icon: RectPale,reflexive: true, x: 200, y: 200},
-          { id: "7Can file a motion asking the court to waive the fee", icon: RectPale,reflexive: true, x: 300, y: 425},
-          { id: "8Mediation requested (can add up to 60 days to the foreclosure process, valuable time to use to avoid forclosure)", icon: RectPale,reflexive: false, x: 200, y: 425 },
-          { id: "9Office of administrative hearings (OAH) sends a letter stating the time, date, and place of mediation", icon: RectPale,reflexive: false, x: 250, y: 425},
-          { id: "11Mediation session", icon: RectPale,reflexive: false, x: 325, y: 575 },
-          { id: "12Discuss a range of solutions", icon: RectPale,reflexive: false, x: 275, y: 575}
+          { id: "Approved", icon: RectPale,reflexive: false, x: 250, y: 200 },
+          { id: "Rejected", icon: RectPale,reflexive: false, x: 150, y: 200},
+          { id: "Approved (review panel)", icon: RectPale,reflexive: true, x: 200, y: 200},
+          { id: "Approved", icon: RectPale,reflexive: true, x: 300, y: 425},
+          { id: "Rejected", icon: RectPale,reflexive: false, x: 200, y: 425 },
+          { id: "Approved, pending revisions", icon: RectPale,reflexive: false, x: 250, y: 425},
+          { id: "Approved", icon: RectPale,reflexive: false, x: 325, y: 575 },
+          { id: "Rejected", icon: RectPale,reflexive: false, x: 275, y: 575}
         ]
 
       const nodes = [
-        { id: "0default on mortgage", reflexive: false, x: 200, y: 50},
-        { id: "1notice of intent to forclose from lender", reflexive: true, x: 200, y: 125},
-        { id: "2",  reflexive: false, x: 250, y: 200 },
-        { id: "3", icon: RectGreen.png,reflexive: false, x: 150, y: 200},
-        { id: "4", icon: RectGreen.png,reflexive: true, x: 200, y: 200},
-        { id: "5Reach out to Maryland HOPE for free counseling, can discuss mediation strategy", reflexive: false, x: 250, y: 275 },
-        { id: "6Homeowner 25 days to submit request for mediation and pay mediation fee", reflexive: false, x: 250, y: 350},
-        { id: "7", icon: RectGreen.png, reflexive: true, x: 300, y: 425},
-        { id: "8", icon: RectGreen.png, reflexive: false, x: 200, y: 425 },
-        { id: "9", icon: RectGreen.png, reflexive: false, x: 250, y: 425},
-        { id: "10Send documents to foreclosure attorneys and the office of administrative hearings in the “document exchange” process", reflexive: true, x: 300, y: 500},
-        { id: "11", icon: RectGreen.png, reflexive: false, x: 325, y: 575 },
-        { id: "12", icon: RectGreen.png, reflexive: false, x: 275, y: 575},
-        { id: "13Loan modification (change terms of the loan so that you can afford the payment)", reflexive: true, x: 325, y: 650},
+        { id: "PI Identifies funding opportunity and notifies Gifts Manager/Grants Administrator", reflexive: false, x: 200, y: 50},
+        { id: "Gifts Manager/Grants Administrator vets grantor (possible Review Panel support)", reflexive: true, x: 200, y: 125},
+        { id: "Approved",  reflexive: false, x: 250, y: 200 },
+        { id: "Rejected", icon: RectGreen.png,reflexive: false, x: 150, y: 200},
+        { id: "Approved (review panel)", icon: RectGreen.png,reflexive: true, x: 200, y: 200},
+        { id: "PI works with Grants Administrator to write proposal", reflexive: false, x: 250, y: 275 },
+        { id: "Proposal submitted to MIT Central (RAS) for review", reflexive: false, x: 250, y: 350},
+        { id: "Approved", icon: RectGreen.png, reflexive: true, x: 300, y: 425},
+        { id: "Rejected", icon: RectGreen.png, reflexive: false, x: 200, y: 425 },
+        { id: "Approved, pending revisions", icon: RectGreen.png, reflexive: false, x: 250, y: 425},
+        { id: "Proposal submitted to funder", reflexive: true, x: 300, y: 500},
+        { id: "Approved", icon: RectGreen.png, reflexive: false, x: 325, y: 575 },
+        { id: "Rejected", icon: RectGreen.png, reflexive: false, x: 275, y: 575},
+        { id: "Funds allocatd to ML", reflexive: true, x: 325, y: 650},
 
       ];
       let lastNodeId = 2;
@@ -136,7 +136,9 @@ return
         { source: nodes[1], target: nodes[2], left: false, right: true },
         { source: nodes[1], target: nodes[3], left: false, right: true },
         { source: nodes[1], target: nodes[4], left: false, right: true },
+        { source: nodes[4], target: nodes[5], left: false, right: true },
         { source: nodes[2], target: nodes[5], left: false, right: true },
+        { source: nodes[9], target: nodes[10], left: false, right: true },
         { source: nodes[5], target: nodes[6], left: false, right: true },
         { source: nodes[6], target: nodes[7], left: false, right: true },
         { source: nodes[6], target: nodes[8], left: false, right: true },
@@ -285,7 +287,7 @@ return
                   .on("mouseenter", function() {
                     d3.select(this).transition()
                     .duration(750)
-                    .style("stroke-width", 10);
+                    .style("stroke-width", 7);
                   //   if (true) {
                   //   console.log(d3.event.type)
                   // }
