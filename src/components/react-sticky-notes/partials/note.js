@@ -990,7 +990,7 @@ const newFunc2 = () => {
 
             if (typeof theOne[i].lastChild !== 'undefined'){
             // console.log(theOne[i].innerText === props.data.cardText)
-            // console.log(theOne[i].lastChild.innerText)
+            console.log(theOne[i].lastChild.innerText)
             // console.log(props.data.cardText)
         if (theOne[i].lastChild.innerText === props.data.cardText){
             console.log('hi from inside!')
@@ -1018,7 +1018,7 @@ const newFunc2 = () => {
 
     console.log(ourCard)
     console.log(typeof theOne[0])
-    console.log(ourCard.lastChild.innerText)
+    // console.log(ourCard.lastChild.innerText)
     console.log(cIndex)
     console.log(props.data.scrollVal)
     console.log(this.props.scrollScreen)
