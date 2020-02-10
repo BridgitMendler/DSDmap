@@ -891,7 +891,7 @@ const newFunc2 = () => {
 
     var i
     for (i=0; i<theOne.length; i++){
-        if (theOne[i].innerText === props.data.cardText && typeof theOne[i].childNodes !== 'undefined'){
+        if (theOne[i].innerText === props.data.cardText && typeof theOne[i] !== 'undefined'){
             console.log('hi from inside!')
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
