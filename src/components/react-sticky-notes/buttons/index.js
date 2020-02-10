@@ -17,7 +17,7 @@ export function ButtonAdd({prefix, data, icons, callbacks}, props){
         scrollVal = scrollValOne.scrollTop;
         theOneOffset = theOne[0].offsetTop
         theOneHeight = theOne[0].offsetHeight
-        theOneText = theOne[0].childNodes[1].offsetHeight
+        // theOneText = theOne[0].childNodes[1].offsetHeight
         theCardText = theOne[0].innerText
     }
     // if (typeof sourceTwo[0] !== 'undefined'){

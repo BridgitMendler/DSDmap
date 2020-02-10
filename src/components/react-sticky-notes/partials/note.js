@@ -783,7 +783,7 @@ const setOpac = () => {
     if (typeof theOne[0] !== 'undefined') {
         theOneOffset = theOne[0].offsetTop
         theOneHeight = theOne[0].offsetHeight
-        theOneText = theOne[0].childNodes[1].offsetHeight
+        // theOneText = theOne[0].childNodes[1].offsetHeight
     }
 
     if ((((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)< 20&& props.scrollScreen > 0){
@@ -892,7 +892,7 @@ const newFunc2 = () => {
     if (typeof theOne[0] !== 'undefined') {
         theOneOffset = theOne[0].offsetTop
         theOneHeight = theOne[0].offsetHeight
-        theOneText = theOne[0].childNodes[1].offsetHeight
+        // theOneText = theOne[0].childNodes[1].offsetHeight
     }
     // (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
     // console.log(theOne)
