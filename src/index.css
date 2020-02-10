@@ -601,11 +601,79 @@ Popup {
   /* text-align: right; */
 }
 
+.inputField {
+  width: 70%;
+  /* height: 1%; */
+  padding: 5px 0px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: grey;
+}
+
+input[type=submit] {
+  width: 50%;
+  background-color: #9FA7B8;
+  color: white;
+  padding: 12px 20px;
+  margin: 25px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.inputLabel {
+  margin: 4px;
+  font-family: 'Avenir next';
+  font-size: 12px;
+  font-weight: bold;
+  color: grey;
+}
+
+.inputLabel2 {
+  margin-top: 20px;
+  font-family: 'Avenir next';
+  font-size: 13px;
+  color: grey
+}
+.inputLabel3 {
+  margin: 20px;
+  font-family: 'Avenir next';
+  font-size: 14px;
+  color: grey
+}
+
+.welcome {
+  font-family: 'Avenir next';
+  font-size: 26px;
+  color: grey
+}
+
+.frontpage2 {
+  width: 25%;
+	height: 94%;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Avenir next';
+  /* color: 'red'; */
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+  right: 0;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.14);
+  	
+	margin: auto;
+}
 
 .frontpage {
-  width: 500px;
-	height: 500px;
-	background-color: wheat;
+  width: 100%;
+	height: 100%;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
 	text-align: center;
 	position: absolute;
 	top:0;
@@ -617,8 +685,9 @@ Popup {
 }
 
 .picture {
-  width: 500px;
-	height: 570px;
+  margin-top: 20px;
+  width: 90%;
+	height: 70px;
 }
 .pictureTwo {
 

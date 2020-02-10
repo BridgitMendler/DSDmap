@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import pic from './welcomePic.png';
+import pic from './thankYou.png';
 
 class UsernameForm extends Component {
   constructor(props) {
@@ -23,18 +23,45 @@ class UsernameForm extends Component {
   render() {
     return (
       <div className='frontpage'>
-        <div>
-          {/* <img className='picture' src={pic}></img> */}
-          <h2>What is your username?</h2>
+        <div className='frontpage2'>
+          <h2 className='welcome'>Welcome!</h2>
+          <body className='inputLabel3'>Thank you for taking part in this online workshop. 
+          Below are some questions before you log in.</body>
+          <body className='inputLabel'>FIRST NAME</body>
           <form onSubmit={this.onSubmit}>
-            <input
+            <input 
+              className='inputField'
               type="text"
-              placeholder="First name (optional)"
+              placeholder=""
+              onChange={this.onChange}
+            /><body className='inputLabel'>LAST NAME</body>
+              <input
+              className='inputField'
+              type="text"
+              placeholder=""
               onChange={this.onChange}
             />
-              <input
+          </form>
+          <body className='inputLabel'>ROLE(S) IN COMPANY</body>
+          <form onSubmit={this.onSubmit}>
+            <input
+              className='inputField'
               type="text"
-              placeholder="Last name (optional)"
+              placeholder=""
+              onChange={this.onChange}
+            /><body className='inputLabel'>TIME SPENT IN ROLE</body>
+              <input
+              className='inputField'
+              type="text"
+              placeholder=""
+              onChange={this.onChange}
+            />
+            <img className='picture' src={pic}></img>
+            <body className='inputLabel2'>password</body>
+              <input
+              className='inputField'
+              type="password"
+              placeholder=""
               onChange={this.onChange}
             />
             <input type="submit" />
