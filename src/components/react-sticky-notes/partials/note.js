@@ -893,6 +893,7 @@ const newFunc2 = () => {
     var i
     for (i=0; i<theOne.length; i++){
         if (typeof theOne[i] !== 'undefined'){
+            if (typeof theOne[i].childNodes[1] !== 'undefined'){
             console.log(theOne[i].innerText === props.data.cardText)
             console.log(theOne[i].childNodes[1].innerText)
             console.log(props.data.cardText)
@@ -906,7 +907,7 @@ const newFunc2 = () => {
             // console.log(ourCard)
             // console.log(i)
             
-        }}
+        }}}
     }
   
     var theOneOffset
