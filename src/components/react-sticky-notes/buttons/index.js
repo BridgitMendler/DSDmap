@@ -113,7 +113,7 @@ export function ButtonAddR({prefix, data, icons, callbacks}, props){
         key: `${prefix}--button__addG `,
         className:`${prefix}--buttonG ${prefix}--button__addG noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${scrollVal}`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${0}`)))
      }, 
         icons.addG
     )
@@ -169,7 +169,7 @@ export function ButtonAddG({prefix, data, icons, callbacks}, props){
         key: `${prefix}--button__addR`,
         className:`${prefix}--buttonR ${prefix}--button__addR noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${scrollVal}`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${0}`)))
  
     }, 
         icons.addR
