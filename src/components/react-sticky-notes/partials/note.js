@@ -893,6 +893,7 @@ const newFunc2 = () => {
     var i
     for (i=0; i<theOne.length; i++){
         if (typeof theOne[i] !== 'undefined'){
+            console.log(typeof theOne[i].childNodes[1])
             if (typeof theOne[i].childNodes[1] !== 'undefined'){
             console.log(theOne[i].innerText === props.data.cardText)
             console.log(theOne[i].childNodes[1].innerText)
