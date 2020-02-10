@@ -78,7 +78,7 @@ export function ButtonAddR({prefix, data, icons, callbacks}, props){
         scrollVal = scrollValOne.scrollTop;
         theOneOffset = theOne[0].offsetTop
         theOneHeight = theOne[0].offsetHeight
-        theOneText = theOne[0].childNodes[1].offsetHeight
+        // theOneText = theOne[0].childNodes[1].offsetHeight
         theCardText = theOne[0].innerText
     }
     const getColor= (val) => {
@@ -133,7 +133,7 @@ export function ButtonAddG({prefix, data, icons, callbacks}, props){
         scrollVal = scrollValOne.scrollTop;
         theOneOffset = theOne[0].offsetTop
         theOneHeight = theOne[0].offsetHeight
-        theOneText = theOne[0].childNodes[1].offsetHeight
+        // theOneText = theOne[0].childNodes[1].offsetHeight
         theCardText = theOne[0].innerText
     }
     console.log(scrollVal)
