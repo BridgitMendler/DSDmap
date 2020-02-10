@@ -967,7 +967,7 @@ const newFunc = () => {
         return((this.props.data.x*((window.innerWidth*.77)-133))+absolCardLeft)
     }
 }}
-var cIndex
+var cIndex = 0
 const newFunc2 = () => {
     // console.log(' y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus 18 minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +' minus scrollScreen ' + scrollVal + ' equals ' + (this.currentY-textHeight-(closestCard-upperSpace-10)))
 // var percentageY = (((this.currentY-textHeight-(closestCard-upperSpace-10)))/(this.state.closestCard+cardHeight-145-textHeight-10-upperSpace))
@@ -999,6 +999,7 @@ const newFunc2 = () => {
             theCardHeight = theOne[i].offsetHeight
             theCardText = theOne[i].lastChild.offsetHeight
             cIndex = i
+            console.log(i)
             // console.log(ourCard)
             // console.log(i)
             
@@ -1015,9 +1016,9 @@ const newFunc2 = () => {
     }
     // (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
 
-    // console.log(ourCard)
+    console.log(ourCard)
     console.log(typeof theOne[0])
-    console.log(theOne[0].lastChild.innerText)
+    console.log(ourCard.lastChild.innerText)
     console.log(cIndex)
     console.log(props.data.scrollVal)
     console.log(this.props.scrollScreen)
