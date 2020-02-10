@@ -447,7 +447,6 @@ else {
                     ourCard = theOne[i]
                     theCardOffset = theOne[i].offsetTop
                     theCardHeight = theOne[i].offsetHeight
-                    // theCardText = theOne[i].childNodes[1].offsetHeight
                     // console.log(theCardOffset)
                     
                 }
