@@ -200,7 +200,7 @@ for (i=0; i<theOne.length; i++){
         ourCard = theOne[i]
         theCardOffset = theOne[i].offsetTop
         theCardHeight = theOne[i].offsetHeight
-        theCardText = theOne[i].childNodes[1].offsetHeight
+        // theCardText = theOne[i].childNodes[1].offsetHeight
         cIndex = i
         // console.log(ourCard)
         // console.log(i)
