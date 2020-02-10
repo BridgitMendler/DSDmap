@@ -19,7 +19,7 @@ if (typeof theOne[0] !== 'undefined' && typeof scrollValOne !== 'undefined') {
     scrollVal = scrollValOne.scrollTop;
     theOneOffset = theOne[0].offsetTop
     theOneHeight = theOne[0].offsetHeight
-    theOneText = theOne[0].childNodes[1].offsetHeight
+    // theOneText = theOne[0].childNodes[1].offsetHeight
     theCardText = theOne[0].innerText
 }
 // console.log(scrollVal)
