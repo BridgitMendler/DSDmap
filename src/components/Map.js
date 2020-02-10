@@ -103,14 +103,14 @@ return
         // console.log(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
 
         const diamonds = [
-          { id: "Approved", icon: RectGreen,reflexive: false, x: 250, y: 200 },
-          { id: "Rejected", icon: RectGreen,reflexive: false, x: 150, y: 200},
-          { id: "Approved (review panel)", icon: RectGreen,reflexive: true, x: 200, y: 200},
-          { id: "Approved", icon: RectGreen,reflexive: true, x: 300, y: 425},
-          { id: "Rejected", icon: RectGreen,reflexive: false, x: 200, y: 425 },
-          { id: "Approved, pending revisions", icon: RectGreen,reflexive: false, x: 250, y: 425},
-          { id: "Approved", icon: RectGreen,reflexive: false, x: 325, y: 575 },
-          { id: "Rejected", icon: RectGreen,reflexive: false, x: 275, y: 575}
+          { id: "Approved", icon: RectPale,reflexive: false, x: 250, y: 200 },
+          { id: "Rejected", icon: RectPale,reflexive: false, x: 150, y: 200},
+          { id: "Approved (review panel)", icon: RectPale,reflexive: true, x: 200, y: 200},
+          { id: "Approved", icon: RectPale,reflexive: true, x: 300, y: 425},
+          { id: "Rejected", icon: RectPale,reflexive: false, x: 200, y: 425 },
+          { id: "Approved, pending revisions", icon: RectPale,reflexive: false, x: 250, y: 425},
+          { id: "Approved", icon: RectPale,reflexive: false, x: 325, y: 575 },
+          { id: "Rejected", icon: RectPale,reflexive: false, x: 275, y: 575}
         ]
 
       const nodes = [
