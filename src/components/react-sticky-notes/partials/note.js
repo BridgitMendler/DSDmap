@@ -888,12 +888,15 @@ const newFunc2 = () => {
     var theCardOffset
     var theCardHeight
     var theCardText
+    // var cIndex
 
     var i
     for (i=0; i<theOne.length; i++){
         if (typeof theOne[i] !== 'undefined'){
             console.log(theOne[i].innerText === props.data.cardText)
-        if (theOne[i].innerText === props.data.cardText){
+            console.log(theOne[i].childNodes[1].innerText)
+            console.log(props.data.cardText)
+        if (theOne[i].childNodes[1].innerText === props.data.cardText){
             console.log('hi from inside!')
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
@@ -917,7 +920,7 @@ const newFunc2 = () => {
     // (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
 
     console.log(ourCard)
-    console.log(typeof theOne[0])
+    // console.log(typeof theOne[0])
     console.log(theOne[0].childNodes[1].innerText)
     console.log(theOne)
     // console.log((((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) )
