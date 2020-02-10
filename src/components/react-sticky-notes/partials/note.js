@@ -916,6 +916,8 @@ const newFunc2 = () => {
     console.log(ourCard)
     console.log(theOne[0].innerText)
     console.log(props.data.cardText)
+    console.log(theOne[0].childNodes)
+    console.log(theOne)
     // console.log((((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) )
     // console.log(this.props.data.y)
     // console.log(theCardHeight-140)
