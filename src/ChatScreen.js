@@ -377,7 +377,7 @@ var oldestM = 300000000
         width: '100%',
         backgroundColor: 'white',
         color: 'white',
-        zIndex: 1001, 
+        // zIndex: 1001, 
         position: 'relative'
       },
 

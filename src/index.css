@@ -270,8 +270,8 @@ Popup {
   animation-duration: 300ms;
   width:50%;
   float: 'right';
-  border-right: '1px pink';
-  border-left: '1px pink';
+  /* border-right: '1px pink';
+  border-left: '1px pink'; */
 }
 .chatContainerTwo {
   animation-name: fade-outFeedback;
@@ -396,7 +396,7 @@ Popup {
   }
 
 .rs-notes--navbar {
-  margin-left: 14%;
+  margin-left: 5%;
   /* margin-top: 0%;  */
   /* height: '100px';
   width: '50px';
@@ -406,6 +406,7 @@ Popup {
   /* margin: 0 auto; */
   float: 'left';
   display:inline-block;
+  transform: translateY(-3px);
   /* display: flex;
   flex-wrap: wrap; */
   /* display: flex;

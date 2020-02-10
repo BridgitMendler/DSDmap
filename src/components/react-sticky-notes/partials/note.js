@@ -460,8 +460,8 @@ else {
     }
 
     render(){
-        console.log(this.state.theCardOffset)
-        console.log(this.state.scrollVal)
+        // console.log(this.state.theCardOffset)
+        // console.log(this.state.scrollVal)
         // console.log(this.state.relClick)
 // console.log(this.state.listyPos)
         // console.log(this.props.notesy)
@@ -791,7 +791,25 @@ const setOpac = () => {
         return 0.0
     }
     else { 
-        return 1
+        if (typeof ourCard !== 'undefined'){
+            if (ourCard.attributes[0].value === 'listyTwo dropTarget selectionssss'){
+                return 1
+            }
+            else {
+                if ((((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)< 20&& props.scrollScreen > 0){
+                    return 0
+                }
+                else {
+                return 0.5}
+            }
+        }
+        else {
+            if ((((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)< 20&& props.scrollScreen > 0){
+                return 0
+            }
+            else {
+        return 0.5
+        }}
     }
 }
 
@@ -879,7 +897,7 @@ const newFunc2 = () => {
             theCardHeight = theOne[i].offsetHeight
             theCardText = theOne[i].childNodes[0].offsetHeight
             cIndex = i
-            console.log(ourCard)
+            // console.log(ourCard)
             // console.log(i)
             
         }
@@ -895,19 +913,19 @@ const newFunc2 = () => {
     }
     // (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
 
-    console.log(theOne)
-    console.log((((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) )
-    console.log(this.props.data.y)
-    console.log(theCardHeight-140)
-    console.log(this.props.data.y*(theCardHeight-140))
-    console.log((theCardHeight*(cIndex)) -props.data.scrollVal)
-    console.log((theCardHeight*(cIndex)))
-    console.log(props.data.scrollVal)
-    console.log(this.props.scrollScreen)
+    // console.log(theOne)
+    // console.log((((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) )
+    // console.log(this.props.data.y)
+    // console.log(theCardHeight-140)
+    // console.log(this.props.data.y*(theCardHeight-140))
+    // console.log((theCardHeight*(cIndex)) -props.data.scrollVal)
+    // console.log((theCardHeight*(cIndex)))
+    // console.log(props.data.scrollVal)
+    // console.log(this.props.scrollScreen)
     return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  
 }
 
-console.log(this.props.newNot)
+// console.log(this.props.newNot)
 newFunc2()
 var newText = props.data.text.split(/[_,]+/);
         return h(NoteDraggable, {
@@ -935,7 +953,7 @@ var newText = props.data.text.split(/[_,]+/);
                     // width: 115,
                     // height: 115,
                     boxShadow: '1px 1px 2px rgba(0,0,0,.15)',
-                    // opacity: setOpac()
+                    opacity: setOpac()
                     }
             }, [
                 h('div', {

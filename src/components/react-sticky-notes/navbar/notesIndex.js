@@ -7,7 +7,7 @@ function NavBarTwo({viewSize, prefix, items, callbacks, icons}, props){
         // buttons.splice(1, 0, ButtonMenu )
     }
     return h('div',{
-        className:`${prefix}--green`, style:{height: '75px', width: '75px'},
+        className:`${prefix}--green`, style:{height: '60px', width: '60px'},
     },[
         // h( 'div',{
         //     key: `${prefix}--navbar__nav`,

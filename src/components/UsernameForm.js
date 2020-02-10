@@ -13,6 +13,7 @@ class UsernameForm extends Component {
 
   onSubmit(e) {
     e.preventDefault()
+    // console.log(this.state.username)
     this.props.onSubmit(this.state.username)
   }
 
@@ -25,44 +26,50 @@ class UsernameForm extends Component {
       <div className='frontpage'>
         <div className='frontpage2'>
           <h2 className='welcome'>Welcome!</h2>
-          <body className='inputLabel3'>Thank you for taking part in this online workshop. 
-          Below are some questions before you log in.</body>
-          <body className='inputLabel'>FIRST NAME</body>
+          <h3 className='inputLabel3'>Thank you for taking part in this online workshop. 
+          Below are some questions before you log in.</h3>
           <form onSubmit={this.onSubmit}>
+          <label for='first' className='inputLabel'>FIRST NAME</label>
             <input 
               className='inputField'
               type="text"
               placeholder=""
               onChange={this.onChange}
-            /><body className='inputLabel'>LAST NAME</body>
+              name='first'
+            />
+            
+            <label for='last' className='inputLabel'>LAST NAME</label>
               <input
               className='inputField'
               type="text"
               placeholder=""
-              onChange={this.onChange}
+              // onChange={this.onChange}
+              name='last'
             />
-          </form>
-          <body className='inputLabel'>ROLE(S) IN COMPANY</body>
-          <form onSubmit={this.onSubmit}>
+          <label for='role' className='inputLabel'>ROLE(S) IN COMPANY</label>
             <input
               className='inputField'
               type="text"
               placeholder=""
-              onChange={this.onChange}
-            /><body className='inputLabel'>TIME SPENT IN ROLE</body>
+              // onChange={this.onChange}
+              name='role'
+            />
+            <label for='time' className='inputLabel'>TIME SPENT IN ROLE</label>
               <input
               className='inputField'
               type="text"
               placeholder=""
-              onChange={this.onChange}
+              // onChange={this.onChange}
+              name='time'
             />
             <img className='picture' src={pic}></img>
-            <body className='inputLabel2'>password</body>
+            <label for='psw' className='inputLabel2'>password</label>
               <input
               className='inputField'
               type="password"
               placeholder=""
-              onChange={this.onChange}
+              // onChange={this.onChange}
+              name='psw'
             />
             <input type="submit" />
           </form>
