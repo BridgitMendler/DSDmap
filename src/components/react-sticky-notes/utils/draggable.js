@@ -186,20 +186,20 @@ console.log(window.event)
         }
     }
 
-    var newNoteLabel
-    if (typeof e.target.offsetParent!== 'undefined' && e.target.offsetParent !== null){
-        if (typeof e.target.offsetParent.offsetParent !== 'undefined' && e.target.offsetParent.offsetParent !== null){
-            if (typeof e.target.offsetParent.offsetParent.children[2] !== 'undefined' && e.target.offsetParent.offsetParent.children[2] !== null){
-                if (typeof e.target.offsetParent.offsetParent.children[2].children[2] !== 'undefined' &&  e.target.offsetParent.offsetParent.children[2].children[2] !== null){
-                    if (typeof e.target.offsetParent.offsetParent.children[2].children[2].children[0] !== 'undefined' && e.target.offsetParent.offsetParent.children[2].children[2].children[0] !== null){
-                        // console.log(e.target.offsetParent.offsetParent.children[2].children[2].children[0].innerText)
-                            newNoteLabel = e.target.offsetParent.offsetParent.children[2].children[2].children[0].innerText
-                                }
-                            }
-                        }
-                    }
-                }
-console.log(newNoteLabel)
+//     var newNoteLabel
+//     if (typeof e.target.offsetParent!== 'undefined' && e.target.offsetParent !== null){
+//         if (typeof e.target.offsetParent.offsetParent !== 'undefined' && e.target.offsetParent.offsetParent !== null){
+//             if (typeof e.target.offsetParent.offsetParent.children[2] !== 'undefined' && e.target.offsetParent.offsetParent.children[2] !== null){
+//                 if (typeof e.target.offsetParent.offsetParent.children[2].children[2] !== 'undefined' &&  e.target.offsetParent.offsetParent.children[2].children[2] !== null){
+//                     if (typeof e.target.offsetParent.offsetParent.children[2].children[2].children[0] !== 'undefined' && e.target.offsetParent.offsetParent.children[2].children[2].children[0] !== null){
+//                         // console.log(e.target.offsetParent.offsetParent.children[2].children[2].children[0].innerText)
+//                             newNoteLabel = e.target.offsetParent.offsetParent.children[2].children[2].children[0].innerText
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+// console.log(newNoteLabel)
 var percentageX = (((this.currentX-absolCardLeft))/(cardWidth-133))
 var yVal = this.currentY +upperSpace -scrollVal
 
@@ -226,15 +226,15 @@ for (i=0; i<theOne.length; i++){
 // console.log(' card width ' + cardWidth + ' minus 125 equals ' + (cardWidth-133))
 // console.log('x position' + this.currentX + ' minus absolCardLeft ' + absolCardLeft + ' equals ' +(this.currentX-absolCardLeft) )
 
-console.log('closest Card ' + closestCard + ' plus cardHeight ' + cardHeight + ' minus textHeight ' + textHeight + ' minus upperSpace ' + upperSpace + ' minus 155 equals ' + (closestCard+cardHeight-145-textHeight-23-upperSpace))
+// console.log('closest Card ' + closestCard + ' plus cardHeight ' + cardHeight + ' minus textHeight ' + textHeight + ' minus upperSpace ' + upperSpace + ' minus 155 equals ' + (closestCard+cardHeight-145-textHeight-23-upperSpace))
 var percentageY = (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
-console.log(' (y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +') divided by (closest card ' + closestCard + ' plus cardHeight ' + cardHeight + ' minus 145 for note, 10 for margin, and minus text height ' + textHeight + ' minus upperSpace' + upperSpace + 'equals ' + percentageY)
-console.log('numerator '+((this.currentY-(cardHeight*cIndex)+scrollVal)))
-console.log('denominator '+((cardHeight-140)))
+// console.log(' (y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +') divided by (closest card ' + closestCard + ' plus cardHeight ' + cardHeight + ' minus 145 for note, 10 for margin, and minus text height ' + textHeight + ' minus upperSpace' + upperSpace + 'equals ' + percentageY)
+// console.log('numerator '+((this.currentY-(cardHeight*cIndex)+scrollVal)))
+// console.log('denominator '+((cardHeight-140)))
 // var yDenominator = 
 // console.log(percentageX)
-console.log(percentageY, closestCard)
-console.log(theRightCard)
+// console.log(percentageY, closestCard)
+// console.log(theRightCard)
     if(this.options.onDragComplete){
         this.options.onDragComplete.call(this, {
             x: this.currentX,

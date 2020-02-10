@@ -152,12 +152,12 @@ const weMove =()=> {
   var locaa = document.getElementsByClassName('listyThree')
   // theOne2 = theOne
   if (typeof theOne !== 'undefined'){
-    console.log('the one not undefined')
+    // console.log('the one not undefined')
     // if (theOne[0].offsetTop !== currentList[currentList.length-1]){
     // console.log(theOne[0].offsetTop)
     if (typeof locaa !== 'undefined'){
       if (typeof locaa[0] !== 'undefined'){
-        console.log(theOne.currentList)
+        // console.log(theOne.currentList)
         var locaaa = locaa[0]
         // console.log(locaaa)
       locaaa.scrollTo({behavior: 'smooth',
@@ -211,7 +211,7 @@ if (props.currentUser.id === 'B')
 // console.log(resultTwo)
 
       weMove()
-      console.log(resultTwo)
+      // console.log(resultTwo)
 
             return (
               <div className="listyThree" 
