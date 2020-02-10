@@ -58,7 +58,7 @@ getOffset = () => {
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
             theCardHeight = theOne[i].offsetHeight
-            theCardText = theOne[i].childNodes[1].offsetHeight
+            theCardText = theOne[i].childNodes[0].offsetHeight
             // console.log(theCardOffset)
             
         }
@@ -766,11 +766,11 @@ const setOpac = () => {
     var theCardText
     var i
     for (i=0; i<theOne.length; i++){
-        if (theOne[i].innerText === props.data.cardText && typeof theOne[i].childNodes[1] !== 'undefined'){
+        if (theOne[i].innerText === props.data.cardText && typeof theOne[i].childNodes[0] !== 'undefined'){
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
             theCardHeight = theOne[i].offsetHeight
-            theCardText = theOne[i].childNodes[1].offsetHeight
+            theCardText = theOne[i].childNodes[0].offsetHeight
             // console.log(theCardOffset)
             
         }
@@ -873,11 +873,11 @@ const newFunc2 = () => {
 
     var i
     for (i=0; i<theOne.length; i++){
-        if (theOne[i].innerText === props.data.cardText && typeof theOne[i].childNodes[1] !== 'undefined'){
+        if (theOne[i].innerText === props.data.cardText && typeof theOne[i].childNodes[0] !== 'undefined'){
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
             theCardHeight = theOne[i].offsetHeight
-            theCardText = theOne[i].childNodes[1].offsetHeight
+            theCardText = theOne[i].childNodes[0].offsetHeight
             cIndex = i
             console.log(ourCard)
             // console.log(i)
@@ -894,6 +894,7 @@ const newFunc2 = () => {
         // theOneText = theOne[0].childNodes[1].offsetHeight
     }
     // (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
+
     console.log(theOne)
     console.log((((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) )
     console.log(this.props.data.y)
