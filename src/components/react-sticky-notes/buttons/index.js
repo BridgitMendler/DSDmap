@@ -4,7 +4,7 @@ import { h, getNoteTitle, getUUID } from './../utils';
 const sourceTwo = document.getElementsByClassName('listyThree')
 
 
-export function ButtonAdd({prefix, data, icons, callbacks}){
+export function ButtonAdd({prefix, data, icons, callbacks}, props){
     var theOne = (document.getElementsByClassName('selectionssss'))
     var scrollValOne = document.getElementsByClassName('listyThree')[0]
     var theOneOffset
@@ -35,7 +35,7 @@ export function ButtonAdd({prefix, data, icons, callbacks}){
         else {
         return '#FAE3B6';
     }}
-
+    console.log(theCardText)
     const getRandom= () => {
     if (typeof document.getElementsByClassName('listyTwo') !== 'undefined' && typeof document.getElementsByClassName('bigSpace') !== 'undefined'){
         var absolCardLeft = ((document.getElementsByClassName('listyTwo')[0]).offsetLeft)
@@ -43,7 +43,7 @@ export function ButtonAdd({prefix, data, icons, callbacks}){
         var upperSpace = ((document.getElementsByClassName('bigSpace')[0]).offsetHeight)
         var precision = 100;
         var n = Math.floor(Math.random() * (10-(-10)) + (-10))
-        var randomnum = Math.floor(Math.random() * ((0.90) * precision - (0.10) * precision) + (0.10) * precision) / (1*precision);
+        var randomnum = Math.floor(Math.random() * ((0.90) * precision - (0.15) * precision) + (0.15) * precision) / (1*precision);
         return randomnum
     }}
     const getRandom2= () => {
@@ -59,13 +59,13 @@ export function ButtonAdd({prefix, data, icons, callbacks}){
         key: `${prefix}--button__add`,
         className:`${prefix}--button ${prefix}--button__add noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${scrollVal}`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${0}`)))
     }, 
         icons.add
     )
 }
 
-export function ButtonAddR({prefix, data, icons, callbacks}){
+export function ButtonAddR({prefix, data, icons, callbacks}, props){
     var theOne = (document.getElementsByClassName('selectionssss'))
     var scrollValOne = document.getElementsByClassName('listyThree')[0]
     var theOneOffset
@@ -98,7 +98,7 @@ export function ButtonAddR({prefix, data, icons, callbacks}){
             var upperSpace = ((document.getElementsByClassName('bigSpace')[0]).offsetHeight)
             var precision = 100;
             var n = Math.floor(Math.random() * (10-(-10)) + (-10))
-            var randomnum = Math.floor(Math.random() * ((0.90) * precision - (0.10) * precision) + (0.10) * precision) / (1*precision);
+            var randomnum = Math.floor(Math.random() * ((0.90) * precision - (0.15) * precision) + (0.15) * precision) / (1*precision);
             return randomnum
         }}
     const getRandom2= () => {
@@ -119,7 +119,8 @@ export function ButtonAddR({prefix, data, icons, callbacks}){
     )
 }
 
-export function ButtonAddG({prefix, data, icons, callbacks}){
+export function ButtonAddG({prefix, data, icons, callbacks}, props){
+
     var theOne = (document.getElementsByClassName('selectionssss'))
     var scrollValOne = document.getElementsByClassName('listyThree')[0]
     var theOneOffset
@@ -135,6 +136,7 @@ export function ButtonAddG({prefix, data, icons, callbacks}){
         theOneText = theOne[0].childNodes[1].offsetHeight
         theCardText = theOne[0].innerText
     }
+    console.log(scrollVal)
     const getColor= (val) => {
         if (val.nativeEvent.target.className === 'icons-g') {
             return '#BC8276'
@@ -152,7 +154,7 @@ export function ButtonAddG({prefix, data, icons, callbacks}){
             var upperSpace = ((document.getElementsByClassName('bigSpace')[0]).offsetHeight)
             var precision = 100;
             var n = Math.floor(Math.random() * (10-(-10)) + (-10))
-            var randomnum = Math.floor(Math.random() * ((0.90) * precision - (0.10) * precision) + (0.10) * precision) / (1*precision);
+            var randomnum = Math.floor(Math.random() * ((0.90) * precision - (0.15) * precision) + (0.15) * precision) / (1*precision);
             return randomnum
         }}
     const getRandom2= () => {

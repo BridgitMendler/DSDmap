@@ -1,7 +1,7 @@
 import { h, getElementStyle } from './../utils';
 import NoteHeader from './../partials/note-header';
 import { ButtonAddG, ButtonTitle, ButtonMenu, ButtonUpload, ButtonTrash, ButtonPageView } from './../buttons';
-function NavBarTwo({viewSize, prefix, items, callbacks, icons}){
+function NavBarTwo({viewSize, prefix, items, callbacks, icons}, props){
     const buttons = [ ButtonTitle, ButtonTrash];
     if(viewSize==='pageview'||viewSize==='fullscreen'){
         // buttons.splice(1, 0, ButtonMenu )
@@ -33,6 +33,7 @@ function NavBarTwo({viewSize, prefix, items, callbacks, icons}){
                 prefix: `${prefix}--green__item`,
                 icons,
                 callbacks,
+                scrollScreen: props.scrollScreen,
                 buttons: [ButtonAddG]
             })
         )

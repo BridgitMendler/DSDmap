@@ -858,7 +858,7 @@ const newFunc = () => {
         return((this.props.data.x*((window.innerWidth*.77)-133))+absolCardLeft)
     }
 }
-
+var cIndex
 const newFunc2 = () => {
     // console.log(' y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus 18 minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +' minus scrollScreen ' + scrollVal + ' equals ' + (this.currentY-textHeight-(closestCard-upperSpace-10)))
 // var percentageY = (((this.currentY-textHeight-(closestCard-upperSpace-10)))/(this.state.closestCard+cardHeight-145-textHeight-10-upperSpace))
@@ -871,7 +871,7 @@ const newFunc2 = () => {
     var theCardOffset
     var theCardHeight
     var theCardText
-    var cIndex
+
     var i
     for (i=0; i<theOne.length; i++){
         if (theOne[i].innerText === props.data.cardText){
@@ -880,7 +880,7 @@ const newFunc2 = () => {
             theCardHeight = theOne[i].offsetHeight
             theCardText = theOne[i].childNodes[1].offsetHeight
             cIndex = i
-            // console.log(ourCard)
+            console.log(ourCard)
             // console.log(i)
             
         }
@@ -894,22 +894,20 @@ const newFunc2 = () => {
         theOneHeight = theOne[0].offsetHeight
         theOneText = theOne[0].childNodes[1].offsetHeight
     }
-console.log(theCardOffset)
-    // console.log(' y position '+ this.props.data.y + ' (times (cardoffset ' + theCardOffset + 'minus scrollScreen ' + props.scrollScreen + ') plus theCardHeight ' + theCardHeight + ' minus 156 minus the cardtext ' + theCardText+ ' minus 10 minus upperSpace ' + upperSpace + ') minus upperSpace ' + upperSpace + ' plus textHeight ' + theCardText + ' plus (card offset minus scrollScreen ' + this.props.scrollScreen + ') equals ' + (((this.props.data.y*(((theCardOffset-props.scrollScreen)+theCardHeight-156-theCardText-10-upperSpace)))    -upperSpace +theCardText+(theCardOffset-props.scrollScreen)))  )  
-    // console.log(((this.props.data.y*(((theCardOffset-props.scrollScreen)+theCardHeight-156-theCardText-10-upperSpace)))-upperSpace +theCardText+(theCardOffset-this.props.scrollScreen)))
-    // console.log(this.props.data.y*(theCardOffset + theCardHeight -155-theCardText -upperSpace))       
-    // this.setState({justDropped: false})  
     // (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
-    return (((this.props.data.y*(cardHeight-140))   + (theCardHeight*(cIndex)) -this.state.scrollVal)-props.scrollScreen)  
-    // return (((this.props.data.y*(((this.state.theCardOffset-this.state.scrollVal)+theCardHeight-156-10-upperSpace)))    -upperSpace+(this.state.theCardOffset))-props.scrollScreen)  
+    // console.log(theOne)
+    // console.log((((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) )
+    // console.log(this.props.data.y)
+    // console.log(theCardHeight-140)
+    // console.log(this.props.data.y*(theCardHeight-140))
+    // console.log((theCardHeight*(cIndex)) -props.data.scrollVal)
+    // console.log((theCardHeight*(cIndex)))
+    // console.log(props.data.scrollVal)
+    // console.log(this.props.scrollScreen)
+    return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  
 }
 
-
-// if (typeof document.getElementsByClassName(`${this.props.prefix}--full-note-${this.props.data.od}`)[0] !== 'undefined'){
-// console.log(document.getElementsByClassName(`${this.props.prefix}--full-note-${this.props.data.od}`)[0].style.top)}
-// if (typeof window.event !== 'undefined'){
-// console.log(window.event.screenY)}
-console.log(this.props.data.y)
+console.log(this.props.newNot)
 newFunc2()
 var newText = props.data.text.split(/[_,]+/);
         return h(NoteDraggable, {
@@ -924,7 +922,7 @@ var newText = props.data.text.split(/[_,]+/);
                 // onMouseDownMove:(pos) => (this.setState({relClick:pos.relClick})),
                 onDragComplete:(pos)=> (setWhatDragShouldDo(),
                 (this.setState({justDropped: true, mouseStatus: false, scrollVal: pos.scrollVal,theRightCard: pos.theRightCard, closestCard: pos.closestCard, cardHeight: pos.cardHeight, textHeight: pos.textHeight, absolCardLeft:pos.absolCardLeft, percentX:pos.percentX, percentY:pos.percentY})),
-                props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.percentX},${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${this.state.scrollVal}`))
+                props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.percentX},${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${props.scrollScreen}`))
                 //  (this.setState({positionX: pos.x, positionY:pos.y}
                     // )
                     // )                
@@ -991,7 +989,7 @@ var newText = props.data.text.split(/[_,]+/);
                     percentY: this.state.percentY,
                     items: props.items,
                     scrollTop: props.scrollScreen,
-                    scrollVal: this.state.scrollVal,
+                    scrollVal: props.data.scrollVal,
                     onSubmit: props.onSubmit,
                     onChange: props.onChange,
                     notesy: props.notesy,

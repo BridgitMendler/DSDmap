@@ -50,7 +50,7 @@ function NoteHeader(props) {
             h(Button, { 
                 // onClick:(e)=>(console.log('hi')),
                 key: `${props.prefix}${props.data?props.data.od:'all'}__note-button__${i}`,
-                removeTodo: props.removeTodo,
+                removeTodo: props.removeTodo, scrollScreen: props.scrollScreen,
                 ...props 
             })
         ):null,

@@ -1,7 +1,7 @@
 import { h, getElementStyle } from './../utils';
 import NoteHeader from './../partials/note-header';
 import { ButtonAdd, ButtonTitle, ButtonTrash, } from './../buttons';
-function NavBar({viewSize, prefix, items, callbacks, icons}){
+function NavBar({viewSize, prefix, items, callbacks, icons}, props){
     const buttons = [ ButtonTitle, ButtonTrash];
     if(viewSize==='pageview'||viewSize==='fullscreen'){
         // buttons.splice(1, 0, ButtonMenu )
@@ -33,6 +33,7 @@ function NavBar({viewSize, prefix, items, callbacks, icons}){
                 prefix: `${prefix}--navbar__item`,
                 icons,
                 callbacks,
+                scrollScreen: props.scrollScreen,
                 buttons: [ButtonAdd]
             })
         )

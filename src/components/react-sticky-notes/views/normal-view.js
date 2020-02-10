@@ -214,9 +214,9 @@ var newBub = props.newBubble.filter(obj => {
     const [hasDropped, setHasDropped] = useState(false)
 
     return [
-        h(NavBar, { ...props, key: 'navbar' }),
-        h(NavBarTwo, { ...props, key: 'green' }),
-        h(NavBarThree, { ...props, key: 'red' }),
+        h(NavBar, { ...props, scrollScreen: props.scrollScreen, key: 'navbar' }),
+        h(NavBarTwo, { ...props, scrollScreen: props.scrollScreen, key: 'green' }),
+        h(NavBarThree, { ...props, scrollScreen: props.scrollScreen, key: 'red' }),
         h('div', {
             key: props.prefix, 
             className: props.prefix,
