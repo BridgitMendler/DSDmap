@@ -54,7 +54,7 @@ getOffset = () => {
     // console.log(theOne)
 
     for (i=0; i<theOne.length; i++){
-        if (theOne[i].innerText === this.props.data.cardText){
+        if (theOne[i].innerText === this.props.data.cardText && typeof theOne[i].childNodes[1] !== 'undefined'){
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
             theCardHeight = theOne[i].offsetHeight
@@ -767,7 +767,7 @@ const setOpac = () => {
     var theCardText
     var i
     for (i=0; i<theOne.length; i++){
-        if (theOne[i].innerText === props.data.cardText){
+        if (theOne[i].innerText === props.data.cardText && typeof theOne[i].childNodes[1] !== 'undefined'){
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
             theCardHeight = theOne[i].offsetHeight
@@ -874,7 +874,7 @@ const newFunc2 = () => {
 
     var i
     for (i=0; i<theOne.length; i++){
-        if (theOne[i].innerText === props.data.cardText){
+        if (theOne[i].innerText === props.data.cardText && typeof theOne[i].childNodes[1] !== 'undefined'){
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
             theCardHeight = theOne[i].offsetHeight
