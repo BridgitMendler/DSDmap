@@ -917,7 +917,7 @@ const newFunc2 = () => {
     // (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
 
     console.log(ourCard)
-    console.log(typeof theOne[i])
+    console.log(typeof theOne[0])
     console.log(theOne[0].childNodes[1].innerText)
     console.log(theOne)
     // console.log((((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) )
