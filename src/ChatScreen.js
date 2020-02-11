@@ -244,68 +244,70 @@ this.setState({ scrollVals: joined })
       .then(currentRoom => {
         this.setState({ currentRoom })
       })
-      // .then(currentUser =>{        
-      //   console.log('fetching!')
-      //  return this.state.currentUser.fetchMessages({
-      //   roomId:'50e665bf-86f0-48f5-9290-7f1363829c0e',
-      //   initialId: oldestM,
-      //   direction: 'older',
-      //   limit:100, 
-      //  })
-      //   .then(message => {
-      //       // console.log('message!')
-      //       if (message.id < oldestM){
-      //         oldestM = message.id
-      //       }
-      //       // console.log(oldestM)
-      //       String.prototype.removeCharAt = function (i) {
-      //         var tmp = this.split(''); // convert to an array
-      //         tmp.splice(i, 5); // remove 1 element from the array (adjusting for non-zero-indexed counts)
-      //         return tmp.join('');
-      //         // console.log(tmp)
-      //       }
-      //       if (/^fffff/.test(message.text)) {
-      //         message.text=(message.text.removeCharAt(0))
-      //         this.setState({
-      //           postings: [...this.state.postings, message],
-      //           allMes:[...this.state.allMes, message]
-      //         })
-      //         }
-      //       else if (/^ggggg/.test(message.text)){
-      //         message.text=(message.text.removeCharAt(0))
-      //         this.setState({
-      //           notesy: [...this.state.notesy, message],
-      //           allMes:[...this.state.allMes, message]
-      //         })
-      //       }
-      //       else if (/^hhhhh/.test(message.text)){
-      //         message.text=(message.text.removeCharAt(0))
-      //         this.setState({
-      //           delNote: [...this.state.delNote, message],
-      //           allMes:[...this.state.allMes, message]
-      //         })
-      //       }
-      //       else if (/^jljljl/.test(message.text)){
-      //       message.text=(message.text.removeCharAt(0))
-      //       this.setState({
-      //       bubblePosList: [...this.state.bubblePosList, message],
-      //       allMes:[...this.state.allMes, message]
-      //     })
-      //       }
-      //       else {this.setState({
-      //         messages: [...this.state.messages, message],
-      //         allMes:[...this.state.allMes, message]
-      //       })
-      //     }})
-      // .catch(error => console.error('error', error))
+  //     .then(currentUser =>{        
+  //       console.log('fetching!')
+  //      return this.state.currentUser.fetchMessages({
+  //       roomId:'50e665bf-86f0-48f5-9290-7f1363829c0e',
+  //       initialId: oldestM,
+  //       direction: 'older',
+  //       limit:100, 
+  //      })
+  //       .then(message => {
+  //           // console.log('message!')
+  //           if (message.id < oldestM){
+  //             oldestM = message.id
+  //           }
+  //           // console.log(oldestM)
+  //           String.prototype.removeCharAt = function (i) {
+  //             var tmp = this.split(''); // convert to an array
+  //             tmp.splice(i, 5); // remove 1 element from the array (adjusting for non-zero-indexed counts)
+  //             return tmp.join('');
+  //             // console.log(tmp)
+  //           }
+  //           if (/^fffff/.test(message.text)) {
+  //             message.text=(message.text.removeCharAt(0))
+  //             this.setState({
+  //               postings: [...this.state.postings, message],
+  //               allMes:[...this.state.allMes, message]
+  //             })
+  //             }
+  //           else if (/^ggggg/.test(message.text)){
+  //             message.text=(message.text.removeCharAt(0))
+  //             this.setState({
+  //               notesy: [...this.state.notesy, message],
+  //               allMes:[...this.state.allMes, message]
+  //             })
+  //           }
+  //           else if (/^hhhhh/.test(message.text)){
+  //             message.text=(message.text.removeCharAt(0))
+  //             this.setState({
+  //               delNote: [...this.state.delNote, message],
+  //               allMes:[...this.state.allMes, message]
+  //             })
+  //           }
+  //           else if (/^jljljl/.test(message.text)){
+  //           message.text=(message.text.removeCharAt(0))
+  //           this.setState({
+  //           bubblePosList: [...this.state.bubblePosList, message],
+  //           allMes:[...this.state.allMes, message]
+  //         })
+  //           }
+  //           else {this.setState({
+  //             messages: [...this.state.messages, message],
+  //             allMes:[...this.state.allMes, message]
+  //           })
+  //         }})
+  //     .catch(error => console.error('error', error))
 
-      // if (this.state.allMes.length === 100){
-      //   const oldestMessageIdReceived = Math.min(...this.state.allMes.map(m => m.id))
-      //   oldestM = oldestMessageIdReceived
-      //   }
-      //   console.log(chatManager)
+  //     if (this.state.allMes.length === 100){
+  //       const oldestMessageIdReceived = Math.min(...this.state.allMes.map(m => m.id))
+  //       oldestM = oldestMessageIdReceived
+  //       }
+  //       console.log(chatManager)
 
-  })}
+  // }
+  // )
+}
   
 
 
