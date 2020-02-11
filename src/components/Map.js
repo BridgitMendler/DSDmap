@@ -107,8 +107,8 @@ return
           { id: "Rejected", icon: RectPale,reflexive: false, x: 150, y: 200},
           { id: "Approved (review panel)", icon: RectPale,reflexive: true, x: 200, y: 200},
           { id: "Approved", icon: RectPale,reflexive: true, x: 300, y: 425},
-          { id: "Rejected", icon: RectPale,reflexive: false, x: 200, y: 425 },
-          { id: "Approved, pending revisions", icon: RectPale,reflexive: false, x: 250, y: 425},
+          { id: "8Mediation requested (can add up to 60 days to the foreclosure process, valuable time to use to avoid forclosure)", icon: RectPale,reflexive: false, x: 200, y: 425 },
+          { id: "9Office of administrative hearings (OAH) sends a letter stating the time, date, and place of mediation", icon: RectPale,reflexive: false, x: 250, y: 425},
           { id: "Approved", icon: RectPale,reflexive: false, x: 325, y: 575 },
           { id: "Rejected", icon: RectPale,reflexive: false, x: 275, y: 575}
         ]
@@ -123,11 +123,11 @@ return
         { id: "Proposal submitted to MIT Central (RAS) for review", reflexive: false, x: 250, y: 350},
         { id: "Approved", icon: RectGreen.png, reflexive: true, x: 300, y: 425},
         { id: "Rejected", icon: RectGreen.png, reflexive: false, x: 200, y: 425 },
-        { id: "Approved, pending revisions", icon: RectGreen.png, reflexive: false, x: 250, y: 425},
+        { id: "Approved (pending revisions)", icon: RectGreen.png, reflexive: false, x: 250, y: 425},
         { id: "Proposal submitted to funder", reflexive: true, x: 300, y: 500},
         { id: "Approved", icon: RectGreen.png, reflexive: false, x: 325, y: 575 },
         { id: "Rejected", icon: RectGreen.png, reflexive: false, x: 275, y: 575},
-        { id: "Funds allocatd to ML", reflexive: true, x: 325, y: 650},
+        { id: "Funds allocated to ML", reflexive: true, x: 325, y: 650},
 
       ];
       let lastNodeId = 2;
@@ -136,9 +136,7 @@ return
         { source: nodes[1], target: nodes[2], left: false, right: true },
         { source: nodes[1], target: nodes[3], left: false, right: true },
         { source: nodes[1], target: nodes[4], left: false, right: true },
-        { source: nodes[4], target: nodes[5], left: false, right: true },
         { source: nodes[2], target: nodes[5], left: false, right: true },
-        { source: nodes[9], target: nodes[10], left: false, right: true },
         { source: nodes[5], target: nodes[6], left: false, right: true },
         { source: nodes[6], target: nodes[7], left: false, right: true },
         { source: nodes[6], target: nodes[8], left: false, right: true },
