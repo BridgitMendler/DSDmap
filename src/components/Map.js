@@ -114,8 +114,8 @@ return
         ]
 
       const nodes = [
-        { id: "0default on mortgage", reflexive: false, x: 200, y: 50},
-        { id: "1notice of intent to forclose from lender", reflexive: true, x: 200, y: 125},
+        { id: "PI Identifies funding opportunity and notifies Gifts Manager/Grants Administrator", reflexive: false, x: 200, y: 50},
+        { id: "Gifts Manager/Grants Administrator vets grantor (possible Review Panel support)", reflexive: true, x: 200, y: 125},
         { id: "Approved",  reflexive: false, x: 250, y: 200 },
         { id: "Rejected", icon: RectGreen.png,reflexive: false, x: 150, y: 200},
         { id: "Approved (review panel)", icon: RectGreen.png,reflexive: true, x: 200, y: 200},
