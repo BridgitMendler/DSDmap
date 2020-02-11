@@ -176,13 +176,17 @@ hashtagMoveX = () => {
                         let word_With_Numbers = props.data.od
                             let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
                                 var myRand = word_Without_Numbers[0]
-                        var avg = (total / leftPos.length)-((this.state.firstRan+myRand));
+                                var avg
+                                if (typeof this.state !== 'undefined'){
+                        avg = (total / leftPos.length)-((this.state.firstRan+myRand));}
                         var sorted = leftPos.slice().sort(function(a, b) {
                             var result = a-b
                             return (a,b);
                           });
                         //   console.log(props.visible)
-                        var numbs = this.state.firstRan+myRand
+                        var numbs
+                        if (typeof this.state !== 'undefined'){
+                        numbs = this.state.firstRan+myRand}
                             // console.log('first ran ' + this.state.firstRan)
                             // console.log(myValue+ ' index '+ indexH+ ' this would be your calculation '+ numbs*((indexH+1)))
                               if (numbs*(indexHashtag+1)>800){
@@ -786,7 +790,7 @@ const setOpac = () => {
         theOneHeight = theOne[0].offsetHeight
         // theOneText = theOne[0].childNodes[1].offsetHeight
     }
-
+console.log(((((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)))
     if ((((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)< 20&& props.scrollScreen > 0){
 
         
@@ -1013,7 +1017,7 @@ const newFunc2 = () => {
             theCardText = theOne[i].lastChild.offsetHeight
             cIndex = i
             // console.log(i)
-            console.log(ourCard)
+            // console.log(ourCard)
             // console.log(i)
             
         }}}
@@ -1052,8 +1056,8 @@ const newFunc2 = () => {
     //     myCardHeight = this.state.cardHeight
     // }
     // console.log(this.state.cardHeight)
-    console.log(this.state.y)
-    console.log(((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) 
+    // console.log(this.state.y)
+    // console.log(((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) 
     return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  
 }
 // var noteNameLabel
@@ -1076,7 +1080,7 @@ const newFunc2 = () => {
 // }
 
 // findNot()
-console.log(props.newNot)
+// console.log(props.newNot)
 
 newFunc2()
 var newText = props.data.text.split(/[_,]+/);
