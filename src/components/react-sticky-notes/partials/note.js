@@ -968,52 +968,53 @@ const newFunc = () => {
     }
 }}
 var cIndex = 0
+var theOne = (document.getElementsByClassName('listyTwo'))
+// console.log(theOne)
+var ourCard
+var theCardOffset
+var theCardHeight
+var theCardText
+// var cIndex
+
+var i
+for (i=0; i<theOne.length; i++){
+    if (typeof theOne[i] !== 'undefined'){
+        console.log(typeof theOne[i].lastChild)
+        theCardHeight = theOne[i].offsetHeight
+
+        if (typeof theOne[i].lastChild !== 'undefined'){
+        // console.log(theOne[i].innerText === props.data.cardText)
+        console.log(theOne[i].lastChild.innerText)
+        // console.log(props.data.cardText)
+    if (theOne[i].lastChild.innerText === props.data.cardText){
+        console.log('hi from inside!')
+        ourCard = theOne[i]
+        theCardOffset = theOne[i].offsetTop
+        theCardHeight = theOne[i].offsetHeight
+        theCardText = theOne[i].lastChild.offsetHeight
+        cIndex = i
+        console.log(i)
+        // console.log(ourCard)
+        // console.log(i)
+        
+    }}}
+}
+var theOneOffset
+var theOneHeight
+var theOneText
+if (typeof theOne[0] !== 'undefined') {
+    theOneOffset = theOne[0].offsetTop
+    theOneHeight = theOne[0].offsetHeight
+    // theOneText = theOne[0].childNodes[1].offsetHeight
+}
 const newFunc2 = () => {
     // console.log(' y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus 18 minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +' minus scrollScreen ' + scrollVal + ' equals ' + (this.currentY-textHeight-(closestCard-upperSpace-10)))
 // var percentageY = (((this.currentY-textHeight-(closestCard-upperSpace-10)))/(this.state.closestCard+cardHeight-145-textHeight-10-upperSpace))
     // console.log(window.innerWidth)
     // ((this.props.data.y*((window.innerWidth*.5)-133))+absolCardLeft)
 
-    var theOne = (document.getElementsByClassName('listyTwo'))
-    // console.log(theOne)
-    var ourCard
-    var theCardOffset
-    var theCardHeight
-    var theCardText
-    // var cIndex
-
-    var i
-    for (i=0; i<theOne.length; i++){
-        if (typeof theOne[i] !== 'undefined'){
-            console.log(typeof theOne[i].lastChild)
-            theCardHeight = theOne[i].offsetHeight
-
-            if (typeof theOne[i].lastChild !== 'undefined'){
-            // console.log(theOne[i].innerText === props.data.cardText)
-            console.log(theOne[i].lastChild.innerText)
-            // console.log(props.data.cardText)
-        if (theOne[i].lastChild.innerText === props.data.cardText){
-            console.log('hi from inside!')
-            ourCard = theOne[i]
-            theCardOffset = theOne[i].offsetTop
-            theCardHeight = theOne[i].offsetHeight
-            theCardText = theOne[i].lastChild.offsetHeight
-            cIndex = i
-            console.log(i)
-            // console.log(ourCard)
-            // console.log(i)
-            
-        }}}
-    }
   
-    var theOneOffset
-    var theOneHeight
-    var theOneText
-    if (typeof theOne[0] !== 'undefined') {
-        theOneOffset = theOne[0].offsetTop
-        theOneHeight = theOne[0].offsetHeight
-        // theOneText = theOne[0].childNodes[1].offsetHeight
-    }
+
     // (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
 
     // console.log(ourCard)
