@@ -990,8 +990,8 @@ for (i=0; i<theOne.length; i++){
         console.log('hi from inside!')
         ourCard = theOne[i]
         theCardOffset = theOne[i].offsetTop
-        theCardHeight = theOne[i].offsetHeight
-        theCardText = theOne[i].lastChild.offsetHeight
+        theCardHeight = theOne[i].clientHeight
+        theCardText = theOne[i].lastChild.clientHeight
         cIndex = i
         console.log(i)
         console.log(theOne)
