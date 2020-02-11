@@ -994,7 +994,7 @@ for (i=0; i<theOne.length; i++){
         theCardText = theOne[i].lastChild.offsetHeight
         cIndex = i
         console.log(i)
-        // console.log(ourCard)
+        console.log(theOne)
         // console.log(i)
         
     }}}
