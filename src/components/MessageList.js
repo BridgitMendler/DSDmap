@@ -1,18 +1,17 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import { randomColor } from './randomColor';
-import ReactTooltip from 'react-tooltip'
 
 const MessagesList = (props) => {
   const messagesEndRef = useRef(null)
 
   const whichUser = (id) => {
     if (id.senderId === props.currentUsername) {
-      // console.log(id)
+      console.log(id)
       return styles.li2
     }
-    // console.log(id)
-    // console.log(props.currentUsername)
+    console.log(id)
+    console.log(props.currentUsername)
     return styles.li
   }
 
@@ -32,10 +31,9 @@ const MessagesList = (props) => {
   const [selectedColorTwo, setSelectedColorTwo]= useState('')
   const [styles] = useState({
     container: {
-      height: (window.screen.height*.60),
+      height: '200px',
       // width: '350px',
       overflowY: 'scroll',
-      backgroundColor: 'rgba(0, 0, 0, 0.03)',
       flex: 1,
     },
     ul: {
@@ -50,42 +48,22 @@ const MessagesList = (props) => {
 
 
 //     },
-
-// .listy {
-//   border: 1px solid grey;
-//   padding: 10px;
-//   border-radius: 25px;
-//   display:flex;
-//   font-family: 'avenir next';
-//   box-shadow: '4px 4px 10px rgba(0, 0, 0, 0.4)'
-//   /* float: right */
-// }
-
     li: {
       marginTop: 8,
       marginBottom: 13,
-      marginRight: 30,
-
-      // boxShadow: '4px 4px 10px rgba(0, 0, 0, 0.4)'
+      marginRight: 30
     },
     li2: {
       // width: 245,
       marginTop: 8,
       marginBottom: 13,
-      marginLeft: 60,
-      textAlign: 'right',
-
+      marginLeft: 60
     },
       
     senderUsername: {
-      fontSize: 10 
+      fontWeight: 'bold',
     },
-    message: { fontSize: 15,
-      borderRadius: 25,
-      fontFamily: 'avenir next',
-            boxShadow: '2px 2px 6px rgba(0, 0, 0, 0.3)',
-            backgroundColor: 'white'
-    },
+    message: { fontSize: 15 },
 
     div: {
       borderRadius: '150%',
@@ -132,7 +110,7 @@ const MessagesList = (props) => {
 
   },[])
   if (typeof props.users !== 'undefined') {
-// console.log(props.users)
+console.log(props.users)
   }
 
   // if (user.id === this.props.currentUser.id) {
@@ -147,9 +125,8 @@ const MessagesList = (props) => {
   //     {user.name} {index}
   //   </WhosOnlineListItem>
   // )
-  // const name = props.children[2].toString()
-  // const fullname = props.children[0]
-// console.log(props.messages)
+
+
     return (
       <div 
       style={{...props.style,
@@ -166,9 +143,14 @@ const MessagesList = (props) => {
             }
            return (
             <li key={index}  style={whichUser(message)}>
-<span className='noselect' style={styles.senderUsername}>{message.senderId}</span>
+              <div className="listyNess" style={{
+            ...styles.div,
+            backgroundColor:
+              (props.presenceState === 'online') ? 'white': 'white',
+              float: props.presenceState === 'right' ? 'right' : 'left', border: '1px solid grey'}}>
+                <span style={styles.senderUsername}>{message.senderId[0]}</span>
+              </div>
               <p className="listy" style={styles.message}>{'   ' + message.text}</p>
-
             </li>
            )})}
                 <div ref={messagesEndRef} />
