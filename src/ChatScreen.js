@@ -507,7 +507,7 @@ console.log(this.state.messages)
               </div>
               
           </aside>   
-          <svg className={`${this.state.mapName}`} height={window.screen.height*.65}>
+          <svg className={`${this.state.mapName}`} height={window.screen.height*.75}>
                <Map className={`${this.state.mapName}`} onSubmit={this.sendMessage} knightPosition={this.state.knightPos}/> 
                </svg> 
     <div style={styles[this.state.sidePanel]} className={`${this.state.sidePanel}`} >
