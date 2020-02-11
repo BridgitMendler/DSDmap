@@ -314,6 +314,7 @@ this.setState({ scrollVals: joined })
 
   render() {
 
+    document.getElementsByClassName('upperMost').scrollTo(0,0)
 console.log(this.state.messages)
 
       // console.log(this.state.oldestM)
@@ -465,7 +466,7 @@ console.log(this.state.messages)
 
   
 
-    return (<div>
+    return (<div className='upperMost'>
     <div onClick={this.handleClick} onScroll= {this.handleScroll}>       
         <aside className="bigSpace" style={styles.whosOnlineListContainer}>
         <WhosOnlineList 
