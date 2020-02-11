@@ -1007,6 +1007,7 @@ if (typeof theOne[0] !== 'undefined') {
     theOneHeight = theOne[0].offsetHeight
     // theOneText = theOne[0].childNodes[1].offsetHeight
 }
+console.log(theCardHeight)
 const newFunc2 = () => {
     // console.log(' y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus 18 minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +' minus scrollScreen ' + scrollVal + ' equals ' + (this.currentY-textHeight-(closestCard-upperSpace-10)))
 // var percentageY = (((this.currentY-textHeight-(closestCard-upperSpace-10)))/(this.state.closestCard+cardHeight-145-textHeight-10-upperSpace))
