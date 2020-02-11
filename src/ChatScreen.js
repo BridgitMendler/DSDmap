@@ -511,7 +511,7 @@ this.setState({ scrollVals: joined })
               </div>
               
           </aside>   
-          <svg className={`${this.state.mapName}`} height={window.screen.height*.82}>
+          <svg className={`${this.state.mapName}`} height={window.screen.height*.81}>
                <Map className={`${this.state.mapName}`} onSubmit={this.sendMessage} knightPosition={this.state.knightPos}/> 
                </svg> 
     <div style={styles[this.state.sidePanel]} className={`${this.state.sidePanel}`} >
