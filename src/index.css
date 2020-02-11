@@ -620,7 +620,7 @@ Popup {
 }
 
 .inputField {
-  width: 70%;
+  width: 80%;
   /* height: 1%; */
   padding: 5px 0px;
   margin: 8px 0;
@@ -652,6 +652,8 @@ input[type=submit] {
 
 .inputLabel2 {
   margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   font-family: 'Avenir next';
   font-size: 13px;
   color: grey
@@ -670,7 +672,7 @@ input[type=submit] {
 }
 
 .frontpage2 {
-  width: 25%;
+  width: 350px;
 	height: 94%;
   background-color: white;
   border-radius: 10px;
