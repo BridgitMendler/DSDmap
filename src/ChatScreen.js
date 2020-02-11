@@ -176,7 +176,7 @@ this.setState({ scrollVals: joined })
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: 'fcc6e318-900f-4080-9a2f-5e4d22967e7e',
+          roomId: 'ef7f8dc3-1d01-4e55-91df-06fb66a93741',
           hooks: {
             onMessage: message => {
               // if (message.id < oldestM){
