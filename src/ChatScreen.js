@@ -169,7 +169,7 @@ this.setState({ scrollVals: joined })
       }),
     })
 
-var oldestM = 300000000
+// var oldestM = 300000000
 
     chatManager
       .connect()
@@ -179,9 +179,9 @@ var oldestM = 300000000
           roomId: 'fcc6e318-900f-4080-9a2f-5e4d22967e7e',
           hooks: {
             onMessage: message => {
-              if (message.id < oldestM){
-                oldestM = message.id
-              }
+              // if (message.id < oldestM){
+              //   oldestM = message.id
+              // }
               // console.log(oldestM)
               String.prototype.removeCharAt = function (i) {
                 var tmp = this.split(''); // convert to an array
@@ -299,11 +299,11 @@ var oldestM = 300000000
           }})
       .catch(error => console.error('error', error))
 
-      if (this.state.allMes.length === 100){
-        const oldestMessageIdReceived = Math.min(...this.state.allMes.map(m => m.id))
-        oldestM = oldestMessageIdReceived
-        }
-        console.log(chatManager)
+      // if (this.state.allMes.length === 100){
+      //   const oldestMessageIdReceived = Math.min(...this.state.allMes.map(m => m.id))
+      //   oldestM = oldestMessageIdReceived
+      //   }
+      //   console.log(chatManager)
 
   })}
   
