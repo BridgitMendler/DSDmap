@@ -315,7 +315,8 @@ this.setState({ scrollVals: joined })
   render() {
 
  var wholeScreen = document.getElementsByClassName('upperMost')
- wholeScreen.scrollTo(0,0)
+ wholeScreen.scrollTo({ behavior: 'smooth',
+ top:0})}
 console.log(this.state.messages)
 
       // console.log(this.state.oldestM)
