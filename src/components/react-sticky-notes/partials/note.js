@@ -37,7 +37,8 @@ class Note extends React.Component{
             justDropped: true,
             scrollVal: props.data.scrollVal,
             theCardOffset: this.getOffset(),
-            newNoteLabel: ''
+            newNoteLabel: '',
+            y: 0
             // scrollTop: document.getElementsByClassName('listyThree')[0].scrollTop
 
         }
@@ -968,56 +969,66 @@ const newFunc = () => {
     }
 }}
 var cIndex = 0
-var theOne = (document.getElementsByClassName('listyTwo'))
-// console.log(theOne)
-var ourCard
-var theCardOffset
-var theCardHeight
-var theCardText
-// var cIndex
-
-var i
-for (i=0; i<theOne.length; i++){
-    if (typeof theOne[i] !== 'undefined'){
-        console.log(typeof theOne[i].lastChild)
-        theCardHeight = theOne[i].offsetHeight
-
-        if (typeof theOne[i].lastChild !== 'undefined'){
-        // console.log(theOne[i].innerText === props.data.cardText)
-        console.log(theOne[i].lastChild.innerText)
-        // console.log(props.data.cardText)
-    if (theOne[i].lastChild.innerText === props.data.cardText){
-        console.log('hi from inside!')
-        ourCard = theOne[i]
-        theCardOffset = theOne[i].offsetTop
-        theCardHeight = theOne[i].clientHeight
-        theCardText = theOne[i].lastChild.clientHeight
-        cIndex = i
-        console.log(i)
-        console.log(theOne)
-        // console.log(i)
-        
-    }}}
-}
-var theOneOffset
-var theOneHeight
-var theOneText
-if (typeof theOne[0] !== 'undefined') {
-    theOneOffset = theOne[0].offsetTop
-    theOneHeight = theOne[0].offsetHeight
-    // theOneText = theOne[0].childNodes[1].offsetHeight
-}
-console.log(theCardHeight)
 const newFunc2 = () => {
     // console.log(' y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus 18 minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +' minus scrollScreen ' + scrollVal + ' equals ' + (this.currentY-textHeight-(closestCard-upperSpace-10)))
 // var percentageY = (((this.currentY-textHeight-(closestCard-upperSpace-10)))/(this.state.closestCard+cardHeight-145-textHeight-10-upperSpace))
     // console.log(window.innerWidth)
     // ((this.props.data.y*((window.innerWidth*.5)-133))+absolCardLeft)
 
+    var theOne = (document.getElementsByClassName('listyTwo'))
+    // console.log(theOne)
+    var ourCard
+    var theCardOffset
+    var theCardHeight
+    var theCardText
+    // var cIndex
+    // for (i=0; i<theOne.length; i++){
+    //     if (theOne[i].innerText === theRightCard.innerText){
+    //         ourCard = theOne[i]
+    //         theCardOffset = theOne[i].offsetTop
+    //         theCardHeight = theOne[i].offsetHeight
+    //         // theCardText = theOne[i].childNodes[1].offsetHeight
+    //         cIndex = i
+    //         // console.log(ourCard)
+    //         // console.log(i)
+            
+    //     }
+    // }
+
+    var i
+    for (i=0; i<theOne.length; i++){
+        if (typeof theOne[i] !== 'undefined'){
+            // console.log(typeof theOne[i].lastChild)
+            theCardHeight = theOne[i].offsetHeight
+
+            if (typeof theOne[i].lastChild !== 'undefined'){
+            // console.log(theOne[i].innerText === props.data.cardText)
+            // console.log(theOne[i].lastChild.innerText)
+            // console.log(props.data.cardText)
+        if (theOne[i].lastChild.innerText === props.data.cardText){
+            // console.log('hi from inside!')
+            ourCard = theOne[i]
+            theCardOffset = theOne[i].offsetTop
+            theCardHeight = theOne[i].offsetHeight
+            theCardText = theOne[i].lastChild.offsetHeight
+            cIndex = i
+            // console.log(i)
+            console.log(ourCard)
+            // console.log(i)
+            
+        }}}
+    }
   
-
+    var theOneOffset
+    var theOneHeight
+    var theOneText
+    if (typeof theOne[0] !== 'undefined') {
+        theOneOffset = theOne[0].offsetTop
+        theOneHeight = theOne[0].offsetHeight
+        // theOneText = theOne[0].childNodes[1].offsetHeight
+    }
     // (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
-
+    // var myCardHeight
     // console.log(ourCard)
     // console.log(typeof theOne[0])
     // console.log(ourCard.lastChild.innerText)
@@ -1033,6 +1044,15 @@ const newFunc2 = () => {
     // console.log((theCardHeight*(cIndex)))
     // console.log(props.data.scrollVal)
     // console.log(this.props.scrollScreen)
+    // var percentageY = (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
+    // if (this.state.cardHeight >100){
+    //     myCardHeight = theCardHeight
+    // }
+    // else {
+    //     myCardHeight = this.state.cardHeight
+    // }
+    // console.log(this.state.cardHeight)
+    console.log(this.state.y)
     console.log(((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) 
     return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  
 }
@@ -1056,7 +1076,7 @@ const newFunc2 = () => {
 // }
 
 // findNot()
-// console.log(props.data.senderId)
+console.log(props.newNot)
 
 newFunc2()
 var newText = props.data.text.split(/[_,]+/);
@@ -1070,8 +1090,8 @@ var newText = props.data.text.split(/[_,]+/);
                 useBoundaries:(pos) =>(console.log('mouseDown')),
                 onMouseDownMove2:(pos) => (this.setState({mouseStatus:pos.mouseStatus})),
                 // onMouseDownMove:(pos) => (this.setState({relClick:pos.relClick})),
-                onDragComplete:(pos)=> (setWhatDragShouldDo(),
-                (this.setState({justDropped: true, newNoteLabe: pos.newNoteLabel, mouseStatus: false, scrollVal: pos.scrollVal,theRightCard: pos.theRightCard, closestCard: pos.closestCard, cardHeight: pos.cardHeight, textHeight: pos.textHeight, absolCardLeft:pos.absolCardLeft, percentX:pos.percentX, percentY:pos.percentY})),
+                onDragComplete:(pos)=> (setWhatDragShouldDo(),console.log(pos),
+                (this.setState({justDropped: true, y: pos.y, newNoteLabe: pos.newNoteLabel, mouseStatus: false, scrollVal: pos.scrollVal,theRightCard: pos.theRightCard, closestCard: pos.closestCard, cardHeight: pos.cardHeight, textHeight: pos.textHeight, absolCardLeft:pos.absolCardLeft, percentX:pos.percentX, percentY:pos.percentY})),
                 props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.percentX},${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${0}`+`_${props.data.senderId}`+`_moved by ${props.currentUser.id}`))
                 //  (this.setState({positionX: pos.x, positionY:pos.y}
                     // )

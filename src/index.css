@@ -110,7 +110,7 @@ svg {
       display: none;
     }
 
-    html, body {overflow: hidden}
+    /* html, body {overflow: hidden} */
 
 path.link {
   fill: none;
