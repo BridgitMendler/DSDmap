@@ -46,7 +46,7 @@ class ChatScreen extends Component {
       knightPos: this.props.knightPos,
       convoBoxSize: null,
       hidden: false,
-      // oldestM: 0
+      oldestM: 0
     }
     this.sendMessage = this.sendMessage.bind(this)
     this.sendMessage = this.sendMessage.bind(this)
@@ -169,19 +169,20 @@ this.setState({ scrollVals: joined })
       }),
     })
 
-// var oldestM = 300000000
-
+var oldestM = 300000000
+// BOOL setfetch to false 
     chatManager
       .connect()
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: 'ef7f8dc3-1d01-4e55-91df-06fb66a93741',
+          roomId: '9c81d182-a0c7-41fe-9826-ee967dd24b2a',
           hooks: {
             onMessage: message => {
-              // if (message.id < oldestM){
-              //   oldestM = message.id
-              // }
+              if (message.id < oldestM){
+                oldestM = message.id
+              }
+              // console.log(this.state.allMes)
               // console.log(oldestM)
               String.prototype.removeCharAt = function (i) {
                 var tmp = this.split(''); // convert to an array
@@ -218,11 +219,14 @@ this.setState({ scrollVals: joined })
               allMes:[...this.state.allMes, message]
             })
               }
-              else {this.setState({
+              else {
+                this.setState({
                 messages: [...this.state.messages, message],
                 allMes:[...this.state.allMes, message]
               })
-            }},
+              //console.log('pulling from chatkit ' +this.state.allMes)
+            }
+          },
             onUserStartedTyping: user => {
               this.setState({
                 usersWhoAreTyping: [...this.state.usersWhoAreTyping, user.name],
@@ -244,69 +248,72 @@ this.setState({ scrollVals: joined })
       .then(currentRoom => {
         this.setState({ currentRoom })
       })
-  //     .then(currentUser =>{        
-  //       console.log('fetching!')
-  //      return this.state.currentUser.fetchMessages({
-  //       roomId:'50e665bf-86f0-48f5-9290-7f1363829c0e',
-  //       initialId: oldestM,
-  //       direction: 'older',
-  //       limit:100, 
-  //      })
-  //       .then(message => {
-  //           // console.log('message!')
-  //           if (message.id < oldestM){
-  //             oldestM = message.id
-  //           }
-  //           // console.log(oldestM)
-  //           String.prototype.removeCharAt = function (i) {
-  //             var tmp = this.split(''); // convert to an array
-  //             tmp.splice(i, 5); // remove 1 element from the array (adjusting for non-zero-indexed counts)
-  //             return tmp.join('');
-  //             // console.log(tmp)
-  //           }
-  //           if (/^fffff/.test(message.text)) {
-  //             message.text=(message.text.removeCharAt(0))
-  //             this.setState({
-  //               postings: [...this.state.postings, message],
-  //               allMes:[...this.state.allMes, message]
-  //             })
-  //             }
-  //           else if (/^ggggg/.test(message.text)){
-  //             message.text=(message.text.removeCharAt(0))
-  //             this.setState({
-  //               notesy: [...this.state.notesy, message],
-  //               allMes:[...this.state.allMes, message]
-  //             })
-  //           }
-  //           else if (/^hhhhh/.test(message.text)){
-  //             message.text=(message.text.removeCharAt(0))
-  //             this.setState({
-  //               delNote: [...this.state.delNote, message],
-  //               allMes:[...this.state.allMes, message]
-  //             })
-  //           }
-  //           else if (/^jljljl/.test(message.text)){
-  //           message.text=(message.text.removeCharAt(0))
-  //           this.setState({
-  //           bubblePosList: [...this.state.bubblePosList, message],
-  //           allMes:[...this.state.allMes, message]
-  //         })
-  //           }
-  //           else {this.setState({
-  //             messages: [...this.state.messages, message],
-  //             allMes:[...this.state.allMes, message]
-  //           })
-  //         }})
-  //     .catch(error => console.error('error', error))
+.then(fetchy => {
+      for (let i = 0, p = Promise.resolve(); i < 10; i++) {
+        p = p
+      .then(currentUser =>{  
+       return this.state.currentUser.fetchMessages({
+        roomId:'9c81d182-a0c7-41fe-9826-ee967dd24b2a',
+        initialId: oldestM,
+        direction: 'older',
+        limit:100, 
+       })
+        .then(message => { if(message.length === 100){
+            // console.log('message!')
+            if (message[0].id < oldestM){
+              oldestM = message[0].id
+            }
+            // console.log(oldestM)
+            String.prototype.removeCharAt = function (i) {
+              var tmp = this.split(''); // convert to an array
+              tmp.splice(i, 5); // remove 1 element from the array (adjusting for non-zero-indexed counts)
+              return tmp.join('');
+              // console.log(tmp)
+            }
+            for (var i =0; i<message.length; i++){
+            if (/^fffff/.test(message[i].text)) {
+              message[i].text=(message[i].text.removeCharAt(0))
+              this.setState({
+                postings: [...this.state.postings, message[i]],
+                allMes:[...this.state.allMes, message[i]]
+              })
+              }
+            else if (/^ggggg/.test(message[i].text)){
+              message[i].text=(message[i].text.removeCharAt(0))
+              this.setState({
+                notesy: [...this.state.notesy, message[i]],
+                allMes:[...this.state.allMes, message[i]]
+              })
+            }
+            else if (/^hhhhh/.test(message[i].text)){
+              message[i].text=(message[i].text.removeCharAt(0))
+              this.setState({
+                delNote: [...this.state.delNote, message[i]],
+                allMes:[...this.state.allMes, message[i]]
+              })
+            }
+            else if (/^jljljl/.test(message.text)){
+            message.text=(message.text.removeCharAt(0))
+            this.setState({
+            bubblePosList: [...this.state.bubblePosList, message[i]],
+            allMes:[...this.state.allMes, message[i]]
+          })
+            }
+            else {this.setState({
+              messages: [...this.state.messages, message[i]],
+              allMes:[...this.state.allMes, message[i]]
+            })
+          }}}}, reason => {console.error(reason)})
+      .catch(error => console.error('error', error))
 
-  //     if (this.state.allMes.length === 100){
-  //       const oldestMessageIdReceived = Math.min(...this.state.allMes.map(m => m.id))
-  //       oldestM = oldestMessageIdReceived
-  //       }
-  //       console.log(chatManager)
+      if (this.state.allMes.length === 100){
+        const oldestMessageIdReceived = Math.min(...this.state.allMes.map(m => m.id))
+        oldestM = oldestMessageIdReceived
+        }
+        console.log(chatManager)
 
-  // }
-  // )
+  }
+  )}})
 }
   
 
@@ -320,10 +327,12 @@ this.setState({ scrollVals: joined })
 //  top:0})}
 // console.log(wholeScreen)
 
-      // console.log(this.state.oldestM)
-    // console.log(oldestM)
-      // console.log(...this.state.allMes.map(m => m.id))
-      // console.log(this.state.allMes)
+    //   console.log(this.state.oldestM)
+    // // console.log(oldestM)
+    //   console.log(...this.state.allMes.map(m => m.id))
+    //   console.log(this.state.allMes[this.state.allMes.length-1])
+    //   console.log(this.state.allMes)
+      // console.log(this.state.postings)
 
     // console.log(this.state.allMes)
 // console.log((this.state.delNote),(this.state.messages),(this.state.postings),(this.state.bubblePosList),(this.state.notesy))

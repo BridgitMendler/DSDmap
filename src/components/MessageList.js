@@ -150,7 +150,7 @@ const MessagesList = (props) => {
   // )
   // const name = props.children[2].toString()
   // const fullname = props.children[0]
-console.log(props.messages)
+// console.log(props.messages)
     return (
       <div 
       style={{...props.style,
