@@ -29,7 +29,7 @@ class UsernameForm extends Component {
           <h3 className='inputLabel3'>Thank you for taking part in this online workshop. 
           Below are some questions before you log in.</h3>
           <form onSubmit={this.onSubmit}>
-          <label for='first' className='inputLabel'>FIRST NAME</label>
+          <label for='first' className='inputLabel'>AFFILIATION WITH MIT</label>
             <input 
               className='inputField'
               type="text"
@@ -37,7 +37,7 @@ class UsernameForm extends Component {
               onChange={this.onChange}
               name='first'
             />
-            
+{/*             
             <label for='last' className='inputLabel'>LAST NAME</label>
               <input
               className='inputField'
@@ -45,8 +45,8 @@ class UsernameForm extends Component {
               placeholder=""
               // onChange={this.onChange}
               name='last'
-            />
-          <label for='role' className='inputLabel'>ROLE(S) IN COMPANY</label>
+            /> */}
+          {/* <label for='role' className='inputLabel'>ROLE(S) IN COMPANY</label>
             <input
               className='inputField'
               type="text"
@@ -61,7 +61,7 @@ class UsernameForm extends Component {
               placeholder=""
               // onChange={this.onChange}
               name='time'
-            />
+            /> */}
             <img className='picture' src={pic}></img>
             <label for='psw' className='inputLabel2'>password</label>
               <input
