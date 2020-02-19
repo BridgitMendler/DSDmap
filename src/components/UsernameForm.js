@@ -145,8 +145,6 @@ If you volunteer to participate in this study, we would ask you to do the follow
 I.      
 Join the online workshop during the first half hour window and respond to a series of questions designed to generate 
 ideas about how to improve a formal process.
-Complete a survey intended to understand your personality traits with Google forms. It will ask if you see yourself 
-as more introverted or extroverted. Further, it will ask about facilitation, management, and collaboration experience.
 </h3>
 <h3 className='inputLabel3'>
 II.    
