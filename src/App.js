@@ -44,10 +44,10 @@ export const Cheese = () => {
       },
       body: JSON.stringify({ username }),
     })
-      .then(response => {
+      .then(response => { if (username === 'B'){
         setCurrentUsername(username);
         setCurrentScreen('ChatScreen');
-      })
+      }})
 
   };
 
