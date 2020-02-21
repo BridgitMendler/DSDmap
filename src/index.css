@@ -694,6 +694,24 @@ input[type=submit] {
   color: grey
 }
 
+.welcome2 {
+  font-family: 'Avenir next';
+  font-size: 24px;
+  /* color: grey */
+}
+
+.welcome3 {
+  font-family: 'Avenir next';
+  font-size: 20px;
+  /* color: grey */
+}
+
+.welcome4 {
+  font-family: 'Avenir next';
+  font-size: 18px;
+  /* color: grey */
+}
+
 .frontpage2 {
   width: 650px;
 	height: 94%;

@@ -57,14 +57,17 @@ class ChatScreen extends Component {
       steps: [
         {
           content: (
-            <div>
-            Welcome to the design session!
+            <div className='welcome4'>
+            Welcome to the design session! We are excited to have you!
             <br />
             <img src={pic4} className='mendler' alt="loading..." />
-            <div> As a reminder today we are here to test out how visual elements used in offline design workshops 
-              can translate to a virtual space. Today we are goign to use these visual elements help a group to 
-              evaluate a formal process. During this workshop, you will use virtual stickie notes to share your 
-              ideas and build upon the ideas of others. You can move the stickies around and group them as you wish.</div>
+            <div className='welcome4'> My name is Jess and I will be your facilitator! As a reminder, we are here to test out how visual 
+              elements used in offline design workshops can translate to a virtual space. During this workshop, you will 
+              use virtual stickie notes to share your ideas and build upon the ideas of others. You can move the stickies 
+              around and group them as you wish.</div>
+              <br /> 
+              <div className='welcome4'>In this workshop, you are in a hypothetical scenario where you have been tasked to redesign a formal process. 
+                Soon you will see what that process is. If you have any questions or concerns, feel free to message me in the chat panel</div> 
           </div>
           ),
           placement: "center",
@@ -72,17 +75,26 @@ class ChatScreen extends Component {
           target: "body"
         },
         {
-        content: "Now we will begin the guided tour!",
+          content: (
+            <div className='welcome4'>Now we will begin the tour of our dashboard!</div>),
+        // content: "",
         placement: "center",
+        styles: {
+          options: {
+            width: 400
+          }
+        },
         locale: { skip: "skip" },
         target: "body"
       },
         {
-          content: "This is a list of all of the participants in your group. You can chat with everyone in the chat box below anytime you have a question",
+          content: (
+            <div className='welcome4'>This is a list of all of the participants in your group. You can chat with everyone in the chat box below anytime you have a question</div>),
+          // content: "This is a list of all of the participants in your group. You can chat with everyone in the chat box below anytime you have a question",
           placement: "top",
           styles: {
             options: {
-              width: 900
+              width: 400
             }
           },
           target: ".theUsers",
@@ -91,8 +103,8 @@ class ChatScreen extends Component {
         {
           // title: "Our Mission",
           content: (
-            <div>
-              Click on this button to start a new stickie. Don't forget to press share! Then move your note to concepts that you think are related.
+            <div className='welcome4'>
+              Click on this button to start a new stickie. When you are finished writing, don't forget to press share! Then move your note to concepts that you think are related.
               <br />
               <img src={group} alt="loading..." />
             </div>
@@ -103,7 +115,7 @@ class ChatScreen extends Component {
         {
           // title: "Our Fail Test",
           content: (
-            <div>
+            <div className='welcome4'>
               Click on the show map button to see the process map we are working on. Drag the tab in the corner of the note to the map when you find a spot in the process map that is related
               <img src={drop} className='gifgif' alt="loading..." />
             </div>
@@ -119,7 +131,7 @@ class ChatScreen extends Component {
         {
           // title: "Our Fail Test",
           content: (
-            <div>
+            <div className='welcome4'>
               If you want to see all of the connections made to the map so far, click show line
               <img src={show} className='gifgif' alt="loading..." />
             </div>
@@ -128,8 +140,21 @@ class ChatScreen extends Component {
           placement: "top"
         },
         {
+          content: (
+            <div>
+              <h1 className='welcome' >Here is your task</h1>
+              <h2 className='welcome2'>Redesign the university application process</h2>
+              <h3 className='welcome3'>Universities are in need of a new way of selecting students. They have decided to reach out to people across the country to gather ideas on what could be done better. You have all been brought together to share your unique 
+                perspectives. </h3>
+                <br />
+                <h3 className='welcome3'>For reference, a map of the existing university application process is 
+                available to you. Please review this map and then add your answers to the given prompts. Talk to your fellow participants and build upon each others ideas</h3>
+                <br />
+                <h3 className='welcome3'>In 30 minutes you will be given your second set of questions to complete</h3>
+            </div>
+                      ),
           // title: "Our Fail Test",
-          content: "now you can begin!",
+          // content: "now let's get started, designers!",
           target: "body",
           placement: "center"
         }
