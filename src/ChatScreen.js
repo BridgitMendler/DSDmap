@@ -17,6 +17,12 @@ import NavBar from './components/react-sticky-notes/navbar';
 import { h, getElementStyle } from './components/react-sticky-notes/utils';
 import { EventEmitter } from './components/react-sticky-notes/utils/events.js'
 import { genericTypeAnnotation } from 'babel-types'
+import ReactJoyride, { EVENTS } from "react-joyride";
+import PropTypes from "prop-types";
+import drop from './components/drop2.gif'
+import pic4 from './components/mendler2.png'
+import group from './components/group.gif'
+import show from './components/line.gif'
 
 
 
@@ -46,7 +52,88 @@ class ChatScreen extends Component {
       knightPos: this.props.knightPos,
       convoBoxSize: null,
       hidden: false,
-      oldestM: 0
+      oldestM: 0,
+      run: true,
+      steps: [
+        {
+          content: (
+            <div>
+            Welcome to the design session!
+            <br />
+            <img src={pic4} className='mendler' alt="loading..." />
+            <div> As a reminder today we are here to test out how visual elements used in offline design workshops 
+              can translate to a virtual space. Today we are goign to use these visual elements help a group to 
+              evaluate a formal process. During this workshop, you will use virtual stickie notes to share your 
+              ideas and build upon the ideas of others. You can move the stickies around and group them as you wish.</div>
+          </div>
+          ),
+          placement: "center",
+          locale: { skip: "skip" },
+          target: "body"
+        },
+        {
+        content: "Now we will begin the guided tour!",
+        placement: "center",
+        locale: { skip: "skip" },
+        target: "body"
+      },
+        {
+          content: "This is a list of all of the participants in your group. You can chat with everyone in the chat box below anytime you have a question",
+          placement: "top",
+          styles: {
+            options: {
+              width: 900
+            }
+          },
+          target: ".theUsers",
+          // title: "Our projects"
+        },
+        {
+          // title: "Our Mission",
+          content: (
+            <div>
+              Click on this button to start a new stickie. Don't forget to press share! Then move your note to concepts that you think are related.
+              <br />
+              <img src={group} alt="loading..." />
+            </div>
+          ),
+          target: ".rs-notes--navbar",
+          placement: "top"
+        },
+        {
+          // title: "Our Fail Test",
+          content: (
+            <div>
+              Click on the show map button to see the process map we are working on. Drag the tab in the corner of the note to the map when you find a spot in the process map that is related
+              <img src={drop} className='gifgif' alt="loading..." />
+            </div>
+                      ),
+          styles: {
+            options: {
+              width: 900
+            }
+          },
+          target: ".title",
+          placement: "top"
+        },
+        {
+          // title: "Our Fail Test",
+          content: (
+            <div>
+              If you want to see all of the connections made to the map so far, click show line
+              <img src={show} className='gifgif' alt="loading..." />
+            </div>
+                      ),
+          target: ".title2",
+          placement: "top"
+        },
+        {
+          // title: "Our Fail Test",
+          content: "now you can begin!",
+          target: "body",
+          placement: "center"
+        }
+      ]
     }
     this.sendMessage = this.sendMessage.bind(this)
     this.sendMessage = this.sendMessage.bind(this)
@@ -165,7 +252,7 @@ this.setState({ scrollVals: joined })
       instanceLocator: 'v1:us1:d273e0b5-92c2-4e8e-9ad3-ed684d17f602',
       userId: this.props.currentUsername,
       tokenProvider: new Chatkit.TokenProvider({
-        url: 'http://dsdmap.media.mit.edu:3001/authenticate',
+        url: 'http://localhost:3006/authenticate',
       }),
     })
 
@@ -176,7 +263,7 @@ var oldestM = 300000000
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: '9c81d182-a0c7-41fe-9826-ee967dd24b2a',
+          roomId: '3dfdbb5e-555a-40cb-9784-71ae87a93342',
           hooks: {
             onMessage: message => {
               if (message.id < oldestM){
@@ -249,20 +336,25 @@ var oldestM = 300000000
         this.setState({ currentRoom })
       })
 .then(fetchy => {
+  // console.log(fetchy)
       for (let i = 0, p = Promise.resolve(); i < 10; i++) {
+        // console.log(i)
         p = p
       .then(currentUser =>{  
+        // console.log('returning')
        return this.state.currentUser.fetchMessages({
-        roomId:'9c81d182-a0c7-41fe-9826-ee967dd24b2a',
+        roomId:'3dfdbb5e-555a-40cb-9784-71ae87a93342',
         initialId: oldestM,
         direction: 'older',
         limit:100, 
        })
-        .then(message => { if(message.length === 100){
+        .then(message => { 
+          // if(message.length >= 100){
             // console.log('message!')
             if (message[0].id < oldestM){
+              console.log('yes')
               oldestM = message[0].id
-            }
+            // }
             // console.log(oldestM)
             String.prototype.removeCharAt = function (i) {
               var tmp = this.split(''); // convert to an array
@@ -292,12 +384,13 @@ var oldestM = 300000000
                 allMes:[...this.state.allMes, message[i]]
               })
             }
-            else if (/^jljljl/.test(message.text)){
-            message.text=(message.text.removeCharAt(0))
-            this.setState({
-            bubblePosList: [...this.state.bubblePosList, message[i]],
-            allMes:[...this.state.allMes, message[i]]
-          })
+            else if (/^jljljl/.test(message[i].text)){
+              // console.log(m)
+              message.text=(message.text.removeCharAt(0))
+              this.setState({
+              bubblePosList: [...this.state.bubblePosList, message],
+              allMes:[...this.state.allMes, message]
+            })
             }
             else {this.setState({
               messages: [...this.state.messages, message[i]],
@@ -315,23 +408,119 @@ var oldestM = 300000000
   }
   )}})
 }
-  
 
+theChange=()=>{
+  const varry =document.getElementById("react-joyride-step-2")
+const varry2 =document.getElementById("react-joyride-step-3")
+const varry3 =document.getElementById("react-joyride-step-4")
+const varry4 =document.getElementById("react-joyride-step-5")
+// console.log(varry)
+// console.log(varry2)
+if (typeof varry !== 'undefined' && varry !== null){
+  varry.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0].setAttribute("style", "background-color:transparent;")
+  // console.log(varry.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0])
+} 
+else if (typeof varry2 !== 'undefined' && varry2 !== null) {
+  varry2.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0].setAttribute("style", "background-color:transparent;")
+  // console.log(varry2.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0])
+}
+else if  (typeof varry3 !== 'undefined' && varry3 !== null){
+  varry3.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0].setAttribute("style", "background-color:transparent;")
+  // console.log(varry3.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0])
+}
+else if (typeof varry4 !== 'undefined' && varry4 !== null){  
+  varry4.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0].setAttribute("style", "background-color:transparent;")
+
+  // console.log(varry4.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0])
+}
+}
+  
+static propTypes = {
+  joyride: PropTypes.shape({
+    callback: PropTypes.func
+  })
+};
+
+static defaultProps = {
+  joyride: {}
+};
+
+// handleClickAddSteps = ({ target }) => {
+//   const { steps } = this.state;
+
+//   target.style.display = "none";
+//   if (steps.length >= 5) return;
+
+//   const newSteps = [
+//     {
+//       content: (
+//         <div>
+//           <h3>Or event a SVG icon</h3>
+//           <svg
+//             width="50px"
+//             height="50px"
+//             viewBox="0 0 96 96"
+//             version="1.1"
+//             xmlns="http://www.w3.org/2000/svg"
+//             preserveAspectRatio="xMidYMid"
+//           >
+//             <g>
+//               <path
+//                 d="M83.2922435,72.3864207 C69.5357835,69.2103145 56.7313553,66.4262214 62.9315626,54.7138297 C81.812194,19.0646376 67.93573,0 48.0030634,0 C27.6743835,0 14.1459311,19.796662 33.0745641,54.7138297 C39.4627778,66.4942237 26.1743334,69.2783168 12.7138832,72.3864207 C0.421472164,75.2265157 -0.0385432192,81.3307198 0.0014581185,92.0030767 L0.0174586536,96.0032105 L95.9806678,96.0032105 L95.9966684,92.1270809 C96.04467,81.3747213 95.628656,75.2385161 83.2922435,72.3864207 Z"
+//                 fill="#000000"
+//               />
+//             </g>
+//           </svg>
+//         </div>
+//       ),
+//       placement: "left",
+//       target: ".demo__about h2"
+//     }
+//   ];
+
+//   this.setState({ steps: steps.concat(newSteps) });
+// };
+
+// handleClickStart = e => {
+//   e.preventDefault();
+
+//   this.setState({
+//     run: true
+//   });
+// };
+
+handleJoyrideCallback = data => {
+  const { joyride } = this.props;
+  const { type } = data;
+
+  if (type === EVENTS.TOUR_END && this.state.run) {
+    // Need to set our running state to false, so we can restart if we click start again.
+    this.setState({ run: false });
+  }
+
+  if (typeof joyride.callback === "function") {
+    joyride.callback(data);
+  } else {
+    // console.group(type);
+    // console.log(data); //eslint-disable-line no-console
+    console.groupEnd();
+  }
+};
 
 
   render() {
 
-//  var wholeScreen = document.getElementById('root')
-//  if (typeof wholeScreen[0] !== 'undefined'){
-//  window.scrollTo({ behavior: 'smooth',
-//  top:0})}
+ var wholeScreen = document.getElementById('root')
+ if (typeof wholeScreen[0] !== 'undefined'){
+ window.scrollTo({ behavior: 'smooth',
+ top:0})}
 // console.log(wholeScreen)
 
     //   console.log(this.state.oldestM)
     // // console.log(oldestM)
     //   console.log(...this.state.allMes.map(m => m.id))
     //   console.log(this.state.allMes[this.state.allMes.length-1])
-    //   console.log(this.state.allMes)
+      // console.log(this.state.allMes)
       // console.log(this.state.postings)
 
     // console.log(this.state.allMes)
@@ -476,9 +665,33 @@ var oldestM = 300000000
 
     }
 
-  
+    // const { steps } = this.state.steps;
+
+    // console.log(varry)
 
     return (<div className='upperMost'>
+                  {/* <button onClick={this.handleClickStart}>Let's Go!</button> */}
+        <ReactJoyride
+          continuous
+          scrollToFirstStep
+          showProgress
+          showSkipButton
+          run={this.state.run}
+          steps={this.state.steps}
+          styles={{
+            options: {
+              zIndex: 10000,
+              // arrowColor: '#e3ffeb',
+              // backgroundColor: "#eee",
+              // backgroundColor: '#e3ffeb',
+              // overlayColor: 'rgba(79, 26, 0, 0.4)',
+              primaryColor: '#9FA7B8',
+              // textColor: '#004a14',
+              width: 900,
+            }
+          }}
+          callback={this.handleJoyrideCallback, this.theChange}
+        />
     <div onClick={this.handleClick} onScroll= {this.handleScroll}>       
         <aside className="bigSpace" style={styles.whosOnlineListContainer}>
         <WhosOnlineList 

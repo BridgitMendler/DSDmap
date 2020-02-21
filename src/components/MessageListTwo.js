@@ -27,7 +27,7 @@ export function MessageListTwo(props){
       font: 'avenir next',
       fontWeight: 'medium',
     },
-    message: { fontWeight: 'medium', font:'avenir next', fontSize: 40 },
+    message: { fontWeight: 'medium', font:'avenir next', fontSize: 27 },
 
     li2: {
       scrollBehavior: 'smooth',
@@ -43,7 +43,7 @@ export function MessageListTwo(props){
       font: 'avenir next',
       fontWeight: 'medium',
     },
-    message2: { fontWeight: 'medium', font:'avenir next', fontSize: 40 },
+    message2: { fontWeight: 'medium', font:'avenir next', fontSize: 27 },
     
 
     button: {
@@ -69,10 +69,10 @@ const [ didMount, setDidMount ] = useState(false)
           return styles.li2
         }
         else { 
-          return styles.li}
+          return styles.li2}
     }
       else{
-return styles.li
+return styles.li2
 }
 }
 const onSubmit =(e)=> {
@@ -139,39 +139,39 @@ messageClean()
 // var theOne2
 
 
-const weMove =()=> {
-  var theOne
-  // console.log(resultTwo)
-  var i
-  for (i = 0; i<resultTwo.length; i++){
-    if (resultTwo[i].classNameParent === 'listyTwo dropTarget selectionssss'){
-      theOne = resultTwo[i]
-    }
-  }
-  // var theOne = (document.getElementsByClassName('selectionssss'))
-  var locaa = document.getElementsByClassName('listyThree')
-  // theOne2 = theOne
-  if (typeof theOne !== 'undefined'){
-    // console.log('the one not undefined')
-    // if (theOne[0].offsetTop !== currentList[currentList.length-1]){
-    // console.log(theOne[0].offsetTop)
-    if (typeof locaa !== 'undefined'){
-      if (typeof locaa[0] !== 'undefined'){
-        // console.log(theOne.currentList)
-        var locaaa = locaa[0]
-        // console.log(locaaa)
-      locaaa.scrollTo({behavior: 'smooth',
-      top:theOne.currentList-300})}
-    }}
-    // else{ console.log('undefined the one')}
-    }
+// const weMove =()=> {
+//   var theOne
+//   // console.log(resultTwo)
+//   var i
+//   for (i = 0; i<resultTwo.length; i++){
+//     if (resultTwo[i].classNameParent === 'listyTwo dropTarget selectionssss'){
+//       theOne = resultTwo[i]
+//     }
+//   }
+//   // var theOne = (document.getElementsByClassName('selectionssss'))
+//   var locaa = document.getElementsByClassName('listyThree')
+//   // theOne2 = theOne
+//   if (typeof theOne !== 'undefined'){
+//     // console.log('the one not undefined')
+//     // if (theOne[0].offsetTop !== currentList[currentList.length-1]){
+//     // console.log(theOne[0].offsetTop)
+//     if (typeof locaa !== 'undefined'){
+//       if (typeof locaa[0] !== 'undefined'){
+//         // console.log(theOne.currentList)
+//         var locaaa = locaa[0]
+//         // console.log(locaaa)
+//       locaaa.scrollTo({behavior: 'smooth',
+//       top:theOne.currentList-300})}
+//     }}
+//     // else{ console.log('undefined the one')}
+//     }
   // }
 
   useEffect(() => {
     if (didMount) {
       if (props.currentUser.id !== 'B'){
         // console.log('it is me!')
-        weMove()
+        // weMove()
       // doStuff()
     } else setDidMount(true)
   }})
@@ -210,7 +210,7 @@ if (props.currentUser.id === 'B')
 // var locaa = document.getElementsByClassName('listyThree')
 // console.log(resultTwo)
 
-      weMove()
+      // weMove()
       // console.log(resultTwo)
 
             return (
@@ -222,7 +222,9 @@ if (props.currentUser.id === 'B')
                 }}
                  
               > 
-                <ul style={styles.ul} id='listyTwoId' onChange={weMove()}>
+                <ul style={styles.ul} id='listyTwoId' 
+                // onChange={weMove()}
+                >
                   {resultTwo.slice(0).reverse().map((message, index) => (
                     <li className={message.classNameParent} key={index} style={windowFocus(message)}>
                       <p className='listyText noselect' style={styles.message}>{message.print === "hello" ? <a href="http://www.google.com">thanks for participating! Please click here to complete the post survey</a>: message.print}</p>

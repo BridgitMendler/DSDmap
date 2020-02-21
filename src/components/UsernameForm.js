@@ -13,7 +13,7 @@ class UsernameForm extends Component {
 
   onSubmit(e) {
     e.preventDefault()
-    // console.log(this.state.username)
+    console.log(this.state.username)
     this.props.onSubmit(this.state.username)
   }
 
@@ -157,14 +157,14 @@ below, you consent to this collection of answers to questions:</h3>
   <option value="volvo">I consent</option>
   <option value="saab">I do not consent</option>
 </select>
-{/* <label for='first' className='inputLabel'>AFFILIATION WITH MIT</label>
+<label for='first' className='inputLabel'>AFFILIATION WITH MIT</label>
             <input 
               className='inputField'
               type="text"
               placeholder=""
               onChange={this.onChange}
               name='first'
-            /> */}
+            />
             <br></br>
             <label for="cars" className='inputLabel10'>What role best describes you:</label>
 <br></br>

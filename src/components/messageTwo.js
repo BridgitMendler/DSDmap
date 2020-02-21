@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Popup from "reactjs-popup";
 import pic from './pencil.png';
 
+
 class MessageTwo extends Component {
   constructor(props) {
     super(props)
@@ -33,6 +34,14 @@ class MessageTwo extends Component {
       container: {
         marginBottom: 10,
         padding: 10,
+        // height: 300,
+        width:500
+      },
+      container2: {
+        marginBottom: 10,
+        padding: 10,
+        height: 300,
+        borderRadius: 50,
         width:500
       },
       form: {
@@ -93,7 +102,7 @@ class MessageTwo extends Component {
     // </Popup>
       <Popup trigger={<h1 onClick={this.handleClick} style={styles.button} className='myButton'> <img className='pictureTwo noselect' src={pic} style={styles.img}></img><p style={styles.imgee}>write post</p></h1>} modal position="right center">
       <div style={styles.container}>
-        <div>
+        <div >
           <form onSubmit={this.onSubmit} style={styles.form}>
             <input
               type="text"

@@ -104,7 +104,7 @@ class WhosOnlineListItem extends Component {
     
     return (
       <li style={styles.li}>
-        <div data-tip data-for={name}
+        <div className="theUsers" data-tip data-for={name}
           style={{
             ...styles.div,
             backgroundColor: this.state.selectedColor,

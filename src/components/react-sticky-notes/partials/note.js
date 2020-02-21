@@ -790,8 +790,7 @@ const setOpac = () => {
         theOneHeight = theOne[0].offsetHeight
         // theOneText = theOne[0].childNodes[1].offsetHeight
     }
-// console.log(((((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)))
-    if ((((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)< 20&& props.scrollScreen > 0){
+    if ((((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)< 20&& props.scrollScreen > 0|| (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) >window.screen.height*.81){
 
         
         return 0.0
@@ -802,11 +801,11 @@ const setOpac = () => {
                 return 1
             }
             else {
-                if ((((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)< 20&& props.scrollScreen > 0){
+                if ((((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) < 20&& props.scrollScreen > 0 || (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) >window.screen.height*.81){
                     return 0
                 }
                 else {
-                return 0.5}
+                return 1}
             }
         }
         else {
@@ -814,7 +813,7 @@ const setOpac = () => {
                 return 0
             }
             else {
-        return 0.5
+        return 1
         }}
     }
 }
@@ -1057,7 +1056,7 @@ const newFunc2 = () => {
     // }
     // console.log(this.state.cardHeight)
     // console.log(this.state.y)
-    // console.log(((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) 
+    // console.log(((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)   
     return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  
 }
 // var noteNameLabel

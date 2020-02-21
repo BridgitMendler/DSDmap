@@ -37,17 +37,19 @@ export const Cheese = () => {
   // useEffect(() => observe(newPos => (setKnightPos(newPos))))
 
   const onUsernameSubmitted = (username) => {
-    fetch('http://dsdmap.media.mit.edu:3001/users', {
+    fetch('http://localhost:3006/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ username }),
     })
-      .then(response => { if (username === 'B'){
+      .then(response => { 
+        if (username === 'B' || username === 'J'){
         setCurrentUsername(username);
         setCurrentScreen('ChatScreen');
-      }})
+      }
+    })
 
   };
 
