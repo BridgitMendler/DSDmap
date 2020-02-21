@@ -37,7 +37,7 @@ export const Cheese = () => {
   // useEffect(() => observe(newPos => (setKnightPos(newPos))))
 
   const onUsernameSubmitted = (username) => {
-    fetch('http://localhost:3006/users', {
+    fetch('http://dsdmap.media.mit.edu:3001/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -54,7 +54,8 @@ export const Cheese = () => {
         usernameTwo['consent']= newText[2]
         usernameTwo['password'] = newText[1]
         // console.log(usernameTwo)
-        if (usernameTwo['password'] === 'Blah' && usernameTwo['consent'] === 'I consent' ||usernameTwo['consent'] === '' && usernameTwo['username'] !== ''){
+        if (usernameTwo['password'] === 'Blah' && usernameTwo['consent'] === 'I consent' && usernameTwo['username'] !== ''||usernameTwo['password'] === 'Blah' && usernameTwo['consent'] === '' && usernameTwo['username'] !== ''){
+          console.log(usernameTwo['password'])
         setCurrentUsername(username);
         setCurrentScreen('ChatScreen');
       }

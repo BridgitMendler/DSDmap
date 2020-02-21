@@ -6,25 +6,47 @@ class UsernameForm extends Component {
     super(props)
     this.state = {
       username: '',
+      password: '',
+      status: '',
+      consent: '',
     }
     this.onSubmit = this.onSubmit.bind(this)
     this.onChange = this.onChange.bind(this)
+    this.onChange2 = this.onChange2.bind(this)
+    this.onChange3 = this.onChange3.bind(this)
+    this.onChange4 = this.onChange4.bind(this)
   }
 
-  onSubmit(e) {
+
+ onSubmit(e) {
     e.preventDefault()
     console.log(this.state.username)
-    this.props.onSubmit(this.state.username)
+    this.props.onSubmit(`${this.state.username}`+`_${this.state.password}`+`_${this.state.status}`+`_${this.state.consent}`)
   }
 
   onChange(e) {
     this.setState({ username: e.target.value })
   }
 
+  onChange2(e) {
+// console.log()
+
+      // console.log(this.state.password)
+    this.setState({ password: e.target.value })
+  }
+
+  onChange3(e) {
+    this.setState({ consent: e.target.value })
+  }
+
+  onChange4(e) {
+    this.setState({ status: e.target.value })
+  }
 
 
 
   render() {
+    // console.log(this.state)
     const styles = {
 
 
@@ -153,36 +175,36 @@ ideas about how to improve a formal process. In the unlikely event that response
 that content will be removed and no answers to questions will be distributed beyond the research team. By choosing "I consent" 
 below, you consent to this collection of answers to questions:</h3>
 </h3>
-<select id="cars">
-  <option value="volvo">I consent</option>
-  <option value="saab">I do not consent</option>
+<select id="cars" value={this.state.consent} onChange={this.onChange3}>
+  <option value="I consent">I consent</option>
+  <option value="I do not consent">I do not consent</option>
 </select>
-<label for='first' className='inputLabel'>AFFILIATION WITH MIT</label>
+            <br></br>
+            <label for="cars" className='inputLabel10'>What role best describes you:</label>
+<br></br>
+            <select id="cars" onChange={this.onChange4}>
+              <option value="student">student</option>
+              <option value="faculty">faculty</option>
+              <option value="staff">staff</option>
+              <option value="facilitator">facilitator</option>
+              <option value="other">other</option>
+            </select>
+            <img className='picture' src={pic}></img>
+            <label for='first' className='inputLabel2'>create a username</label><br></br>
             <input 
               className='inputField'
               type="text"
               placeholder=""
               onChange={this.onChange}
               name='first'
-            />
-            <br></br>
-            <label for="cars" className='inputLabel10'>What role best describes you:</label>
-<br></br>
-            <select id="cars">
-              <option value="volvo">student</option>
-              <option value="saab">faculty</option>
-              <option value="opel">staff</option>
-              <option value="opel">facilitator</option>
-              <option value="audi">other</option>
-            </select>
-            <img className='picture' src={pic}></img>
+            /><br></br>
             <label for='psw' className='inputLabel2'>password</label>
             <br></br>
               <input
               className='inputField'
               type="password"
               placeholder=""
-              // onChange={this.onChange}
+              onChange={this.onChange2}
               name='psw'
             />
             <br></br>
