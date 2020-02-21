@@ -209,7 +209,7 @@ var newBub = props.newBubble.filter(obj => {
 // console.log(iclicked)
 
 //     }
-// console.log(newNot)
+console.log(newBub)
 
     const [hasDropped, setHasDropped] = useState(false)
 

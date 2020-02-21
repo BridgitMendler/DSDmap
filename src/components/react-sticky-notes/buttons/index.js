@@ -6,6 +6,7 @@ const sourceTwo = document.getElementsByClassName('listyThree')
 
 export function ButtonAdd({prefix, data, icons, callbacks}, props){
     var theOne = (document.getElementsByClassName('selectionssss'))
+    var allThem =(document.getElementsByClassName('listyTwo'))
     var scrollValOne = document.getElementsByClassName('listyThree')[0]
     var theOneOffset
     var scrollVal
@@ -13,12 +14,15 @@ export function ButtonAdd({prefix, data, icons, callbacks}, props){
     var theOneHeight
     var theOneText
     var theCardText
-    if (typeof theOne[0] !== 'undefined' && typeof scrollValOne !== 'undefined') {
+    // console.log(theOne)
+    // console.log(scrollValOne)
+    if (typeof scrollValOne !== 'undefined') {
         scrollVal = scrollValOne.scrollTop;
-        theOneOffset = theOne[0].offsetTop
-        theOneHeight = theOne[0].offsetHeight
+        console.log(scrollValOne.scrollTop)
+        // theOneOffset = theOne[0].offsetTop
+        // theOneHeight = theOne[0].offsetHeight
         // theOneText = theOne[0].childNodes[1].offsetHeight
-        theCardText = theOne[0].innerText
+        // theCardText = theOne[0].innerText
     }
     // if (typeof sourceTwo[0] !== 'undefined'){
     //     console.log(sourceTwo[0].scrollTop)
@@ -35,7 +39,28 @@ export function ButtonAdd({prefix, data, icons, callbacks}, props){
         else {
         return '#FAE3B6';
     }}
-    // console.log(theCardText)
+
+    var allList = []
+    for (var i = 0; i< allThem.length; i++){
+        // console.log(allThem[i].offsetTop)
+        allList.push(allThem[i].offsetTop)
+    }
+    var closestCard
+    // console.log(allList)
+if (allList.length > 0){
+
+    closestCard = allList.reduce(function(prev, curr) {
+        return (Math.abs(curr - (scrollVal+200)) < Math.abs(prev - (scrollVal+200)) ? curr : prev);
+      });
+    }
+    // console.log(closestCard)
+    var myCard
+    for (var i = 0; i< allThem.length; i++){
+        if (closestCard === allThem[i].offsetTop){
+            myCard = allThem[i].innerText
+        }}
+
+
     const getRandom= () => {
     if (typeof document.getElementsByClassName('listyTwo') !== 'undefined' && typeof document.getElementsByClassName('bigSpace') !== 'undefined'){
         var absolCardLeft = ((document.getElementsByClassName('listyTwo')[0]).offsetLeft)
@@ -59,7 +84,7 @@ export function ButtonAdd({prefix, data, icons, callbacks}, props){
         key: `${prefix}--button__add`,
         className:`${prefix}--button ${prefix}--button__add noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${0}`+`_none`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${myCard}`+ `_${0}`+`_none`)))
     }, 
         icons.add
     )
@@ -90,6 +115,7 @@ export function ButtonAddR({prefix, data, icons, callbacks}, props){
         else {
         return '#FAE3B6';
     }}
+
 
     const getRandom= () => {
         if (typeof document.getElementsByClassName('listyTwo') !== 'undefined' && typeof document.getElementsByClassName('bigSpace') !== 'undefined'){

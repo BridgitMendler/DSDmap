@@ -1134,6 +1134,7 @@ var newText = props.data.text.split(/[_,]+/);
                     visible: props.visible, 
                     myArrayPos: props.myArrayPos, 
                     myArray: props.myArray, 
+                    newBub: props.newBub,
                     key: `note-${props.data.od}`,
                     posX: this.hashtagMoveX(),
                     posY: this.hashtagMoveY(),
