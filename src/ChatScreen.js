@@ -535,11 +535,41 @@ handleJoyrideCallback = data => {
 
   render() {
 
- var wholeScreen = document.getElementById('root')
- if (typeof wholeScreen[0] !== 'undefined'){
- window.scrollTo({ behavior: 'smooth',
- top:0})}
-// console.log(wholeScreen)
+    var currentUser2
+    const userArray = () =>{
+    var usernameTwo = this.state.currentUser
+    if (typeof this.state.currentUser !== 'undefined'){
+      if (typeof this.state.currentUser.id !== 'undefined'){
+    var newText = this.state.currentUser.id.split(/[_,]+/)
+    
+    usernameTwo['username'] = newText[0] 
+    usernameTwo['status'] = newText[3]
+    usernameTwo['consent']= newText[2]
+    usernameTwo['password'] = newText[1]
+    // console.log(usernameTwo)
+    currentUser2 = usernameTwo
+  }
+    }}
+userArray()
+    var users2 = []
+		const findDupsArr = () => {
+			var newArray = this.state.currentRoom.users
+			var newArray2 = []
+      var i
+      if (typeof newArray !== 'undefined'){
+			for (i = 0; i< newArray.length; i++) {
+        // console.log(newArray[i])
+				var newText = newArray[i].id.split(/[_,]+/);
+
+				newArray[i]['username'] = newText[0] 
+				newArray[i]['status'] = newText[3]
+				newArray[i]['consent']= newText[2]
+        newArray[i]['password'] = newText[1]
+      }
+      users2 = newArray
+    }}
+    findDupsArr()
+// console.log(users2)
 
     //   console.log(this.state.oldestM)
     // // console.log(oldestM)
@@ -722,8 +752,8 @@ handleJoyrideCallback = data => {
         <WhosOnlineList 
                     style= {styles.onlineList}
             className='onlineList noselect' 
-            currentUser={this.state.currentUser} 
-            users={this.state.currentRoom.users}
+            currentUser={currentUser2} 
+            users={users2}
           />
           <div style={styles.borderBox}>
           <MessageTwo onSubmit={this.sendMessage} 
@@ -778,5 +808,6 @@ handleJoyrideCallback = data => {
     )
   }
 }
+
 
 export default ChatScreen

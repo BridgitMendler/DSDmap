@@ -45,13 +45,36 @@ export const Cheese = () => {
       body: JSON.stringify({ username }),
     })
       .then(response => { 
-        if (username === 'B' || username === 'J'){
+
+        var usernameTwo =[]
+        var newText = username.split(/[_,]+/)
+        
+        usernameTwo['username'] = newText[0] 
+        usernameTwo['status'] = newText[3]
+        usernameTwo['consent']= newText[2]
+        usernameTwo['password'] = newText[1]
+        // console.log(usernameTwo)
+        if (usernameTwo['password'] === 'Blah' && usernameTwo['consent'] === 'I consent' ||usernameTwo['consent'] === '' && usernameTwo['username'] !== ''){
         setCurrentUsername(username);
         setCurrentScreen('ChatScreen');
       }
     })
 
   };
+
+  // const findDupsArr = () => {
+  //   var newArray = this.state.currentRoom.users
+  //   var newArray2 = []
+  //   var i
+  //   for (i = 0; i< this.props.currentRoom.users.length; i++) {
+  //     var newText = newArray[i].text.split(/[_,]+/);
+
+  //     newArray[i]['username'] = newText[3] 
+  //     newArray[i]['status'] = newText[1]
+  //     newArray[i]['consent']= newText[2]
+  //     newArray[i]['password'] = newText[5]
+  //   }
+  // }
 
     if (currentScreen === 'WhatIsYourUsernameScreen') {
       return <UsernameForm onSubmit={onUsernameSubmitted} />

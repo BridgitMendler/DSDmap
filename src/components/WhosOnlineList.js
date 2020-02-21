@@ -17,24 +17,30 @@ class WhosOnlineList extends Component {
     return (
       <ul>
         {this.props.users.map((user, index) => {
+          if (typeof this.props.currentUser !== 'undefined'){
+            // console.log(user.id, this.props.currentUser.id)
           if (user.id === this.props.currentUser.id) {
             return (
               <WhosOnlineListItem key={index} presenceState="online">
-                {user.name} {index}
+                {user.username} {index}
               </WhosOnlineListItem>
             )
           }
+          else if (user.presence.state === 'online'){
+          // console.log(user)
           return (
             <WhosOnlineListItem key={index} presenceState={user.presence.state}>
-              {user.name} {index}
+              {user.username} {index}
             </WhosOnlineListItem>
           )
-        })}
+  }}})}
       </ul>
     )
   }
 
   render() {
+    // if (typeof this.props.users !== 'undefined'){
+    // console.log(this.props.users.presence)}
     if (this.props.users) {
       return this.renderUsers()
     } else {
@@ -43,6 +49,27 @@ class WhosOnlineList extends Component {
   }
 }
 
+
+// var currentUser2
+// var users2 = []
+// const findDupsArr = () => {
+//   var newArray = this.state.currentRoom.users
+//   var newArray2 = []
+//   var i
+//   if (typeof newArray !== 'undefined'){
+//   for (i = 0; i< newArray.length; i++) {
+//     console.log(newArray[i])
+//     var newText = newArray[i].id.split(/[_,]+/);
+
+//     newArray[i]['username'] = newText[0] 
+//     newArray[i]['status'] = newText[3]
+//     newArray[i]['consent']= newText[2]
+//     newArray[i]['password'] = newText[1]
+//   }
+//   users2 = newArray
+// }}
+// findDupsArr()
+// console.log(users2)
 class WhosOnlineListItem extends Component {
 
   constructor(props) {

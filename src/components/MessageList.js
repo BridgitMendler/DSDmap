@@ -79,7 +79,7 @@ const MessagesList = (props) => {
     },
       
     senderUsername: {
-      fontSize: 10 
+      fontSize: 13 
     },
     message: { fontSize: 15,
       borderRadius: 25,
@@ -167,7 +167,7 @@ const MessagesList = (props) => {
             }
            return (
             <li key={index}  style={whichUser(message)}>
-<span className='noselect' style={styles.senderUsername}>{message.senderId}</span>
+<span className='noselect' style={styles.senderUsername}>{message.senderId.split(/[_,]+/)[0]}</span>
               <p className="listy" style={styles.message}>{'   ' + message.text}</p>
 
             </li>
