@@ -177,7 +177,7 @@ messageClean()
   }})
 
 
-if (props.currentUser.id === 'B')
+if (props.currentUser.id === 'B_Blah__')
 {
 
     return (
@@ -196,7 +196,7 @@ if (props.currentUser.id === 'B')
             className="title"
             onClick={onSubmit}
           ><img className='pictureThree noselect' src={pic2}></img></h1>
-              <p className='listyText noselect' style={styles.message}>{message.print}</p>
+              <p className='listyText noselect' style={styles.message}>{message.print === "yo" ? <a href="https://mit.co1.qualtrics.com/jfe/form/SV_0CfP7xZFlzTtOSx">thanks for participating! Please click here to complete the post survey</a>: message.print}</p>
             </li>
           ))}
         </ul>
@@ -227,7 +227,7 @@ if (props.currentUser.id === 'B')
                 >
                   {resultTwo.slice(0).reverse().map((message, index) => (
                     <li className={message.classNameParent} key={index} style={windowFocus(message)}>
-                      <p className='listyText noselect' style={styles.message}>{message.print === "hello" ? <a href="http://www.google.com">thanks for participating! Please click here to complete the post survey</a>: message.print}</p>
+                      <p className='listyText noselect' style={styles.message}>{message.print === "yo" ? <a href="https://mit.co1.qualtrics.com/jfe/form/SV_0CfP7xZFlzTtOSx">thanks for participating! Please click here to complete the post survey</a>: message.print}</p>
                     </li>
                   ))}
                 </ul>
