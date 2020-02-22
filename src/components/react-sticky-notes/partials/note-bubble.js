@@ -112,50 +112,51 @@ const findY = () => {
 }
 
     useEffect(() => 
-    (observe(newPos => {arrayAdd(newPos)}),
-    observeTwo(newDrop => {
-        (setHasDropped(newDrop), newArrayIndex(newDrop))
-        })
-        ,observeFour(newPos => {arrayAddTwo(newPos)} )),findX(),findY(), [arrayIndex])
+    // (observe(newPos => {arrayAdd(newPos)}),
+    // observeTwo(newDrop => {
+    //     (setHasDropped(newDrop), newArrayIndex(newDrop))
+    //     })
+    //     ,observeFour(newPos => {arrayAddTwo(newPos)} )),
+        {findX(),findY()}, [arrayIndex])
 
 
-    const newArrayIndex = (newDrop) => {
-        if (newDrop !== hasDropped) {
-            setArrayIndex(arrayIndex + 1)
-        }
-        else if (newDrop == hasDropped) {
-        }
-    }
-        const arrayAdd = (newPos) => {
-                if (!knightPos.includes(newPos)) {
-                    setKnightPos([...knightPos, newPos])
+//     const newArrayIndex = (newDrop) => {
+//         if (newDrop !== hasDropped) {
+//             setArrayIndex(arrayIndex + 1)
+//         }
+//         else if (newDrop == hasDropped) {
+//         }
+//     }
+//         const arrayAdd = (newPos) => {
+//                 if (!knightPos.includes(newPos)) {
+//                     setKnightPos([...knightPos, newPos])
 
-                }
+//                 }
 
-            }
-// console.log(knightPos)
-        const arrayAddTwo = (newPos) => {
-            const knightPosVersion = knightPos[knightPos.length-1]
-            // console.log(dropPositions)
-            // console.log(dropPositions)
-                if (newPos in dropPositions) {
-                    // console.log('if ' +knightPos)
-                const updateFieldChanged = newPos => {
-                    let newArr = dropPositions
-                    newArr[newPos] = {positionXY: knightPosVersion}
-                    setDropPositions(newArr)
-                    }
-                updateFieldChanged(newPos, knightPosVersion)
+//             }
+// // console.log(knightPos)
+//         const arrayAddTwo = (newPos) => {
+//             const knightPosVersion = knightPos[knightPos.length-1]
+//             // console.log(dropPositions)
+//             // console.log(dropPositions)
+//                 if (newPos in dropPositions) {
+//                     // console.log('if ' +knightPos)
+//                 const updateFieldChanged = newPos => {
+//                     let newArr = dropPositions
+//                     newArr[newPos] = {positionXY: knightPosVersion}
+//                     setDropPositions(newArr)
+//                     }
+//                 updateFieldChanged(newPos, knightPosVersion)
 
-                }
-                else {
-                    var newID = newPos
-                    setDropPositions({...dropPositions,  [newID]:
-                        {positionXY: knightPosVersion}
-                      })
+//                 }
+//                 else {
+//                     var newID = newPos
+//                     setDropPositions({...dropPositions,  [newID]:
+//                         {positionXY: knightPosVersion}
+//                       })
 
-                }
-            }
+//                 }
+//             }
 var ElLeft
 var ElTop
 var myEl = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)[0]
