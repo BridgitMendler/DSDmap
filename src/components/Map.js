@@ -103,31 +103,28 @@ return
         // console.log(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
 
         const diamonds = [
-          { id: "Approved", icon: RectPale,reflexive: false, x: 250, y: 200 },
-          { id: "Rejected", icon: RectPale,reflexive: false, x: 150, y: 200},
-          { id: "Approved (review panel)", icon: RectPale,reflexive: true, x: 200, y: 200},
-          { id: "Approved", icon: RectPale,reflexive: true, x: 300, y: 425},
-          { id: "Rejected", icon: RectPale,reflexive: false, x: 200, y: 425 },
-          { id: "Approved (pending revisions)", icon: RectPale,reflexive: false, x: 250, y: 425},
-          { id: "Approved", icon: RectPale,reflexive: false, x: 325, y: 575 },
-          { id: "Rejected", icon: RectPale,reflexive: false, x: 275, y: 575}
+          { id: "application rejected", icon: RectPale,reflexive: false, x: 250, y: 200 },
+          { id: "application reviewed by admissions sub-committee", icon: RectPale,reflexive: false, x: 150, y: 200},
+          { id: "application rejected", icon: RectPale,reflexive: true, x: 200, y: 200},
+          { id: "9 application reviewed by full admissions committee", icon: RectPale,reflexive: true, x: 300, y: 425},
+          { id: "10 application rejection mailed", icon: RectPale,reflexive: false, x: 200, y: 425 },
+          { id: "11 application acceptance mailed", icon: RectPale,reflexive: false, x: 250, y: 425},
+
         ]
 
       const nodes = [
-        { id: "PI Identifies funding opportunity and notifies Gifts Manager/Grants Administrator", reflexive: false, x: 200, y: 50},
-        { id: "Gifts Manager/Grants Administrator vets grantor (possible Review Panel support)", reflexive: true, x: 200, y: 125},
-        { id: "Approved",  reflexive: false, x: 250, y: 200 },
-        { id: "Rejected", icon: RectGreen.png,reflexive: false, x: 150, y: 200},
-        { id: "Approved (review panel)", icon: RectGreen.png,reflexive: true, x: 200, y: 200},
-        { id: "PI works with Grants Administrator to write proposal", reflexive: false, x: 250, y: 275 },
-        { id: "Proposal submitted to MIT Central (RAS) for review", reflexive: false, x: 250, y: 350},
-        { id: "Approved", icon: RectGreen.png, reflexive: true, x: 300, y: 425},
-        { id: "Rejected", icon: RectGreen.png, reflexive: false, x: 200, y: 425 },
-        { id: "Approved (pending revisions)", icon: RectGreen.png, reflexive: false, x: 250, y: 425},
-        { id: "Proposal submitted to funder", reflexive: true, x: 300, y: 500},
-        { id: "Approved", icon: RectGreen.png, reflexive: false, x: 325, y: 575 },
-        { id: "Rejected", icon: RectGreen.png, reflexive: false, x: 275, y: 575},
-        { id: "Funds allocated to ML", reflexive: true, x: 325, y: 650},
+        { id: "1student decides to apply", reflexive: false, x: 200, y: 50},
+        { id: "2student chooses early or regular decision", reflexive: true, x: 200, y: 125},
+        { id: "3student takes completes standardized tests",  reflexive: false, x: 250, y: 200 },
+        { id: "4student submits all application materials", icon: RectGreen.png,reflexive: false, x: 150, y: 200},
+        { id: "5 admissions officers recieve application and review", icon: RectGreen.png,reflexive: true, x: 200, y: 200},
+        { id: "6 application rejected", reflexive: false, x: 250, y: 275 },
+        { id: "7 application reviewed by admissions sub-committee", reflexive: false, x: 250, y: 350},
+        { id: "8 application rejected", icon: RectGreen.png, reflexive: true, x: 300, y: 425},
+        { id: "9 application reviewed by full admissions committee", icon: RectGreen.png, reflexive: false, x: 200, y: 425 },
+        { id: "10 application rejection mailed", icon: RectGreen.png, reflexive: false, x: 250, y: 425},
+        { id: "11 application acceptance mailed", reflexive: true, x: 300, y: 500},
+
 
       ];
       let lastNodeId = 2;
@@ -144,9 +141,8 @@ return
         { source: nodes[6], target: nodes[8], left: false, right: true },
         { source: nodes[6], target: nodes[9], left: false, right: true },
         { source: nodes[7], target: nodes[10], left: false, right: true },
-        { source: nodes[10], target: nodes[11], left: false, right: true },
-        { source: nodes[10], target: nodes[12], left: false, right: true },
-        { source: nodes[11], target: nodes[13], left: false, right: true },
+
+
 
           ];
           setNodes(nodes);
