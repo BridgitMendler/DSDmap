@@ -55,7 +55,7 @@ export const Cheese = () => {
         usernameTwo['password'] = newText[1]
         // console.log(usernameTwo)
         if (usernameTwo['password'] === 'Blah' && usernameTwo['consent'] === 'I consent' && usernameTwo['username'] !== ''||usernameTwo['password'] === 'Blah' && usernameTwo['consent'] === '' && usernameTwo['username'] !== ''){
-          console.log(usernameTwo['password'])
+          // console.log(usernameTwo['password'])
         setCurrentUsername(username);
         setCurrentScreen('ChatScreen');
       }

@@ -18,7 +18,7 @@ export function ButtonAdd({prefix, data, icons, callbacks}, props){
     // console.log(scrollValOne)
     if (typeof scrollValOne !== 'undefined') {
         scrollVal = scrollValOne.scrollTop;
-        console.log(scrollValOne.scrollTop)
+        // console.log(scrollValOne.scrollTop)
         // theOneOffset = theOne[0].offsetTop
         // theOneHeight = theOne[0].offsetHeight
         // theOneText = theOne[0].childNodes[1].offsetHeight

@@ -23,7 +23,7 @@ import drop from './components/drop2.gif'
 import tab2 from './components/tab2.gif'
 import pic4 from './components/mendler2.png'
 import group from './components/group.gif'
-import show from './components/line.gif'
+import show from './components/link.gif'
 import mapFull from './components/mapFull.png'
 import breakdown from './components/breakdown6.png'
 
@@ -150,7 +150,7 @@ class ChatScreen extends Component {
           content: (
             <div className='welcome4'>
               If you want to see all of the connections made to the map so far, click show line
-              <img src={show} className='gifgif' alt="loading..." />
+              <img src={show} className='gifgif2' alt="loading..." />
             </div>
                       ),
           target: ".title2",
@@ -388,7 +388,7 @@ var oldestM = 300000000
             // console.log('message!')
             if (typeof message[0] !== 'undefined'){
             if (message[0].id < oldestM){
-              console.log('yes')
+              // console.log('yes')
               oldestM = message[0].id
             // }
             // console.log(oldestM)
@@ -800,6 +800,7 @@ userArray()
               
           </aside>   
           <svg className={`${this.state.mapName}`} height={window.screen.height*.81}>
+          <img className='pictureThree noselect' style={styles.imagee2} src={pic}></img>
                <Map className={`${this.state.mapName}`} onSubmit={this.sendMessage} knightPosition={this.state.knightPos}/> 
                </svg> 
     <div style={styles[this.state.sidePanel]} className={`${this.state.sidePanel}`} >

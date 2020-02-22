@@ -1087,7 +1087,7 @@ const newFunc2 = () => {
 // }
 
 // findNot()
-console.log(this.state.text)
+// console.log(this.state.text)
 
 newFunc2()
 var newText = props.data.text.split(/[_,]+/);
@@ -1126,7 +1126,7 @@ var newText = props.data.text.split(/[_,]+/);
                     style: getElementStyle('container', props)
                 }, 
                 h("span", null,
-                    props.hidden ? (props.visible === true)? (h( LineTo, { borderColor:'wheat',borderStyle: 'dashed', borderWidth: 1, from:`dropped${props.data.od}`, to:`rs-notes--full-note-${props.data.od}`, toAnchor: 'top right', key: `note-${props.data.od}`,...props, data: props.data } )):null: 
+                    props.hidden ? (props.visible === true)? (h( LineTo, { borderColor:'#9FA7B8',borderStyle: 'dashed', borderWidth: 1, from:`dropped${props.data.od}`, to:`rs-notes--full-note-${props.data.od}`, toAnchor: 'top right', key: `note-${props.data.od}`,...props, data: props.data } )):null: 
                     h( LineTo, { opacity:(this.state.selectedLine===props.data.od)?1:0,borderColor: '#9FA7B8', borderStyle: 'dashed', borderWidth: 1, from:`dropped${props.data.od}`, to:`rs-notes--full-note-${this.state.selectedLine}`, toAnchor: 'top right', key: `note-${props.data.od}`,...props, data: props.data } ))
                 ),
                 h('div', {

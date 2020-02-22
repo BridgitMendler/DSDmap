@@ -60,7 +60,7 @@ export const Map = (props) => {
         }
         else if (selection === 'link') {
           document.elementsFromPoint(e.clientX,e.clientY)[0].style.transition = 'all 1s'
-          document.elementsFromPoint(e.clientX,e.clientY)[0].setAttribute("style","stroke-width: 10")
+          document.elementsFromPoint(e.clientX,e.clientY)[0].setAttribute("style","stroke-width: 7")
           // document.elementsFromPoint(e.clientX,e.clientY)[0].style.transition = 'all 1s'
           // document.elementsFromPoint(e.clientX,e.clientY)[0].style.strokeWidth = '10px'
 
@@ -99,7 +99,9 @@ return
         // const arrayAddTwo = (newPos) => {
         //   setEveID(newPos)
         //   console.log(eveID)}
-        observeThree(newPos => {setEveID(newPos), console.log(newPos)})
+        observeThree(newPos => {setEveID(newPos)
+          // console.log(newPos)
+        })
         // console.log(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
 
         const diamonds = [
@@ -577,7 +579,10 @@ return
           // var xVal = document.getElementsByTagName("g");
           // console.log(xVal)
         //  document.addEventListener("click", )
-return (  <g ref= {drop} className='ourMap'>
+return (  
+
+<g ref= {drop} className='ourMap'>
+<div> university application process</div>
       <g  id="myanchor" x={x} y={y} />
       {isOver && over()}
       {hasDropped && moveDropped(hasDropped) && moveKnight(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value) && newIDLog(eveID) && props.onSubmit('jljljl' + `_${bubblePos.x}`+ `_${bubblePos.y}`+`_${window.event.target.attributes[1].value}`+`_${hasDropped}`+`_${eveID}`+`_${Math.round((new Date()).getTime() / 1000)}`) && console.log(window.event.target.attributes)
@@ -585,6 +590,7 @@ return (  <g ref= {drop} className='ourMap'>
       {/* {!isOver && canDrop && console.log('yes!')} */}
       {/* {isOver && console.log(drop)} */} */}
 </g>
+
 )
 
 }

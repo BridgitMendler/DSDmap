@@ -8,6 +8,7 @@ const y = -10
 const [text, setText] = useState('')
 const [opac, setOpac] = useState(0)
 var theOne = (document.getElementsByClassName('selectionssss'))
+var allThem = (document.getElementsByClassName('listyTwo'))
 var scrollValOne = document.getElementsByClassName('listyThree')[0]
 var self = document.getElementsByClassName(`${props.prefix}--full-note-${data.od}`)
 var theOneOffset
@@ -25,32 +26,55 @@ if (typeof self[0] !== 'undefined'){
 var theOneHeight
 var theOneText
 var theCardText
-if (typeof theOne[0] !== 'undefined' && typeof scrollValOne !== 'undefined') {
-    scrollVal = scrollValOne.scrollTop;
+if (typeof theOne[0] !== 'undefined') {
+
     theOneOffset = theOne[0].offsetTop
     theOneHeight = theOne[0].offsetHeight
     // theOneText = theOne[0].childNodes[1].offsetHeight
     theCardText = theOne[0].innerText
 }
-// console.log(scrollVal)
+
+if (typeof scrollValOne !== 'undefined'){
+scrollVal = scrollValOne.scrollTop;}
+var allList = []
+for (var i = 0; i< allThem.length; i++){
+    // console.log(allThem[i].offsetTop)
+    allList.push(allThem[i].offsetTop)
+}
+var closestCard
+// console.log(allList)
+if (allList.length > 0){
+
+closestCard = allList.reduce(function(prev, curr) {
+    return (Math.abs(curr - (scrollVal+200)) < Math.abs(prev - (scrollVal+200)) ? curr : prev);
+  });
+}
+// console.log(closestCard)
+var myCard
+for (var i = 0; i< allThem.length; i++){
+    if (closestCard === allThem[i].offsetTop){
+        myCard = allThem[i].innerText
+    }}
+//     console.log(scrollVal)
+// console.log(myCard)
 const onSubmit=(e) =>{
     // console.log(e)
     e.preventDefault()
     // onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${scrollVal}`)))
-    props.onSubmit(('ggggg' + text+ `_${data.x},${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${theCardText}`+ `_${0}`+`_${noteNameLabel}`+`_edited by ${props.currentUser.id}`))
+    props.onSubmit(('ggggg' + text+ `_${data.x},${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${myCard}`+ `_${0}`+`_${noteNameLabel}`+`_edited by ${props.currentUser.id}`))
     setText(text)
   }
   const setText2 = () =>{
     var i
     for (i=0; i < props.notesy.length; i++){
         if (props.notesy[i].od ===data.od){
-            console.log(props.notesy[i].print)
+            // console.log(props.notesy[i].print)
             return props.notesy[i].print
         }
         else {
-            console.log('else')
-            console.log(props.notesy[i])
-            console.log(data)
+            // console.log('else')
+            // console.log(props.notesy[i])
+            // console.log(data)
         }
     }
 }
