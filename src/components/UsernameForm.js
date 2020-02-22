@@ -182,7 +182,7 @@ below, you consent to this collection of answers to questions:</h3>
             <br></br>
             <label for="cars" className='inputLabel10'>What role best describes you:</label>
 <br></br>
-            <select id="cars" onChange={this.onChange4}>
+            <select id="cars" >
               <option value="student">student</option>
               <option value="faculty">faculty</option>
               <option value="staff">staff</option>
