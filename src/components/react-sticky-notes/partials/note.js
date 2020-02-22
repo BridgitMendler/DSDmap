@@ -13,6 +13,7 @@ class Note extends React.Component{
     constructor(props){
         super(props);
         this.targetRef = React.createRef();
+        this.setText = this.setText.bind(this)
         this.state= {
             match: false,
             positionX: this.hashtagMoveX(),
@@ -38,7 +39,8 @@ class Note extends React.Component{
             scrollVal: props.data.scrollVal,
             theCardOffset: this.getOffset(),
             newNoteLabel: '',
-            y: 0
+            y: 0,
+            text: ''
             // scrollTop: document.getElementsByClassName('listyThree')[0].scrollTop
 
         }
@@ -462,6 +464,12 @@ else {
             //   scrollVal:scrollVal,
               theCardOffset:theCardOffset,
             })
+        }
+    }
+
+    setText = (val) => {
+        if(typeof val !== 'undefined' && val !== 'undefined'){
+            this.setState({text:val})
         }
     }
 
@@ -1079,7 +1087,7 @@ const newFunc2 = () => {
 // }
 
 // findNot()
-// console.log(props.newNot)
+console.log(this.state.text)
 
 newFunc2()
 var newText = props.data.text.split(/[_,]+/);
@@ -1093,9 +1101,10 @@ var newText = props.data.text.split(/[_,]+/);
                 useBoundaries:(pos) =>(console.log('mouseDown')),
                 onMouseDownMove2:(pos) => (this.setState({mouseStatus:pos.mouseStatus})),
                 // onMouseDownMove:(pos) => (this.setState({relClick:pos.relClick})),
-                onDragComplete:(pos)=> (setWhatDragShouldDo(),console.log(pos),
+                onDragComplete:(pos)=> (setWhatDragShouldDo(),
                 (this.setState({justDropped: true, y: pos.y, newNoteLabe: pos.newNoteLabel, mouseStatus: false, scrollVal: pos.scrollVal,theRightCard: pos.theRightCard, closestCard: pos.closestCard, cardHeight: pos.cardHeight, textHeight: pos.textHeight, absolCardLeft:pos.absolCardLeft, percentX:pos.percentX, percentY:pos.percentY})),
-                props.onSubmit(('ggggg' + `${pos.text}`+ `_${pos.percentX},${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${0}`+`_${props.data.senderId}`+`_moved by ${props.currentUser.id}`))
+                (this.setText(pos.text)),
+                props.onSubmit(('ggggg' + `${typeof pos.text==='undefined'?this.state.text:pos.text}`+ `_${pos.percentX},${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${0}`+`_${props.data.senderId}`+`_moved by ${props.currentUser.id}`))
                 //  (this.setState({positionX: pos.x, positionY:pos.y}
                     // )
                     // )                

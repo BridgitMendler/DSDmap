@@ -272,6 +272,12 @@ border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   overflow-y: hidden
 }
 
+.mapFull{
+  height:570px;
+  width:920px;
+  /* float: right */
+}
+
 .forNotes::-webkit-scrollbar {
   width: 0px;
 }
@@ -666,7 +672,7 @@ Popup {
 }
 .gifgif{
   height: 390px;
-  width:800px
+  width:750px
 }
 .__floater__arrow {
   background-color:'green'
@@ -722,6 +728,7 @@ input[type=submit] {
 .welcome2 {
   font-family: 'Avenir next';
   font-size: 24px;
+  float: left
   /* color: grey */
 }
 

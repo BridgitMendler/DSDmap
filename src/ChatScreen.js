@@ -20,9 +20,12 @@ import { genericTypeAnnotation } from 'babel-types'
 import ReactJoyride, { EVENTS } from "react-joyride";
 import PropTypes from "prop-types";
 import drop from './components/drop2.gif'
+import tab2 from './components/tab2.gif'
 import pic4 from './components/mendler2.png'
 import group from './components/group.gif'
 import show from './components/line.gif'
+import mapFull from './components/mapFull.png'
+import breakdown from './components/breakdown6.png'
 
 
 
@@ -61,18 +64,32 @@ class ChatScreen extends Component {
             Welcome to the design session! We are excited to have you!
             <br />
             <img src={pic4} className='mendler' alt="loading..." />
-            <div className='welcome4'> My name is Jess and I will be your facilitator! As a reminder, we are here to test out how visual 
+            <div className='welcome4'> My name is Bridgit and I will be your facilitator! As a reminder, we are here to test out how visual 
               elements used in offline design workshops can translate to a virtual space. During this workshop, you will 
               use virtual stickie notes to share your ideas and build upon the ideas of others. You can move the stickies 
               around and group them as you wish.</div>
               <br /> 
               <div className='welcome4'>In this workshop, you are in a hypothetical scenario where you have been tasked to redesign a formal process. 
-                Soon you will see what that process is. If you have any questions or concerns, feel free to message me in the chat panel</div> 
+                If you have any questions or concerns, feel free to message me in the chat panel</div> 
           </div>
           ),
           placement: "center",
           locale: { skip: "skip" },
           target: "body"
+        },
+        {
+          content: (<img src={breakdown} className='mapFull' alt="loading..." />
+
+                      ),
+          // title: "Our Fail Test",
+          // content: "now let's get started, designers!",
+          target: "body",
+          placement: "center",
+          styles: {
+            options: {
+              width: 1200
+            }
+          },
         },
         {
           content: (
@@ -116,8 +133,8 @@ class ChatScreen extends Component {
           // title: "Our Fail Test",
           content: (
             <div className='welcome4'>
-              Click on the show map button to see the process map we are working on. Drag the tab in the corner of the note to the map when you find a spot in the process map that is related
-              <img src={drop} className='gifgif' alt="loading..." />
+              Click on the show map button to see the process map we are working on. Drag the tab in the corner of the note to the map when you find a spot in the process map that is related. Hover over the steps to see what they say.
+              <img src={tab2} className='gifgif' alt="loading..." />
             </div>
                       ),
           styles: {
@@ -140,24 +157,17 @@ class ChatScreen extends Component {
           placement: "top"
         },
         {
-          content: (
-            <div>
-              <h1 className='welcome' >Here is your task</h1>
-              <h2 className='welcome2'>Redesign the university application process</h2>
-              <h3 className='welcome3'>Universities are in need of a new way of selecting students. They have decided to reach out to people across the country to gather ideas on what could be done better. You have all been brought together to share your unique 
-                perspectives. </h3>
-                <br />
-                <h3 className='welcome3'>For reference, a map of the existing university application process is 
-                available to you. Please review this map and then add your answers to the given prompts. Talk to your fellow participants and build upon each others ideas</h3>
-                <br />
-                <h3 className='welcome3'>In 30 minutes you will be given your second set of questions to complete</h3>
-            </div>
-                      ),
-          // title: "Our Fail Test",
-          // content: "now let's get started, designers!",
+          // // title: "Our Fail Test",
+          // content: (
+          //   <div className='welcome4'>
+          //     If you want to see all of the connections made to the map so far, click show line
+          //     <img src={show} className='gifgif' alt="loading..." />
+          //   </div>
+          //             ),
+          content: "Now let's begin! Responding to some questions with a stickie note is usually a good way to start ",
           target: "body",
           placement: "center"
-        }
+        },
       ]
     }
     this.sendMessage = this.sendMessage.bind(this)
@@ -288,7 +298,7 @@ var oldestM = 300000000
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: '69a47e7e-2ca3-4d19-86bb-511ad4f4a021',
+          roomId: '9ad0c5a7-db74-4e49-8f83-ec76169ad0da',
           hooks: {
             onMessage: message => {
               if (message.id < oldestM){
@@ -368,7 +378,7 @@ var oldestM = 300000000
       .then(currentUser =>{  
         // console.log('returning')
        return this.state.currentUser.fetchMessages({
-        roomId:'69a47e7e-2ca3-4d19-86bb-511ad4f4a021',
+        roomId:'9ad0c5a7-db74-4e49-8f83-ec76169ad0da',
         initialId: oldestM,
         direction: 'older',
         limit:100, 
@@ -436,10 +446,10 @@ var oldestM = 300000000
 }
 
 theChange=()=>{
-  const varry =document.getElementById("react-joyride-step-2")
-const varry2 =document.getElementById("react-joyride-step-3")
-const varry3 =document.getElementById("react-joyride-step-4")
-const varry4 =document.getElementById("react-joyride-step-5")
+  const varry =document.getElementById("react-joyride-step-3")
+const varry2 =document.getElementById("react-joyride-step-4")
+const varry3 =document.getElementById("react-joyride-step-5")
+const varry4 =document.getElementById("react-joyride-step-6")
 // console.log(varry)
 // console.log(varry2)
 if (typeof varry !== 'undefined' && varry !== null){

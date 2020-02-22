@@ -44,8 +44,13 @@ const onSubmit=(e) =>{
     var i
     for (i=0; i < props.notesy.length; i++){
         if (props.notesy[i].od ===data.od){
-            // console.log(props.notesy[i].print)
+            console.log(props.notesy[i].print)
             return props.notesy[i].print
+        }
+        else {
+            console.log('else')
+            console.log(props.notesy[i])
+            console.log(data)
         }
     }
 }

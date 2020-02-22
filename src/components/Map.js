@@ -103,27 +103,27 @@ return
         // console.log(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
 
         const diamonds = [
-          { id: "application rejected", icon: RectPale,reflexive: false, x: 250, y: 200 },
-          { id: "application reviewed by admissions sub-committee", icon: RectPale,reflexive: false, x: 150, y: 200},
-          { id: "application rejected", icon: RectPale,reflexive: true, x: 200, y: 200},
-          { id: "9 application reviewed by full admissions committee", icon: RectPale,reflexive: true, x: 300, y: 425},
-          { id: "10 application rejection mailed", icon: RectPale,reflexive: false, x: 200, y: 425 },
-          { id: "11 application acceptance mailed", icon: RectPale,reflexive: false, x: 250, y: 425},
+          { id: "application rejected", icon: RectPale,reflexive: false, x: 100, y: 335 },
+          { id: "application reviewed by admissions sub-committee", icon: RectPale,reflexive: false, x: 200, y: 335},
+          { id: "application rejected", icon: RectPale,reflexive: true, x: 150, y: 410},
+          { id: "application reviewed by full admissions committee", icon: RectPale,reflexive: true, x: 250, y: 410},
+          { id: "application rejected", icon: RectPale,reflexive: false, x: 200, y: 485 },
+          { id: "application accepted", icon: RectPale,reflexive: false, x: 300, y: 485},
 
         ]
 
       const nodes = [
-        { id: "1student decides to apply", reflexive: false, x: 200, y: 50},
-        { id: "2student chooses early or regular decision", reflexive: true, x: 200, y: 125},
-        { id: "3student takes completes standardized tests",  reflexive: false, x: 250, y: 200 },
-        { id: "4student submits all application materials", icon: RectGreen.png,reflexive: false, x: 150, y: 200},
-        { id: "5 admissions officers recieve application and review", icon: RectGreen.png,reflexive: true, x: 200, y: 200},
-        { id: "6 application rejected", reflexive: false, x: 250, y: 275 },
-        { id: "7 application reviewed by admissions sub-committee", reflexive: false, x: 250, y: 350},
-        { id: "8 application rejected", icon: RectGreen.png, reflexive: true, x: 300, y: 425},
-        { id: "9 application reviewed by full admissions committee", icon: RectGreen.png, reflexive: false, x: 200, y: 425 },
-        { id: "10 application rejection mailed", icon: RectGreen.png, reflexive: false, x: 250, y: 425},
-        { id: "11 application acceptance mailed", reflexive: true, x: 300, y: 500},
+        { id: "student decides to apply", reflexive: false, x: 150, y: 50},
+        { id: "student chooses early or regular decision", reflexive: true, x: 150, y: 100},
+        { id: "student takes standardized tests",  reflexive: false, x: 150, y: 150 },
+        { id: "student submits all application materials", reflexive: false, x: 150, y: 200},
+        { id: "admissions officers recieve application and review", reflexive: true, x: 150, y: 250},
+        { id: "application rejected", reflexive: false, x: 100, y: 335 },
+        { id: "application reviewed by admissions sub-committee", reflexive: false, x: 200, y: 335},
+        { id: "application rejected", icon: RectGreen.png, reflexive: true, x: 150, y: 410},
+        { id: "application reviewed by full admissions committee", icon: RectGreen.png, reflexive: false, x: 250, y: 410 },
+        { id: "application rejected", icon: RectGreen.png, reflexive: false, x: 200, y: 485},
+        { id: "application accepted", reflexive: true, x: 300, y: 485},
 
 
       ];
@@ -131,16 +131,17 @@ return
       const linky = [
         { source: nodes[0], target: nodes[1], left: false, right: true },
         { source: nodes[1], target: nodes[2], left: false, right: true },
-        { source: nodes[1], target: nodes[3], left: false, right: true },
-        { source: nodes[1], target: nodes[4], left: false, right: true },
+        { source: nodes[2], target: nodes[3], left: false, right: true },
+        { source: nodes[3], target: nodes[4], left: false, right: true },
         { source: nodes[4], target: nodes[5], left: false, right: true },
-        { source: nodes[2], target: nodes[5], left: false, right: true },
-        { source: nodes[9], target: nodes[10], left: false, right: true },
-        { source: nodes[5], target: nodes[6], left: false, right: true },
+        { source: nodes[4], target: nodes[6], left: false, right: true },
         { source: nodes[6], target: nodes[7], left: false, right: true },
         { source: nodes[6], target: nodes[8], left: false, right: true },
-        { source: nodes[6], target: nodes[9], left: false, right: true },
-        { source: nodes[7], target: nodes[10], left: false, right: true },
+        { source: nodes[8], target: nodes[9], left: false, right: true },
+        { source: nodes[8], target: nodes[10], left: false, right: true },
+        // { source: nodes[9], target: nodes[11], left: false, right: true },
+        // { source: nodes[5], target: nodes[9], left: false, right: true },
+        // { source: nodes[7], target: nodes[9], left: false, right: true },
 
 
 
@@ -380,7 +381,7 @@ return
               var x=e.clientX
                var y=e.clientY
 
-              tooltipElement.setAttribute("style", `top:${y+30}px;left:${x}px`)
+              tooltipElement.setAttribute("style", `top:${y+30}px;left:${x-55}px`)
             })
             // .call(function(){draglistener(d3.select(this)),dragState})
             var down
