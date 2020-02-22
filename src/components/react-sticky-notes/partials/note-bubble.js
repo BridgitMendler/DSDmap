@@ -116,7 +116,7 @@ const findY = () => {
     observeTwo(newDrop => {
         (setHasDropped(newDrop), newArrayIndex(newDrop))
         })
-        ,observeFour(newPos => {arrayAddTwo(newPos)} )),findX(),findY() [arrayIndex])
+        ,observeFour(newPos => {arrayAddTwo(newPos)} )),findX(),findY())
 
 
     const newArrayIndex = (newDrop) => {
