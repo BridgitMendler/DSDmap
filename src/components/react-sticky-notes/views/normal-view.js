@@ -86,7 +86,7 @@ delList()
 const myItemsTwo = props.newNotesy
 var newNot = props.newNotesy.filter(obj => {
 
-    // console.log(obj.id, newArIds)
+    // console.log(obj.od, newArIds)
     return (newArIds.indexOf(obj.od) < 0)
   })
 
@@ -209,7 +209,7 @@ var newBub = props.newBubble.filter(obj => {
 // console.log(iclicked)
 
 //     }
-// console.log(newBub)
+// console.log(newNot)
 
     const [hasDropped, setHasDropped] = useState(false)
 

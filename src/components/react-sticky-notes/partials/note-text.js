@@ -87,6 +87,7 @@ const onChange= (e) =>{
   }
 
   const handleBlur = (e) => {
+    props.onSubmit(('ggggg' + text+ `_${data.x}_${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${myCard}`+ `_${0}`+`_${noteNameLabel}`+`_edited by ${props.currentUser.id}`))
     //   console.log(e)
       setOpac(0)
   }
