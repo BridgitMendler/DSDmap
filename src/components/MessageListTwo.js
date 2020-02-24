@@ -84,12 +84,20 @@ var locaa = e.target.parentElement.parentElement.parentElement.parentElement
   if (typeof locaa !== 'undefined'){
   props.onSubmit(('fffff' + e.target.parentElement.parentElement.children[1].innerText + '_listyTwo dropTarget selectionssss'+ '_listyText noselect'+ `_${Math.round((new Date()).getTime() / 1000)}`+`_${loca.offsetTop}`))
     locaa.scrollTo({ behavior: 'smooth',
-    top:loca.offsetTop-300})}
+    top:loca.offsetTop-300})
+  }
     // setCurrentList([...currentList, loca.offsetTop]);
   }
     }
 
-    
+    // var locaa = document.getElementsByClassName('listyThree')
+    // var sticky = document.getElementsByClassName('stickyBox')
+    // if (typeof locaa[0] !== 'undefined' && typeof sticky[0] !== 'undefined'){
+    //   console.log(locaa[0].scrollHeight.writable)
+    //   // sticky[0].scrollHeight = `${locaa[0].scrollHeight}px`
+    //   locaa[0].scrollTop =sticky[0].scrollTop
+    // }
+
 
 // console.log(currentList)
 var result
@@ -177,7 +185,7 @@ messageClean()
   }})
 
 
-if (props.currentUser.id === 'B_session3pm__')
+if (props.currentUser.id === 'B_session249am__')
 {
 
     return (
