@@ -185,7 +185,7 @@ messageClean()
   }})
 
 
-if (props.currentUser.id === 'B_session2411am__')
+if (props.currentUser.id === 'B_session243pm__')
 {
 
     return (
