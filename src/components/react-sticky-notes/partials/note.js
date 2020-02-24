@@ -1111,7 +1111,7 @@ const newFunc2 = () => {
 //     }
 // }
 
-console.log(props.data)
+// console.log(props.data)
 // console.log(this.state.text)
 
 var selectionID = props.data.senderId.split(/[_]+/);
