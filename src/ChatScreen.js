@@ -795,6 +795,7 @@ userArray()
             delNote={this.state.delNote}
             messages={this.state.postings}
             currentUser={this.state.currentUser}
+            invisiBox={this.state.sidePanel}
           />
               </div>
               
@@ -810,7 +811,7 @@ userArray()
       <section style={styles.chatContainer} className={`${this.state.feedback}`}>
           <div className="messages"style={styles.MessageList}>
             <MessageList messages={this.state.messages} users={this.state.currentRoom.users} currentUsername={this.props.currentUsername}/>
-            <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping} />
+            {/* <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping} /> */}
             <SendMessageForm onSubmit={this.sendMessage}onChange={this.sendTypingEvent}/>
           </div>
       </section>

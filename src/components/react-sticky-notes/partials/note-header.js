@@ -70,7 +70,7 @@ function NoteHeader(props) {
             id: name,
             type: "error"
           }, 
-          h("span", null, props.data?props.data.noteLabel?props.data.noteLabel:'':'')),
+          h("span", null, props.data?props.data.noteLabel?props.data.noteLabel[0]:'':'')),
     );
 }
 export default NoteHeader;
