@@ -61,7 +61,7 @@ const onSubmit=(e) =>{
     // console.log(e)
     e.preventDefault()
     // onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${scrollVal}`)))
-    props.onSubmit(('ggggg' + text+ `_${data.x},${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${myCard}`+ `_${0}`+`_${noteNameLabel}`+`_edited by ${props.currentUser.id}`))
+    props.onSubmit(('ggggg' + text+ `_${data.x}_${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${myCard}`+ `_${0}`+`_${noteNameLabel}`+`_edited by ${props.currentUser.id}`))
     setText(text)
   }
   const setText2 = () =>{

@@ -283,15 +283,29 @@ var newBubble = []
 			var newArray2 = []
 			var i
 			for (i = 0; i< this.props.notesy.length; i++) {
-				var newText = newArray[i].text.split(/[_,]+/);
+				var newText = newArray[i].text.split(/[_]+/);
 				// console.log(newText)
 				const noteLab = () =>{
 					if (newText[10] === 'none'){
 						// console.log('returning none!')
-						return newArray[i]['senderId']
+						var selectionID = newArray[i].senderId.split(/[_]+/);
+						// console.log(selectionID)
+						return selectionID[0]
 					}
 					else {
-						return newText[10]
+						var selectionID = newText[10].split(/[_]+/);
+						// console.log(selectionID)
+						return selectionID[0]
+					}
+				}
+				const editLab = () =>{
+					if (newText[11] === 'none'){
+						// console.log('returning none!')
+						return 'new note'
+					}
+					else {
+						// console.log(newText[11])
+						return newText[11]
 					}
 				}
 
@@ -306,7 +320,7 @@ var newBubble = []
 				newArray[i]['cardText']= newText[8]
 				newArray[i]['scrollVal']= newText[9]
 				newArray[i]['noteLabel'] = noteLab()
-				newArray[i]['edit'] = newText[11] 
+				newArray[i]['edit'] = editLab()
 				// newArray[i]['deleted']= (isDeleted())
 				// console.log(newText)
 				// console.log(newText[10]==='none')
@@ -701,6 +715,7 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 			messages:this.props.messages,
 			currentUser:this.props.currentUser,
 			convoBoxSize: this.props.convoBoxSize,
+			invisiBox: this.props.invisiBox,
 			items,
 			icons: { ...icons, ...this.props.icons },
 			viewSize,

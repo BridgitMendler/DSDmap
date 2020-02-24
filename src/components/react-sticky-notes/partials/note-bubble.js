@@ -57,7 +57,7 @@ const findNewBub = () => {
 }
 findNewBub()
 
-
+// var self = document.getElementsByClassName(`${props.prefix}--note-${props.data.od}`)[0]
 var findit =document.getElementById(myBub['label']);
 // console.log(myBub)
 let word_With_Numbers = props.data.od

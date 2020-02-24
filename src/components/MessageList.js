@@ -157,7 +157,7 @@ var self = document.getElementsByClassName('chatList')
 const weMove = () => {
 
   if (self !== 'undefined' && typeof self[0] !== 'undefined'){
-    console.log(self[0])
+    // console.log(self[0])
   self[0].scrollTo({behavior: 'smooth',
         top:self[0].scrollHeight})
 }}
@@ -181,7 +181,7 @@ const weMove = () => {
             }
            return (
             <li key={index}  style={whichUser(message)}>
-<span className='noselect' style={styles.senderUsername}>{message.senderId.split(/[_,]+/)[0]}</span>
+<span className='noselect' style={styles.senderUsername}>{message.senderId.split(/[_]+/)[0]}</span>
               <p className="listy" style={styles.message}>{'   ' + message.text}</p>
 
             </li>

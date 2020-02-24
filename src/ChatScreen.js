@@ -298,7 +298,7 @@ var oldestM = 300000000
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: '8f00206d-fde2-43f8-8ea6-95c562d3c453',
+          roomId: 'a16ef597-e306-4376-8f3e-b9cff19d49ca',
           hooks: {
             onMessage: message => {
               if (message.id < oldestM){
@@ -378,7 +378,7 @@ var oldestM = 300000000
       .then(currentUser =>{  
         // console.log('returning')
        return this.state.currentUser.fetchMessages({
-        roomId:'8f00206d-fde2-43f8-8ea6-95c562d3c453',
+        roomId:'a16ef597-e306-4376-8f3e-b9cff19d49ca',
         initialId: oldestM,
         direction: 'older',
         limit:100, 
@@ -539,19 +539,19 @@ handleJoyrideCallback = data => {
   } else {
     // console.group(type);
     // console.log(data); //eslint-disable-line no-console
-    console.groupEnd();
+    // console.groupEnd();
   }
 };
 
 
   render() {
-
+console.log(this.state.notesy)
     var currentUser2
     const userArray = () =>{
     var usernameTwo = this.state.currentUser
     if (typeof this.state.currentUser !== 'undefined'){
       if (typeof this.state.currentUser.id !== 'undefined'){
-    var newText = this.state.currentUser.id.split(/[_,]+/)
+    var newText = this.state.currentUser.id.split(/[_]+/)
     
     usernameTwo['username'] = newText[0] 
     usernameTwo['status'] = newText[3]
@@ -570,7 +570,7 @@ userArray()
       if (typeof newArray !== 'undefined'){
 			for (i = 0; i< newArray.length; i++) {
         // console.log(newArray[i])
-				var newText = newArray[i].id.split(/[_,]+/);
+				var newText = newArray[i].id.split(/[_]+/);
 
 				newArray[i]['username'] = newText[0] 
 				newArray[i]['status'] = newText[3]

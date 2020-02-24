@@ -84,7 +84,7 @@ if (allList.length > 0){
         key: `${prefix}--button__add`,
         className:`${prefix}--button ${prefix}--button__add noselect`,
         onClick:(e)=>(
-            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${myCard}`+ `_${0}`+`_none`)))
+            callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()}_${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${myCard}`+ `_${0}`+`_none`)))
     }, 
         icons.add
     )
@@ -267,13 +267,13 @@ export function ButtonTrash({prefix, data, icons, callbacks, removeTodo}, props)
         
         removeTodo(e);
     }
-    var newText = data.text.split(/[_,]+/);
+    var newText = data.text.split(/[_]+/);
     // console.log(newText[0])
     return h('button',{
         key: `${prefix}--button__trash`,
         className:`${prefix}--button ${prefix}--button__trash noselect`,
         onClick:(e)=>(
-        callbacks.onSubmit(('hhhhh' + `${newText[0]}`+ `_${data.position.x},${data.position.x}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`+ '_yes')))
+        callbacks.onSubmit(('hhhhh' + `${newText[0]}`+ `_${data.position.x}_${data.position.x}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.position.x}_${data.position.y}`+ '_yes')))
     }, 
         icons.trash
     );
