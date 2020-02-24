@@ -287,7 +287,7 @@ this.setState({ scrollVals: joined })
       instanceLocator: 'v1:us1:d273e0b5-92c2-4e8e-9ad3-ed684d17f602',
       userId: this.props.currentUsername,
       tokenProvider: new Chatkit.TokenProvider({
-        url: 'http://dsdmap.media.mit.edu:3001/authenticate',
+        url: 'http://localhost:3006/authenticate',
       }),
     })
 
@@ -298,7 +298,7 @@ var oldestM = 300000000
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: '0b23f790-cf7a-4f28-9006-d67336e4dc97',
+          roomId: 'b209b156-9016-4918-bad7-5bd8ffa7cbe8',
           hooks: {
             onMessage: message => {
               if (message.id < oldestM){
@@ -378,7 +378,7 @@ var oldestM = 300000000
       .then(currentUser =>{  
         // console.log('returning')
        return this.state.currentUser.fetchMessages({
-        roomId:'0b23f790-cf7a-4f28-9006-d67336e4dc97',
+        roomId:'b209b156-9016-4918-bad7-5bd8ffa7cbe8',
         initialId: oldestM,
         direction: 'older',
         limit:100, 
@@ -427,6 +427,11 @@ var oldestM = 300000000
               bubblePosList: [...this.state.bubblePosList, message],
               allMes:[...this.state.allMes, message]
             })
+            }
+            else if (/^DELETED/.test(message[i].text)){
+              this.setState({
+                dontPrint: [...this.state.dontPrint, message[i]]
+              })
             }
             else {this.setState({
               messages: [...this.state.messages, message[i]],

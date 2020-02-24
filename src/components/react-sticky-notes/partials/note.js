@@ -972,6 +972,7 @@ const newFunc = () => {
             }
         }
         else {
+            // console.log(this.props.data.x)
     if (this.props.visible === true){
         return ((this.props.data.x*((window.innerWidth*.5)-133))+absolCardLeft)
     }
@@ -1027,7 +1028,16 @@ const newFunc2 = () => {
             // console.log(ourCard)
             // console.log(i)
             
-        }}}
+        }
+        // else if (props.data.cardText === 'undefined'){
+        //     ourCard = theOne[0]
+        //     theCardOffset = theOne[0].offsetTop
+        //     theCardHeight = theOne[0].offsetHeight
+        //     theCardText = theOne[0].lastChild.offsetHeight
+        //     cIndex = i
+        // }
+
+    }}
     }
   
     var theOneOffset
@@ -1069,7 +1079,11 @@ const newFunc2 = () => {
     // var mapEl = document.getElementsByClassName('listyThree')[0]
     // if (typeof mapEl !== 'undefined' && typeof self !== 'undefined'){
     // mapEl.appendChild(self)}
-    return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  
+    if (this.props.data.y < 0){
+        return (((0*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  
+    }
+    else {
+    return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  }
 }
 // var noteNameLabel
 // if (typeof self[0] !== 'undefined'){
@@ -1110,8 +1124,9 @@ const newFunc2 = () => {
 //         return ((findit.getBoundingClientRect().left -30)+ (myRand/.75))
 //     }
 // }
-
-// console.log(props.data)
+// if (this.state.mouseStatus === true){
+// // console.log(props.data)
+// }
 // console.log(this.state.text)
 
 var selectionID = props.data.senderId.split(/[_]+/);
@@ -1125,7 +1140,7 @@ var newText = props.data.text.split(/[_]+/);
                 target: this.targetRef,
                 // onChange:newFunc(),
                 useBoundaries:(pos) =>(console.log('mouseDown')),
-                onMouseDownMove2:(pos) => (this.setState({mouseStatus:pos.mouseStatus})),
+                onMouseDownMove2:(pos) => (console.log(pos), this.setState({mouseStatus:pos.mouseStatus})),
                 // onMouseDownMove:(pos) => (this.setState({relClick:pos.relClick})),
                 onDragComplete:(pos)=> (setWhatDragShouldDo(),
                 (this.setState({justDropped: true, y: pos.y, newNoteLabe: pos.newNoteLabel, mouseStatus: false, scrollVal: pos.scrollVal,theRightCard: pos.theRightCard, closestCard: pos.closestCard, cardHeight: pos.cardHeight, textHeight: pos.textHeight, absolCardLeft:pos.absolCardLeft, percentX:pos.percentX, percentY:pos.percentY})),
@@ -1204,6 +1219,7 @@ var newText = props.data.text.split(/[_]+/);
                     onSubmit: props.onSubmit,
                     onChange: props.onChange,
                     notesy: props.notesy,
+                    closest: this.state.closestCard,
                     ...props
                 }),
             ],

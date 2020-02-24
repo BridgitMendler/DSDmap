@@ -87,6 +87,7 @@ console.log(window.event)
         document.addEventListener('touchmove', this.onMouseMove, {passive: false});
         document.addEventListener('touchend', this.onMouseUp, {passive: false});
         if (this.options.onMouseDownMove2){
+            // console.log(this.mouseStatus)
             this.options.onMouseDownMove2.call(this, {
                 mouseStatus: this.mouseStatus,
                 e:e.currentTarget.style,
@@ -94,7 +95,7 @@ console.log(window.event)
                 y: this.currentY
             })
         }
-        console.log(this.currentY)   
+        // console.log(this.currentY)   
     }
     
     // var elemClos = elementMouseIsOver.closestCard('.chatContainer')   
@@ -233,7 +234,7 @@ var percentageY = (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-
 // console.log('numerator '+((this.currentY-(cardHeight*cIndex)+scrollVal)))
 // console.log('denominator '+((cardHeight-140)))
 // var yDenominator = 
-console.log(percentageY)
+console.log(this.mouseStatus)
 console.log(percentageY, closestCard)
 // console.log(theRightCard)
     if(this.options.onDragComplete){

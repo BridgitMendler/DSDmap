@@ -209,7 +209,21 @@ var newBub = props.newBubble.filter(obj => {
 // console.log(iclicked)
 
 //     }
-// console.log(newNot)
+var odList = []
+for (var j = 0; j < newNot.length; j++){
+odList.push(newNot[j].od)
+}
+// console.log(odList)
+var allNotes = document.getElementsByClassName("full-notey-note'")
+// console.log(allNotes)
+if (typeof allNotes !== 'undefined'){
+for (var i = 0; i < allNotes.length; i++){
+
+    if(odList.indexOf(allNotes[i].classList[2]) < 0){
+        // allNotes[i].parentElement.removeChild(allNotes[i])
+        // console.log('mismatch')
+    }
+}}
 
     const [hasDropped, setHasDropped] = useState(false)
 

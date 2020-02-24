@@ -50,7 +50,7 @@ closestCard = allList.reduce(function(prev, curr) {
   });
 }
 // console.log(closestCard)
-var myCard
+var myCard = props.closest
 for (var i = 0; i< allThem.length; i++){
     if (closestCard === allThem[i].offsetTop){
         myCard = allThem[i].innerText

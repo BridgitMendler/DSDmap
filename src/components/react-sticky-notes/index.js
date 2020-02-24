@@ -309,6 +309,20 @@ var newBubble = []
 					}
 				}
 
+				const closestLab = () => {
+					if (newText[8] === 'undefined'){
+						// console.log('undefined')
+					var ourTexts = document.getElementsByClassName('listyText')
+					if (typeof ourTexts !== 'undefined' && typeof ourTexts[0] !== 'undefined'){
+						// console.log(ourTexts[0].innerText)
+						return ourTexts[0].innerText
+					}
+					}
+					else {
+						return newText[8]
+					}
+				}
+
 				newArray[i]['od'] = newText[3] 
 				newArray[i]['x'] = newText[1]
 				newArray[i]['y']= newText[2]
@@ -317,7 +331,7 @@ var newBubble = []
 				newArray[i]['position']={'x':newText[6],'y':newText[7]}
 				newArray[i]['time']= ((new Date(newArray[i]['createdAt'])).getTime()) /1000
 				newArray[i]['print'] = newText[0]
-				newArray[i]['cardText']= newText[8]
+				newArray[i]['cardText']= closestLab()
 				newArray[i]['scrollVal']= newText[9]
 				newArray[i]['noteLabel'] = noteLab()
 				newArray[i]['edit'] = editLab()

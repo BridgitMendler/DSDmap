@@ -46,6 +46,7 @@ export default function NoteBody(props) {
                 currentUser:props.currentUser,
                 key: 'note-text',
                 onFocus:props.onFocus,
+                closest: props.closest,
                 ...props
             })
     )
