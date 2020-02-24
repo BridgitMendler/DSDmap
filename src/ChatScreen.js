@@ -298,7 +298,7 @@ var oldestM = 300000000
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: '95fe8437-0012-4523-a9a8-8d3da709a7f1',
+          roomId: '9f5a377a-7317-41c9-955f-c8e0e2497cdd',
           hooks: {
             onMessage: message => {
               if (message.id < oldestM){
@@ -378,7 +378,7 @@ var oldestM = 300000000
       .then(currentUser =>{  
         // console.log('returning')
        return this.state.currentUser.fetchMessages({
-        roomId:'95fe8437-0012-4523-a9a8-8d3da709a7f1',
+        roomId:'9f5a377a-7317-41c9-955f-c8e0e2497cdd',
         initialId: oldestM,
         direction: 'older',
         limit:100, 

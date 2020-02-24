@@ -151,12 +151,26 @@ const MessagesList = (props) => {
   // const name = props.children[2].toString()
   // const fullname = props.children[0]
 // console.log(props.messages)
+
+var self = document.getElementsByClassName('chatList')
+
+const weMove = () => {
+
+  if (self !== 'undefined' && typeof self[0] !== 'undefined'){
+    console.log(self[0])
+  self[0].scrollTo({behavior: 'smooth',
+        top:self[0].scrollHeight})
+}}
+//       locaaa.scrollTo({behavior: 'smooth',
+//       top:theOne.currentList-300})}
+//     }}
+
     return (
       <div 
       style={{...props.style,
           ...styles.container,
-        }}>
-        <ul style={styles.ul}>
+        }} className='chatList'>
+        <ul style={styles.ul} onChange={weMove()}>
           {props.messages.map((message, index) => {
               if (message.senderId === props.currentUsername) {
                 return(

@@ -1064,7 +1064,11 @@ const newFunc2 = () => {
     // }
     // console.log(this.state.cardHeight)
     // console.log(this.state.y)
-    // console.log(((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)   
+    // console.log(((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) 
+    // var self = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)[0]
+    // var mapEl = document.getElementsByClassName('listyThree')[0]
+    // if (typeof mapEl !== 'undefined' && typeof self !== 'undefined'){
+    // mapEl.appendChild(self)}
     return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  
 }
 // var noteNameLabel
@@ -1087,8 +1091,27 @@ const newFunc2 = () => {
 // }
 
 // findNot()
-// console.log(this.state.text)
+// let word_With_Numbers = props.data.od
+// let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
+// var myRand = word_Without_Numbers[0]
+// // var self = document.getElementsByClassName(`${props.prefix}--note-${props.data.od}`)[0]
+// var findit =document.getElementById(myBub['label']);
+// // console.log(this.state.text)
+// var mapEl = document.getElementsByClassName('stickyBox')[0]
 
+// const findX = (idValue) => {
+//     // console.log(myBub)
+// if (typeof myBub.label !== 'undefined' && myBub.label.length > 0){
+// // console.log(findit)
+//     if (findit !== null) {
+//         // console.log((findit.getBoundingClientRect().left -30)+ (myRand/.75))
+//         if (typeof mapEl !== 'undefined' && typeof self !== 'undefined'){
+//         mapEl.appendChild(self)}
+//         return ((findit.getBoundingClientRect().left -30)+ (myRand/.75))
+//     }
+// }
+
+// console.log(props.data)
 newFunc2()
 var newText = props.data.text.split(/[_,]+/);
         return h(NoteDraggable, {
