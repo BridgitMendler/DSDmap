@@ -287,7 +287,7 @@ this.setState({ scrollVals: joined })
       instanceLocator: 'v1:us1:d273e0b5-92c2-4e8e-9ad3-ed684d17f602',
       userId: this.props.currentUsername,
       tokenProvider: new Chatkit.TokenProvider({
-        url: 'http://localhost:3006/authenticate',
+        url: 'http://dsdmap.media.mit.edu:3001/authenticate',
       }),
     })
 
