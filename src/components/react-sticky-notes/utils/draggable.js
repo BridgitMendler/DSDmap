@@ -175,7 +175,7 @@ console.log(window.event)
                     if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild !== 'undefined' && e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild !== null){
                         if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild !== 'undefined' && e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild !== null){
                             if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild !== 'undefined' &&e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild !== null){
-                                // console.log(e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild)
+                                console.log(e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild)
                                 if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.attributes.placeholder !== 'undefined'){
                                     var myText = e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.attributes.placeholder.value
                                 }
@@ -187,6 +187,7 @@ console.log(window.event)
         }
     }
 
+    // console.log(myText)
 //     var newNoteLabel
 //     if (typeof e.target.offsetParent!== 'undefined' && e.target.offsetParent !== null){
 //         if (typeof e.target.offsetParent.offsetParent !== 'undefined' && e.target.offsetParent.offsetParent !== null){

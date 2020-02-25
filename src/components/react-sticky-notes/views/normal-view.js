@@ -19,9 +19,7 @@ export function NormalView(props){
     const [arrayIndex, setArrayIndex] = useState(0)
     const [myArray] = useState(props.myArraypos);
     const [myArrayId] = useState(props.myArrayID);
-    const [selectedLine, setSelectedLine] = useState();
     const [dontAdd, setDontAdd] = useState([])
-    // const [myItems, setMyItems] = useState(myItemsTwo)
     const [iclicked, setIclicked] = useState(0)
     var e = window.event;
     var w = window;
@@ -35,41 +33,13 @@ export function NormalView(props){
             if (isDragging) {
               return
             }
-            // console.log(itemInfo.id.srcElement.offsetParent.classList[0])
         },
         collect: monitor => ({
-        //   item: monitor.getItem(),
-        //   isDragging: !!monitor.isDragging(),
           didDrop: !!monitor.didDrop()
           
         })
         
       })
-
-
-      
-     const settingLine = (value) =>{
-        //  console.log('hi')
-        const regexp = /note/
-        var result = regexp.test(value)
-        // console.log(result, value)
-        if (result === false){
-      setSelectedLine(value)
-    //   console.log(selectedLine)
-    }
-    else {
-        const newValue = value.replace('rs-notes--note-', '')
-        // console.log(newValue)
-        setSelectedLine(newValue)
-        // console.log(selectedLine)
-
-    }
-}
-
-const settingLineOut = (value) => {
-    setSelectedLine(value)
-}
-// console.log(props.delNote)
 var newArray = props.delNote
 var newArIds = []
 const delList = () => {
@@ -80,178 +50,65 @@ for (i=0;i<newArray.length; i++){
     var newText = newArray[i].text.split(/[_]+/);
     newArIds.push(newText[3])
 }
-// console.log(newArIds)
 }
 delList()
 const myItemsTwo = props.newNotesy
 var newNot = props.newNotesy.filter(obj => {
-
-    // console.log(obj.od, newArIds)
     return (newArIds.indexOf(obj.od) < 0)
   })
-
 var newBub = props.newBubble.filter(obj => {
     var i
     for (i = 0; i < newNot.length; i++){
-    // console.log(Object.values(newNot[i]), obj.od)
     return (newArIds.indexOf(obj.od) < 0)
 }
 })
-// console.log(newNot)
-// var newBub2 = () => {
-// console.log(newNot)
-// var i
-// console.log(findit)
-// // for (i=0; i < findit.length; i++) {
-//     // console.log(findit[i]['__data__'].id)
-//     var j
-//     for (j = 0; j< newBub.length; j++){
-//         if (typeof newBub[j] !== 'undefined') {
-//         // console.log(newBub[j])
-//         var findit =document.getElementById(newBub[j]['label']);
-//         console.log(findit)
-// //         if (findit[i] === newBub[i].label) {
-// // //  console.log(findit[i]['__data__'].id, newBub[i].label)
-// //         newBub[i]['x'] = findit[i].getBoundingClientRect().x
-// //         newBub[i]['y']= findit[i].getBoundingClientRect().y
-// // console.log(findit[i].getBoundingClientRect().x)
-// // }
 
-// }}
-
-// // }
-// }
-// newBub2()
-// console.log(newBub)
-// console.log(newNot)
-//         newArray[i]['id'] = newText[3]
-//         newArray[i]['x'] = newText[1]
-//         newArray[i]['y']= newText[2]
-//         console.log(newText)
-//      console.log(newArray)
-// console.log(myItemsTwo.length)
-// setTheArray(oldArray => [...oldArray, newElement]);
-// const removeTodo = () => {
-//     if (typeof window.event !== 'undefined'){
-
-//     if (window.event.type === 'click') {
-//         // const dontAdd = []
-//         // console.log('is click')
-//         if (window.event.target.innerText=== 'delete_outlined') {
-
-//             var myVariable = window.event.path[1].parentNode.parentNode.classList[2]
-//             // console.log(myVariable)
-// // console.log(Object.values(myItemsTwo)[1]).indexOf(myVariable)
-//             for (var i = 0; i<myItemsTwo.length; i++){
-//                 // if (typeof myVariable !== 'undefined' && typeof myItemsTwo !== 'undefined') {
-//                 if (Object.values(myItemsTwo[i]).indexOf(myVariable) > -1) {
-//                     if (myItemsTwo[i]['id'] !== 'undefined') {
-//                     newDelLog(myVariable)
-//                 //     const removeNote= (name)=>{
-
-//                 //         // return myItemsTwo.splice(name, 1)
-//                 //     // }
-//                 //     // removeNote(i);
-
-
-//                 //  }
-//                 }
-//             }}
-// // console.log(myItemsTwo)
-
-//         }
-//         // else {return myItemsTwo}
-//     }
-//     // else {return myItemsTwo}
-// }
-// else {return myItemsTwo}
-// }
-
-// var i = toRemove.length;
-// while (i--) {
-// newArray.splice(toRemove[i], 1);
-// }
-// console.log(dontAdd)
-// var newMap = props.newNotesy
-// const filtering = () => {
-
-//     var i
-//     // var j
-//     for (i = 0; i< newMap.length; i++) {
-//         // for (j = 0; j< props.items.length+1; j++)
-//         var j = dontAdd.length
-//         while (j--) {
-//             if (typeof newMap[i] !== 'undefined') {
-//                 if (newMap[i]['id'] === dontAdd[j]){
-//                     // console.log('it matches')
-//                     // newMap.splice(i,1)
-//                 }
-//         }
-        
-//         // console.log(props.newNotesy[i]['id'])
-//         // else if (props.newNotesy[i]['id'] === dontAdd[j]){
-//         //     console.log('it matches')
-//         //     // newMap.splice(i,1)
-//         // }s
-//         // else {
-//             // console.log(props.newNotesy[i]['id'], dontAdd[j])
-//             // console.log (props.newNotesy[i]['id'] === dontAdd[j])
-//         }
-//     // }
-// }}
-//     filtering()
-// console.log(props.items)
-// console.log()
-// console.log(newMap)
-// console.log(props.newNotesy)
-        // console.log
-        
-// console.log(iclicked)
 
 //     }
-var odList = []
-for (var j = 0; j < newNot.length; j++){
-odList.push(newNot[j].od)
-}
-console.log(odList)
-var allNotes = document.getElementsByClassName("full-notey-note'")
-// console.log(allNotes)
-if (typeof allNotes !== 'undefined'){
-for (var i = 0; i < allNotes.length; i++){
+// var odList = []
+// for (var j = 0; j < newNot.length; j++){
+// odList.push(newNot[j].od)
+// }
+// console.log(odList)
+// var allNotes = document.getElementsByClassName("full-notey-note'")
+// // console.log(allNotes)
+// if (typeof allNotes !== 'undefined'){
+// for (var i = 0; i < allNotes.length; i++){
 
-    if(odList.indexOf(allNotes[i].classList[2]) < 0){
-        // allNotes[i].parentElement.removeChild(allNotes[i])
-        console.log(allNotes[i])
-    }
-}}
+//     if(odList.indexOf(allNotes[i].classList[2]) < 0){
+//         // allNotes[i].parentElement.removeChild(allNotes[i])
+//         console.log(allNotes[i])
+//     }
+// }}
 
-    const [hasDropped, setHasDropped] = useState(false)
+// var uniq = odList
+//   .map((name) => {
+//     return {
+//       count: 1,
+//       name: name
+//     }
+//   })
+//   .reduce((a, b) => {
+//     a[b.name] = (a[b.name] || 0) + b.count
+//     return a
+//   }, {})
 
+// var duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1)
+
+// console.log(duplicates)
+
+// for (var i = 0; i < duplicates.length; i++){
+//     if (newNot)
+// }
     return [
         h(NavBar, { ...props, key: 'navbar' }),
-        // h(NavBarTwo, { ...props, key: 'green' }),
-        // h(NavBarThree, { ...props, key: 'red' }),
         h('div', {
             key: props.prefix, 
             className: props.prefix,
             style: getElementStyle('container', props),
-            // onClick: () => (console.log('clicking!'))
         }, 
-            newNot.map( data => !data.hidden ? (h( Note, {odList:odList,newNot:newNot, messages: props.messages, currentUser:props.currentUser, visible: props.visible, items: props.items, newBub: newBub, notesy: props.notesy, onSubmit: props.onSubmit, onChange: props.onChange, removeTodo: props.removeTodo, convoBoxSize: props.convoBoxSize, hashtagDups: props.hashtagDups,allHashtags: props.allHashtags, myHashtags: props.myHashtags, handleScroll: props.onScroll, scrollVals: props.scrollVals, scrollScreen: props.scrollScreen, className: 'full-notey', key: `note-${data.od}`,...props, data } )):h( NoteBubble, { key: `note-${data.od}`,...props, data } ) )
+            newNot.map( data => !data.hidden ? (h( Note, {newNot:newNot, messages: props.messages, currentUser:props.currentUser, visible: props.visible, items: props.items, newBub: newBub, notesy: props.notesy, onSubmit: props.onSubmit, onChange: props.onChange, removeTodo: props.removeTodo, convoBoxSize: props.convoBoxSize, hashtagDups: props.hashtagDups,allHashtags: props.allHashtags, myHashtags: props.myHashtags, handleScroll: props.onScroll, scrollVals: props.scrollVals, scrollScreen: props.scrollScreen, className: 'full-notey', key: `note-${data.od}`,...props, data } )):h( NoteBubble, { key: `note-${data.od}`,...props, data } ) )
         ),
-        // h('div', {
-        //     key: `${props.prefix}-bubble`, 
-        //     className: `${props.prefix}-bubble`,
-        //     width: 30,
-        //     height: 30,
-        //     onMouseEnter: ()=> (settingLine(window.event.relatedTarget.classList[0])),
-        //     onMouseOut: () => (settingLineOut(null)),
-
-
-        //     // style: getElementStyle('container', props)
-        // }, 
-        //     newBub.map( data => h( NoteBubble, {settingLine: settingLine, convoBoxSize: props.convoBoxSize, visible: props.visible, myArrayPos: props.myArrayPos, myArray: props.myArray, key: `note-${data.od}`,...props, data })
-        // )),
     ]
 }
 

@@ -353,15 +353,36 @@ var newBubble = []
 			var j
 		  for (j = 0; j< result.length; j++) {
 			  var h
-			  for (h = 0; h< result[j].length; h++)
-				// var times = (result[j][h]['time'])
+			  for (h = 0; h< result[j].length; h++){
+				  
+				  if (result[j][result[j].length-1]['print']=== ' '||result[j][result[j].length-1]['print']=== ''){
+					if (typeof result[j][result[j].length-2] !== 'undefined'){
+					  result[j][result[j].length-1]['print'] = result[j][result[j].length-2]['print']
+					  for (k = 0; k < newArray.length; k++) {
+					  if (newArray[k]['time']=== result[j][result[j].length-1]['time']){
+						  console.log(newArray[k]['time'])
+						  console.log(newArray[k]['print'])
+						  newArray[k]['print'] = result[j][result[j].length-2]['print']
+						  console.log(newArray[k]['print'])
+	
+					}
+					if (newArray[k]['time']=== result[j][0]['time']){
+						console.log(newArray[k]['time'])
+				  }
+					}
+					//   console.log(result[j][result[j].length-2]['print'], j, h, result[j][result[j].length-1]['print'])
+				  }}
+				//   console.log(result[j][h]['print'], result[j][h], j, h)
+				var texts = (result[j][h]['print'])
 				var soloTime = result
-				// console.log(soloTime)
-				soloTime[j].splice((0),(soloTime[j].length-1))
+				// console.log(texts)
+				// soloTime[j].splice((0),(soloTime[j].length-1))
 				// var bigTime = Math.max(times)
 				resultTwo.push(soloTime[j][0])
-				// console.log(soloTime[j])
+				// console.log(soloTime)
 			}
+				soloTime[j].splice((0),(soloTime[j].length-1))
+		}
 			var k
 			for (k = 0; k < newArray.length; k++) {
 				var l

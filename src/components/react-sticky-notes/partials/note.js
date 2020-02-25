@@ -40,7 +40,8 @@ class Note extends React.Component{
             theCardOffset: this.getOffset(),
             newNoteLabel: '',
             y: 0,
-            text: ''
+            text: '',
+            duplicates: 'no'
             // scrollTop: document.getElementsByClassName('listyThree')[0].scrollTop
 
         }
@@ -816,26 +817,26 @@ const setOpac = () => {
                     return 0
                 }
                 else {
-                    if (props.odList.indexOf(props.data.od)<0){
-                        console.log('happening'+ props.data.od)
-                        return 0
-                    }
-                    else{
+                    // if (props.odList.indexOf(props.data.od)<0){
+                    //     console.log('happening'+ props.data.od)
+                    //     return 0
+                    // }
+                    // else{
                 return 1}}
-            }
+            // }
         }
         else {
             if ((((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)< 20&& props.scrollScreen > 0){
                 return 0
             }
-            if (props.odList.indexOf(props.data.od)<0){
-                console.log('happening'+ props.data.od)
-                return 0
-            }
-            else {
+            // if (props.odList.indexOf(props.data.od)<0){
+            //     console.log('happening'+ props.data.od)
+            //     return 0
+            // }
+            // else {
         return 1
         }}
-    }
+    // }
 }
 
 const settingLine = (value) =>{
@@ -994,160 +995,49 @@ const newFunc = () => {
 }}
 var cIndex = 0
 const newFunc2 = () => {
-    // console.log(' y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus 18 minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +' minus scrollScreen ' + scrollVal + ' equals ' + (this.currentY-textHeight-(closestCard-upperSpace-10)))
-// var percentageY = (((this.currentY-textHeight-(closestCard-upperSpace-10)))/(this.state.closestCard+cardHeight-145-textHeight-10-upperSpace))
-    // console.log(window.innerWidth)
-    // ((this.props.data.y*((window.innerWidth*.5)-133))+absolCardLeft)
-
     var theOne = (document.getElementsByClassName('listyTwo'))
-    // console.log(theOne)
     var ourCard
     var theCardOffset
     var theCardHeight
     var theCardText
-    // var cIndex
-    // for (i=0; i<theOne.length; i++){
-    //     if (theOne[i].innerText === theRightCard.innerText){
-    //         ourCard = theOne[i]
-    //         theCardOffset = theOne[i].offsetTop
-    //         theCardHeight = theOne[i].offsetHeight
-    //         // theCardText = theOne[i].childNodes[1].offsetHeight
-    //         cIndex = i
-    //         // console.log(ourCard)
-    //         // console.log(i)
-            
-    //     }
-    // }
 
     var i
     for (i=0; i<theOne.length; i++){
         if (typeof theOne[i] !== 'undefined'){
-            // console.log(typeof theOne[i].lastChild)
             theCardHeight = theOne[i].offsetHeight
 
             if (typeof theOne[i].lastChild !== 'undefined'){
-            // console.log(theOne[i].innerText === props.data.cardText)
-            // console.log(theOne[i].lastChild.innerText)
-            // console.log(props.data.cardText)
-        if (theOne[i].lastChild.innerText === props.data.cardText){
-            // console.log('hi from inside!')
+                if (theOne[i].lastChild.innerText === props.data.cardText){
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
             theCardHeight = theOne[i].offsetHeight
             theCardText = theOne[i].lastChild.offsetHeight
             cIndex = i
-            // console.log(i)
-            // console.log(ourCard)
-            // console.log(i)
-            
-        }
-        // else if (props.data.cardText === 'undefined'){
-        //     ourCard = theOne[0]
-        //     theCardOffset = theOne[0].offsetTop
-        //     theCardHeight = theOne[0].offsetHeight
-        //     theCardText = theOne[0].lastChild.offsetHeight
-        //     cIndex = i
-        // }
 
-    }}
+            }
+        }
     }
-  
-    // var theOneOffset
-    // var theOneHeight
-    // var theOneText
-    // if (typeof theOne[0] !== 'undefined') {
-    //     theOneOffset = theOne[0].offsetTop
-    //     theOneHeight = theOne[0].offsetHeight
-    //     // theOneText = theOne[0].childNodes[1].offsetHeight
-    // }
-    // (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
-    // var myCardHeight
-    // console.log(ourCard)
-    // console.log(typeof theOne[0])
-    // console.log(ourCard.lastChild.innerText)
-    // console.log(cIndex)
-    // console.log(props.data.scrollVal)
-    // console.log(this.props.scrollScreen)
-    // console.log(theOne)
-    // console.log((((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) )
-    // console.log(this.props.data.y)
-    // console.log(theCardHeight-140)
-    // console.log(this.props.data.y*(theCardHeight-140))
-    // console.log((theCardHeight*(cIndex)) -props.data.scrollVal)
-    // console.log((theCardHeight*(cIndex)))
-    // console.log(props.data.scrollVal)
-    // console.log(this.props.scrollScreen)
-    // var percentageY = (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
-    // if (this.state.cardHeight >100){
-    //     myCardHeight = theCardHeight
-    // }
-    // else {
-    //     myCardHeight = this.state.cardHeight
-    // }
-    // console.log(this.state.cardHeight)
-    // console.log(this.state.y)
-    // console.log(((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen) 
-    // var self = document.getElementsByClassName(`${props.prefix}--full-note-${props.data.od}`)[0]
-    // var mapEl = document.getElementsByClassName('listyThree')[0]
-    // if (typeof mapEl !== 'undefined' && typeof self !== 'undefined'){
-    // mapEl.appendChild(self)}
+    }
     if (this.props.data.y < 0){
+        console.log('returning less than zero')
         return (((0*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  
     }
     else {
+        console.log(this.props.scrollScreen, props.data.scrollVal)
     return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  }
 }
-// var noteNameLabel
-// if (typeof self[0] !== 'undefined'){
-//     if (typeof self[0].children[2] !== 'undefined'){
-//         if (typeof self[0].children[2].children[2] !== 'undefined'){
-//             if (typeof self[0].children[2].children[2].children[0] !== 'undefined'){
-//                 noteNameLabel = (self[0].children[2].children[2].children[0].innerText)
-//             }
-//         }
-//     }
-// }
-
-// const findNot= ()=>{
-//     var i
-//     for (i=0; i <props.newNot.length; i++){
-//         // console.log(props.newNot[i])
-//         // console.log(noteNameLabel)
-//     }
-// }
-
-// findNot()
-// let word_With_Numbers = props.data.od
-// let word_Without_Numbers = word_With_Numbers.replace(/\D/g, '');
-// var myRand = word_Without_Numbers[0]
-// // var self = document.getElementsByClassName(`${props.prefix}--note-${props.data.od}`)[0]
-// var findit =document.getElementById(myBub['label']);
-// // console.log(this.state.text)
-// var mapEl = document.getElementsByClassName('stickyBox')[0]
-
-// const findX = (idValue) => {
-//     // console.log(myBub)
-// if (typeof myBub.label !== 'undefined' && myBub.label.length > 0){
-// // console.log(findit)
-//     if (findit !== null) {
-//         // console.log((findit.getBoundingClientRect().left -30)+ (myRand/.75))
-//         if (typeof mapEl !== 'undefined' && typeof self !== 'undefined'){
-//         mapEl.appendChild(self)}
-//         return ((findit.getBoundingClientRect().left -30)+ (myRand/.75))
-//     }
-// }
-// if (this.state.mouseStatus === true){
-// // console.log(props.data)
-// }
-// console.log(this.state.text)
 
 var selectionID = props.data.senderId.split(/[_]+/);
-// console.log(props.odList.indexOf(props.data.od), props.data.od)
-// if (props.odList.indexOf(props.data.od)>0){
-//     // console.log(this.props.data)
-// }
 
-// var uniq = props.odList
+var odList = []
+for (var j = 0; j < props.newNot.length; j++){
+odList.push(props.newNot[j].od)
+}
+// console.log(odList)
+var allNotes = document.getElementsByClassName("full-notey-note'")
+// console.log(allNotes)
+
+// var uniq = odList
 //   .map((name) => {
 //     return {
 //       count: 1,
@@ -1161,7 +1051,30 @@ var selectionID = props.data.senderId.split(/[_]+/);
 
 // var duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1)
 
-// console.log(duplicates)
+if (typeof allNotes !== 'undefined'){
+for (var i = 0; i < allNotes.length; i++){
+
+    if(odList.indexOf(allNotes[i].classList[2]) < 0){
+        if (allNotes[i].classList[2] === this.props.data.od){
+            // console.log(allNotes[i])
+            this.setState({duplicates: 'yes'})
+
+            }
+
+        }
+        // console.log(duplicates)
+}
+// for (var i = 0; i < duplicates.length; i++){
+//     console.log(i)
+// if (this.props.data.od === duplicates[i]){
+// console.log(duplicates[i])
+// // this.setState({duplicates: 'yes'})
+// }
+// // allNotes[i].parentElement.removeChild(allNotes[i])
+
+// }
+}
+
 
 newFunc2()
 var newText = props.data.text.split(/[_]+/);
@@ -1176,8 +1089,8 @@ var newText = props.data.text.split(/[_]+/);
                 onMouseDownMove2:(pos) => (console.log(pos), this.setState({mouseStatus:pos.mouseStatus})),
                 // onMouseDownMove:(pos) => (this.setState({relClick:pos.relClick})),
                 onDragComplete:(pos)=> (setWhatDragShouldDo(),
-                (this.setState({justDropped: true, y: pos.y, newNoteLabe: pos.newNoteLabel, mouseStatus: false, scrollVal: pos.scrollVal,theRightCard: pos.theRightCard, closestCard: pos.closestCard, cardHeight: pos.cardHeight, textHeight: pos.textHeight, absolCardLeft:pos.absolCardLeft, percentX:pos.percentX, percentY:pos.percentY})),
-                (this.setText(pos.text)),
+                (this.setState({justDropped: true, y: pos.y, newNoteLabel: pos.newNoteLabel, mouseStatus: false, scrollVal: pos.scrollVal,theRightCard: pos.theRightCard, closestCard: pos.closestCard, cardHeight: pos.cardHeight, textHeight: pos.textHeight, absolCardLeft:pos.absolCardLeft, percentX:pos.percentX, percentY:pos.percentY})),
+                (this.setText(pos.text)), console.log(pos.text),
                 props.onSubmit(('ggggg' + `${typeof pos.text==='undefined'?this.state.text:pos.text}`+ `_${pos.percentX}_${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${0}`+`_${selectionID[0]}`+`_moved by ${props.currentUser.id}`))
                 //  (this.setState({positionX: pos.x, positionY:pos.y}
                     // )
@@ -1191,7 +1104,7 @@ var newText = props.data.text.split(/[_]+/);
                     // width: 115,
                     // height: 115,
                     boxShadow: '1px 1px 2px rgba(0,0,0,.15)',
-                    opacity: setOpac()
+                    opacity: this.state.duplicates === 'no' ? setOpac(): 0
                     }
             }, [
                 h('div', {
