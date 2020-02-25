@@ -284,7 +284,7 @@ var newBubble = []
 			var i
 			for (i = 0; i< this.props.notesy.length; i++) {
 				var newText = newArray[i].text.split(/[_]+/);
-				console.log(newText)
+				// console.log(newText)
 				const noteLab = () =>{
 					if (newText[10] === 'none'){
 						// console.log('returning none!')
@@ -315,12 +315,12 @@ var newBubble = []
 						// console.log('undefined')
 					var ourTexts = document.getElementsByClassName('listyText')
 					if (typeof ourTexts !== 'undefined' && typeof ourTexts[0] !== 'undefined'){
-						console.log(ourTexts[0].innerText.replace(/(\r\n|\n|\r)/gm,""))
+						// console.log(ourTexts[0].innerText.replace(/(\r\n|\n|\r)/gm,""))
 						return ourTexts[0].innerText.replace(/(\r\n|\n|\r)/gm,"")
 					}
 					}
 					else {
-						console.log(newText[8].replace(/(\r\n|\n|\r)/gm,""))
+						// console.log(newText[8].replace(/(\r\n|\n|\r)/gm,""))
 						return newText[8].replace(/(\r\n|\n|\r)/gm,"")
 					}
 				}

@@ -1019,11 +1019,11 @@ const newFunc2 = () => {
     }
     }
     if (this.props.data.y < 0){
-        console.log('returning less than zero')
+        // console.log('returning less than zero')
         return (((0*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  
     }
     else {
-        console.log(this.props.scrollScreen, props.data.scrollVal)
+        // console.log(this.props.scrollScreen, props.data.scrollVal)
     return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  }
 }
 

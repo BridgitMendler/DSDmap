@@ -81,7 +81,7 @@ export default class Draggable {
         this.dy = position.top - rect.top;
         // console.log(this.currentX)
         el.classList.add('draggable');
-console.log(window.event)
+// console.log(window.event)
         document.addEventListener('mousemove', this.onMouseMove, null);
         document.addEventListener('mouseup', this.onMouseUp, null);
         document.addEventListener('touchmove', this.onMouseMove, {passive: false});
@@ -175,7 +175,7 @@ console.log(window.event)
                     if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild !== 'undefined' && e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild !== null){
                         if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild !== 'undefined' && e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild !== null){
                             if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild !== 'undefined' &&e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild !== null){
-                                console.log(e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild)
+                                // console.log(e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild)
                                 if (typeof e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.attributes.placeholder !== 'undefined'){
                                     var myText = e.target.offsetParent.offsetParent.lastElementChild.children[0].firstElementChild.firstElementChild.firstElementChild.attributes.placeholder.value
                                 }
@@ -225,18 +225,18 @@ for (i=0; i<theOne.length; i++){
         
     }
 }
-console.log(ourCard)
+// console.log(ourCard)
 // console.log(' card width ' + cardWidth + ' minus 125 equals ' + (cardWidth-133))
 // console.log('x position' + this.currentX + ' minus absolCardLeft ' + absolCardLeft + ' equals ' +(this.currentX-absolCardLeft) )
-console.log(cardHeight)
+// console.log(cardHeight)
 // console.log('closest Card ' + closestCard + ' plus cardHeight ' + cardHeight + ' minus textHeight ' + textHeight + ' minus upperSpace ' + upperSpace + ' minus 155 equals ' + (closestCard+cardHeight-145-textHeight-23-upperSpace))
 var percentageY = (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
 // console.log(' (y position '+ this.currentY + ' minus textHeight ' + textHeight + ' minus (closest card minus upper space minus 10)'+ (closestCard-upperSpace-10) +') divided by (closest card ' + closestCard + ' plus cardHeight ' + cardHeight + ' minus 145 for note, 10 for margin, and minus text height ' + textHeight + ' minus upperSpace' + upperSpace + 'equals ' + percentageY)
 // console.log('numerator '+((this.currentY-(cardHeight*cIndex)+scrollVal)))
 // console.log('denominator '+((cardHeight-140)))
 // var yDenominator = 
-console.log(this.mouseStatus)
-console.log(percentageY, closestCard)
+// console.log(this.mouseStatus)
+// console.log(percentageY, closestCard)
 // console.log(theRightCard)
     if(this.options.onDragComplete){
         this.options.onDragComplete.call(this, {
