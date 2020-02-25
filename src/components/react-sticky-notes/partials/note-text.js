@@ -84,7 +84,7 @@ const onChange= (e) =>{
     // console.log(props.left)
 
     setText(e.target.value)
-    console.log('change' + myCard)
+    // console.log('change' + myCard)
     setCard(myCard)
     if (props.onChange) {
       props.onChange()
@@ -93,7 +93,7 @@ const onChange= (e) =>{
 
   const handleBlur = (e) => {
     if (e.target.value !== ''){
-        console.log(card)
+        // console.log(card)
     props.onSubmit(('ggggg' + text+ `_${data.x}_${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${card}`+ `_${0}`+`_${noteNameLabel}`+`_edited by ${props.currentUser.id}`))
     }
     //   console.log(e)

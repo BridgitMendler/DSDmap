@@ -60,14 +60,14 @@ getOffset = () => {
 
     for (i=0; i<theOne.length; i++){
         if (theOne[i].innerText === this.props.data.cardText){
-console.log('step one' + this.props.data.od)
+// console.log('step one' + this.props.data.od)
         } if( typeof theOne[i].childNodes[1] !== 'undefined'){
-            console.log('step two' + this.props.data.od)
+            // console.log('step two' + this.props.data.od)
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
             theCardHeight = theOne[i].offsetHeight
             theCardText = theOne[i].childNodes[0].offsetHeight
-            console.log(theCardOffset)
+            // console.log(theCardOffset)
             
         }
     }
@@ -140,7 +140,7 @@ getNotePositionX =() => {
         }
             }
             else {
-                console.log('else ' + this.props.data.position.x)
+                // console.log('else ' + this.props.data.position.x)
                 return this.props.data.position.x
             }
         }}
