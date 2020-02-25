@@ -315,11 +315,12 @@ var newBubble = []
 						// console.log('undefined')
 					var ourTexts = document.getElementsByClassName('listyText')
 					if (typeof ourTexts !== 'undefined' && typeof ourTexts[0] !== 'undefined'){
-						// console.log(ourTexts[0].innerText)
+						console.log(ourTexts[0].innerText)
 						return ourTexts[0].innerText
 					}
 					}
 					else {
+						console.log(newText[8])
 						return newText[8]
 					}
 				}

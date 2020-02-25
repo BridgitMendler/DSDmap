@@ -50,6 +50,7 @@ export const Map = (props) => {
     const over= ()=> {
       if (isOver === true) {
         var e = window.event
+        if (typeof e !== 'undefined'){
         if (typeof e.clientX !== 'undefined' && typeof e.clientY !== 'undefined'){
         var selection = document.elementsFromPoint(e.clientX,e.clientY)[0].classList[0]
         var selectionTwo =document.elementsFromPoint(e.clientX,e.clientY)[0].localName
@@ -85,7 +86,7 @@ export const Map = (props) => {
 
 
         // console.log(dragState)
-      }
+      }}
 return
 
     }}
@@ -497,7 +498,7 @@ return
 
               function mouseover(d,i) {
                 moveKnight(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
-                console.log(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
+                // console.log(bubblePos.x,bubblePos.y, window.event.target.attributes[1].value)
               d3.select(this).transition()
                   .duration(750)
                   .attr("r", 20);
