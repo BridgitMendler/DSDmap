@@ -80,6 +80,7 @@ const onSubmit=(e) =>{
 }
 const onChange= (e) =>{
     // console.log(props.left)
+
     setText(e.target.value)
     if (props.onChange) {
       props.onChange()
@@ -87,7 +88,10 @@ const onChange= (e) =>{
   }
 
   const handleBlur = (e) => {
+    if (e.target.value !== ''){
+        console.log('value not blank')
     props.onSubmit(('ggggg' + text+ `_${data.x}_${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${myCard}`+ `_${0}`+`_${noteNameLabel}`+`_edited by ${props.currentUser.id}`))
+    }
     //   console.log(e)
       setOpac(0)
   }
