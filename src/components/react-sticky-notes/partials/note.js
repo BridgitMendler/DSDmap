@@ -58,12 +58,15 @@ getOffset = () => {
     // console.log(theOne)
 
     for (i=0; i<theOne.length; i++){
-        if (theOne[i].innerText === this.props.data.cardText && typeof theOne[i].childNodes[1] !== 'undefined'){
+        if (theOne[i].innerText === this.props.data.cardText){
+console.log('step one' + this.props.data.od)
+        } if( typeof theOne[i].childNodes[1] !== 'undefined'){
+            console.log('step two' + this.props.data.od)
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
             theCardHeight = theOne[i].offsetHeight
             theCardText = theOne[i].childNodes[0].offsetHeight
-            // console.log(theCardOffset)
+            console.log(theCardOffset)
             
         }
     }
@@ -813,11 +816,20 @@ const setOpac = () => {
                     return 0
                 }
                 else {
-                return 1}
+                    if (props.odList.indexOf(props.data.od)<0){
+                        console.log('happening'+ props.data.od)
+                        return 0
+                    }
+                    else{
+                return 1}}
             }
         }
         else {
             if ((((this.props.data.y*((theCardOffset+theCardHeight-145-theCardText-10-upperSpace)))+theCardText+(theCardOffset-upperSpace-10))-this.props.scrollScreen)< 20&& props.scrollScreen > 0){
+                return 0
+            }
+            if (props.odList.indexOf(props.data.od)<0){
+                console.log('happening'+ props.data.od)
                 return 0
             }
             else {
@@ -1130,6 +1142,27 @@ const newFunc2 = () => {
 // console.log(this.state.text)
 
 var selectionID = props.data.senderId.split(/[_]+/);
+// console.log(props.odList.indexOf(props.data.od), props.data.od)
+// if (props.odList.indexOf(props.data.od)>0){
+//     // console.log(this.props.data)
+// }
+
+// var uniq = props.odList
+//   .map((name) => {
+//     return {
+//       count: 1,
+//       name: name
+//     }
+//   })
+//   .reduce((a, b) => {
+//     a[b.name] = (a[b.name] || 0) + b.count
+//     return a
+//   }, {})
+
+// var duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1)
+
+// console.log(duplicates)
+
 newFunc2()
 var newText = props.data.text.split(/[_]+/);
         return h(NoteDraggable, {

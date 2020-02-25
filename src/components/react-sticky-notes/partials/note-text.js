@@ -165,25 +165,25 @@ setOpac(1)
             ),
 
         )
-        ,h("button", {onClick: onSubmit, type: 'button', className: 'noteSend', style: {backgroundColor: '#CACFDA', /* Green */
-            border: 'none',
-            color: 'white',
-            borderRadius: 2,
-            paddingLeft: 3,
-            paddingRight: 3,
-            textAlign: 'center',
-            fontWeight: 'bold',
-            fontFamily: 'avenir next',
-            boxShadow: '1px 1px 2px rgba(0, 0, 0, 0.13)',
-            background: '-moz-linear-gradient(top,  #CACFDA 1%, 9AA5B9 100%)',
-            background: '-webkit-gradient(linear, left top, left bottom, color-stop(1%,#CACFDA), color-stop(100%,9AA5B9))',
-            background: '-webkit-linear-gradient(top,  #CACFDA 1%,9AA5B9 100%)',
-            background: '-o-linear-gradient(top,  #CACFDA 1%,9AA5B9 100%)',
-            background: '-ms-linear-gradient(top,  #CACFDA 1%,9AA5B9 100%)',
-            background: 'linear-gradient(to bottom,  #CACFDA 1%,9AA5B9100%)',
-            transform: `translate(${x}px, ${y}px)`,
-            opacity: opac,
-            fontSize: 16}}, "share")
+        // ,h("button", {onClick: onSubmit, type: 'button', className: 'noteSend', style: {backgroundColor: '#CACFDA', /* Green */
+        //     border: 'none',
+        //     color: 'white',
+        //     borderRadius: 2,
+        //     paddingLeft: 3,
+        //     paddingRight: 3,
+        //     textAlign: 'center',
+        //     fontWeight: 'bold',
+        //     fontFamily: 'avenir next',
+        //     boxShadow: '1px 1px 2px rgba(0, 0, 0, 0.13)',
+        //     background: '-moz-linear-gradient(top,  #CACFDA 1%, 9AA5B9 100%)',
+        //     background: '-webkit-gradient(linear, left top, left bottom, color-stop(1%,#CACFDA), color-stop(100%,9AA5B9))',
+        //     background: '-webkit-linear-gradient(top,  #CACFDA 1%,9AA5B9 100%)',
+        //     background: '-o-linear-gradient(top,  #CACFDA 1%,9AA5B9 100%)',
+        //     background: '-ms-linear-gradient(top,  #CACFDA 1%,9AA5B9 100%)',
+        //     background: 'linear-gradient(to bottom,  #CACFDA 1%,9AA5B9100%)',
+        //     transform: `translate(${x}px, ${y}px)`,
+        //     opacity: opac,
+        //     fontSize: 16}}, "share")
         
     )
 }

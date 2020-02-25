@@ -293,9 +293,10 @@ var newBubble = []
 						return selectionID[0]
 					}
 					else {
+						if (typeof newText[10] !== 'undefined'){
 						var selectionID = newText[10].split(/[_]+/);
 						// console.log(selectionID)
-						return selectionID[0]
+						return selectionID[0]}
 					}
 				}
 				const editLab = () =>{

@@ -68,6 +68,11 @@ body {
   cursor: not-allowed;
 }
 
+.stickyBox {
+transform: translateX(20%);
+overflow: hidden
+}
+
 .Resizer.vertical:hover {
   border-left: 5px solid rgba(0, 0, 0, 0.5);
   border-right: 5px solid rgba(0, 0, 0, 0.5);

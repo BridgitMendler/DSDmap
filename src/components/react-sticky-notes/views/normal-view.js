@@ -213,7 +213,7 @@ var odList = []
 for (var j = 0; j < newNot.length; j++){
 odList.push(newNot[j].od)
 }
-// console.log(odList)
+console.log(odList)
 var allNotes = document.getElementsByClassName("full-notey-note'")
 // console.log(allNotes)
 if (typeof allNotes !== 'undefined'){
@@ -221,7 +221,7 @@ for (var i = 0; i < allNotes.length; i++){
 
     if(odList.indexOf(allNotes[i].classList[2]) < 0){
         // allNotes[i].parentElement.removeChild(allNotes[i])
-        // console.log('mismatch')
+        console.log(allNotes[i])
     }
 }}
 
@@ -237,7 +237,7 @@ for (var i = 0; i < allNotes.length; i++){
             style: getElementStyle('container', props),
             // onClick: () => (console.log('clicking!'))
         }, 
-            newNot.map( data => !data.hidden ? (h( Note, {newNot:newNot, messages: props.messages, currentUser:props.currentUser, visible: props.visible, items: props.items, newBub: newBub, notesy: props.notesy, onSubmit: props.onSubmit, onChange: props.onChange, removeTodo: props.removeTodo, convoBoxSize: props.convoBoxSize, hashtagDups: props.hashtagDups,allHashtags: props.allHashtags, myHashtags: props.myHashtags, handleScroll: props.onScroll, scrollVals: props.scrollVals, scrollScreen: props.scrollScreen, className: 'full-notey', key: `note-${data.od}`,...props, data } )):h( NoteBubble, { key: `note-${data.od}`,...props, data } ) )
+            newNot.map( data => !data.hidden ? (h( Note, {odList:odList,newNot:newNot, messages: props.messages, currentUser:props.currentUser, visible: props.visible, items: props.items, newBub: newBub, notesy: props.notesy, onSubmit: props.onSubmit, onChange: props.onChange, removeTodo: props.removeTodo, convoBoxSize: props.convoBoxSize, hashtagDups: props.hashtagDups,allHashtags: props.allHashtags, myHashtags: props.myHashtags, handleScroll: props.onScroll, scrollVals: props.scrollVals, scrollScreen: props.scrollScreen, className: 'full-notey', key: `note-${data.od}`,...props, data } )):h( NoteBubble, { key: `note-${data.od}`,...props, data } ) )
         ),
         // h('div', {
         //     key: `${props.prefix}-bubble`, 
