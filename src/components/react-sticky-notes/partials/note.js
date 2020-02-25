@@ -1052,14 +1052,14 @@ const newFunc2 = () => {
     }}
     }
   
-    var theOneOffset
-    var theOneHeight
-    var theOneText
-    if (typeof theOne[0] !== 'undefined') {
-        theOneOffset = theOne[0].offsetTop
-        theOneHeight = theOne[0].offsetHeight
-        // theOneText = theOne[0].childNodes[1].offsetHeight
-    }
+    // var theOneOffset
+    // var theOneHeight
+    // var theOneText
+    // if (typeof theOne[0] !== 'undefined') {
+    //     theOneOffset = theOne[0].offsetTop
+    //     theOneHeight = theOne[0].offsetHeight
+    //     // theOneText = theOne[0].childNodes[1].offsetHeight
+    // }
     // (((this.currentY-(cardHeight*cIndex)+scrollVal))/((cardHeight-140)))
     // var myCardHeight
     // console.log(ourCard)
