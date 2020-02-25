@@ -1007,6 +1007,7 @@ const newFunc2 = () => {
             theCardHeight = theOne[i].offsetHeight
 
             if (typeof theOne[i].lastChild !== 'undefined'){
+                // console.log(props.data.cardText)
                 if (theOne[i].lastChild.innerText === props.data.cardText){
             ourCard = theOne[i]
             theCardOffset = theOne[i].offsetTop
@@ -1024,6 +1025,8 @@ const newFunc2 = () => {
     }
     else {
         // console.log(this.props.scrollScreen, props.data.scrollVal)
+        // console.log('theCardHeight' +theCardHeight)
+        // console.log('cIndex'+ cIndex)
     return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  }
 }
 

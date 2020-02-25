@@ -1,5 +1,6 @@
 import { h, nlToBr, getElementStyle, getCurrentDateTime } from './../utils';
 import React, { useState, useEffect } from 'react';
+import { SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG } from 'constants';
 function NoteText(props) {
 // console.log(props.currentUser.id)
 const { data, index, prefix, callbacks } = props;
@@ -7,6 +8,7 @@ const x = 50
 const y = -10
 const [text, setText] = useState('')
 const [opac, setOpac] = useState(0)
+const [card, setCard] = useState('')
 var theOne = (document.getElementsByClassName('selectionssss'))
 var allThem = (document.getElementsByClassName('listyTwo'))
 var scrollValOne = document.getElementsByClassName('listyThree')[0]
@@ -61,7 +63,7 @@ const onSubmit=(e) =>{
     // console.log(e)
     e.preventDefault()
     // onSubmit(('ggggg' + ` `+ `_${getRandom()},${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${theCardText}`+ `_${scrollVal}`)))
-    props.onSubmit(('ggggg' + text+ `_${data.x}_${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${myCard}`+ `_${0}`+`_${noteNameLabel}`+`_edited by ${props.currentUser.id}`))
+    props.onSubmit(('ggggg' + text+ `_${data.x}_${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${card}`+ `_${0}`+`_${noteNameLabel}`+`_edited by ${props.currentUser.id}`))
     setText(text)
   }
   const setText2 = () =>{
@@ -82,6 +84,8 @@ const onChange= (e) =>{
     // console.log(props.left)
 
     setText(e.target.value)
+    console.log('change' + myCard)
+    setCard(myCard)
     if (props.onChange) {
       props.onChange()
     }
@@ -89,8 +93,8 @@ const onChange= (e) =>{
 
   const handleBlur = (e) => {
     if (e.target.value !== ''){
-        console.log('value not blank')
-    props.onSubmit(('ggggg' + text+ `_${data.x}_${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${myCard}`+ `_${0}`+`_${noteNameLabel}`+`_edited by ${props.currentUser.id}`))
+        console.log(card)
+    props.onSubmit(('ggggg' + text+ `_${data.x}_${data.y}`+`_${data.od}`+`_${data.color}`+`_${data.selected}`+`_${data.x}_${data.y}`+`_${card}`+ `_${0}`+`_${noteNameLabel}`+`_edited by ${props.currentUser.id}`))
     }
     //   console.log(e)
       setOpac(0)

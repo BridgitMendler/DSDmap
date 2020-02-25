@@ -550,7 +550,7 @@ handleJoyrideCallback = data => {
 
 
   render() {
-// console.log(this.state.allMes)
+console.log(this.state.notesy)
 // console.log(this.state.delNote)
     var currentUser2
     const userArray = () =>{
