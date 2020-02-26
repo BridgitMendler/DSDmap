@@ -999,12 +999,14 @@ const newFunc2 = () => {
     var ourCard
     var theCardOffset
     var theCardHeight
-    var theCardText
+    var theCardText = 38
+    var cardInfo = []
 
     var i
     for (i=0; i<theOne.length; i++){
         if (typeof theOne[i] !== 'undefined'){
             theCardHeight = theOne[i].offsetHeight
+
 
             if (typeof theOne[i].lastChild !== 'undefined'){
                 // console.log(props.data.cardText)
@@ -1013,6 +1015,7 @@ const newFunc2 = () => {
             theCardOffset = theOne[i].offsetTop
             theCardHeight = theOne[i].offsetHeight
             theCardText = theOne[i].lastChild.offsetHeight
+            // theCardText = theOne[i].childNodes[0].offsetHeight
             cIndex = i
 
             }
@@ -1020,13 +1023,14 @@ const newFunc2 = () => {
     }
     }
     if (this.props.data.y < 0){
-        // console.log('returning less than zero')
-        return (((0*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  
+        // console.log(theCardText)
+        return (((0*(theCardHeight-140))+ (theCardHeight*(cIndex))-props.data.scrollVal)-this.props.scrollScreen)  
     }
     else {
         // console.log(this.props.scrollScreen, props.data.scrollVal)
         // console.log('theCardHeight' +theCardHeight)
         // console.log('cIndex'+ cIndex)
+        // console.log(theCardText)
     return (((this.props.data.y*(theCardHeight-140))+ (theCardHeight*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  }
 }
 
@@ -1094,7 +1098,7 @@ var newText = props.data.text.split(/[_]+/);
                 onDragComplete:(pos)=> (setWhatDragShouldDo(),
                 (this.setState({justDropped: true, y: pos.y, newNoteLabel: pos.newNoteLabel, mouseStatus: false, scrollVal: pos.scrollVal,theRightCard: pos.theRightCard, closestCard: pos.closestCard, cardHeight: pos.cardHeight, textHeight: pos.textHeight, absolCardLeft:pos.absolCardLeft, percentX:pos.percentX, percentY:pos.percentY})),
                 (this.setText(pos.text)), console.log(pos.text),
-                props.onSubmit(('ggggg' + `${typeof pos.text==='undefined'?this.state.text:pos.text}`+ `_${pos.percentX}_${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${0}`+`_${selectionID[0]}`+`_moved by ${props.currentUser.id}`))
+                props.onSubmit(('ggggg' + `${typeof pos.text==='undefined'|| '' || ' '?this.state.text:pos.text}`+ `_${pos.percentX}_${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${0}`+`_${selectionID[0]}`+`_moved by ${props.currentUser.id}`))
                 //  (this.setState({positionX: pos.x, positionY:pos.y}
                     // )
                     // )                
