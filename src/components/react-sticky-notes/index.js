@@ -749,6 +749,7 @@ findDuplicatesTwo(Object.values(this.state.myHashtags))
 			hashtagDups: resultsTwoDups,
 			visible: this.props.visible,
 			dontAdd: this.state.dontAdd,
+			fetchedd: this.props.fetchedd,
 			messages:this.props.messages,
 			currentUser:this.props.currentUser,
 			convoBoxSize: this.props.convoBoxSize,

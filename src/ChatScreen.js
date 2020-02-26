@@ -48,6 +48,7 @@ class ChatScreen extends Component {
       usersWhoAreTyping: [],
       scrollScreen: 0,
       scrollVals: [],
+      dontPrint: [],
       mapName: 'slideNone',
       visible: false,
       feedback: 'chatContainer',
@@ -298,7 +299,7 @@ var oldestM = 300000000
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: 'c345b462-973e-44e0-a975-a90a3d9869cd',
+          roomId: 'e051526c-e7f5-46e0-8d2f-97cd80a556e8',
           hooks: {
             onMessage: message => {
               if (message.id < oldestM){
@@ -378,7 +379,7 @@ var oldestM = 300000000
       .then(currentUser =>{  
         // console.log('returning')
        return this.state.currentUser.fetchMessages({
-        roomId:'c345b462-973e-44e0-a975-a90a3d9869cd',
+        roomId:'e051526c-e7f5-46e0-8d2f-97cd80a556e8',
         initialId: oldestM,
         direction: 'older',
         limit:100, 
@@ -437,7 +438,9 @@ var oldestM = 300000000
               messages: [...this.state.messages, message[i]],
               allMes:[...this.state.allMes, message[i]]
             })
-          }}}}}, reason => {console.error(reason)})
+          }}}
+        }
+        }, reason => {console.error(reason)})
       .catch(error => console.error('error', error))
 
       if (this.state.allMes.length === 100){
@@ -550,8 +553,13 @@ handleJoyrideCallback = data => {
 
 
   render() {
-console.log(this.state.notesy)
+console.log(this.state.allMes)
+// console.log(this.state.postings)
+// console.log(this.state.messages)
+// console.log(this.state.notesy)
+// console.log(this.state.bubblePosList)
 // console.log(this.state.delNote)
+// console.log(this.state.dontPrint)
     var currentUser2
     const userArray = () =>{
     var usernameTwo = this.state.currentUser
@@ -802,6 +810,7 @@ userArray()
             messages={this.state.postings}
             currentUser={this.state.currentUser}
             invisiBox={this.state.sidePanel}
+            fetchedd={'no'}
           />
               </div>
               

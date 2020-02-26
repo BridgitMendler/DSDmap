@@ -1044,26 +1044,26 @@ odList.push(props.newNot[j].od)
 var allNotes = document.getElementsByClassName("full-notey-note'")
 // console.log(allNotes)
 
-// var uniq = odList
-//   .map((name) => {
-//     return {
-//       count: 1,
-//       name: name
-//     }
-//   })
-//   .reduce((a, b) => {
-//     a[b.name] = (a[b.name] || 0) + b.count
-//     return a
-//   }, {})
+var uniq = odList
+  .map((name) => {
+    return {
+      count: 1,
+      name: name
+    }
+  })
+  .reduce((a, b) => {
+    a[b.name] = (a[b.name] || 0) + b.count
+    return a
+  }, {})
 
-// var duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1)
+var duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1)
 
 if (typeof allNotes !== 'undefined'){
 for (var i = 0; i < allNotes.length; i++){
 
     if(odList.indexOf(allNotes[i].classList[2]) < 0){
         if (allNotes[i].classList[2] === this.props.data.od){
-            console.log(allNotes[i])
+        
             this.setState({duplicates: 'yes'})
 
             }
@@ -1071,17 +1071,31 @@ for (var i = 0; i < allNotes.length; i++){
         }
         // console.log(duplicates)
 }
-// for (var i = 0; i < duplicates.length; i++){
-//     console.log(i)
-// if (this.props.data.od === duplicates[i]){
-// console.log(duplicates[i])
-// // this.setState({duplicates: 'yes'})
-// }
-// // allNotes[i].parentElement.removeChild(allNotes[i])
+for (var i = 0; i < duplicates.length; i++){
+    // console.log(i)
+if (this.props.data.od === duplicates[i]){
+    // console.log(this.props.fetchedd)
+// this.setState({duplicates: 'yes'})
+}
+// allNotes[i].parentElement.removeChild(allNotes[i])
 
-// }
+}
 }
 // console.log(this.state.duplicates)
+
+const getTheText = () => {
+    // console.log(props.newNot.length)
+    for (var i = 0; i < props.newNot.length; i++){
+        // console.log(props.newNot[i].od)
+        // console.log(props.data.od)
+        if (props.newNot[i].od === props.data.od){
+            // console.log(props.newNot[i].print)
+
+            return(props.newNot[i].print)
+        }
+    }
+}
+getTheText()
 
 newFunc2()
 var newText = props.data.text.split(/[_]+/);
@@ -1098,7 +1112,7 @@ var newText = props.data.text.split(/[_]+/);
                 onDragComplete:(pos)=> (setWhatDragShouldDo(),
                 (this.setState({justDropped: true, y: pos.y, newNoteLabel: pos.newNoteLabel, mouseStatus: false, scrollVal: pos.scrollVal,theRightCard: pos.theRightCard, closestCard: pos.closestCard, cardHeight: pos.cardHeight, textHeight: pos.textHeight, absolCardLeft:pos.absolCardLeft, percentX:pos.percentX, percentY:pos.percentY})),
                 (this.setText(pos.text)), console.log(pos.text),
-                props.onSubmit(('ggggg' + `${typeof pos.text==='undefined'|| '' || ' '?this.state.text:pos.text}`+ `_${pos.percentX}_${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${0}`+`_${selectionID[0]}`+`_moved by ${props.currentUser.id}`))
+                props.onSubmit(('ggggg' + `${typeof pos.text==='undefined' && pos.text !== '' || ' '?this.state.text:pos.text}`+ `_${pos.percentX}_${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${0}`+`_${selectionID[0]}`+`_moved by ${props.currentUser.id}`))
                 //  (this.setState({positionX: pos.x, positionY:pos.y}
                     // )
                     // )                
