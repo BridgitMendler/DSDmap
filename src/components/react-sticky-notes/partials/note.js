@@ -1112,7 +1112,7 @@ var newText = props.data.text.split(/[_]+/);
                 onDragComplete:(pos)=> (setWhatDragShouldDo(),
                 (this.setState({justDropped: true, y: pos.y, newNoteLabel: pos.newNoteLabel, mouseStatus: false, scrollVal: pos.scrollVal,theRightCard: pos.theRightCard, closestCard: pos.closestCard, cardHeight: pos.cardHeight, textHeight: pos.textHeight, absolCardLeft:pos.absolCardLeft, percentX:pos.percentX, percentY:pos.percentY})),
                 (this.setText(pos.text)), console.log(pos.text),
-                props.onSubmit(('ggggg' + `${typeof pos.text==='undefined' && pos.text !== '' || ' '?this.state.text:pos.text}`+ `_${pos.percentX}_${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${0}`+`_${selectionID[0]}`+`_moved by ${props.currentUser.id}`))
+                props.onSubmit(('ggggg' + `${typeof pos.text==='undefined' && pos.text !== '' && pos.text !== ' '?this.state.text:pos.text}`+ `_${pos.percentX}_${pos.percentY}`+`_${props.data.od}`+`_${props.data.color}`+`_${props.data.selected}`+`_${pos.percentX}_${pos.percentY}`+`_${this.state.theRightCard.innerText}`+ `_${0}`+`_${selectionID[0]}`+`_moved by ${props.currentUser.id}`))
                 //  (this.setState({positionX: pos.x, positionY:pos.y}
                     // )
                     // )                

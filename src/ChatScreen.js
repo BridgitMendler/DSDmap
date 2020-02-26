@@ -21,7 +21,7 @@ import ReactJoyride, { EVENTS } from "react-joyride";
 import PropTypes from "prop-types";
 import drop from './components/drop2.gif'
 import tab2 from './components/tab2.gif'
-import pic4 from './components/mendler2.png'
+import pic4 from './components/mendler.png'
 import group from './components/group.gif'
 import show from './components/link.gif'
 import mapFull from './components/mapFull.png'
@@ -299,7 +299,7 @@ var oldestM = 300000000
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: '63f6e8cf-22b0-4ead-b8f2-aec4e28f1c3a',
+          roomId: 'ee9257d9-9ca5-48a7-bc7e-93587bf8a7a3',
           hooks: {
             onMessage: message => {
               if (message.id < oldestM){
@@ -379,7 +379,7 @@ var oldestM = 300000000
       .then(currentUser =>{  
         // console.log('returning')
        return this.state.currentUser.fetchMessages({
-        roomId:'63f6e8cf-22b0-4ead-b8f2-aec4e28f1c3a',
+        roomId:'ee9257d9-9ca5-48a7-bc7e-93587bf8a7a3',
         initialId: oldestM,
         direction: 'older',
         limit:100, 
