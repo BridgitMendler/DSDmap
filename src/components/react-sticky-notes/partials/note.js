@@ -1063,7 +1063,7 @@ for (var i = 0; i < allNotes.length; i++){
 
     if(odList.indexOf(allNotes[i].classList[2]) < 0){
         if (allNotes[i].classList[2] === this.props.data.od){
-            // console.log(allNotes[i])
+            console.log(allNotes[i])
             this.setState({duplicates: 'yes'})
 
             }
@@ -1081,7 +1081,7 @@ for (var i = 0; i < allNotes.length; i++){
 
 // }
 }
-
+// console.log(this.state.duplicates)
 
 newFunc2()
 var newText = props.data.text.split(/[_]+/);
