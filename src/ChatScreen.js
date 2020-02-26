@@ -553,7 +553,7 @@ handleJoyrideCallback = data => {
 
 
   render() {
-console.log(this.state.allMes)
+// console.log(this.state.allMes)
 // console.log(this.state.postings)
 // console.log(this.state.messages)
 // console.log(this.state.notesy)
