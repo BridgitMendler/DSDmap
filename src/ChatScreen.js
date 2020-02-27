@@ -26,6 +26,7 @@ import group from './components/group.gif'
 import show from './components/link.gif'
 import mapFull from './components/mapFull.png'
 import breakdown from './components/breakdown6.png'
+// import { ExportCSV } from './exportCsv.js'
 
 
 
@@ -299,7 +300,7 @@ var oldestM = 300000000
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: 'ee9257d9-9ca5-48a7-bc7e-93587bf8a7a3',
+          roomId: '81c987ef-9e6d-463a-b499-3755249ace0f',
           hooks: {
             onMessage: message => {
               if (message.id < oldestM){
@@ -379,7 +380,7 @@ var oldestM = 300000000
       .then(currentUser =>{  
         // console.log('returning')
        return this.state.currentUser.fetchMessages({
-        roomId:'ee9257d9-9ca5-48a7-bc7e-93587bf8a7a3',
+        roomId:'81c987ef-9e6d-463a-b499-3755249ace0f',
         initialId: oldestM,
         direction: 'older',
         limit:100, 
@@ -553,7 +554,6 @@ handleJoyrideCallback = data => {
 
 
   render() {
-// console.log(this.state.allMes)
 // console.log(this.state.postings)
 // console.log(this.state.messages)
 // console.log(this.state.notesy)
@@ -748,8 +748,9 @@ userArray()
     // const { steps } = this.state.steps;
 
     // console.log(varry)
-
+if (this.state.currentUser['username']=== 'Bridgit'){
     return (<div className='upperMost'>
+      {/* <ExportCSV csvData={this.state.allMes} fileName={'dsd270100'} /> */}
                   {/* <button onClick={this.handleClickStart}>Let's Go!</button> */}
         <ReactJoyride
           continuous
@@ -826,7 +827,7 @@ userArray()
       <section style={styles.chatContainer} className={`${this.state.feedback}`}>
           <div className="messages"style={styles.MessageList}>
             <MessageList messages={this.state.messages} users={this.state.currentRoom.users} currentUsername={this.props.currentUsername}/>
-            {/* <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping} /> */}
+            <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping} />
             <SendMessageForm onSubmit={this.sendMessage}onChange={this.sendTypingEvent}/>
           </div>
       </section>
@@ -834,6 +835,95 @@ userArray()
   </div>
   </div>
     )
+        }
+        else {
+          return (<div className='upperMost'>
+          {/* <ExportCSV csvData={this.state.allMes} fileName={'testfile'} /> */}
+                      {/* <button onClick={this.handleClickStart}>Let's Go!</button> */}
+            <ReactJoyride
+              continuous
+              scrollToFirstStep
+              showProgress
+              showSkipButton
+              run={this.state.run}
+              steps={this.state.steps}
+              styles={{
+                options: {
+                  zIndex: 10000,
+                  // arrowColor: '#e3ffeb',
+                  // backgroundColor: "#eee",
+                  // backgroundColor: '#e3ffeb',
+                  // overlayColor: 'rgba(79, 26, 0, 0.4)',
+                  primaryColor: '#9FA7B8',
+                  // textColor: '#004a14',
+                  width: 900,
+                }
+              }}
+              callback={this.handleJoyrideCallback, this.theChange}
+            />
+        <div onClick={this.handleClick} onScroll= {this.handleScroll}>       
+            <aside className="bigSpace" style={styles.whosOnlineListContainer}>
+            <WhosOnlineList 
+                        style= {styles.onlineList}
+                className='onlineList noselect' 
+                currentUser={currentUser2} 
+                users={users2}
+              />
+              <div style={styles.borderBox}>
+              <MessageTwo onSubmit={this.sendMessage} 
+              currentUser={this.state.currentUser} 
+                users={this.state.currentRoom.users}/>
+    
+              <h1 style={styles.button2}
+                className="title2"
+                onClick={this.handleLineClick}
+              ><img className='pictureLine noselect' style={styles.imagee} src={this.state.hidden? pic3:pic2}></img><p style={styles.text}>show line</p></h1>
+              <h1 style={styles.button}
+                className="title"
+                onClick={this.handleMapClick}
+              ><img className='pictureThree noselect' style={styles.imagee2} src={pic}></img><p style={styles.text2}>show map</p></h1>
+                   <ReactStickyNotes className='stickyButton' style={styles.rsNotes}
+                onChange={this.sendTypingEvent}
+                onSubmit={this.sendMessage}
+                backgroundColor="#fefefe"
+                useCSS={true}
+                scrollScreen={this.state.scrollScreen}
+                bubblePosList={this.state.bubblePosList}
+                scrollVals={this.state.scrollVals}
+                visible = {this.state.visible}
+                onScroll= {this.handleScroll}
+                convoBoxSize={this.state.convoBoxSize}
+                hidden={this.state.hidden}
+                notesy={this.state.notesy}
+                delNote={this.state.delNote}
+                messages={this.state.postings}
+                currentUser={this.state.currentUser}
+                invisiBox={this.state.sidePanel}
+                fetchedd={'no'}
+              />
+                  </div>
+                  
+              </aside>   
+              <svg className={`${this.state.mapName}`} height={window.screen.height*.81}>
+              <img className='pictureThree noselect' style={styles.imagee2} src={pic}></img>
+                   <Map className={`${this.state.mapName}`} onSubmit={this.sendMessage} knightPosition={this.state.knightPos}/> 
+                   </svg> 
+        <div style={styles[this.state.sidePanel]} className={`${this.state.sidePanel}`} >
+          <MessageListTwo className='messageListTwo' delNote={this.state.delNote} currentUser={this.state.currentUser} onSubmit={this.sendMessage} messages={this.state.postings} style={styles.transforming}/>
+        </div>
+        <div style={styles.chatContainer} className={`${this.state.feedback}`} >
+          <section style={styles.chatContainer} className={`${this.state.feedback}`}>
+              <div className="messages"style={styles.MessageList}>
+                <MessageList messages={this.state.messages} users={this.state.currentRoom.users} currentUsername={this.props.currentUsername}/>
+                {/* <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping} /> */}
+                <SendMessageForm onSubmit={this.sendMessage}onChange={this.sendTypingEvent}/>
+              </div>
+          </section>
+        </div>
+      </div>
+      </div>
+        )
+        }
   }
 }
 
