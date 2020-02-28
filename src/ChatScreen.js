@@ -301,7 +301,7 @@ var oldestM = 300000000
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: '2a2074e0-2f0c-4882-8bc6-dcc03aa91012',
+          roomId: '2c4b3c98-95b6-4729-98b6-d11a1a4b330f',
           hooks: {
             onMessage: message => {
               if (message.id < oldestM){
@@ -375,24 +375,25 @@ var oldestM = 300000000
       })
 .then(fetchy => {
   // console.log(fetchy)
-      for (let i = 0, p = Promise.resolve(); i < 10; i++) {
+      for (let i = 0, p = new Promise(function(resolve){setTimeout(resolve,2000)}); i < 10; i++) {
         // console.log(i)
         p = p
       .then(currentUser =>{  
         // console.log('returning')
        return this.state.currentUser.fetchMessages({
-        roomId:'2a2074e0-2f0c-4882-8bc6-dcc03aa91012',
+        roomId:'2c4b3c98-95b6-4729-98b6-d11a1a4b330f',
         initialId: oldestM,
         direction: 'older',
-        limit:100, 
+        limit:90, 
        })
         .then(message => { 
           
           // if(message.length >= 100){
-            // console.log('message!')
+            console.log(message)
             if (typeof message[0] !== 'undefined'){
+              console.log('not undefined')
             if (message[0].id < oldestM){
-              // console.log(message[0].id)
+              console.log('less than oldest')
               // console.log(message.length)
               // console.log('yes')
               oldestM = message[0].id
@@ -405,7 +406,9 @@ var oldestM = 300000000
               // console.log(tmp)
             }
             for (var i =0; i<message.length; i++){
+              console.log(i)
             if (/^fffff/.test(message[i].text)) {
+              console.log('adding')
               message[i].text=(message[i].text.removeCharAt(0))
               this.setState({
                 postings: [...this.state.postings, message[i]],
@@ -569,7 +572,7 @@ handleJoyrideCallback = data => {
 // console.log(this.state.notesy)
 // console.log(this.state.bubblePosList)
 // console.log(this.state.delNote)
-// console.log(this.state.allMessage.length)
+console.log(this.state.allMes.length)
     var currentUser2
     const userArray = () =>{
     var usernameTwo = this.state.currentUser
@@ -760,7 +763,7 @@ userArray()
     // console.log(varry)
 if (this.state.currentUser['username']=== 'Bridgit'){
     return (<div className='upperMost'>
-      {/* <ExportCSV csvData={this.state.allMes} fileName={'dsd280100pm'} /> */}
+      {/* <ExportCSV csvData={this.state.allMes} fileName={'dsd280300pm'} /> */}
                   {/* <button onClick={this.handleClickStart}>Let's Go!</button> */}
         <ReactJoyride
           continuous
