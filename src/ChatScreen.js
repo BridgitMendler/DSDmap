@@ -59,6 +59,7 @@ class ChatScreen extends Component {
       hidden: false,
       oldestM: 0,
       run: true,
+      allMessage: [],
       steps: [
         {
           content: (
@@ -300,7 +301,7 @@ var oldestM = 300000000
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: '41932920-cb54-40a0-8af0-a65cb763b2f0',
+          roomId: 'da277c67-6415-442f-9f41-f8b3d4e8d2ca',
           hooks: {
             onMessage: message => {
               if (message.id < oldestM){
@@ -380,16 +381,19 @@ var oldestM = 300000000
       .then(currentUser =>{  
         // console.log('returning')
        return this.state.currentUser.fetchMessages({
-        roomId:'41932920-cb54-40a0-8af0-a65cb763b2f0',
+        roomId:'da277c67-6415-442f-9f41-f8b3d4e8d2ca',
         initialId: oldestM,
         direction: 'older',
         limit:100, 
        })
         .then(message => { 
+          
           // if(message.length >= 100){
             // console.log('message!')
             if (typeof message[0] !== 'undefined'){
             if (message[0].id < oldestM){
+              console.log(message[0].id)
+              console.log(message.length)
               // console.log('yes')
               oldestM = message[0].id
             // }
@@ -427,7 +431,7 @@ var oldestM = 300000000
               message.text=(message.text.removeCharAt(0))
               this.setState({
               bubblePosList: [...this.state.bubblePosList, message],
-              allMes:[...this.state.allMes, message]
+              allMes:[...this.state.allMes, message[i]]
             })
             }
             else if (/^DELETED/.test(message[i].text)){
@@ -439,7 +443,13 @@ var oldestM = 300000000
               messages: [...this.state.messages, message[i]],
               allMes:[...this.state.allMes, message[i]]
             })
-          }}}
+          }}
+          // for (var i =0; i<message.length; i++){
+// this.setState({
+//   allMessage: [...this.state.allMessage, message[i]]
+// })
+        // }
+      }
         }
         }, reason => {console.error(reason)})
       .catch(error => console.error('error', error))
@@ -559,7 +569,7 @@ handleJoyrideCallback = data => {
 // console.log(this.state.notesy)
 // console.log(this.state.bubblePosList)
 // console.log(this.state.delNote)
-// console.log(this.state.dontPrint)
+console.log(this.state.allMessage.length)
     var currentUser2
     const userArray = () =>{
     var usernameTwo = this.state.currentUser
@@ -750,7 +760,7 @@ userArray()
     // console.log(varry)
 if (this.state.currentUser['username']=== 'Bridgit'){
     return (<div className='upperMost'>
-      {/* <ExportCSV csvData={this.state.allMes} fileName={'dsd273pm'} /> */}
+      {/* <ExportCSV csvData={this.state.allMes} fileName={'dsd280930am'} /> */}
                   {/* <button onClick={this.handleClickStart}>Let's Go!</button> */}
         <ReactJoyride
           continuous
