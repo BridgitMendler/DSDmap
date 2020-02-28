@@ -106,8 +106,8 @@ setOpac(1)
   }
     return h('div',{
         className:`${prefix}--text ${data.od}`,
-        placeholder:"react-hooks",
-        contentEditable:"true",
+        // placeholder:"react-hooks",
+        // contentEditable:"true",
         // onBlur:(e)=>callbacks.updateItem(index, {
         //     id:data.id,
         //     text: e.target.innerText

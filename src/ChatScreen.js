@@ -301,7 +301,7 @@ var oldestM = 300000000
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: 'da277c67-6415-442f-9f41-f8b3d4e8d2ca',
+          roomId: 'b1799a5e-3058-4572-a3d0-d618a407f819',
           hooks: {
             onMessage: message => {
               if (message.id < oldestM){
@@ -381,7 +381,7 @@ var oldestM = 300000000
       .then(currentUser =>{  
         // console.log('returning')
        return this.state.currentUser.fetchMessages({
-        roomId:'da277c67-6415-442f-9f41-f8b3d4e8d2ca',
+        roomId:'b1799a5e-3058-4572-a3d0-d618a407f819',
         initialId: oldestM,
         direction: 'older',
         limit:100, 
@@ -392,8 +392,8 @@ var oldestM = 300000000
             // console.log('message!')
             if (typeof message[0] !== 'undefined'){
             if (message[0].id < oldestM){
-              console.log(message[0].id)
-              console.log(message.length)
+              // console.log(message[0].id)
+              // console.log(message.length)
               // console.log('yes')
               oldestM = message[0].id
             // }
@@ -569,7 +569,7 @@ handleJoyrideCallback = data => {
 // console.log(this.state.notesy)
 // console.log(this.state.bubblePosList)
 // console.log(this.state.delNote)
-console.log(this.state.allMessage.length)
+// console.log(this.state.allMessage.length)
     var currentUser2
     const userArray = () =>{
     var usernameTwo = this.state.currentUser
@@ -760,7 +760,7 @@ userArray()
     // console.log(varry)
 if (this.state.currentUser['username']=== 'Bridgit'){
     return (<div className='upperMost'>
-      {/* <ExportCSV csvData={this.state.allMes} fileName={'dsd280930am'} /> */}
+      {/* <ExportCSV csvData={this.state.allMes} fileName={'dsd281100am'} /> */}
                   {/* <button onClick={this.handleClickStart}>Let's Go!</button> */}
         <ReactJoyride
           continuous

@@ -198,7 +198,10 @@ below, you consent to this collection of answers to questions:</h3>
               onChange={this.onChange}
               name='first'
             /><br></br>
-            <label for='psw' className='inputLabel2'>password</label>
+            <h3 className='inputLabel3'>
+The researcher will send you a password for your session right before the start of your timeslot
+</h3>
+            <label for='psw' className='inputLabel2'>password sent to you by researcher</label>
             <br></br>
               <input
               className='inputField'
