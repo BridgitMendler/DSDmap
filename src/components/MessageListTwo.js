@@ -185,7 +185,7 @@ messageClean()
   }})
 
 
-if (props.currentUser.id === 'Bridgit_session2843pm__')
+if (props.currentUser.id === 'Bridgit_session2913pm__')
 {
 
     return (
