@@ -58,8 +58,7 @@ class UsernameForm extends Component {
       <div className='frontpage'>
         <div className='frontpage2' style={styles.container}>
           <h2 className='welcome'>Welcome!</h2>
-          {/* <h3 className='inputLabel3'>Thank you for taking part in this online workshop. 
-          Below are some questions before you log in.</h3> */}
+          <h3 className='inputLabel3'>This activity will work best if you are on a desktop or laptop computer and you are using google chrome as your web browser</h3>
           <form onSubmit={this.onSubmit}>
 {/*             
             <label for='last' className='inputLabel'>LAST NAME</label>
