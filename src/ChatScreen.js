@@ -110,7 +110,7 @@ class ChatScreen extends Component {
       },
         {
           content: (
-            <div className='welcome4'>This is a list of all of the participants in your group. You can chat with everyone in the chat box below anytime you have a question</div>),
+            <div className='welcome4'>This is a list of all of the participants in your group. You can chat with everyone in the chat box below</div>),
           // content: "This is a list of all of the participants in your group. You can chat with everyone in the chat box below anytime you have a question",
           placement: "top",
           styles: {
@@ -161,17 +161,17 @@ class ChatScreen extends Component {
         //   placement: "top"
         // },
         {
-          // // title: "Our Fail Test",
-          // content: (
-          //   <div className='welcome4'>
-          //     If you want to see all of the connections made to the map so far, click show line
-          //     <img src={show} className='gifgif' alt="loading..." />
-          //   </div>
-          //             ),
-          content: "Let's begin!",
-          target: "body",
-          placement: "center"
+          content: (
+            <div className='welcome4'>Let's begin!</div>),
+        // content: "",
+        placement: "center",
+        styles: {
+          options: {
+            width: 400
+          }
         },
+        target: "body"
+      },
       ]
     }
     this.sendMessage = this.sendMessage.bind(this)
@@ -952,14 +952,14 @@ if (this.state.currentUser['username']=== 'Malorie'){
               currentUser={this.state.currentUser} 
                 users={this.state.currentRoom.users}/>
     
-              <h1 style={styles.button2}
+              {/* <h1 style={styles.button2}
                 className="title2"
                 onClick={this.handleLineClick}
               ><img className='pictureLine noselect' style={styles.imagee} src={this.state.hidden? pic3:pic2}></img><p style={styles.text}>show line</p></h1>
               <h1 style={styles.button}
                 className="title"
                 onClick={this.handleMapClick}
-              ><img className='pictureThree noselect' style={styles.imagee2} src={pic}></img><p style={styles.text2}>show map</p></h1>
+              ><img className='pictureThree noselect' style={styles.imagee2} src={pic}></img><p style={styles.text2}>show map</p></h1> */}
                    <ReactStickyNotes className='stickyButton' style={styles.rsNotes}
                 onChange={this.sendTypingEvent}
                 onSubmit={this.sendMessage}
