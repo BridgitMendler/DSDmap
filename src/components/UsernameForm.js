@@ -58,8 +58,8 @@ class UsernameForm extends Component {
       <div className='frontpage'>
         <div className='frontpage2' style={styles.container}>
           <h2 className='welcome'>Welcome!</h2>
-          <h3 className='inputLabel3'>Thank you for taking part in this online workshop. 
-          Below are some questions before you log in.</h3>
+          {/* <h3 className='inputLabel3'>Thank you for taking part in this online workshop. 
+          Below are some questions before you log in.</h3> */}
           <form onSubmit={this.onSubmit}>
 {/*             
             <label for='last' className='inputLabel'>LAST NAME</label>
@@ -86,9 +86,9 @@ class UsernameForm extends Component {
               // onChange={this.onChange}
               name='time'
             /> */}
-<h3 className='inputLabel3' for="cars">CONSENT TO PARTICIPATE IN NON-BIOMEDICAL RESEARCH</h3><h3 className='inputLabel3'>
+{/* <h3 className='inputLabel3' for="cars">CONSENT TO PARTICIPATE IN NON-BIOMEDICAL RESEARCH</h3><h3 className='inputLabel3'> */}
 
-
+{/* 
 
 </h3><h3 className='inputLabel3'> Online Collaborative Design Workshop</h3>
 
@@ -188,8 +188,8 @@ below, you consent to this collection of answers to questions:</h3>
               <option value="staff">staff</option>
               <option value="facilitator">facilitator</option>
               <option value="other">other</option>
-            </select>
-            <img className='picture' src={pic}></img>
+            </select> */}
+            {/* <img className='picture' src={pic}></img> */}
             <label for='first' className='inputLabel2'>create a username</label><br></br>
             <input 
               className='inputField'
@@ -198,10 +198,10 @@ below, you consent to this collection of answers to questions:</h3>
               onChange={this.onChange}
               name='first'
             /><br></br>
-            <h3 className='inputLabel3'>
+            {/* <h3 className='inputLabel3'>
 The researcher will send you a password for your session right before the start of your timeslot
-</h3>
-            <label for='psw' className='inputLabel2'>password sent to you by researcher</label>
+</h3> */}
+            <label for='psw' className='inputLabel2'>password sent to you by session leader </label>
             <br></br>
               <input
               className='inputField'

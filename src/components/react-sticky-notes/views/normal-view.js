@@ -102,6 +102,8 @@ var newBub = props.newBubble.filter(obj => {
 // }
     return [
         h(NavBar, { ...props, key: 'navbar' }),
+        h(NavBarTwo, { ...props, key: 'green' }),
+        h(NavBarThree, { ...props, key: 'red' }),
         h('div', {
             key: props.prefix, 
             className: props.prefix,

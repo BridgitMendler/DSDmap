@@ -19,10 +19,10 @@ import { EventEmitter } from './components/react-sticky-notes/utils/events.js'
 import { genericTypeAnnotation } from 'babel-types'
 import ReactJoyride, { EVENTS } from "react-joyride";
 import PropTypes from "prop-types";
-import drop from './components/drop2.gif'
+// import drop from './components/drop2.gif'
 import tab2 from './components/tab2.gif'
-import pic4 from './components/mendler.png'
-import group from './components/group.gif'
+// import pic4 from './components/mendler.png'
+import group from './components/colors.gif'
 import show from './components/link.gif'
 import mapFull from './components/mapFull.png'
 import breakdown from './components/breakdown6.png'
@@ -60,43 +60,44 @@ class ChatScreen extends Component {
       oldestM: 0,
       run: true,
       allMessage: [],
+      combineLi: [],
       steps: [
-        {
-          content: (
-            <div className='welcome4'>
-            Welcome to the design session! We are excited to have you!
-            <br />
-            <img src={pic4} className='mendler' alt="loading..." />
-            <div className='welcome4'> My name is Bridgit and I will be your facilitator! As a reminder, we are here to test out how visual 
-              elements used in offline design workshops can translate to a virtual space. During this workshop, you will 
-              use virtual stickie notes to share your ideas and build upon the ideas of others. You can move the stickies 
-              around and group them as you wish.</div>
-              <br /> 
-              <div className='welcome4'>In this workshop, you are in a hypothetical scenario where you have been tasked to redesign a formal process. 
-                If you have any questions or concerns, feel free to message me in the chat panel</div> 
-          </div>
-          ),
-          placement: "center",
-          locale: { skip: "skip" },
-          target: "body"
-        },
-        {
-          content: (<img src={breakdown} className='mapFull' alt="loading..." />
+        // {
+        //   content: (
+        //     <div className='welcome4'>
+        //     Welcome to the design session! We are excited to have you!
+        //     <br />
+        //     {/* <img src={pic4} className='mendler' alt="loading..." /> */}
+        //     <div className='welcome4'> My name is Bridgit and I will be your facilitator! As a reminder, we are here to test out how visual 
+        //       elements used in offline design workshops can translate to a virtual space. During this workshop, you will 
+        //       use virtual stickie notes to share your ideas and build upon the ideas of others. You can move the stickies 
+        //       around and group them as you wish.</div>
+        //       <br /> 
+        //       <div className='welcome4'>In this workshop, you are in a hypothetical scenario where you have been tasked to redesign a formal process. 
+        //         If you have any questions or concerns, feel free to message me in the chat panel</div> 
+        //   </div>
+        //   ),
+        //   placement: "center",
+        //   locale: { skip: "skip" },
+        //   target: "body"
+        // },
+        // {
+        //   content: (<img src={breakdown} className='mapFull' alt="loading..." />
 
-                      ),
-          // title: "Our Fail Test",
-          // content: "now let's get started, designers!",
-          target: "body",
-          placement: "center",
-          styles: {
-            options: {
-              width: 1200
-            }
-          },
-        },
+        //               ),
+        //   // title: "Our Fail Test",
+        //   // content: "now let's get started, designers!",
+        //   target: "body",
+        //   placement: "center",
+        //   styles: {
+        //     options: {
+        //       width: 1200
+        //     }
+        //   },
+        // },
         {
           content: (
-            <div className='welcome4'>Now we will begin the tour of our dashboard!</div>),
+            <div className='welcome4'>Click next to take a tour of the dashboard</div>),
         // content: "",
         placement: "center",
         styles: {
@@ -124,7 +125,7 @@ class ChatScreen extends Component {
           // title: "Our Mission",
           content: (
             <div className='welcome4'>
-              Click on this button to start a new stickie. When you are finished writing, don't forget to press share! Then move your note to concepts that you think are related.
+              Click on this button to start a new stickie. Then move your note to concepts that you think are related.
               <br />
               <img src={group} alt="loading..." />
             </div>
@@ -132,33 +133,33 @@ class ChatScreen extends Component {
           target: ".rs-notes--navbar",
           placement: "top"
         },
-        {
-          // title: "Our Fail Test",
-          content: (
-            <div className='welcome4'>
-              Click on the show map button to see the process map we are working on. Drag the tab in the corner of the note to the map when you find a spot in the process map that is related. Hover over the steps to see what they say.
-              <img src={tab2} className='gifgif' alt="loading..." />
-            </div>
-                      ),
-          styles: {
-            options: {
-              width: 900
-            }
-          },
-          target: ".title",
-          placement: "top"
-        },
-        {
-          // title: "Our Fail Test",
-          content: (
-            <div className='welcome4'>
-              If you want to see all of the connections made to the map so far, click show line
-              <img src={show} className='gifgif2' alt="loading..." />
-            </div>
-                      ),
-          target: ".title2",
-          placement: "top"
-        },
+        // {
+        //   // title: "Our Fail Test",
+        //   content: (
+        //     <div className='welcome4'>
+        //       Click on the show map button to see the process map we are working on. Drag the tab in the corner of the note to the map when you find a spot in the process map that is related. Hover over the steps to see what they say.
+        //       <img src={tab2} className='gifgif' alt="loading..." />
+        //     </div>
+        //               ),
+        //   styles: {
+        //     options: {
+        //       width: 900
+        //     }
+        //   },
+        //   target: ".title",
+        //   placement: "top"
+        // },
+        // {
+        //   // title: "Our Fail Test",
+        //   content: (
+        //     <div className='welcome4'>
+        //       If you want to see all of the connections made to the map so far, click show line
+        //       <img src={show} className='gifgif2' alt="loading..." />
+        //     </div>
+        //               ),
+        //   target: ".title2",
+        //   placement: "top"
+        // },
         {
           // // title: "Our Fail Test",
           // content: (
@@ -167,7 +168,7 @@ class ChatScreen extends Component {
           //     <img src={show} className='gifgif' alt="loading..." />
           //   </div>
           //             ),
-          content: "Now let's begin! Responding to some questions with a stickie note is usually a good way to start ",
+          content: "Let's begin!",
           target: "body",
           placement: "center"
         },
@@ -284,7 +285,17 @@ this.setState({ scrollVals: joined })
     })
   }
 
-  componentDidMount() {
+getMessages(j, oldestM, currentUser){
+    console.log(j)
+    return this.state.currentUser.fetchMessages({
+     roomId:'68e49abd-c4dd-4ec7-8011-6fddb78898b2',
+     initialId: oldestM,
+     direction: 'older',
+     limit:20, 
+    })
+ }
+
+componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
     const chatManager = new Chatkit.ChatManager({
       instanceLocator: 'v1:us1:d273e0b5-92c2-4e8e-9ad3-ed684d17f602',
@@ -301,7 +312,7 @@ var oldestM = 300000000
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: '36fadffa-9498-45c1-8952-e8869435a75e',
+          roomId: '68e49abd-c4dd-4ec7-8011-6fddb78898b2',
           hooks: {
             onMessage: message => {
               if (message.id < oldestM){
@@ -373,32 +384,28 @@ var oldestM = 300000000
       .then(currentRoom => {
         this.setState({ currentRoom })
       })
-.then(fetchy => {
+
+      .then(async fetchy =>
+ {
   // console.log(fetchy)
-      for (let i = 0, p = new Promise(function(resolve){setTimeout(resolve,2000)}); i < 10; i++) {
-        // console.log(i)
-        p = p
-      .then(currentUser =>{  
-        // console.log('returning')
-       return this.state.currentUser.fetchMessages({
-        roomId:'36fadffa-9498-45c1-8952-e8869435a75e',
-        initialId: oldestM,
-        direction: 'older',
-        limit:90, 
-       })
-        .then(message => { 
-          
-          // if(message.length >= 100){
-            console.log(message)
+  var j 
+  var p
+      for (j = 0, p = Promise.resolve(); j < 40; j++) {
+      //let lllist =  Promise.all([...Array(10)].map( (p, i) => {
+        console.log(j)
+        console.log('oldestM', oldestM);
+
+        await this.getMessages(j, oldestM, this.state.currentUser)
+        
+        .then((message => { 
+          console.log(message)
+          //if(message.length >= 100){
+               console.log('message.length', message.length)
             if (typeof message[0] !== 'undefined'){
-              console.log('not undefined')
             if (message[0].id < oldestM){
-              console.log('less than oldest')
-              // console.log(message.length)
-              // console.log('yes')
               oldestM = message[0].id
             // }
-            // console.log(oldestM)
+            console.log('oldestM', oldestM)
             String.prototype.removeCharAt = function (i) {
               var tmp = this.split(''); // convert to an array
               tmp.splice(i, 5); // remove 1 element from the array (adjusting for non-zero-indexed counts)
@@ -406,72 +413,127 @@ var oldestM = 300000000
               // console.log(tmp)
             }
             for (var i =0; i<message.length; i++){
-              // console.log(i)
-            if (/^fffff/.test(message[i].text)) {
-              console.log('adding')
-              message[i].text=(message[i].text.removeCharAt(0))
-              this.setState({
-                postings: [...this.state.postings, message[i]],
-                allMes:[...this.state.allMes, message[i]]
-              })
-              }
-            else if (/^ggggg/.test(message[i].text)){
-              message[i].text=(message[i].text.removeCharAt(0))
-              this.setState({
-                notesy: [...this.state.notesy, message[i]],
-                allMes:[...this.state.allMes, message[i]]
-              })
-            }
-            else if (/^hhhhh/.test(message[i].text)){
-              message[i].text=(message[i].text.removeCharAt(0))
-              this.setState({
-                delNote: [...this.state.delNote, message[i]],
-                allMes:[...this.state.allMes, message[i]]
-              })
-            }
-            else if (/^jljljl/.test(message[i].text)){
-              // console.log(m)
-              message.text=(message.text.removeCharAt(0))
-              this.setState({
-              bubblePosList: [...this.state.bubblePosList, message],
-              allMes:[...this.state.allMes, message[i]]
-            })
-            }
-            else if (/^DELETED/.test(message[i].text)){
-              this.setState({
-                dontPrint: [...this.state.dontPrint, message[i]]
-              })
-            }
-            else {this.setState({
-              messages: [...this.state.messages, message[i]],
-              allMes:[...this.state.allMes, message[i]]
-            })
-          }}
+                console.log(i, '/', message.length, 'message.length')
+                  this.setState({
+                    allMes:[...this.state.allMes, message[i]]
+                  })
+        }
           // for (var i =0; i<message.length; i++){
 // this.setState({
 //   allMessage: [...this.state.allMessage, message[i]]
 // })
-        // }
+       // }
       }
         }
-        }, reason => {console.error(reason)})
+        
+        return Promise.resolve(0);
+      })).then(r => {
+
+        console.log('Here', r);
+        return r;
+      })
+      .then(mes =>{
+        if (j === 39 ){
+        // console.log('allMes', this.state.allMes.length)
+        for (var i =100; i<this.state.allMes.length; i++){
+          if (/^fffff/.test(this.state.allMes[i].text)) {
+            this.state.allMes[i].text=(this.state.allMes[i].text.removeCharAt(0))
+            this.setState({
+              postings: [...this.state.postings, this.state.allMes[i]],
+        
+            })
+            // console.log(this.state.postings)
+            }
+          else if (/^ggggg/.test(this.state.allMes[i].text)){
+            this.state.allMes[i].text=(this.state.allMes[i].text.removeCharAt(0))
+            this.setState({
+              notesy: [...this.state.notesy, this.state.allMes[i]],
+        
+            })
+            // console.log(this.state.notesy)
+          }
+          else if (/^hhhhh/.test(this.state.allMes[i].text)){
+            this.state.allMes[i].text=(this.state.allMes[i].text.removeCharAt(0))
+            this.setState({
+              delNote: [...this.state.delNote, this.state.allMes[i]],
+        
+            })
+            // console.log(this.state.delNote)
+          }
+          else if (/^jljljl/.test(this.state.allMes[i].text)){
+          this.state.allMes[i].text=(this.state.allMes[i].text.removeCharAt(0))
+          this.setState({
+          bubblePosList: [...this.state.bubblePosList, this.state.allMes[i]],
+        
+        })
+        // console.log(this.state.bubblePosList)
+          }
+          else {
+            this.setState({
+            messages: [...this.state.messages, this.state.allMes[i]],
+        
+          })
+          console.log(this.state.allMes.length)
+          
+        }
+      }
+      // console.log(this.state.messages)
+    }})
+    // .then(comb => {
+    //   if (j === 39 ){
+    //   for (var i =0; i<this.state.messages.length; i++){
+    //     console.log(this.state.messages.length)
+    //     this.setState({
+    //       combineLi: [...this.state.combineLi, this.state.messages[i]]
+    //     })
+    //   }
+    //   for (var i =0; i<this.state.bubblePosList.length; i++){
+    //     console.log(this.state.bubblePosList.length)
+    //     this.setState({
+    //       combineLi: [...this.state.combineLi, this.state.bubblePosList[i]]
+    //     })
+    //   }
+    //   for (var i =0; i<this.state.postings.length; i++){
+    //     console.log(this.state.postings.length)
+    //     this.setState({
+    //       combineLi: [...this.state.combineLi, this.state.postings[i]]
+    //     })
+    //   }
+    //   for (var i =0; i<this.state.delNote.length; i++){
+    //     console.log(this.state.delNote.length)
+    //     this.setState({
+    //       combineLi: [...this.state.combineLi, this.state.delNote[i]]
+    //     })
+    //   }
+    //   for (var i =0; i<this.state.postings.notesy; i++){
+    //     console.log(this.state.postings.length)
+    //     this.setState({
+    //       combineLi: [...this.state.combineLi, this.state.notesy[i]]
+    //     })
+    //   }
+    //   console.log('did it!', this.state.combineLi)
+    // }})
+      
       .catch(error => console.error('error', error))
 
-      if (this.state.allMes.length === 100){
+      /*if (this.state.allMes.length === 100){
         const oldestMessageIdReceived = Math.min(...this.state.allMes.map(m => m.id))
         oldestM = oldestMessageIdReceived
-        }
+        }*/
         // console.log(chatManager)
+ }}
+)
 
-  }
-  )}})
+  // console.log('allMes', this.state.allMes.length);
 }
 
+
+
 theChange=()=>{
-  const varry =document.getElementById("react-joyride-step-3")
-const varry2 =document.getElementById("react-joyride-step-4")
-const varry3 =document.getElementById("react-joyride-step-5")
-const varry4 =document.getElementById("react-joyride-step-6")
+  const varry =document.getElementById("react-joyride-step-1")
+const varry2 =document.getElementById("react-joyride-step-2")
+// const varry3 =document.getElementById("react-joyride-step-5")
+// const varry4 =document.getElementById("react-joyride-step-6")
 // console.log(varry)
 // console.log(varry2)
 if (typeof varry !== 'undefined' && varry !== null){
@@ -482,15 +544,15 @@ else if (typeof varry2 !== 'undefined' && varry2 !== null) {
   varry2.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0].setAttribute("style", "background-color:transparent;")
   // console.log(varry2.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0])
 }
-else if  (typeof varry3 !== 'undefined' && varry3 !== null){
-  varry3.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0].setAttribute("style", "background-color:transparent;")
-  // console.log(varry3.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0])
-}
-else if (typeof varry4 !== 'undefined' && varry4 !== null){  
-  varry4.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0].setAttribute("style", "background-color:transparent;")
+// else if  (typeof varry3 !== 'undefined' && varry3 !== null){
+//   varry3.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0].setAttribute("style", "background-color:transparent;")
+//   // console.log(varry3.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0])
+// }
+// else if (typeof varry4 !== 'undefined' && varry4 !== null){  
+//   varry4.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0].setAttribute("style", "background-color:transparent;")
 
-  // console.log(varry4.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0])
-}
+//   // console.log(varry4.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0])
+// }
 }
   
 static propTypes = {
@@ -567,12 +629,15 @@ handleJoyrideCallback = data => {
 
 
   render() {
-// console.log(this.state.postings)
-// console.log(this.state.messages)
-// console.log(this.state.notesy)
-// console.log(this.state.bubblePosList)
-// console.log(this.state.delNote)
-console.log(this.state.allMes.length)
+// this.combineAll()
+// console.log('this.state.postings.length', this.state.postings.length)
+// console.log('this.state.messages.length', this.state.messages.length)
+// console.log('this.state.notesy.length', this.state.notesy.length)
+// console.log('this.state.bubblePosList.length', this.state.bubblePosList.length)
+// console.log('this.state.delNote.length' , this.state.delNote.length)
+
+// console.log(this.state.combineLi)
+console.log('this.state.allMes.length', this.state.allMes.length)
     var currentUser2
     const userArray = () =>{
     var usernameTwo = this.state.currentUser
@@ -761,9 +826,9 @@ userArray()
     // const { steps } = this.state.steps;
 
     // console.log(varry)
-if (this.state.currentUser['username']=== 'Bridgit'){
+if (this.state.currentUser['username']=== 'Malorie'){
     return (<div className='upperMost'>
-      {/* <ExportCSV csvData={this.state.allMes} fileName={'dsd280430pm'} /> */}
+      {/* <ExportCSV csvData={this.state.allMes} fileName={'dsdTest'} /> */}
                   {/* <button onClick={this.handleClickStart}>Let's Go!</button> */}
         <ReactJoyride
           continuous
@@ -799,14 +864,14 @@ if (this.state.currentUser['username']=== 'Bridgit'){
           currentUser={this.state.currentUser} 
             users={this.state.currentRoom.users}/>
 
-          <h1 style={styles.button2}
+          {/* <h1 style={styles.button2}
             className="title2"
             onClick={this.handleLineClick}
-          ><img className='pictureLine noselect' style={styles.imagee} src={this.state.hidden? pic3:pic2}></img><p style={styles.text}>show line</p></h1>
-          <h1 style={styles.button}
+          ><img className='pictureLine noselect' style={styles.imagee} src={this.state.hidden? pic3:pic2}></img><p style={styles.text}>show line</p></h1> */}
+          {/* <h1 style={styles.button}
             className="title"
             onClick={this.handleMapClick}
-          ><img className='pictureThree noselect' style={styles.imagee2} src={pic}></img><p style={styles.text2}>show map</p></h1>
+          ><img className='pictureThree noselect' style={styles.imagee2} src={pic}></img><p style={styles.text2}>show map</p></h1> */}
                <ReactStickyNotes className='stickyButton' style={styles.rsNotes}
             onChange={this.sendTypingEvent}
             onSubmit={this.sendMessage}

@@ -88,7 +88,7 @@ class MessageTwo extends Component {
 
     // console.log(this.props.currentUser.id)
 
-    if (this.props.currentUser.id === 'Bridgit_session2913pm__')
+    if (this.props.currentUser.id === 'Malorie_hlsclinics__')
     {
       // console.log('yay')
     

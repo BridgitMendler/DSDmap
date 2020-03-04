@@ -185,7 +185,7 @@ messageClean()
   }})
 
 
-if (props.currentUser.id === 'Bridgit_session2913pm__')
+if (props.currentUser.id === 'Malorie_hlsclinics__')
 {
 
     return (
@@ -200,11 +200,11 @@ if (props.currentUser.id === 'Bridgit_session2913pm__')
         <ul style={styles.ul} id='listyTwoId'>
           {resultTwo.slice(0).reverse().map((message, index) => (
             <li className={message.classNameParent} key={index} style={windowFocus(message)}>
-              <h1 style={styles.button}
+              {/* <h1 style={styles.button}
             className="title"
             onClick={onSubmit}
-          ><img className='pictureThree noselect' src={pic2}></img></h1>
-              <p className='listyText noselect' style={styles.message}>{message.print === "yo" ? <a href="https://mit.co1.qualtrics.com/jfe/form/SV_0CfP7xZFlzTtOSx">thanks for participating! Please click here to complete the post survey</a>: message.print}</p>
+          ><img className='pictureThree noselect' src={pic2}></img></h1> */}
+              <p className='listyText noselect' style={styles.message}>{message.print}</p>
             </li>
           ))}
         </ul>
