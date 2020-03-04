@@ -125,7 +125,7 @@ class ChatScreen extends Component {
           // title: "Our Mission",
           content: (
             <div className='welcome4'>
-              Click on this button to start a new stickie. Then move your note to concepts that you think are related.
+              Click on these button to start new stickie notes.
               <br />
               <img src={group} alt="loading..." />
             </div>
