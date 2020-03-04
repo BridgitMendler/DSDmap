@@ -125,7 +125,7 @@ class ChatScreen extends Component {
           // title: "Our Mission",
           content: (
             <div className='welcome4'>
-              Click on these button to start new stickie notes.
+              Click on these buttons to start new stickie notes.
               <br />
               <img src={group} alt="loading..." />
             </div>
@@ -286,7 +286,7 @@ this.setState({ scrollVals: joined })
   }
 
 getMessages(j, oldestM, currentUser){
-    console.log(j)
+    // console.log(j)
     return this.state.currentUser.fetchMessages({
      roomId:'68e49abd-c4dd-4ec7-8011-6fddb78898b2',
      initialId: oldestM,
@@ -392,20 +392,20 @@ var oldestM = 300000000
   var p
       for (j = 0, p = Promise.resolve(); j < 40; j++) {
       //let lllist =  Promise.all([...Array(10)].map( (p, i) => {
-        console.log(j)
-        console.log('oldestM', oldestM);
+        // console.log(j)
+        // console.log('oldestM', oldestM);
 
         await this.getMessages(j, oldestM, this.state.currentUser)
         
         .then((message => { 
-          console.log(message)
+          // console.log(message)
           //if(message.length >= 100){
-               console.log('message.length', message.length)
+              //  console.log('message.length', message.length)
             if (typeof message[0] !== 'undefined'){
             if (message[0].id < oldestM){
               oldestM = message[0].id
             // }
-            console.log('oldestM', oldestM)
+            // console.log('oldestM', oldestM)
             String.prototype.removeCharAt = function (i) {
               var tmp = this.split(''); // convert to an array
               tmp.splice(i, 5); // remove 1 element from the array (adjusting for non-zero-indexed counts)
@@ -413,7 +413,7 @@ var oldestM = 300000000
               // console.log(tmp)
             }
             for (var i =0; i<message.length; i++){
-                console.log(i, '/', message.length, 'message.length')
+                // console.log(i, '/', message.length, 'message.length')
                   this.setState({
                     allMes:[...this.state.allMes, message[i]]
                   })
@@ -429,7 +429,7 @@ var oldestM = 300000000
         return Promise.resolve(0);
       })).then(r => {
 
-        console.log('Here', r);
+        // console.log('Here', r);
         return r;
       })
       .then(mes =>{
@@ -473,7 +473,7 @@ var oldestM = 300000000
             messages: [...this.state.messages, this.state.allMes[i]],
         
           })
-          console.log(this.state.allMes.length)
+          // console.log(this.state.allMes.length)
           
         }
       }
@@ -637,7 +637,7 @@ handleJoyrideCallback = data => {
 // console.log('this.state.delNote.length' , this.state.delNote.length)
 
 // console.log(this.state.combineLi)
-console.log('this.state.allMes.length', this.state.allMes.length)
+// console.log('this.state.allMes.length', this.state.allMes.length)
     var currentUser2
     const userArray = () =>{
     var usernameTwo = this.state.currentUser

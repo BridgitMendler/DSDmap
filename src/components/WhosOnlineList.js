@@ -27,13 +27,13 @@ class WhosOnlineList extends Component {
             )
           }
           else if (user.presence.state === 'online'){
-          // console.log(user)
+            if(user.id !== 'Bridgit_hlsclinics__'){
           return (
             <WhosOnlineListItem key={index} presenceState={user.presence.state}>
               {user.username} {index}
             </WhosOnlineListItem>
           )
-  }}})}
+  }}}})}
       </ul>
     )
   }
