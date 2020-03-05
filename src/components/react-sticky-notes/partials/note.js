@@ -1031,7 +1031,7 @@ const newFunc2 = () => {
         // console.log('theCardHeight' +theCardHeight)
         // console.log('cIndex'+ cIndex)
         // console.log(theCardText)
-    return (((this.props.data.y*(theCardHeight-140))+ ((theCardHeight+39)*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  }
+    return (((this.props.data.y*(theCardHeight-140))+ ((theCardHeight)*(cIndex)) -props.data.scrollVal)-this.props.scrollScreen)  }
 }
 
 var selectionID = props.data.senderId.split(/[_]+/);
