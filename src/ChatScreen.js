@@ -288,7 +288,7 @@ this.setState({ scrollVals: joined })
 getMessages(j, oldestM, currentUser){
     // console.log(j)
     return this.state.currentUser.fetchMessages({
-     roomId:'68e49abd-c4dd-4ec7-8011-6fddb78898b2',
+     roomId:'11467282-9f24-4820-9134-34201a884f94',
      initialId: oldestM,
      direction: 'older',
      limit:20, 
@@ -312,7 +312,7 @@ var oldestM = 300000000
       .then(currentUser => {
         this.setState({ currentUser })
         return currentUser.subscribeToRoom({
-          roomId: '68e49abd-c4dd-4ec7-8011-6fddb78898b2',
+          roomId: '11467282-9f24-4820-9134-34201a884f94',
           hooks: {
             onMessage: message => {
               if (message.id < oldestM){
