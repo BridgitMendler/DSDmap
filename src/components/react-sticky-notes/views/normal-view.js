@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import NavBar from './../navbar';
 import NavBarTwo from './../navbar/notesIndex';
 import NavBarThree from './../navbar/notesRed';
+import NavBarFour from './../navbar/notesBlue.js';
 import Note from '../partials/note';
 import {NoteBubble} from '../partials/note-bubble';
 import Switch from "react-switch";
@@ -104,6 +105,7 @@ var newBub = props.newBubble.filter(obj => {
         h(NavBar, { ...props, key: 'navbar' }),
         h(NavBarTwo, { ...props, key: 'green' }),
         h(NavBarThree, { ...props, key: 'red' }),
+        h(NavBarFour, { ...props, key: 'blue' }),
         h('div', {
             key: props.prefix, 
             className: props.prefix,

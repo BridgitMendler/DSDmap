@@ -122,6 +122,9 @@ export function ButtonAddR({prefix, data, icons, callbacks}, props){
             } else if (val.nativeEvent.target.className === 'icons-r') {
                 return '#88A18A'
             }
+            else if (val.nativeEvent.target.className === 'icons-b') {
+                return '#9FA7B8'
+            }
             else {
             return '#FAE3B6';
         }}
@@ -198,6 +201,9 @@ export function ButtonAddG({prefix, data, icons, callbacks}, props){
             } else if (val.nativeEvent.target.className === 'icons-r') {
                 return '#88A18A'
             }
+            else if (val.nativeEvent.target.className === 'icons-b') {
+                return '#9FA7B8'
+            }
             else {
             return '#FAE3B6';
         }}
@@ -249,6 +255,84 @@ export function ButtonAddG({prefix, data, icons, callbacks}, props){
                 callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()}_${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${myCard}`+ `_${0}`+`_none`)))
         }, 
             icons.addR
+        )
+    }
+
+    export function ButtonAddB({prefix, data, icons, callbacks}, props){
+        var theOne = (document.getElementsByClassName('selectionssss'))
+        var allThem =(document.getElementsByClassName('listyTwo'))
+        var scrollValOne = document.getElementsByClassName('listyThree')[0]
+        var theOneOffset
+        var scrollVal
+        // console.log(theOne)
+        var theOneHeight
+        var theOneText
+        var theCardText
+        // console.log(theOne)
+        // console.log(scrollValOne)
+        if (typeof scrollValOne !== 'undefined') {
+            scrollVal = scrollValOne.scrollTop;
+        }
+
+        const getColor= (val) => {
+            if (val.nativeEvent.target.className === 'icons-g') {
+                return '#BC8276'
+            } else if (val.nativeEvent.target.className === 'icons-r') {
+                return '#88A18A'
+            } else if (val.nativeEvent.target.className === 'icons-b') {
+                return '#9FA7B8'
+            }
+            else {
+            return '#FAE3B6';
+        }}
+    
+        var allList = []
+        for (var i = 0; i< allThem.length; i++){
+            // console.log(allThem[i].offsetTop)
+            allList.push(allThem[i].offsetTop)
+        }
+        var closestCard
+        // console.log(allList)
+    if (allList.length > 0){
+    
+        closestCard = allList.reduce(function(prev, curr) {
+            return (Math.abs(curr - (scrollVal+200)) < Math.abs(prev - (scrollVal+200)) ? curr : prev);
+          });
+        }
+        // console.log(closestCard)
+        var myCard
+        for (var i = 0; i< allThem.length; i++){
+            if (closestCard === allThem[i].offsetTop){
+                myCard = allThem[i].innerText
+            }}
+    
+    
+        const getRandom= () => {
+        if (typeof document.getElementsByClassName('listyTwo') !== 'undefined' && typeof document.getElementsByClassName('bigSpace') !== 'undefined'){
+            var absolCardLeft = ((document.getElementsByClassName('listyTwo')[0]).offsetLeft)
+            var cardWidth = ((document.getElementsByClassName('listyTwo')[0]).offsetWidth)
+            var upperSpace = ((document.getElementsByClassName('bigSpace')[0]).offsetHeight)
+            var precision = 100;
+            var n = Math.floor(Math.random() * (10-(-10)) + (-10))
+            var randomnum = Math.floor(Math.random() * ((0.90) * precision - (0.15) * precision) + (0.15) * precision) / (1*precision);
+            return randomnum
+        }}
+        const getRandom2= () => {
+            if (typeof sourceTwo[0] !== 'undefined'){
+            var precision = 1;
+            var n = Math.floor(Math.random() * (10-(-10)) + (-10))
+            var randomnum = Math.floor(Math.random() * (150 * precision - 100 * precision) + 100 * precision) / (1*precision);
+            return (randomnum+sourceTwo[0].scrollTop)
+           
+        }}
+    
+        return h('button',{
+            key: `${prefix}--button__addB`,
+            className:`${prefix}--buttonB ${prefix}--button__add noselect`,
+            onClick:(e)=>(
+                callbacks.onSubmit(('ggggg' + ` `+ `_${getRandom()}_${getRandom()}`+`_${getUUID()}`+`_${getColor(e)}`+`_${true}`+`_${getRandom()}_${getRandom()}`+`_${myCard}`+ `_${0}`+`_none`)))
+        }, 
+            icons.addB
         )
     }
 
