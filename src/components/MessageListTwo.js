@@ -27,7 +27,7 @@ export function MessageListTwo(props){
       font: 'avenir next',
       fontWeight: 'medium',
     },
-    message: { fontWeight: 'medium', font:'avenir next', fontSize: 27 },
+    message: { fontWeight: 'medium', font:'avenir next', fontSize: 23 },
 
     li2: {
       scrollBehavior: 'smooth',

@@ -31,14 +31,8 @@ export function ButtonAdd({prefix, data, icons, callbacks}, props){
 // console.log(typeof sourceTwo[0])
 // console.log(theOneOffset, theCardText)
     const getColor= (val) => {
-        if (val.nativeEvent.target.className === 'icons-g') {
-            return '#BC8276'
-        } else if (val.nativeEvent.target.className === 'icons-r') {
-            return '#88A18A'
-        }
-        else {
         return '#FAE3B6';
-    }}
+    }
 
     var allList = []
     for (var i = 0; i< allThem.length; i++){
@@ -117,17 +111,8 @@ export function ButtonAddR({prefix, data, icons, callbacks}, props){
     // console.log(typeof sourceTwo[0])
     // console.log(theOneOffset, theCardText)
         const getColor= (val) => {
-            if (val.nativeEvent.target.className === 'icons-g') {
                 return '#BC8276'
-            } else if (val.nativeEvent.target.className === 'icons-r') {
-                return '#88A18A'
-            }
-            else if (val.nativeEvent.target.className === 'icons-b') {
-                return '#9FA7B8'
-            }
-            else {
-            return '#FAE3B6';
-        }}
+        }
     
         var allList = []
         for (var i = 0; i< allThem.length; i++){
@@ -196,17 +181,9 @@ export function ButtonAddG({prefix, data, icons, callbacks}, props){
         }
 
         const getColor= (val) => {
-            if (val.nativeEvent.target.className === 'icons-g') {
-                return '#BC8276'
-            } else if (val.nativeEvent.target.className === 'icons-r') {
                 return '#88A18A'
-            }
-            else if (val.nativeEvent.target.className === 'icons-b') {
-                return '#9FA7B8'
-            }
-            else {
-            return '#FAE3B6';
-        }}
+
+        }
     
         var allList = []
         for (var i = 0; i< allThem.length; i++){
@@ -275,16 +252,8 @@ export function ButtonAddG({prefix, data, icons, callbacks}, props){
         }
 
         const getColor= (val) => {
-            if (val.nativeEvent.target.className === 'icons-g') {
-                return '#BC8276'
-            } else if (val.nativeEvent.target.className === 'icons-r') {
-                return '#88A18A'
-            } else if (val.nativeEvent.target.className === 'icons-b') {
                 return '#9FA7B8'
-            }
-            else {
-            return '#FAE3B6';
-        }}
+        }
     
         var allList = []
         for (var i = 0; i< allThem.length; i++){
