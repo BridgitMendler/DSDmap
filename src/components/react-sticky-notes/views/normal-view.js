@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import NavBar from './../navbar';
 import NavBarTwo from './../navbar/notesIndex';
 import NavBarThree from './../navbar/notesRed';
-import NavBarFour from './../navbar/notesBlue.js';
+import NavBarFour from './../navbar/notesBlue';
 import Note from '../partials/note';
 import {NoteBubble} from '../partials/note-bubble';
 import Switch from "react-switch";
