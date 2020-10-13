@@ -1,7 +1,7 @@
 
-# Build a Chat App with React and Pusher Chatkit
+# Build OurStory with Chatkit
 
-This branch contains the complete solution. For the step by step tutorial, refer to the [README on the master branch](https://github.com/pusher/build-a-slack-clone-with-react-and-pusher-chatkit/blob/master/README.md).
+Chatkit features used in this project may be retired. https://pusher.com/chatkit
 
 To get started, run:
 
